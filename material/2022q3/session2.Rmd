@@ -1,0 +1,75 @@
+---
+title: "Quantitative Methods Series"
+subtitle: " Session 02 "
+author: "M. Bisiada, G. Boleda, T. Brochhagen"
+output:
+  html_document: default
+urlcolor: blue
+---
+
+# This week's pre-session tasks
+
+***
+
+# Session overview
+
+ 
+  
+## 1. Introduction and general overview
+... a little bit about what we want to do...
+
+## 2. Get to know each other('s statistical needs)
+
+## 3. Troubleshooting
+
+## 4. Generating data
+
+
+
+```{r generate data for session 1, warning=FALSE, message=FALSE}
+
+set.seed(999)
+trials <- 30 #number of subjects per trial
+subject_id <- c(rep(1,trials),
+               rep(2,trials),
+               rep(3,trials))
+conditions <- rep(c(rep('A',trials/2),
+                    rep('B', trials/2)),
+                  3)
+                
+stim <- rep(1:15,3)
+
+A_mean <- 0.65
+A_sd <- 0.1
+B_mean <- 0.95
+B_sd <- 0.25
+
+rt <- c(rnorm(trials/2,A_mean,A_sd),
+        rnorm(trials/2,B_mean,B_sd),
+        rnorm(trials/2,A_mean,A_sd),
+        rnorm(trials/2,B_mean,B_sd),
+        rnorm(trials/2,A_mean,A_sd),
+        rnorm(trials/2,B_mean,B_sd))
+
+#Now I'm going to mess with the data a bit
+ind <- sample(length(rt),8)
+ind_na <- ind[1:5]
+ind_error <- ind[6:8]
+
+rt[ind_na] <- NA
+rt[ind_error] <- c(9999.9,9999.9,2.0)
+
+df <- data.frame(ID = subject_id,
+                 condition = conditions,
+                 RTs = rt,
+                 sti = stim)
+
+write_csv(df,'df_session01a.csv')
+write_delim(df,'df_session01b.csv', delim='*')
+```
+
+
+***
+```{r}
+sessionInfo()
+```

@@ -1,0 +1,90 @@
+---
+title: "Quantitative Methods Series"
+subtitle: " Session 01 "
+author: "M. Bisiada, G. Boleda, T. Brochhagen"
+output:
+  html_document: default
+urlcolor: blue
+---
+
+# This week's pre-session tasks
+We will ask you to do a few things before each session. Do come to the session even if you didn't manage. We can  help.
+
+We will use the [programming language R](https://www.r-project.org/). You do not need to have programmed neither in R nor any other language before. However, you should have access to a machine that can run R code to get the most out of this class. Additionally, we also recommend installing [RStudio](https://rstudio.com/). This is a graphical interface that allows you to manipulate R code & data more easily. You don't strictly need it, but chances are it's going to make your quantitative life easier.
+
+## Task 1: Install R and RStudio
+
+The details of how to install R and RStudio depend on your operating system. [This Datacamp tutorial](https://www.datacamp.com/community/tutorials/installing-R-windows-mac-ubuntu) gives instructions on how to do so for Windows, Mac OS X, and Ubuntu.
+
+## Task 2: Test installation 
+Make sure your installation was successful by running some R code. 
+
+One way to do so is to [download this page's markdown](https://quantitativemethods.github.io/2020q2/session01.Rmd); open it in RStudio; and press the green "play"-button to the right of the grey box just below this text. That tells Rstudio to run the code inside the box.
+
+```{r}
+print('Welcome to the Quantitative Methods Series')
+
+#A demonstration of R code (to see that the code is running)
+x <- 2 #this assigns the value '2' to variable 'x'
+y <- 5 #this assigns the value '5' to variable 5
+
+#Running this box of code will print the result of these operations:
+x+y 
+x*y
+x**y
+```
+
+You can play around with this interactive document as much as you want. That's why we're making it available. For each session, you will find:
+  
+  * A rendered HTML file <img src="../fa/file-alt-regular.svg" width="22"/>
+  * the Rmarkdown source <img src="../fa/markdown-brands.svg" width="35"/>
+  * just the R code (without the text) <img src="../fa/r-project-brands.svg"  width="35"/>
+  * data used for the session <img src="../fa/download.svg" width="30"/>
+
+***
+
+# Session overview
+
+  1. Introduction to this series and general overview
+  2. Get to know each other('s statistical needs)
+  3. Troubleshoot issues, if any, concerning the pre-session tasks
+  4. Reading in data
+  
+  
+## 1. Introduction and general overview
+... a little bit about what we want to do...
+
+## 2. Get to know each other('s statistical needs)
+
+## 3. Troubleshooting
+
+## 4. Reading data
+
+Read in the dataframe `df_session01a.csv` and check it's contents
+
+```{r}
+df_a <- read.csv('df_session01a.csv')
+head(df_a)
+str(df_a)
+```
+
+Do the same with `df_session01b.csv`
+```{r}
+df_b <- read.csv('df_session01b.csv')
+head(df_b)
+str(df_b)
+```
+
+Check the documentation of the function `read.csv()` for help and double-check the file `df_session01b.csv`
+
+```{r}
+df_b <- read.csv('df_session01b.csv',sep='*')
+head(df_b)
+str(df_b)
+```
+
+
+***
+```{r}
+sessionInfo()
+```
