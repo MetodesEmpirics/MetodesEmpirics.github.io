@@ -5,11 +5,15 @@
 
   | Sessions (Q2/2020) | Content | Assignment
   | :--- | :---: | :---: |
-  | (dd/mm) Introduction and first steps | &nbsp;&nbsp;<a href='./material/2022q3/session01.html' target='_blank'><img src="./fa/file-alt-regular.svg"  width="25"/></a>&nbsp;&nbsp;<a href='./material/2022q3/session01.Rmd' target='_blank'><img src="./fa/markdown-brands.svg" width="35"/></a>&nbsp;&nbsp;<a href='./material/2022q3/session01.R' target='_blank'><img src="./fa/r-project-brands.svg"  width="35"/></a>&nbsp;&nbsp;<a href='./material/2022q3/session01.zip' target='_blank'><img src="./fa/download.svg"  width="30"/></a> | |
-  | (dd/mm) Data exploration and generation | |
-  | (dd/mm) TBA | |
-  | (dd/mm) TBA | |
-  | (dd/mm) TBA | |
+  | (dd/mm) Introduction and review | &nbsp;&nbsp;<a href='./material/2022q3/session01.html' target='_blank'><img src="./fa/file-alt-regular.svg"  width="25"/></a>&nbsp;&nbsp;<a href='./material/2022q3/session01.Rmd' target='_blank'><img src="./fa/markdown-brands.svg" width="35"/></a>&nbsp;&nbsp;<a href='./material/2022q3/session01.R' target='_blank'><img src="./fa/r-project-brands.svg"  width="35"/></a>&nbsp;&nbsp;<a href='./material/2022q3/session01.zip' target='_blank'><img src="./fa/download.svg"  width="30"/></a> | |
+  | (dd/mm) Research plan design & data | |
+  | (dd/mm) Simulation, pilot studies, and study types |
+  | (dd/mm) Data wrangling & visualization | |
+  | (dd/mm) Data collection & exploration | |
+  | (dd/mm) Corpus analysis | |
+  | (dd/mm) Data analysis I | |
+  | (dd/mm) Data analysis II | |
+  | (dd/mm) Review and a look forward | |
 
 
 
@@ -38,5 +42,8 @@
   * Probability Theory: The Logic of Science
   * [Exploratory Data Analysis](https://archive.org/details/exploratorydataa00tuke_0/page/n711/mode/2up)
 
-## People
-This course is organized by <a href='https://brochhagen.github.io' target='_blank'>Thomas Brochhagen</a>. It is part of the undergraduate degree in <a href='https://www.upf.edu/web/graus/grau-llengues-aplicades' target='_blank'>Applied Languages</a> at the <a href='http://www.upf.edu' target='_blank'>Universitat Pompeu Fabra</a>'s <a href='https://www.upf.edu/web/traduccio' target='_blank'>Department of Translation and Information Sciences</a>. Get in touch: <a href="mailto:thomas.brochhagen@upf.edu">thomas.brochhagen@upf.edu</a>.
+## About
+This course is organized by <a href='https://brochhagen.github.io' target='_blank'>Thomas Brochhagen</a> <br><br>
+It is part of the undergraduate degree in <a href='https://www.upf.edu/web/graus/grau-llengues-aplicades' target='_blank'>Applied Languages</a> at the <a href='http://www.upf.edu' target='_blank'>Universitat Pompeu Fabra</a>'s <a href='https://www.upf.edu/web/traduccio' target='_blank'>Department of Translation and Information Sciences</a><br>
+
+Get in touch: <a href="mailto:thomas.brochhagen@upf.edu">thomas.brochhagen@upf.edu</a>
