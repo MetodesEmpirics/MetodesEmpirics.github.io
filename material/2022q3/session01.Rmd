@@ -1,87 +1,157 @@
 ---
-title: "Quantitative Methods Series"
+title: "Introduction and review"
 subtitle: " Session 01 "
-author: "M. Bisiada, G. Boleda, T. Brochhagen"
+author: "T. Brochhagen"
 output:
   html_document: default
 urlcolor: blue
 ---
 
-# This week's pre-session tasks
-We will ask you to do a few things before each session. Do come to the session even if you didn't manage. We can  help.
+# Introductory remarks
 
-We will use the [programming language R](https://www.r-project.org/). You do not need to have programmed neither in R nor any other language before. However, you should have access to a machine that can run R code to get the most out of this class. Additionally, we also recommend installing [RStudio](https://rstudio.com/). This is a graphical interface that allows you to manipulate R code & data more easily. You don't strictly need it, but chances are it's going to make your quantitative life easier.
+  * Website & material: [https://metodesempirics.github.io/](https://metodesempirics.github.io/)
+  * Assignments due before DD, HH:MM
 
-## Task 1: Install R and RStudio
 
-The details of how to install R and RStudio depend on your operating system. [This Datacamp tutorial](https://www.datacamp.com/community/tutorials/installing-R-windows-mac-ubuntu) gives instructions on how to do so for Windows, Mac OS X, and Ubuntu.
+  For each session, you will find:
 
-## Task 2: Test installation 
-Make sure your installation was successful by running some R code. 
+    * A rendered HTML file <img src="../fa/file-alt-regular.svg" width="22"/>
+    * the Rmarkdown source <img src="../fa/markdown-brands.svg" width="35"/>
+    * just the R code (without the text) <img src="../fa/r-project-brands.svg"  width="35"/>
+    * data used for the session <img src="../fa/download.svg" width="30"/>
 
-One way to do so is to [download this page's markdown](https://quantitativemethods.github.io/2020q2/session01.Rmd); open it in RStudio; and press the green "play"-button to the right of the grey box just below this text. That tells Rstudio to run the code inside the box.
 
-```{r}
-print('Welcome to the Quantitative Methods Series')
+## Goals
 
-#A demonstration of R code (to see that the code is running)
-x <- 2 #this assigns the value '2' to variable 'x'
-y <- 5 #this assigns the value '5' to variable 5
+  * Lorem ipsum dolor sit amet
+  * consectetur adipiscing elit
+  * Vestibulum mattis ullamcorper placerat
+  * Phasellus quis eros at turpis tempus
 
-#Running this box of code will print the result of these operations:
-x+y 
-x*y
-x**y
-```
+## R
+We will use the [programming language R](https://www.r-project.org/). You do not need to have programmed neither in R nor any other language before. It is also not necessary to run R code on your machine. This class' code can all be executed online.
 
-You can play around with this interactive document as much as you want. That's why we're making it available. For each session, you will find:
-  
-  * A rendered HTML file <img src="../fa/file-alt-regular.svg" width="22"/>
-  * the Rmarkdown source <img src="../fa/markdown-brands.svg" width="35"/>
-  * just the R code (without the text) <img src="../fa/r-project-brands.svg"  width="35"/>
-  * data used for the session <img src="../fa/download.svg" width="30"/>
+That being said, it is highly recommended to install R on your computer. This will give you less dependent on external resources; give you a better sense of how to build your own analysis; and make things run faster. If you do so, I also recommend installing [RStudio](https://rstudio.com/). This is a graphical interface that allows you to manipulate R code and data more easily. As you R itself, you don't strictly need it. Howevre, chances are it's going to make your quantitative life much easier.
+
+  * To install R: follow instructions on [https://www.r-project.org](https://www.r-project.org)
+  * To install RStudio: follow instructions on [https://rstudio.com/](https://rstudio.com/)
+  * Alternatively: Follow the step-by-step instructions provided by [datacamp](https://www.datacamp.com/community/tutorials/installing-R-windows-mac-ubuntu)
 
 ***
 
-# Session overview
+# This week's key issues
 
-  1. Introduction to this series and general overview
-  2. Get to know each other('s statistical needs)
-  3. Troubleshoot issues, if any, concerning the pre-session tasks
-  4. Reading in data
-  
-  
-## 1. Introduction and general overview
-... a little bit about what we want to do...
+  * Descriptive statistics review: mean, median, variance, deviation
+  * Executing and modifying R code
+  * Replicability and reproduceability
+  * The research cycle
 
-## 2. Get to know each other('s statistical needs)
+***
 
-## 3. Troubleshooting
+# Descriptive statistics review
 
-## 4. Reading data
-
-Read in the dataframe `df_session01a.csv` and check it's contents
+## Mean (finite case)
+$$\bar{x} = \frac{1}{n} \sum_{i} x_i$$
 
 ```{r}
-df_a <- read.csv('df_session01a.csv')
-head(df_a)
-str(df_a)
+heights1 <- c(170,178,162,166,183,185) #a vector of heights in cms
+
+mean(heights)
 ```
 
-Do the same with `df_session01b.csv`
+
+## Median (finite case)
+If the number of elements in $n$ is even:
+$$median(X) = x_{\frac{n+1}{2}}$$
+
+If odd:
+$$median(X) = \frac{x_{n/2} + x_{(n/2)+1}}{2}$$
+
 ```{r}
-df_b <- read.csv('df_session01b.csv')
-head(df_b)
-str(df_b)
+sort(heights) #not necessary to compute median, just for illustration
+median(heights)
+
+sort(heights2) #not necessary to compute median, just for illustration
+median(heights2)
 ```
 
-Check the documentation of the function `read.csv()` for help and double-check the file `df_session01b.csv`
+## More examples
 
 ```{r}
-df_b <- read.csv('df_session01b.csv',sep='*')
-head(df_b)
-str(df_b)
+
+heights3 <- c(170,178,162,166,183,185,188,300) #a vector of heights in cms
+mean(heights3)
+median(heights3)
 ```
+
+```{r}
+#Let's automatize and let the computer create some data for us
+
+#We will simulate reaction times (in milliseconds)
+#Starting small, generating just 10 observations and telling R that the central tendency is 150 ms, with 20 ms of standard deviation
+
+sim_reaction_times <- rnorm(n = 10, mean = 150, sd = 20) #sample 1000 times from a Normal distribution with mean 150 and sd of 20
+print(sim_reaction_times) #look at what reaction times we sampled
+plot(sim_reaction_times) #visualize the reaction times we sampled
+
+mean(sim_reaction_times) #calculate their mean
+median(sim_reaction_times) #calculate their median
+
+
+#The same thing, but now with more observations sampled
+
+sim_reaction_times <- rnorm(n = 1000, mean = 150, sd = 20) #sample 1000 times from a Normal distribution with mean 150 and sd of 20
+print(sim_reaction_times) #look at what reaction times we sampled
+plot(sim_reaction_times) #visualize the reaction times we sampled
+
+mean(sim_reaction_times) #calculate their mean
+median(sim_reaction_times) #calculate their median
+
+plot(density(sim_reaction_times))
+
+#Changing the generating distribution
+sim_reaction_times_g <- rgamma(n = 1000, shape=1, scale=150) #sample 1000 times from a Gamma distribution with mean 150 and sd of 20
+
+plot(sim_reaction_times_g)
+
+mean(sim_reaction_times_g)
+median(sim_reaction_times_g)
+
+plot(density(sim_reaction_times_g))
+```
+
+
+## Variance & standard deviation
+
+
+$$\sigma_X = \sqrt{\frac{1}{n-1}\sum_{i}^{n}(x_i - \bar{x})^2}$$
+
+```{r}
+heights
+var(heights)
+sd(heights) #the same as sqrt(var(heights))
+
+#Unpacking variance and standard deviation
+x_bar <- mean(heights) #this is the mean of the heights
+print(x_bar)
+
+dev_heights <- heights - x_bar #deviations of each height from the mean
+print(dev_heights)
+
+squared_dev_heights <- devs_heights**2 #squared deviations from the mean
+print(squared_dev_heights)
+
+sum_squared_dev_heights <- sum(squared_dev_heights) #sum of the squared deviations
+print(sum_squared_dev_heights)
+
+var_heights <- ( 1 / (length(heights)-1) ) * sum_squared_dev_heights #divide by number of observations - 1
+print(var_heights)
+
+print(sqrt(var_heights)) #square root of the variance = std
+```
+
+
+
 
 
 ***
