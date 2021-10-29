@@ -15,10 +15,10 @@ urlcolor: blue
 
   For each session, you will find:
 
-    * A rendered HTML file <img src="../fa/file-alt-regular.svg" width="22"/>
-    * the Rmarkdown source <img src="../fa/markdown-brands.svg" width="35"/>
-    * just the R code (without the text) <img src="../fa/r-project-brands.svg"  width="35"/>
-    * data used for the session <img src="../fa/download.svg" width="30"/>
+    * A rendered HTML file <img src="../../fa/file-alt-regular.svg" width="22"/>
+    * the Rmarkdown source <img src="../../fa/markdown-brands.svg" width="35"/>
+    * just the R code (without the text) <img src="../../fa/r-project-brands.svg"  width="35"/>
+    * A dynamic file <img src="../../fa/file-code-solid.svg" width="30"/>
 
 
 ## Goals
@@ -29,7 +29,7 @@ urlcolor: blue
   * Phasellus quis eros at turpis tempus
 
 ## R
-We will use the [programming language R](https://www.r-project.org/). You do not need to have programmed neither in R nor any other language before. It is also not necessary to run R code on your machine. This class' code can all be executed online.
+We will use the [programming language R](https://www.r-project.org/). You do not need to have programmed neither in R nor any other language before. It is also not necessary to run R code on your machine. This class' code can all be executed online. To use R without having to install it go to [https://colab.to/r](https://colab.to/r).
 
 That being said, it is highly recommended to install R on your computer. This will give you less dependent on external resources; give you a better sense of how to build your own analysis; and make things run faster. If you do so, I also recommend installing [RStudio](https://rstudio.com/). This is a graphical interface that allows you to manipulate R code and data more easily. As you R itself, you don't strictly need it. Howevre, chances are it's going to make your quantitative life much easier.
 
@@ -51,26 +51,31 @@ That being said, it is highly recommended to install R on your computer. This wi
 # Descriptive statistics review
 
 ## Mean (finite case)
-$$\bar{x} = \frac{1}{n} \sum_{i} x_i$$
+$$\Large \bar{x} = \frac{1}{n} \sum_{i} x_i$$
 
 ```{r}
 heights1 <- c(170,178,162,166,183,185) #a vector of heights in cms
 
-mean(heights)
+(170 + 178 + 162 + 166 + 183 + 185) * (1 / 6) #calculating the mean explicitly
+
+sum(heights1) * (1 / length(heights1)) #using sum() and length() functions
+
+mean(heights1) #using the mean() function directly
 ```
 
 
 ## Median (finite case)
-If the number of elements in $n$ is even:
-$$median(X) = x_{\frac{n+1}{2}}$$
+If the number of observations is even and ordered:
+$$\Large median(X) = x_{\frac{n+1}{2}}$$
 
-If odd:
-$$median(X) = \frac{x_{n/2} + x_{(n/2)+1}}{2}$$
+If odd and ordered:
+$$\Large median(X) = \frac{x_{n/2} + x_{(n/2)+1}}{2}$$
 
 ```{r}
-sort(heights) #not necessary to compute median, just for illustration
-median(heights)
+sort(heights1) #not necessary to compute median, just for illustration
+median(heights1)
 
+heights2 <- c(170,178,162,166,183,185,155) #a vector of heights in cms
 sort(heights2) #not necessary to compute median, just for illustration
 median(heights2)
 ```
@@ -85,23 +90,21 @@ median(heights3)
 ```
 
 ```{r}
-#Let's automatize and let the computer create some data for us
-
+#Let's let the computer generate the data
 #We will simulate reaction times (in milliseconds)
 #Starting small, generating just 10 observations and telling R that the central tendency is 150 ms, with 20 ms of standard deviation
 
 sim_reaction_times <- rnorm(n = 10, mean = 150, sd = 20) #sample 1000 times from a Normal distribution with mean 150 and sd of 20
-print(sim_reaction_times) #look at what reaction times we sampled
+sim_reaction_times #look at what reaction times we sampled
 plot(sim_reaction_times) #visualize the reaction times we sampled
 
 mean(sim_reaction_times) #calculate their mean
 median(sim_reaction_times) #calculate their median
 
 
-#The same thing, but now with more observations sampled
+#The same thing, but now with 1000 observations sampled
 
 sim_reaction_times <- rnorm(n = 1000, mean = 150, sd = 20) #sample 1000 times from a Normal distribution with mean 150 and sd of 20
-print(sim_reaction_times) #look at what reaction times we sampled
 plot(sim_reaction_times) #visualize the reaction times we sampled
 
 mean(sim_reaction_times) #calculate their mean
@@ -124,35 +127,39 @@ plot(density(sim_reaction_times_g))
 ## Variance & standard deviation
 
 
-$$\sigma_X = \sqrt{\frac{1}{n-1}\sum_{i}^{n}(x_i - \bar{x})^2}$$
+$$\L  arge \sigma_X = \sqrt{\frac{1}{n-1}\sum_{i}^{n}(x_i - \bar{x})^2}$$
 
 ```{r}
-heights
-var(heights)
-sd(heights) #the same as sqrt(var(heights))
+heights1
+var(heights1)
+sd(heights1) #the same as sqrt(var(heights))
 
 #Unpacking variance and standard deviation
-x_bar <- mean(heights) #this is the mean of the heights
-print(x_bar)
+x_bar <- mean(heights1) #we assign this number to a variable named x_bar
+x_bar
 
-dev_heights <- heights - x_bar #deviations of each height from the mean
-print(dev_heights)
+dev_heights <- heights1 - x_bar #deviations of each height from the mean
+dev_heights
 
-squared_dev_heights <- devs_heights**2 #squared deviations from the mean
-print(squared_dev_heights)
+squared_dev_heights <- dev_heights**2 #squared deviations from the mean
+squared_dev_heights
 
 sum_squared_dev_heights <- sum(squared_dev_heights) #sum of the squared deviations
-print(sum_squared_dev_heights)
+sum_squared_dev_heights
 
-var_heights <- ( 1 / (length(heights)-1) ) * sum_squared_dev_heights #divide by number of observations - 1
-print(var_heights)
+var_heights <- ( 1 / (length(heights1)-1) ) * sum_squared_dev_heights #divide by number of observations - 1
+var_heights
 
-print(sqrt(var_heights)) #square root of the variance = std
+sqrt(var_heights) #square root of the variance = std
 ```
 
 
 
+***
+# Replicability & reproduceability
 
+***
+# The research cycle
 
 ***
 ```{r}

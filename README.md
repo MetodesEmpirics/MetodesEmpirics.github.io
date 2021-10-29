@@ -5,7 +5,7 @@
 
   | Sessions (Q2/2020) | Content | Assignment
   | :--- | :---: | :---: |
-  | (dd/mm) Introduction and review | &nbsp;&nbsp;<a href='./material/2022q3/session01.html' target='_blank'><img src="./fa/file-alt-regular.svg"  width="25"/></a>&nbsp;&nbsp;<a href='./material/2022q3/session01.Rmd' target='_blank'><img src="./fa/markdown-brands.svg" width="35"/></a>&nbsp;&nbsp;<a href='./material/2022q3/session01.R' target='_blank'><img src="./fa/r-project-brands.svg"  width="35"/></a>&nbsp;&nbsp;<a href='./material/2022q3/session01.zip' target='_blank'><img src="./fa/download.svg"  width="30"/></a> | |
+  | (dd/mm) Introduction and review | &nbsp;&nbsp;<a href='./material/2022q3/session01.html' target='_blank'><img src="./fa/file-alt-regular.svg"  width="25"/></a>&nbsp;&nbsp;<a href='./material/2022q3/session01.Rmd' target='_blank'><img src="./fa/markdown-brands.svg" width="35"/></a>&nbsp;&nbsp;<a href='./material/2022q3/session01.R' target='_blank'><img src="./fa/r-project-brands.svg"  width="35"/></a>&nbsp;&nbsp;<a href='https://colab.research.google.com/drive/1MbcI7X9TTwotAmAg5UndeQrHURZ2WN9_?usp=sharing' target='_blank'><img src="file-code-solid"  width="30"/></a> | |
   | (dd/mm) Research plan design & data | |
   | (dd/mm) Simulation, pilot studies, and study types |
   | (dd/mm) Data wrangling & visualization | |
