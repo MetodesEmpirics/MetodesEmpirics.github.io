@@ -13,9 +13,9 @@ urlcolor: blue
   * Assignments due before DD, HH:MM
   * For each session, you will find:
     * A rendered HTML file <img src="../../fa/file-alt-regular.svg" width="22"/>
-    * the Rmarkdown source <img src="../../fa/markdown-brands.svg" width="35"/>
-    * just the R code (without the text) <img src="../../fa/r-project-brands.svg"  width="35"/>
-    * A dynamic file <img src="../../fa/file-code-solid.svg" width="25"/>
+    * the Rmarkdown source <img src="../../fa/markdown-brands.svg" width="22"/>
+    * just the R code (without the text) <img src="../../fa/r-project-brands.svg"  width="22"/>
+    * A dynamic file <img src="../../fa/file-code-solid.svg" width="22"/>
 
 
 ## Goals
