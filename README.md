@@ -1,11 +1,15 @@
 ## Course description
 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin feugiat tincidunt luctus. Suspendisse potenti. Nam mauris justo, aliquam sit amet tellus a, sodales placerat odio. Integer vel urna ac risus euismod eleifend. Curabitur vitae justo venenatis ex tincidunt auctor in a massa. Nulla consequat nibh eu lectus tempor gravida. Suspendisse potenti. Nulla ultricies ex in lacus commodo fringilla. In fermentum enim a metus sagittis malesuada.
+
+Proin risus enim, hendrerit eget finibus non, sodales at eros. Sed imperdiet sed ipsum ut efficitur. Cras non felis mi. Nullam massa diam, euismod eu neque at, lacinia consectetur purus. Cras varius tempor purus ut pretium. Curabitur consequat quam eget sapien tristique scelerisque. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas nulla diam, molestie ut odio eget, maximus efficitur nisi. Donec a turpis erat. Suspendisse et arcu laoreet justo auctor venenatis.
+
 ## Sessions
 
 
   | Sessions (Q2/2020) | Content | Assignment
   | :--- | :---: | :---: |
-  | (dd/mm) Introduction and review | &nbsp;&nbsp;<a href='./material/2022q3/session01.html' target='_blank'><img src="./fa/file-alt-regular.svg"  width="25"/></a>&nbsp;&nbsp;<a href='./material/2022q3/session01.Rmd' target='_blank'><img src="./fa/markdown-brands.svg" width="35"/></a>&nbsp;&nbsp;<a href='./material/2022q3/session01.R' target='_blank'><img src="./fa/r-project-brands.svg"  width="35"/></a>&nbsp;&nbsp;<a href='https://colab.research.google.com/drive/1MbcI7X9TTwotAmAg5UndeQrHURZ2WN9_?usp=sharing' target='_blank'><img src="file-code-solid"  width="30"/></a> | |
+  | (dd/mm) Introduction and review | &nbsp;&nbsp;<a href='./material/2022q3/session01.html' target='_blank'><img src="./fa/file-alt-regular.svg"  width="25"/></a>&nbsp;&nbsp;<a href='./material/2022q3/session01.Rmd' target='_blank'><img src="./fa/markdown-brands.svg" width="30"/></a>&nbsp;&nbsp;<a href='./material/2022q3/session01.R' target='_blank'><img src="./fa/file-code-solid.svg"  width="30"/></a>&nbsp;&nbsp;<a href='https://colab.research.google.com/drive/1MbcI7X9TTwotAmAg5UndeQrHURZ2WN9_?usp=sharing' target='_blank'><img src="file-code-solid"  width="30"/></a> | |
   | (dd/mm) Research plan design & data | |
   | (dd/mm) Simulation, pilot studies, and study types |
   | (dd/mm) Data wrangling & visualization | |
@@ -17,7 +21,7 @@
 
 
 
-## Resources
+## Additional resources
 
 ##### Communities
   * [DTCL](https://www.upf.edu/web/traduccio)

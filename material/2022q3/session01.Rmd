@@ -11,10 +11,7 @@ urlcolor: blue
 
   * Website & material: [https://metodesempirics.github.io/](https://metodesempirics.github.io/)
   * Assignments due before DD, HH:MM
-
-
-  For each session, you will find:
-
+  * For each session, you will find:
     * A rendered HTML file <img src="../../fa/file-alt-regular.svg" width="22"/>
     * the Rmarkdown source <img src="../../fa/markdown-brands.svg" width="35"/>
     * just the R code (without the text) <img src="../../fa/r-project-brands.svg"  width="35"/>
@@ -157,9 +154,15 @@ sqrt(var_heights) #square root of the variance = std
 
 ***
 # Replicability & reproduceability
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin feugiat tincidunt luctus. Suspendisse potenti. Nam mauris justo, aliquam sit amet tellus a, sodales placerat odio. Integer vel urna ac risus euismod eleifend. Curabitur vitae justo venenatis ex tincidunt auctor in a massa. Nulla consequat nibh eu lectus tempor gravida. Suspendisse potenti. Nulla ultricies ex in lacus commodo fringilla. In fermentum enim a metus sagittis malesuada.
+
+Proin risus enim, hendrerit eget finibus non, sodales at eros. Sed imperdiet sed ipsum ut efficitur. Cras non felis mi. Nullam massa diam, euismod eu neque at, lacinia consectetur purus. Cras varius tempor purus ut pretium. Curabitur consequat quam eget sapien tristique scelerisque. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas nulla diam, molestie ut odio eget, maximus efficitur nisi. Donec a turpis erat. Suspendisse et arcu laoreet justo auctor venenatis.
 
 ***
 # The research cycle
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin feugiat tincidunt luctus. Suspendisse potenti. Nam mauris justo, aliquam sit amet tellus a, sodales placerat odio. Integer vel urna ac risus euismod eleifend. Curabitur vitae justo venenatis ex tincidunt auctor in a massa. Nulla consequat nibh eu lectus tempor gravida. Suspendisse potenti. Nulla ultricies ex in lacus commodo fringilla. In fermentum enim a metus sagittis malesuada.
+
+Proin risus enim, hendrerit eget finibus non, sodales at eros. Sed imperdiet sed ipsum ut efficitur. Cras non felis mi. Nullam massa diam, euismod eu neque at, lacinia consectetur purus. Cras varius tempor purus ut pretium. Curabitur consequat quam eget sapien tristique scelerisque. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas nulla diam, molestie ut odio eget, maximus efficitur nisi. Donec a turpis erat. Suspendisse et arcu laoreet justo auctor venenatis.
 
 ***
 ```{r}
