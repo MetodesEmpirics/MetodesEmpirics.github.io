@@ -11,14 +11,15 @@ urlcolor: blue
 
   * Website & material: [https://metodesempirics.github.io/](https://metodesempirics.github.io/)
   * Assignments due before DD, HH:MM
-  * For each session, you will find:
-    * A rendered HTML file <img src="../../fa/file-alt-regular.svg" width="22"/>
-    * the Rmarkdown source <img src="../../fa/markdown-brands.svg" width="22"/>
-    * just the R code (without the text) <img src="../../fa/r-project-brands.svg"  width="22"/>
-    * A dynamic file <img src="../../fa/file-code-solid.svg" width="22"/>
+
+For each session, you will find:
+  * A rendered HTML file <img src="../../fa/file-alt-regular.svg" width="22"/>
+  * the Rmarkdown source <img src="../../fa/markdown-brands.svg" width="22"/>
+  * R code (without the text) <img src="../../fa/r-project-brands.svg"  width="22"/>
+  * A dynamic file <img src="../../fa/file-code-solid.svg" width="22"/>
 
 
-## Goals
+## Course goals
 
   * Lorem ipsum dolor sit amet
   * consectetur adipiscing elit
