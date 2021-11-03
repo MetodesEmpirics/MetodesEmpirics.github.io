@@ -7,8 +7,8 @@ Proin risus enim, hendrerit eget finibus non, sodales at eros. Sed imperdiet sed
 ## Sessions
 
 
-  | Sessions (Q2/2020) | Content | Assignment
-  | :---: | :---: | :---: |
+  | Sessions (Q/202y) | Content | Assignment
+  | :--- | :---: | :---: |
   | (dd/mm) Introduction and review | <a href='./material/2022q3/session01.html' target='_blank'><img src="./fa/file-alt-regular.svg"  width="22"/></a>&nbsp;<a href='./material/2022q3/session01.Rmd' target='_blank'><img src="./fa/markdown-brands.svg" width="27"/></a>&nbsp;<a href='./material/2022q3/session01.R' target='_blank'><img src="./fa/r-project-brands.svg"  width="27"/></a>&nbsp;<a href='https://colab.research.google.com/drive/1MbcI7X9TTwotAmAg5UndeQrHURZ2WN9_?usp=sharing' target='_blank'><img src="./fa/file-code-solid.svg"  width="22"/></a> | |
   | (dd/mm) Research plan design & data | |
   | (dd/mm) Simulation, pilot studies, and study types |

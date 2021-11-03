@@ -11,14 +11,11 @@ urlcolor: blue
 
   * Website & material: [https://metodesempirics.github.io/](https://metodesempirics.github.io/)
   * Assignments due before DD, HH:MM
-
-
-  For each session, you will find:
-
+  * For each session, you will find:
     * A rendered HTML file <img src="../../fa/file-alt-regular.svg" width="22"/>
-    * the Rmarkdown source <img src="../../fa/markdown-brands.svg" width="35"/>
-    * just the R code (without the text) <img src="../../fa/r-project-brands.svg"  width="35"/>
-    * A dynamic file <img src="../../fa/file-code-solid.svg" width="30"/>
+    * the Rmarkdown source <img src="../../fa/markdown-brands.svg" width="22"/>
+    * just the R code (without the text) <img src="../../fa/r-project-brands.svg"  width="22"/>
+    * A dynamic file <img src="../../fa/file-code-solid.svg" width="22"/>
 
 
 ## Goals
@@ -153,8 +150,8 @@ sim_reaction_times #look at what reaction times we sampled
 ```
 
 ```
-##  [1] 129.8953 124.5878 175.6312 144.1881 148.1063 211.4484 155.7054 158.5697
-##  [9] 142.2530 117.1846
+##  [1] 168.2169 137.6055 162.8641 162.9794 141.5270 132.9073 139.0562 121.3262
+##  [9] 144.1357 144.5954
 ```
 
 ```r
@@ -168,7 +165,7 @@ mean(sim_reaction_times) #calculate their mean
 ```
 
 ```
-## [1] 150.757
+## [1] 145.5214
 ```
 
 ```r
@@ -176,7 +173,7 @@ median(sim_reaction_times) #calculate their median
 ```
 
 ```
-## [1] 146.1472
+## [1] 142.8314
 ```
 
 ```r
@@ -193,7 +190,7 @@ mean(sim_reaction_times) #calculate their mean
 ```
 
 ```
-## [1] 149.1184
+## [1] 151.261
 ```
 
 ```r
@@ -201,7 +198,7 @@ median(sim_reaction_times) #calculate their median
 ```
 
 ```
-## [1] 148.8356
+## [1] 151.3408
 ```
 
 ```r
@@ -224,7 +221,7 @@ mean(sim_reaction_times_g)
 ```
 
 ```
-## [1] 155.426
+## [1] 150.3702
 ```
 
 ```r
@@ -232,7 +229,7 @@ median(sim_reaction_times_g)
 ```
 
 ```
-## [1] 105.4922
+## [1] 108.8049
 ```
 
 ```r
@@ -245,7 +242,7 @@ plot(density(sim_reaction_times_g))
 ## Variance & standard deviation
 
 
-$$\L  arge \sigma_X = \sqrt{\frac{1}{n-1}\sum_{i}^{n}(x_i - \bar{x})^2}$$
+$$\Large \sigma_X = \sqrt{\frac{1}{n-1}\sum_{i}^{n}(x_i - \bar{x})^2}$$
 
 
 ```r
@@ -330,9 +327,15 @@ sqrt(var_heights) #square root of the variance = std
 
 ***
 # Replicability & reproduceability
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin feugiat tincidunt luctus. Suspendisse potenti. Nam mauris justo, aliquam sit amet tellus a, sodales placerat odio. Integer vel urna ac risus euismod eleifend. Curabitur vitae justo venenatis ex tincidunt auctor in a massa. Nulla consequat nibh eu lectus tempor gravida. Suspendisse potenti. Nulla ultricies ex in lacus commodo fringilla. In fermentum enim a metus sagittis malesuada.
+
+Proin risus enim, hendrerit eget finibus non, sodales at eros. Sed imperdiet sed ipsum ut efficitur. Cras non felis mi. Nullam massa diam, euismod eu neque at, lacinia consectetur purus. Cras varius tempor purus ut pretium. Curabitur consequat quam eget sapien tristique scelerisque. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas nulla diam, molestie ut odio eget, maximus efficitur nisi. Donec a turpis erat. Suspendisse et arcu laoreet justo auctor venenatis.
 
 ***
 # The research cycle
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin feugiat tincidunt luctus. Suspendisse potenti. Nam mauris justo, aliquam sit amet tellus a, sodales placerat odio. Integer vel urna ac risus euismod eleifend. Curabitur vitae justo venenatis ex tincidunt auctor in a massa. Nulla consequat nibh eu lectus tempor gravida. Suspendisse potenti. Nulla ultricies ex in lacus commodo fringilla. In fermentum enim a metus sagittis malesuada.
+
+Proin risus enim, hendrerit eget finibus non, sodales at eros. Sed imperdiet sed ipsum ut efficitur. Cras non felis mi. Nullam massa diam, euismod eu neque at, lacinia consectetur purus. Cras varius tempor purus ut pretium. Curabitur consequat quam eget sapien tristique scelerisque. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas nulla diam, molestie ut odio eget, maximus efficitur nisi. Donec a turpis erat. Suspendisse et arcu laoreet justo auctor venenatis.
 
 ***
 
@@ -360,5 +363,5 @@ sessionInfo()
 ## 
 ## loaded via a namespace (and not attached):
 ## [1] compiler_3.6.3 magrittr_2.0.1 tools_3.6.3    stringi_1.6.2  highr_0.9     
-## [6] stringr_1.4.0  xfun_0.22      mime_0.10      evaluate_0.14
+## [6] stringr_1.4.0  xfun_0.22      evaluate_0.14
 ```
