@@ -1,8 +1,12 @@
 ## Course description
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin feugiat tincidunt luctus. Suspendisse potenti. Nam mauris justo, aliquam sit amet tellus a, sodales placerat odio. Integer vel urna ac risus euismod eleifend. Curabitur vitae justo venenatis ex tincidunt auctor in a massa. Nulla consequat nibh eu lectus tempor gravida. Suspendisse potenti. Nulla ultricies ex in lacus commodo fringilla. In fermentum enim a metus sagittis malesuada.
+This course is about empirical methods for the study of language. It builds on [Mètodes Empírics 1](https://https://metodesempirics.github.io/), covering, among others, research design; data wrangling; inferential statistics; and corpus analysis. 
 
-Proin risus enim, hendrerit eget finibus non, sodales at eros. Sed imperdiet sed ipsum ut efficitur. Cras non felis mi. Nullam massa diam, euismod eu neque at, lacinia consectetur purus. Cras varius tempor purus ut pretium. Curabitur consequat quam eget sapien tristique scelerisque. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas nulla diam, molestie ut odio eget, maximus efficitur nisi. Donec a turpis erat. Suspendisse et arcu laoreet justo auctor venenatis.
+For further information, refer to the [information on the department's webpage](https://www.upf.edu/web/traduccio/llengues-aplicades) and to the other sections of this page. In case of doubt: please reach out!
+
+
+
+
 
 ## Sessions
 
@@ -19,6 +23,9 @@ Proin risus enim, hendrerit eget finibus non, sodales at eros. Sed imperdiet sed
   | (dd/mm) Data analysis II | |
   | (dd/mm) Review and a look forward | |
 
+## Open a new online R session
+
+[https://colab.to/r](https://colab.to/r)
 
 
 ## Additional resources
