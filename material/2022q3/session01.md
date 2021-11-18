@@ -19,13 +19,6 @@ For each session, you will find:
   * A dynamic file <img src="../../fa/file-code-solid.svg" width="22"/>
 
 
-## Course goals
-
-  * Lorem ipsum dolor sit amet
-  * consectetur adipiscing elit
-  * Vestibulum mattis ullamcorper placerat
-  * Phasellus quis eros at turpis tempus
-
 ## R
 We will use the [programming language R](https://www.r-project.org/). You do not need to have programmed neither in R nor any other language before. It is also not necessary to run R code on your machine. This class' code can all be executed online. To use R without having to install it go to [https://colab.to/r](https://colab.to/r).
 
