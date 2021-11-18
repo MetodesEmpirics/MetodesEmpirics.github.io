@@ -11,14 +11,15 @@ urlcolor: blue
 
   * Website & material: [https://metodesempirics.github.io/](https://metodesempirics.github.io/)
   * Assignments due before DD, HH:MM
-  * For each session, you will find:
-    * A rendered HTML file <img src="../../fa/file-alt-regular.svg" width="22"/>
-    * the Rmarkdown source <img src="../../fa/markdown-brands.svg" width="22"/>
-    * just the R code (without the text) <img src="../../fa/r-project-brands.svg"  width="22"/>
-    * A dynamic file <img src="../../fa/file-code-solid.svg" width="22"/>
+
+For each session, you will find:
+  * A rendered HTML file <img src="../../fa/file-alt-regular.svg" width="22"/>
+  * the Rmarkdown source <img src="../../fa/markdown-brands.svg" width="22"/>
+  * R code (without the text) <img src="../../fa/r-project-brands.svg"  width="22"/>
+  * A dynamic file <img src="../../fa/file-code-solid.svg" width="22"/>
 
 
-## Goals
+## Course goals
 
   * Lorem ipsum dolor sit amet
   * consectetur adipiscing elit
@@ -138,24 +139,31 @@ median(heights3)
 ```
 ## [1] 180.5
 ```
+# Samples, populations, and estimates
 
 
 ```r
+set.seed(333)
 #Let's let the computer generate the data
 #We will simulate reaction times (in milliseconds)
-#Starting small, generating just 10 observations and telling R that the central tendency is 150 ms, with 20 ms of standard deviation
 
-sim_reaction_times <- rnorm(n = 10, mean = 150, sd = 20) #sample 1000 times from a Normal distribution with mean 150 and sd of 20
+#Starting small, sampling just 5 observations and telling R that the population's mean is 150 ms, with 40 ms of standard deviation
+
+sim_reaction_times <- rnorm(n = 5, #number of samples
+                            mean = 150, #mean of the normal distribution
+                            sd = 40) #std. deviation of the normal distribution
+
 sim_reaction_times #look at what reaction times we sampled
 ```
 
 ```
-##  [1] 168.2169 137.6055 162.8641 162.9794 141.5270 132.9073 139.0562 121.3262
-##  [9] 144.1357 144.5954
+## [1] 146.68753 227.38724  67.94841 161.10956  88.96158
 ```
 
 ```r
-plot(sim_reaction_times) #visualize the reaction times we sampled
+hist(sim_reaction_times, #data we are plotting
+     main = 'Simulated reaction times (small sample)', #title of our histogram
+     xlab = 'Reaction time')  #Label of x-axis
 ```
 
 ![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png)
@@ -165,7 +173,7 @@ mean(sim_reaction_times) #calculate their mean
 ```
 
 ```
-## [1] 145.5214
+## [1] 138.4189
 ```
 
 ```r
@@ -173,14 +181,14 @@ median(sim_reaction_times) #calculate their median
 ```
 
 ```
-## [1] 142.8314
+## [1] 146.6875
 ```
 
 ```r
 #The same thing, but now with 1000 observations sampled
 
 sim_reaction_times <- rnorm(n = 1000, mean = 150, sd = 20) #sample 1000 times from a Normal distribution with mean 150 and sd of 20
-plot(sim_reaction_times) #visualize the reaction times we sampled
+hist(sim_reaction_times) #visualize the reaction times we sampled
 ```
 
 ![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-2.png)
@@ -190,7 +198,7 @@ mean(sim_reaction_times) #calculate their mean
 ```
 
 ```
-## [1] 151.261
+## [1] 150.4272
 ```
 
 ```r
@@ -198,7 +206,7 @@ median(sim_reaction_times) #calculate their median
 ```
 
 ```
-## [1] 151.3408
+## [1] 149.6826
 ```
 
 ```r
@@ -211,7 +219,7 @@ plot(density(sim_reaction_times))
 #Changing the generating distribution
 sim_reaction_times_g <- rgamma(n = 1000, shape=1, scale=150) #sample 1000 times from a Gamma distribution with mean 150 and sd of 20
 
-plot(sim_reaction_times_g)
+hist(sim_reaction_times_g)
 ```
 
 ![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-4.png)
@@ -221,7 +229,7 @@ mean(sim_reaction_times_g)
 ```
 
 ```
-## [1] 150.3702
+## [1] 155.7832
 ```
 
 ```r
@@ -229,7 +237,7 @@ median(sim_reaction_times_g)
 ```
 
 ```
-## [1] 108.8049
+## [1] 106.3779
 ```
 
 ```r

@@ -25,13 +25,20 @@ median(heights3)
 
 
 ## -----------------------------------------------------------------------------
+set.seed(333)
 #Let's let the computer generate the data
 #We will simulate reaction times (in milliseconds)
-#Starting small, generating just 10 observations and telling R that the central tendency is 150 ms, with 20 ms of standard deviation
 
-sim_reaction_times <- rnorm(n = 10, mean = 150, sd = 20) #sample 1000 times from a Normal distribution with mean 150 and sd of 20
+#Starting small, sampling just 5 observations and telling R that the population's mean is 150 ms, with 40 ms of standard deviation
+
+sim_reaction_times <- rnorm(n = 5, #number of samples
+                            mean = 150, #mean of the normal distribution
+                            sd = 40) #std. deviation of the normal distribution
+
 sim_reaction_times #look at what reaction times we sampled
-plot(sim_reaction_times) #visualize the reaction times we sampled
+hist(sim_reaction_times, #data we are plotting
+     main = 'Simulated reaction times (small sample)', #title of our histogram
+     xlab = 'Reaction time')  #Label of x-axis
 
 mean(sim_reaction_times) #calculate their mean
 median(sim_reaction_times) #calculate their median
@@ -40,7 +47,7 @@ median(sim_reaction_times) #calculate their median
 #The same thing, but now with 1000 observations sampled
 
 sim_reaction_times <- rnorm(n = 1000, mean = 150, sd = 20) #sample 1000 times from a Normal distribution with mean 150 and sd of 20
-plot(sim_reaction_times) #visualize the reaction times we sampled
+hist(sim_reaction_times) #visualize the reaction times we sampled
 
 mean(sim_reaction_times) #calculate their mean
 median(sim_reaction_times) #calculate their median
@@ -50,7 +57,7 @@ plot(density(sim_reaction_times))
 #Changing the generating distribution
 sim_reaction_times_g <- rgamma(n = 1000, shape=1, scale=150) #sample 1000 times from a Gamma distribution with mean 150 and sd of 20
 
-plot(sim_reaction_times_g)
+hist(sim_reaction_times_g)
 
 mean(sim_reaction_times_g)
 median(sim_reaction_times_g)
