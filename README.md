@@ -2,7 +2,7 @@
 
 This course is about empirical methods for the study of language. It builds on [Mètodes Empírics 1](https://https://metodesempirics.github.io/), covering, among others, research design; data wrangling; inferential statistics; and corpus analysis. 
 
-For further information, refer to the [information on the department's webpage](https://www.upf.edu/web/traduccio/llengues-aplicades) and to the other sections of this page. In case of doubt: please reach out!
+For further information, refer to [the department's webpage](https://www.upf.edu/web/traduccio/llengues-aplicades) and to the sections below. In case of doubt: please reach out!
 
 
 
@@ -18,7 +18,8 @@ For further information, refer to the [information on the department's webpage](
   | (dd/mm) Simulation, pilot studies, and study types |
   | (dd/mm) Data wrangling & visualization | |
   | (dd/mm) Data collection & exploration | |
-  | (dd/mm) Corpus analysis | |
+  | (dd/mm) Corpus analysis I | |
+  | (dd/mm) Corpus analysis II | |
   | (dd/mm) Data analysis I | |
   | (dd/mm) Data analysis II | |
   | (dd/mm) Review and a look forward | |
