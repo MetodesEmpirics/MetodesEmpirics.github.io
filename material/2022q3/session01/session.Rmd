@@ -1,0 +1,267 @@
+---
+title: ".1 Introduction"
+date: "`r Sys.Date()`"
+author:
+  - first_name: "Thomas"
+    last_name: "Brochhagen"
+    url: https://tbrochhagen.github.io/
+    affiliation: Universitat Pompeu Fabra
+bibliography: ../../biblio.bib
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 2
+  pdf_document:
+    toc: true
+---
+
+
+
+```{r preamble, echo=FALSE}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(reshape2)
+library(ggpubr)
+```
+
+
+# Introductory remarks
+
+  * Website & material: [https://metodesempirics.github.io/](https://metodesempirics.github.io/)
+  * Workload: 5 ECTS (~125-150 hours)
+
+For each session, you will find
+
+:::float-image
+```{r out.width='20px', out.extra='style="float:left; padding:10px"', echo=FALSE}
+knitr::include_graphics("../../../fa/file-alt-regular.svg")
+```
+An HTML file condencing the topics <br>discussed in this session 
+:::
+
+:::float-image
+```{r out.width='20px', out.extra='style="float:left; padding:10px"', echo=FALSE}
+knitr::include_graphics("../../../fa/file-powerpoint-solid.svg")
+```
+A rendered slide-set<br> used in this session
+:::
+
+
+:::float-image
+```{r out.width='20px', out.extra='style="float:left; padding:10px"', echo=FALSE}
+knitr::include_graphics("../../../fa/file-code-solid.svg")
+```
+A dynamic file to reproduce computations<br> and perform new ones
+:::
+
+:::float-image
+```{r out.width='35', out.extra='style="float:left; padding:10px"', echo=FALSE}
+knitr::include_graphics("../../../fa/laptop-house-solid.svg")
+```
+An assignment 
+:::
+
+# Overview
+
+This class covers empirical methods for language sciences. The main goal is for you to understand and take control of the full cycle of (linguistic) analysis: planning; collection; processing; exploration; visualization; and analysis. By contrast to previous classes, you will also be introduced to *inferential* statistics. We follow a model-centric and computational approach.
+
+## Analysis cycle
+
+<img src="cycle.png"/>
+
+## Inferential statistics
+
+Methods to not only describe or summarize the observed data (descriptive statistics) but to generalize to unobserved data and make predictions.
+
+# Evaluation
+
+### Weekly assignments (20%)
+  * Submitted through Aula Global
+  * Graded automatically
+  * Max. 2 attempts
+  * 6 in total
+
+### Peer review (20%)
+  * You give your peers (blind) feedback about their planned analysis
+  * Fail/pass only. You fail if you do not submit a review; or if your review fails in being --to a minimal degree-- decent and constructive
+  * 2 in total
+
+### Mid-term exam (20%)
+  * Submitted through Aula Global
+  * Graded automatically
+  * Single attempt
+
+### Analysis design and execution (40%)
+  * A report of analysis designed and executed by yourself
+  * If done in groups: A clear division of labor between members needs to be decided *and approved*
+  * Here's a template: **nn**
+  * Evaluation criteria (100 points max)
+    * Clarity: the analysis is clearly and succintly described; appropriate use of visual devices (30 points)
+    * Replicability: the analysis plan covers all steps to allow for its replication (15 points)
+    * Content: the analysis is well motivated and executed using the appropriate techniques (40 points)
+    * Reproduceability: the analysis provides all the material necessary to reproduce it (15 points)
+    * Creativity: The analysis goes above and beyond in one or multiple dimensions: e.g., visual devices; research question; methodology; documentation (20 points)
+
+
+# Replicability and reproduceability
+These terms are used differently --and sometimes interchangeably-- across the literature. However, they tend to check most of the same boxes. We follow the @national:2019 and define them as:
+
+  * **Replicability**: obtaining consistent results using the same input data; computational steps, methods, and code; and conditions of analysis
+
+  * **Reproduceability**: obtaining consistent results across studies aimed at answering the same scientific question, each of which has obtained its own data
+  
+In all cases, documentation is key
+
+# R 
+
+We will use the [programming language R](https://www.r-project.org/). You do not need to have programmed neither in R nor any other language before. You also do not need to install R on your computer to follow the class: interactive notebooks have been set up so that everything can be executed from the cloud. That being said, I strongly recommend you to install R to get the most out of this class. Additionally, I also recommend installing [RStudio](https://rstudio.com/). This is a graphical interface that allows you to manipulate R code & data more easily. You don't strictly need it, but chances are it's going to make your quantitative life easier.
+
+## Installing R and RStudio
+
+The details of how to install R and RStudio depend on your operating system. [This Datacamp tutorial](https://www.datacamp.com/community/tutorials/installing-R-windows-mac-ubuntu) gives instructions on how to do so for Windows, Mac OS X, and Ubuntu.
+
+## Test installation 
+Make sure your installation was successful by running some R code. 
+
+One way to do so is to copy/paste the following code into R studio (or from wherever you're running the code).
+
+```{r}
+print('Welcome to Empirical Methods 2')
+#A demonstration of R code (to see that the code is running)
+x <- 2 #this assigns the value '2' to variable 'x'
+y <- 5 #this assigns the value '5' to variable 5
+#Running this box of code will print the result of these operations:
+x+y 
+x*y
+x**y
+```
+
+## Using R for data analysis
+A good resource to get you started is Chapter 2 of @aida: [https://michael-franke.github.io/intro-data-analysis/Chap-01-01-R.html](https://michael-franke.github.io/intro-data-analysis/Chap-01-01-R.html)
+
+# Descriptive statistics review
+
+### Mean (finite case)
+$$\Large \bar{x} = \frac{1}{n} \sum_{i} x_i$$
+
+```{r}
+heights1 <- c(170,178,162,166,183,185) #a vector of heights in cms
+
+(170 + 178 + 162 + 166 + 183 + 185) * (1 / 6) #calculating the mean explicitly
+
+sum(heights1) * (1 / length(heights1)) #using sum() and length() functions
+
+mean(heights1) #using the mean() function directly
+```
+
+
+### Median (finite case)
+If the number of observations is even and ordered:
+$$\Large median(X) = x_{\frac{n+1}{2}}$$
+
+If odd and ordered:
+$$\Large median(X) = \frac{x_{n/2} + x_{(n/2)+1}}{2}$$
+
+```{r}
+sort(heights1) #not necessary to compute median, just for illustration
+median(heights1)
+
+heights2 <- c(170,178,162,166,183,185,155) #a vector of heights in cms
+sort(heights2) #not necessary to compute median, just for illustration
+median(heights2)
+```
+
+### More examples
+
+```{r}
+
+heights3 <- c(170,178,162,166,183,185,188,300) #a vector of heights in cms
+mean(heights3)
+median(heights3)
+```
+## Samples, populations, and estimates
+
+```{r}
+set.seed(333)
+#Let's let the computer generate the data
+#We will simulate reaction times (in milliseconds)
+
+#Starting small, sampling just 5 observations and telling R that the population's mean is 150 ms, with 40 ms of standard deviation
+
+sim_reaction_times <- rnorm(n = 5, #number of samples
+                            mean = 150, #mean of the normal distribution
+                            sd = 40) #std. deviation of the normal distribution
+
+sim_reaction_times #look at what reaction times we sampled
+hist(sim_reaction_times, #data we are plotting
+     main = 'Simulated reaction times (small sample)', #title of our histogram
+     xlab = 'Reaction time')  #Label of x-axis
+
+mean(sim_reaction_times) #calculate their mean
+median(sim_reaction_times) #calculate their median
+
+
+#The same thing, but now with 1000 observations sampled
+
+sim_reaction_times <- rnorm(n = 1000, mean = 150, sd = 20) #sample 1000 times from a Normal distribution with mean 150 and sd of 20
+hist(sim_reaction_times) #visualize the reaction times we sampled
+
+mean(sim_reaction_times) #calculate their mean
+median(sim_reaction_times) #calculate their median
+
+plot(density(sim_reaction_times))
+
+#Changing the generating distribution
+sim_reaction_times_g <- rgamma(n = 1000, shape=1, scale=150) #sample 1000 times from a Gamma distribution with mean 150 and sd of 20
+
+hist(sim_reaction_times_g)
+
+mean(sim_reaction_times_g)
+median(sim_reaction_times_g)
+
+plot(density(sim_reaction_times_g))
+```
+
+
+### Variance & standard deviation
+
+
+$$\Large \sigma_X = \sqrt{\frac{1}{n-1}\sum_{i}^{n}(x_i - \bar{x})^2}$$
+
+```{r}
+heights1
+var(heights1)
+sd(heights1) #the same as sqrt(var(heights))
+
+#Unpacking variance and standard deviation
+x_bar <- mean(heights1) #we assign this number to a variable named x_bar
+x_bar
+
+dev_heights <- heights1 - x_bar #deviations of each height from the mean
+dev_heights
+
+squared_dev_heights <- dev_heights**2 #squared deviations from the mean
+squared_dev_heights
+
+sum_squared_dev_heights <- sum(squared_dev_heights) #sum of the squared deviations
+sum_squared_dev_heights
+
+var_heights <- ( 1 / (length(heights1)-1) ) * sum_squared_dev_heights #divide by number of observations - 1
+var_heights
+
+sqrt(var_heights) #square root of the variance = std
+```
+
+
+# Further reading 
+Useful resources if you're interested in reading more about a topic covered in this session
+
+  1. On reproduceability: [A manifesto for reproduceable science](https://www.nature.com/articles/s41562-016-0021) [@reproduceability:2017]
+  2. 
+
+
+***
+
+## Corrections {.appendix}
+If you spot a mistake or have suggestions, please get in touch with [Thomas Brochhagen](https://brochhagen.github.io) or [create an issue](https://github.com/metodesempirics/metodesempirics.github.io/issues/new)

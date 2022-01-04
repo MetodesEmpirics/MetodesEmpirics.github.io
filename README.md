@@ -1,11 +1,11 @@
+# Empirical Methods 2
 ## Course description
 
-This course is about empirical methods for the study of language. It builds on [Mètodes Empírics 1](https://https://metodesempirics.github.io/), covering, among others, research design; data wrangling; inferential statistics; and corpus analysis. 
+This course is about empirical methods for the study of language. It builds on *Empirical Methods 1*, covering, among others, research design; data manipulation; inferential statistics; and corpus analysis.
 
-For further information, refer to [the department's webpage](https://www.upf.edu/web/traduccio/llengues-aplicades) and to the sections below. In case of doubt: please reach out!
+For further information, refer to [the department's webpage](https://www.upf.edu/web/traduccio/llengues-aplicades) and to the sections below. In case of doubt: [please reach out](##About)!
 
-
-
+The files that generate all the content you see here and in class can be accessed through the course's [github repository](https://github.com/MetodesEmpirics/MetodesEmpirics.github.io).
 
 
 ## Sessions
@@ -13,7 +13,7 @@ For further information, refer to [the department's webpage](https://www.upf.edu
 
   | Sessions (Q/202y) | Content | Assignment
   | :--- | :---: | :---: |
-  | (dd/mm) Introduction and review | <a href='./material/2022q3/session01.html' target='_blank'><img src="./fa/file-alt-regular.svg"  width="22"/></a>&nbsp;<a href='./material/2022q3/session01.Rmd' target='_blank'><img src="./fa/markdown-brands.svg" width="27"/></a>&nbsp;<a href='./material/2022q3/session01.R' target='_blank'><img src="./fa/r-project-brands.svg"  width="27"/></a>&nbsp;<a href='https://colab.research.google.com/drive/1MbcI7X9TTwotAmAg5UndeQrHURZ2WN9_?usp=sharing' target='_blank'><img src="./fa/file-code-solid.svg"  width="22"/></a> | |
+  | (dd/mm) Introduction and review | <a href='./material/2022q3/session01.html' target='_blank'><img src="./fa/file-alt-regular.svg"  width="22"/></a>&nbsp;&nbsp;&nbsp;<a href='https://colab.research.google.com/drive/1MbcI7X9TTwotAmAg5UndeQrHURZ2WN9_?usp=sharing' target='_blank'><img src="./fa/file-code-solid.svg"  width="22"/></a> | |
   | (dd/mm) Research plan design & data | |
   | (dd/mm) Simulation, pilot studies, and study types |
   | (dd/mm) Data wrangling & visualization | |
