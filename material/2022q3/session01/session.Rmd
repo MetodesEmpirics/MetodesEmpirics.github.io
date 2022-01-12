@@ -258,8 +258,8 @@ sqrt(var_heights) #square root of the variance = std
 Useful resources if you're interested in reading more about a topic covered in this session
 
   1. On reproduceability: [A manifesto for reproduceable science](https://www.nature.com/articles/s41562-016-0021) [@reproduceability:2017]
-  2. 
-
+  2. [Andrew Gelman's notes on R](http://www.stat.columbia.edu/~gelman/communication/Rnotes.pdf)
+  3. On pre-registration: [OSF on pre-registration](https://www.cos.io/initiatives/prereg) and [The preregistration revolution](https://www.pnas.org/content/115/11/2600) [@pnas-prereg]
 
 ***
 

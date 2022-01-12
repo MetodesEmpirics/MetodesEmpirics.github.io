@@ -1,0 +1,17 @@
+---
+title: '.2 Plan design & data types'
+author: 'null'
+date: "`r Sys.Date()`"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+bibliography: ../../biblio.bib
+---
+
+# Instructions
+
+# Self-study 
+1. Work through [Chapter 3 of Introduction to Data Analysis](https://michael-franke.github.io/intro-data-analysis/Chap-02-01-data.html) [@aida]: *Data, variables & experimental designs*;
+2. Make sure you have a working R environment: either locally --on your computer-- or by having made sure you can execute code in a colab document
+# References

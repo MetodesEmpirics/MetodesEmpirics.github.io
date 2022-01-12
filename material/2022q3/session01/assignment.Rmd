@@ -36,6 +36,7 @@ Answer the following questions:
   
   5. Does the mean give a good summary of this sample? Why (not)?
   6. What is suggested by the mean and median leading to different summaries?
+  7. Complete the following sentence with the first word that comes to your mind: *It's raining. I'm going to take the ...*
   
 # Self-study 
 1. Work through [Chapter 2 of Introduction to Data Analysis](https://michael-franke.github.io/intro-data-analysis/Chap-01-01-R.html) [@aida]: *Basics of R* (until the end of subsection 1.2);
