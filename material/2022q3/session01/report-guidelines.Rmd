@@ -1,0 +1,49 @@
+---
+title: "Report guidelines"
+date: "`r Sys.Date()`"
+author:
+  - first_name: "Thomas"
+    last_name: "Brochhagen"
+    url: https://tbrochhagen.github.io/
+    affiliation: Universitat Pompeu Fabra
+bibliography: ../../biblio.bib
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 2
+  pdf_document:
+    toc: true
+---
+
+
+
+```{r preamble, echo=FALSE}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(reshape2)
+library(ggpubr)
+```
+
+The report cannot exceed 2 PDF pages. This limit does not include references or (optional) supplementary material. 
+
+As a rule of thumb, a report includes one to two figures/plots.
+
+## Sections 
+You are encouraged to include the following sections. Except for exceeding 2 pages, you can always deviate from these suggestions if you think this works better for your report.
+
+### Introduction 
+The introduction gives an overview of the object of study and serves as a motivation for the analysis conducted. It covers (i) what the topic of the analysis is; (ii) what we know from other research about this topic^[Be selective! You don't have much space so focus on the most important findings that relate to your analysis]; (iii) what you will analyze and why this is interesting/important.
+
+### Material and methods
+This is a concise overview of the material your analysis is based on (where did you get it from? how does it fit the question you are addressing?) and the way you will analyse it
+
+### Results
+Main results of your analysis. Remember to link them back to the larger topic you're addressing
+
+
+### References (unlimited space)
+Citations of the sources you mention in the report
+
+### Supplementary material (unlimited space)
+This is optional. You can add information that you couldn't include in the main report due to lack of space here. Keep in mind that the report needs to stand on its own. The supplementary material is not subject to the evaluation.

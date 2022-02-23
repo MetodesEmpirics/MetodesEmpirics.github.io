@@ -1,7 +1,5 @@
 ---
 title: '.1 Introduction: Assignments'
-author: 'null'
-date: "`r Sys.Date()`"
 output:
   pdf_document: default
   html_document:
@@ -10,10 +8,10 @@ bibliography: ../../biblio.bib
 ---
 
 # Instructions
-Submit your answers to the six first exercises through Campus Global. The remainder of your assignments concern self-studies.
+Submit your answers to the seven first exercises through Campus Global. The remainder of your assignments concern self-studies.
 
 # Descriptive statistics
-Imagine you measured the (average) voice pitch of 20 Korean (in Hz)^[This data was randomly sampled from the pre-processed and shortened version of the study of @winter+grawunder:2012, as provided in @aida. The data is accessible [here](https://rdrr.io/github/michael-franke/aida-package/man/data_polite.html).]. The data looks as follows: 
+Imagine you measured the (average) voice pitch of 20 Korean speakers (in Hz)^[This data was randomly sampled from the pre-processed and shortened version of the study of @winter+grawunder:2012, as provided in @aida. The data is accessible [here](https://rdrr.io/github/michael-franke/aida-package/man/data_polite.html).]. The data looks as follows: 
 
 `208, 158, 153.3, 259.7, 102.9, 86.1, 231.9, 285.1, 181.2, 266, 252.5, 185.5, 110.7, 236.8, 207.5` 
 
@@ -39,6 +37,8 @@ Answer the following questions:
   7. Complete the following sentence with the first word that comes to your mind: *It's raining. I'm going to take the ...*
   
 # Self-study 
-1. Work through [Chapter 2 of Introduction to Data Analysis](https://michael-franke.github.io/intro-data-analysis/Chap-01-01-R.html) [@aida]: *Basics of R* (until the end of subsection 1.2);
+1. Work through Chapter 1 and Chapter 2 (until the end of subsection 2.2) of [Introduction to Data Analysis](https://michael-franke.github.io/intro-data-analysis/) [@aida];
 2. Make sure you have a working R environment: either locally --on your computer-- or by having made sure you can execute code in a colab document
+3. Look at the guidelines for the analysis report and read the illustrative report. Think of a general question about language that interests you and write it down.
+
 # References

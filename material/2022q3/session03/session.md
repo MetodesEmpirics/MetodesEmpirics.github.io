@@ -36,16 +36,16 @@ output:
 ```
 
 
-# Organizational matters
+# Introductory remarks
 
   * Website & material: [https://metodesempirics.github.io/](https://metodesempirics.github.io/)
   * 5 ECTS (~125-150 hours of work)
   * Assignments due before DD, HH:MM
-  * Evaluation^[Failing the "analysis design and execution" the first time entails saving the remainder activities with a 40% of value on the final grade. The mid-term exam will be recovered through another exam. The re-sit of the "analysis design and execution" will also be an exam."]:
-    * Weekly assignments (20%, not recoverable)
-    * Peer-review (20%, not recoverable)
-    * Mid-term exam (20%, recoverable)
-    * Analysis design and execution (40%, recoverable)
+  * Evaluation:
+    * Weekly assignments (20%)
+    * Peer-review (20%)
+    * Mid-term exam (20%)
+    * Analysis design and execution (40%)
 
 For each session, you will find:
   * A rendered HTML file <img src="../../../fa/file-alt-regular.svg" width="22"/>
@@ -88,7 +88,7 @@ Methods to not only describe or summarize the observed data (descriptive statist
 
 ## Analysis design and execution
   * A report of analysis designed and executed by yourself
-  * Can be done in groups. But a clear division of labor between members needs to be decided **and approved**
+  * If done in groups: A clear division of labor between members needs to be decided **and approved**
   * Here's a template: **nn**
   * Evaluation criteria (100 points max)
     * Clarity: the analysis is clearly and succintly described; appropriate use of visual devices (30 points)

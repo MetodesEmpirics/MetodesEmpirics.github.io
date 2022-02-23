@@ -26,7 +26,7 @@ library(ggpubr)
 ```
 
 
-# Introductory remarks
+# Organizational matters
 
   * Website & material: [https://metodesempirics.github.io/](https://metodesempirics.github.io/)
   * Workload: 5 ECTS (~125-150 hours)
@@ -103,6 +103,7 @@ Methods to not only describe or summarize the observed data (descriptive statist
     * Reproduceability: the analysis provides all the material necessary to reproduce it (15 points)
     * Creativity: The analysis goes above and beyond in one or multiple dimensions: e.g., visual devices; research question; methodology; documentation (20 points)
 
+Failing the "analysis design and execution" the first time entails saving the remainder activities with a 40% of value on the final grade. The mid-term exam will be recovered through another exam. The re-sit of the "analysis design and execution" will also be an exam."
 
 # Replicability and reproduceability
 These terms are used differently --and sometimes interchangeably-- across the literature. However, they tend to check most of the same boxes. We follow the @national:2019 and define them as:

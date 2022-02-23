@@ -15,8 +15,8 @@ The files that generate all the content you see here and in class can be accesse
   | :--- | :---: | :---: |
   | (dd/mm) Introduction and review | <a href='./material/2022q3/session01/session.html' target='_blank'><img src="./fa/file-alt-regular.svg"  width="22"/></a>&nbsp;&nbsp;&nbsp;<a href='https://colab.research.google.com/drive/1MbcI7X9TTwotAmAg5UndeQrHURZ2WN9_?usp=sharing' target='_blank'><img src="./fa/file-code-solid.svg"  width="22"/></a> | <a href='./material/2022q3/session01/assignment.pdf' target='_blank'><img src='./fa/laptop-house-solid.svg' width='22'/></a> |
   | (dd/mm) Plan design & data | |
-  | (dd/mm) Simulation, pilot studies, and study types |
-  | (dd/mm) Data wrangling & visualization | |
+  | (dd/mm) Simulation and pilot studies | |
+  | (dd/mm) Visualization | |
   | (dd/mm) Data collection & exploration | |
   | (dd/mm) Corpus analysis I | |
   | (dd/mm) Corpus analysis II | |
