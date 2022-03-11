@@ -1,14 +1,15 @@
 ---
-title: '.1 Introduction: Assignments'
+title: '1 Introduction: Assignment'
 output:
   pdf_document: default
   html_document:
     df_print: paged
 bibliography: ../../biblio.bib
+urlcolor: blue
 ---
 
 # Instructions
-Submit your answers to the seven first exercises through Campus Global. The remainder of your assignments concern self-studies.
+Submit your answers to the seven first exercises through Aula Global. The remainder of the assignment concern self-studies.
 
 # Descriptive statistics
 Imagine you measured the (average) voice pitch of 20 Korean speakers (in Hz)^[This data was randomly sampled from the pre-processed and shortened version of the study of @winter+grawunder:2012, as provided in @aida. The data is accessible [here](https://rdrr.io/github/michael-franke/aida-package/man/data_polite.html).]. The data looks as follows: 
@@ -38,7 +39,7 @@ Answer the following questions:
   
 # Self-study 
 1. Work through Chapter 1, Chapter 2 (until the end of subsection 2.2) and Chapter 3 of [Introduction to Data Analysis](https://michael-franke.github.io/intro-data-analysis/) [@aida];
-2. Make sure you have a working R environment: either locally --on your computer-- or by having made sure you can execute code in a colab document
+2. Make sure you have a working R environment: either locally --on your computer-- or by having made sure you can execute code in a "colab" document
 3. Look at the guidelines for the analysis report and read the illustrative report. Think of a general question about language that interests you and write it down.
 
 # References

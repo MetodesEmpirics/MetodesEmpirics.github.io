@@ -28,7 +28,7 @@ library(ggpubr)
 
 # Organizational matters
 
-  * Website & material: [https://metodesempirics.github.io/](https://metodesempirics.github.io/)
+  * Website & material: [https://aulaglobal.upf.edu](https://aulaglobal.upf.edu)
   * Workload: 5 ECTS (~125-150 hours)
 
 For each session, you will find
@@ -70,9 +70,6 @@ This class covers empirical methods for language sciences. The main goal is for 
 
 <img src="cycle.png"/>
 
-## Inferential statistics
-
-Methods to not only describe or summarize the observed data (descriptive statistics) but to generalize to unobserved data and make predictions.
 
 # Evaluation
 
@@ -84,8 +81,7 @@ Methods to not only describe or summarize the observed data (descriptive statist
 
 ### Peer review (20%)
   * You give your peers (blind) feedback about their planned analysis
-  * Fail/pass only. You fail if you do not submit a review; or if your review fails in being --to a minimal degree-- decent and constructive
-  * 2 in total
+  * 1 in total
 
 ### Mid-term exam (20%)
   * Submitted through Aula Global
@@ -95,15 +91,20 @@ Methods to not only describe or summarize the observed data (descriptive statist
 ### Analysis design and execution (40%)
   * A report of analysis designed and executed by yourself
   * If done in groups: A clear division of labor between members needs to be decided *and approved*
-  * Here's a template: **nn**
+  * You will find an illustrative report and further guidelines in Aula Global
   * Evaluation criteria (100 points max)
     * Clarity: the analysis is clearly and succintly described; appropriate use of visual devices (30 points)
     * Replicability: the analysis plan covers all steps to allow for its replication (15 points)
     * Content: the analysis is well motivated and executed using the appropriate techniques (40 points)
-    * Reproduceability: the analysis provides all the material necessary to reproduce it (15 points)
+    * Reproduceability: the analysis provides all the information necessary to reproduce it (15 points)
     * Creativity: The analysis goes above and beyond in one or multiple dimensions: e.g., visual devices; research question; methodology; documentation (20 points)
 
-Failing the "analysis design and execution" the first time entails saving the remainder activities with a 40% of value on the final grade. The mid-term exam will be recovered through another exam. The re-sit of the "analysis design and execution" will also be an exam."
+Failing the "analysis design and execution" the first time entails saving the remainder activities with a 40% of value on the final grade. The mid-term exam will be recovered through another exam. The re-sit of the "analysis design and execution" will also be an exam.
+
+
+## Inferential statistics
+
+Methods to not only describe or summarize the observed data (descriptive statistics) but to generalize to unobserved data and make predictions.
 
 # Replicability and reproduceability
 These terms are used differently --and sometimes interchangeably-- across the literature. However, they tend to check most of the same boxes. We follow the @national:2019 and define them as:
@@ -116,7 +117,7 @@ In all cases, documentation is key
 
 # R 
 
-We will use the [programming language R](https://www.r-project.org/). You do not need to have programmed neither in R nor any other language before. You also do not need to install R on your computer to follow the class: interactive notebooks have been set up so that everything can be executed from the cloud. That being said, I strongly recommend you to install R to get the most out of this class. Additionally, I also recommend installing [RStudio](https://rstudio.com/). This is a graphical interface that allows you to manipulate R code & data more easily. You don't strictly need it, but chances are it's going to make your quantitative life easier.
+We will use the [programming language R](https://www.r-project.org/). You do not need to have programmed neither in R nor any other language before. You also do not need to install R on your computer to follow the class: interactive notebooks have been set up so that everything can be executed on the cloud. That being said, I strongly recommend you to install R to get the most out of this class. Additionally, I also recommend installing [RStudio](https://rstudio.com/). This is a graphical interface that allows you to manipulate R code & data more easily. You don't strictly need it, but chances are it's going to make your quantitative life easier.
 
 ## Installing R and RStudio
 
