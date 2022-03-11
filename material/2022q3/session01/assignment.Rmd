@@ -37,7 +37,7 @@ Answer the following questions:
   7. Complete the following sentence with the first word that comes to your mind: *It's raining. I'm going to take the ...*
   
 # Self-study 
-1. Work through Chapter 1 and Chapter 2 (until the end of subsection 2.2) of [Introduction to Data Analysis](https://michael-franke.github.io/intro-data-analysis/) [@aida];
+1. Work through Chapter 1, Chapter 2 (until the end of subsection 2.2) and Chapter 3 of [Introduction to Data Analysis](https://michael-franke.github.io/intro-data-analysis/) [@aida];
 2. Make sure you have a working R environment: either locally --on your computer-- or by having made sure you can execute code in a colab document
 3. Look at the guidelines for the analysis report and read the illustrative report. Think of a general question about language that interests you and write it down.
 

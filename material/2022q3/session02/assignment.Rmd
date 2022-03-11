@@ -38,8 +38,7 @@ Inspect the sender data (`senderdata.csv') from Kanwal et al. yourself.
 
 
 # Self-study 
-1. Work through Chapter 3 and Chapter 4 of [Introduction to Data Analysis](https://michael-franke.github.io/intro-data-analysis/Chap-02-01-data.html) [@aida]: *Data, variables & experimental designs*;
-2. If you haven't already, make sure you have a working R environment: either locally --on your computer-- or by having made sure you can execute code in a colab document
-3. Apply the terminology from this session to your analysis question of interest. Change your research question if you have come across another that you find more interesting
+1. Work through Chapter 4 and 6 of [Introduction to Data Analysis](https://michael-franke.github.io/intro-data-analysis/Chap-02-01-data.html) [@aida]. If you need a refresher on descriptive statistics, also work through Chapter 5;
+2. Apply the terminology from this session to your analysis question of interest. Change your research question if you have come across another that you find more interesting
 
 # References
