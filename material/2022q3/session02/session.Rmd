@@ -1,5 +1,5 @@
 ---
-title: ".2 Plan design & data types"
+title: "2 Plan design & data types"
 date: "`r Sys.Date()`"
 author:
   - first_name: "Thomas"
@@ -72,6 +72,12 @@ What matters is what is in your analysis plan, irrespective of how you call it. 
     * **control trials** are checks that will not go into the analysis but allow for quality control (e.g., if a subject is paying attention)
     * **filler trials** pad the critical trials to avoid repeated exposure to the critical trials to influence the experiment (e.g., subjects getting bored; figuring out what the experiment is about; and so on)
 
+# Data formatting
+Following Wickham -@wickham:2014, a tidy representation of data is one where:
+  
+  * each variable forms a column;
+  * each observation forms a row;
+  * each type of observational unit forms a table.
 
 # Further reading 
 Useful resources if you're interested in reading more about a topic covered in this session
@@ -83,13 +89,6 @@ Useful resources if you're interested in reading more about a topic covered in t
 Effects and the Crisis of Unreplicable Research: A
 Bayesian Perspective](http://www.stat.columbia.edu/~gelman/research/published/bayes_management.pdf) 
 
-
-# Data formatting
-Following Wickham -@wickham:2014, a tidy representation of data is one where:
-  
-  * each variable forms a column;
-  * each observation forms a row;
-  * each type of observational unit forms a table.
 
 ***
 

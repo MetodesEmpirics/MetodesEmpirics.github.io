@@ -1,5 +1,5 @@
 ---
-title: ".2 Plan design & data types"
+title: "3 Data collection & samples"
 date: "`r Sys.Date()`"
 author:
   - first_name: "Thomas"
@@ -25,72 +25,119 @@ library(reshape2)
 library(ggpubr)
 ```
 
-# What's in an analysis plan
-For a detailed breakdown see this [OSF pre-registration template](https://osf.io/preprints/metaarxiv/epgjd/) [@osf-prereg]
+# Samples and their size
+A sample is a collection of data points.
 
-For a concrete example see [Replication of Experiment 1 of “The Adams family”](https://magpie-ea.github.io/magpie-esslli-2019-course-material/site/script/materials/prereg_report_Adams.pdf) by Michael Franke
 
-### Research question(s)
-Consider formulating your questions at different degrees of granularity. You may be curious about how phenomenon X works, in general, but your analysis may ultimately only address how some aspect of X, let's call it Y, works. It is crucial to always keep in mind how Y and X relate (i.e., what you can[not] learn from your study of Y about X).
+Your sample is most likely not the entire population you care about. That is, it is likely not *a complete sample*. Sample size is consequently almost always important, but in which way it matters is a function of your research question (chiefly: how large/small you expect the effect that you are trying to estimate to be). The truism that "more is better" applies but it does not follow that little may not already be enough. 
 
-An analysis can address questions but it can also generate questions. Often, the latter is called  *exploratory* analysis; and the former is called *confirmatory*.
+A sample can be many things. It can be *unbiased* and *representative*; that is, sampled from the complete sample with a procedure that does not depends on the data points being sampled. But it can also be *biased* in some way. For instance, you may want to study a property of spoken Catalan but your sample may be comprised only of data from Catalan speakers from the Vallès Oriental between 20-30 years old. A priori, this is not a problem but it is something that needs to be factored in.
 
-### Design plan
-A description of the overall design of your analysis. Among others, specify its type: What will you measure under which (varying?) circumstances? 
+# Analysis checks
 
-### Sampling plan
-How, and how many, observations will you collect? And why?
+It is always a good idea to check your analysis plan throughout all stages. There are two important ways to do so right after devising your plan. It is good practice to do both.
 
-### Variables
-Give details for all variables that you will use in your analysis plan 
+## Pilot studies
 
-### Analysis plan
-Describe how you will analyze the data
+A pilot study is a small-scale version of your entire analysis. It serves as a proof of concept, checking both the feasability and quality of the analysis plan. It is also a safeguard to make sure you are not spending a lot of time and money on collecting a sample that may not be adequate for your question. 
 
-***
+## Simulation studies
 
-# Data
-  * **Empirical** data comes in two main guises: **observational** --gathered with no intervention (i.e., by observation)-- and **experimental** --gathered through an intervention (i.e., an experiment).
-  * **Virtual** data is synthetic in nature. It can stem from simulations or model predictions, among others.
+A simulation study uses computational methods to generate virtual data that simulates the data you will collect. This allows you to think through your entire analysis and check how sample size (see below) and estimated effects may interact.
 
-## Variables
-They are what you are measuring, i.e., an attribute of interest in your analysis (height; pitch; weight; gender; and so on).  Common types of variables are: 
+# Where to get data
   
-  * **nominal variables**: unordered descriptions 
-  * **ordinal variables**: ordered descriptions
-  * **binary variables**: two mutually exclusive outcomes (nominal variables)
-  * **metric variable**:  description that allows for quantitative comparisons 
+  * Laboratory (e.g., eye-tracking or fMRI data)
+  * Online platforms (e.g., [Amazon's Mechanical Turk](https://www.mturk.com/) or [Prolific](https://www.prolific.co/))
+  * Models (e.g., distributed meaning representations or Language Models)
+  * Corpora (e.g., Wikipedia, Twitter)
+  * Surveys (e.g., asking people in the "field")
+  * Available data sets, e.g.,
+    * [NoRaRe: A Multilingual Database of Word and Concept Properties](https://github.com/concepticon/norare-data)
+    * [Small World of Words: Associativity data](https://smallworldofwords.org/en/project/home)
+    * [SimLex-999: word similarity ratings](https://fh295.github.io/simlex.html)
+    * [WordSim353: word relatedness ratings](http://alfonseca.org/eng/research/wordsim353.html)
+    * [WordNet: A lexical database](https://wordnet.princeton.edu/)
+    * [CLICS: Database of Cross-Linguistic Colexifications](https://clics.clld.org/)
+    * ... and most modern (and responsible) studies involving data
+   
+# Distributions
 
-## Basic design vocabulary
-What matters is what is in your analysis plan, irrespective of how you call it. But it helps to be familiar with the basic vocabulary used to talk about experimental design.
-
-  * **Sample size** describes how many observations go into your analysis
-  * A **factor** is a discrete independent variable
-  * A **n $\times  m$ factorial design** has two factors: one with $n$ levels (e.g., for $n = 2$: *informal* and *polite*) and the other with $m$ levels (e.g., for $m = 3$: *US*; *UK*; *India*). There are $n \times m$ experimental conditions in such a design.
-  * There are three common types of **trials**
-    * **critical trials** measure (one of) the conditions we care about
-    * **control trials** are checks that will not go into the analysis but allow for quality control (e.g., if a subject is paying attention)
-    * **filler trials** pad the critical trials to avoid repeated exposure to the critical trials to influence the experiment (e.g., subjects getting bored; figuring out what the experiment is about; and so on)
-
-
-# Further reading 
-Useful resources if you're interested in reading more about a topic covered in this session
-
-  1. [Andrew Gelman's notes on R](http://www.stat.columbia.edu/~gelman/communication/Rnotes.pdf)
-  2. On pre-registration: [OSF on pre-registration](https://www.cos.io/initiatives/prereg) and [The preregistration revolution](https://www.pnas.org/content/115/11/2600) [@pnas-prereg]
-  3. Michael Franke's [Primer on replication, preregistration and open science through browser-based experiments in _magpie](https://magpie-ea.github.io/magpie-esslli-2019-course-material/site/script/)
-  4. Andrew Gelman's [The Connection Between Varying Treatment
-Effects and the Crisis of Unreplicable Research: A
-Bayesian Perspective](http://www.stat.columbia.edu/~gelman/research/published/bayes_management.pdf) 
+A probability distribution describes a random phenomenon (drawing a sample from it) in terms of (i) a sample space (possible values you can expect) and (ii) the probabilities of events (e.g., drawing a with a value greater than 3.4). Rephrasing the same thing more intuitively, a distribution defines all the possible values you can expect in an experiment and how likely they are.
 
 
-# Data formatting
-Following Wickham -@wickham:2014, a tidy representation of data is one where:
+Different distributions are useful to speak about different things. We will focus on three important ones: normal/Gaussian; binomial; and Poisson.
+
+## Normal distribution
+A normal distribution is defined by a mean (often described by the letter $\mu$) and a standard deviation (often described by $\sigma$). You can expect samples from a Normal distribution to center around the mean and to become less likely the further they are away from it. The normal distribution spans across real numbers.
+
+Here's an illustration of 5000 samples drawn from a normal distribution with mean 20 and standard deviation of 3:
+
+```{r, message=FALSE, warning=FALSE}
+set.seed(333)
+library(ggplot2)
+
+samples <- rnorm(n = 5000, mean = 20, sd = 3)
+sample_dataframe <- as.data.frame(samples)
+
+ggplot(data = sample_dataframe,
+       aes(x = samples)
+       ) + 
+  geom_histogram(aes(y = ..density..),
+                 bins=50,
+                 color = 1,
+                 fill = 'white') + 
+  geom_density() +
+  theme_minimal()
   
-  * each variable forms a column;
-  * each observation forms a row;
-  * each type of observational unit forms a table.
+```
 
+## Binomial distribution
+
+Not all samples can take any real value, as the normal distribution assumes. For instance, in an experiment there may be a binary condition: *pass/fail*; *right/wrong*; *left/right*; and so on. One intuitive way to think about such cases is as a coin flip (*heads*/*tails*). The binomial distribution is a discrete distribution of number of successes (e.g., *heads*) in a number of $n$ independent experiments. It is defined by two parameters, the chances of success $p$ and the number of experiments $n$. We will focus on the special case of a single experiment, i.e. $n = 1$ so we only need to keep track of $p$. This special case is called the Bernoulli distribution. The Bernoulli distribution has both an upper bound (number of trials) and a lower bound (0 successes).
+
+Here's an illustration of 5000 samples drawn from a Bernoulli distribution with $p = 0.5$ (a fair coin, e.g.):
+
+
+```{r, message=FALSE, warning=FALSE}
+samples <- rbinom(n = 5000, size = 1, p = 0.5) #5000 independent experiments with a single fair coin flip
+sample_dataframe <- as.data.frame(samples)
+
+ggplot(data = sample_dataframe,
+       aes(x = samples)
+       ) + 
+  geom_histogram(
+                 bins=50,
+                 color = 1,
+                 fill = 'white') 
+  theme_minimal()
+  
+```
+
+
+## Poisson distribution
+Not all samples can take any real value, as the normal distribution assumes, nor be reduced to a (sequence) of discrete success/failure events, as binomially distributed events. Very often, we count discrete occurences of events. If these events can be assumed to be well-approximated by a constant mean rate (usually denoted by $\lambda$). The Poisson distribution ranges from 0 to positive infinity. In other words, and by contrast to a binomial distribution, the Poisson distribution has no upper bound.
+
+Here's an illustration of 5000 samples drawn from a Poisson distribution with $\lambda = 20$:
+
+```{r, message=FALSE, warning=FALSE}
+set.seed(333)
+library(ggplot2)
+
+samples <- rpois(n = 5000, lambda = 20)
+sample_dataframe <- as.data.frame(samples)
+
+ggplot(data = sample_dataframe,
+       aes(x = samples)
+       ) + 
+  geom_histogram(aes(y = ..density..),
+                 bins=50,
+                 color = 1,
+                 fill = 'white') + 
+  geom_density() +
+  theme_minimal()
+```
+ 
 ***
 
 ## Corrections {.appendix}

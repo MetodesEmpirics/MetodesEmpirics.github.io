@@ -1,0 +1,55 @@
+---
+title: "4 Introduction to regressio analysis"
+date: "`r Sys.Date()`"
+author:
+  - first_name: "Thomas"
+    last_name: "Brochhagen"
+    url: https://tbrochhagen.github.io/
+    affiliation: Universitat Pompeu Fabra
+bibliography: ../../biblio.bib
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 2
+  pdf_document:
+    toc: true
+---
+
+
+
+```{r preamble, echo=FALSE}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(reshape2)
+library(ggpubr)
+```
+
+## Regression
+Regression is a fundamental technique for predicting an outcome variable from one or more predictors. For instance, the average pitch of a speaker (the outcome) based on their gender (predictor 1) and the context of interaction (predictor 2);  whether they will use a pronoun to refer to an entity (outcome) based on how predictable that entity is (predictor); or whether a linguistic school reform (predictor) increases the fluency of students in a language.
+
+As summarized in  Gelman et al. [-@ros], some important uses of regression are:
+  - prediction
+  - exploring associations
+  - extrapolation
+  - causal inference
+
+### Linear regression
+The simplest regression model relates predictors and the outcome in a linear fashion: a linear regression model. With $x$ as a single predictor of $y$, we can write the model as:
+
+$$y = \beta_0 + \beta_1x + \text{error} $$
+
+In words, outcome $y$ is modelled as a linear combination of two parameters, $\beta_0$ and $\beta_1$, and an error term. The contribution of $\beta_1$ to the prediction is relative to the value of $x$, the predictor. 
+
+Let us explore these ideas with a concrete example [@franke+roettger:20], with study predicting voice pitch (outcome / $y$) based on whether the speaker is male or female ($x$). We will add further predictors later.
+
+#### Case study: pitch
+```{r, warning=FALSE, message=FALSE}
+
+```
+
+
+## References
+
+## Corrections {.appendix}
+If you spot a mistake or have suggestions, please get in touch with [Thomas Brochhagen](https://brochhagen.github.io) or [create an issue](https://github.com/metodesempirics/metodesempirics.github.io/issues/new)
