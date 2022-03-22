@@ -1,18 +1,22 @@
 ---
-title: "4 Introduction to regressio analysis"
-date: "`r Sys.Date()`"
+title: "4 Introduction to regression"
 author:
-  - first_name: "Thomas"
-    last_name: "Brochhagen"
-    url: https://tbrochhagen.github.io/
-    affiliation: Universitat Pompeu Fabra
-bibliography: ../../biblio.bib
+- first_name: Thomas
+  last_name: Brochhagen
+  url: https://tbrochhagen.github.io/
+  affiliation: Universitat Pompeu Fabra
+date: "`r Sys.Date()`"
 output:
   distill::distill_article:
-    toc: true
+    toc: yes
     toc_depth: 2
+  html_document:
+    toc: yes
+    toc_depth: '2'
+    df_print: paged
   pdf_document:
-    toc: true
+    toc: yes
+bibliography: ../../biblio.bib
 ---
 
 
@@ -26,30 +30,137 @@ library(ggpubr)
 ```
 
 ## Regression
-Regression is a fundamental technique for predicting an outcome variable from one or more predictors. For instance, the average pitch of a speaker (the outcome) based on their gender (predictor 1) and the context of interaction (predictor 2);  whether they will use a pronoun to refer to an entity (outcome) based on how predictable that entity is (predictor); or whether a linguistic school reform (predictor) increases the fluency of students in a language.
+Regression is a fundamental technique for predicting an outcome variable from one or more predictors. For instance, the average pitch of a speaker (the outcome) based on their gender (predictor 1) and the context of interaction (predictor 2);  whether they will use a pronoun to refer to an entity (outcome) based on how predictable that entity is (predictor); or whether a linguistic school reform (predictor) increases the fluency of students in a language (outcome).
 
 As summarized in  Gelman et al. [-@ros], some important uses of regression are:
+
   - prediction
   - exploring associations
   - extrapolation
   - causal inference
 
 ### Linear regression
-The simplest regression model relates predictors and the outcome in a linear fashion: a linear regression model. With $x$ as a single predictor of $y$, we can write the model as:
+The simplest regression model relates predictors and the outcome in a linear fashion. This is called a **linear** regression model. With $x$ as a single predictor of $y$, we can write the model as:
 
 $$y = \beta_0 + \beta_1x + \text{error} $$
 
-In words, outcome $y$ is modelled as a linear combination of two parameters, $\beta_0$ and $\beta_1$, and an error term. The contribution of $\beta_1$ to the prediction is relative to the value of $x$, the predictor. 
+In words, outcome $y$ is modelled as a linear combination of two parameters, $\beta_0$ and $\beta_1$, and an error term. The contribution of $\beta_1$ to the prediction is relative to the value of $x$, the predictor. In this class, we will background the error term.
 
-Let us explore these ideas with a concrete example [@franke+roettger:20], with study predicting voice pitch (outcome / $y$) based on whether the speaker is male or female ($x$). We will add further predictors later.
+Let us explore these ideas with a concrete example [@franke+roettger:2019], probing to which extent we can predict voice pitch (outcome / $y$) based on whether the speaker is male or female ($x$). We will add further predictors later.
 
 #### Case study: pitch
-```{r, warning=FALSE, message=FALSE}
 
+```{r, warning=FALSE, message=FALSE}
+### Packages we will use ###
+library(readr)
+library(dplyr)
+library(ggplot2)
+### ### ###
+
+df <- read_csv("https://tinyurl.com/polite-data") #download data
+glimpse(df) #get a look at the data
+```
+
+We focus on the pitch (outcome / $y$) and gender (predictor) columns in this session. 
+
+Let's first visualize the data to see whether it even makes sense to predict pitch based on gender:
+
+```{r}
+ggplot(df, aes(x = pitch, fill = gender)) +
+         geom_histogram(bins=70, alpha=0.6, position='identity') +
+         theme_minimal() 
+
+```
+Recasting the formula from above, our linear model looks as follows:
+
+$$\text{pitch} = \beta_0 + \beta_1 \text{gender}$$
+But gender is not a numerical variable. To make $\beta_1 \text{gender}$ make sense we should re-code this column.^[R handles this on its own. So you can pass it a variable like `gender` and it will recode it automatically. We are here just being explicit about the process].
+
+```{r}
+df <- df %>%
+      mutate(gender = ifelse(gender == 'M',0,1)) #change 'M' into a 0 and 'F' into 1
+glimpse(df) #check if this worked as intended
+```
+
+In `lme`-syntax, this model is written as
+
+```{r}
+
+pitch_model <- lm(formula = pitch ~ 1 + gender,
+                   data    = df)
+```
+
+That's all! We can now inspect the model's estimate of the effect of `gender` on `pitch`:
+
+```{r}
+pitch_model
+```
+
+We can also get more detailed information using the `summary()`-function. We return to this below.
+
+```{r}
+summary(pitch_model)
+```
+
+##### Making sense of the model predictions
+
+We can relate these estimates back to our formula. What `lme` writes as *Intercept* is $\beta_0$ and *gender* is $\beta_1$. That is, we go from
+
+$$\text{pitch} = \beta_0 + \beta_1 \text{gender}$$
+to
+$$\text{pitch} = 138.9 + 108.01 \text{gender}$$
+Remember that `gender` is $0$ if the subject is female and $1$ if the subject is male. In other words, we predict a pitch of 
+
+$$\text{pitch} = 138.9 + 108.01 * 0$$
+which is the same as 
+$$\text{pitch} = 138.9$$
+In words, the expected value of the pitch of a female speaker is 138.9 Hz. Does this make sense? Let's look at the mean pitch of a female speaker in our model.
+
+```{r}
+df %>% 
+  filter(gender == 0) %>% #only female subjects
+  select(pitch) %>% #get the column with pitch information
+  pull() %>% #pull it from the data frame
+  mean() #take the mean of this vector
+```
+
+So this is a sensible prediction. What about males? Our model predicts
+
+$$\text{pitch} = 138.9 + 108.01 \text{gender}$$
+Plugging in the *male* value of $1$ for `gender`:
+
+$$\text{pitch} = 138.9 + 108.01 * 1$$
+which gives $138.9 + 108.01 = 246.91$. Does this make sense?
+
+```{r}
+df %>% 
+  filter(gender == 1) %>% #only male subjects
+  select(pitch) %>% #get the column with pitch information
+  pull() %>% #pull it from the data frame
+  mean() #take the mean of this vector
+```
+
+Perfect. So the model makes sense, but what do we learn from it? First and foremost, that the expected difference between male and female speakers is $108.01$. 
+
+We have (1) an estimate of the error of these estimates; (2) indicators of significance; (3) $R^2$.
+
+```{r}
+summary(pitch_model)
+plot(residuals(pitch_model))
 ```
 
 
-## References
+The **standard error** indicates variability in the estimate. Data rarely, if ever, rules out other values for a parameter; had we had slightly different samples, our $\beta$-estimates would be slightly different. It is accordingly important to look at how uncertain the model is about the estimate. The standard error is such an indicator. It is the square root of the variability of a parameter $\beta$. 
+
+**Statistical significance** is a topic we will address in later sessions.
+
+**$R^2$** is the proportion of variation in the outcome (here: pitch) that the model can predict based on the predictors (here: gender). In this example, $R^2 \approx 0.68$, meaning that 68% of the variability in pitch is accounted for by `gender`. Reversely, it suggests that over 30% of the data is not explained by `gender`.  More formally, 
+
+$$R^2 = 1 - \frac{SS_{residual}}{SS_{total}}, \text{ where } $$
+$$SS_{residual} = \sum_i e^2_i, \text{ and }$$
+$$SS_{total} = \sum_i(y_i - \bar{y})^2$$
+Above, $e$ is a vector of residuals and $\bar{y}$ is the mean of the observed data. If the sum of squared residuals is $0$, your model makes perfect predictions and $R^2$ is $1$. A model that always predicts the mean value $\bar{h}$ will have $R^2 = 0$.
+
 
 ## Corrections {.appendix}
 If you spot a mistake or have suggestions, please get in touch with [Thomas Brochhagen](https://brochhagen.github.io) or [create an issue](https://github.com/metodesempirics/metodesempirics.github.io/issues/new)

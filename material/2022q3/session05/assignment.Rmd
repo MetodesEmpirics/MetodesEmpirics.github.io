@@ -1,0 +1,44 @@
+---
+title: '4 Introduction to regression: Assignment'
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+bibliography: ../../biblio.bib
+---
+
+# Instructions
+
+Submit your answers to the **n** first exercises through Aula Global (quiz section). Upload the remaining exercise concerning peer review through Aula Global as well (upload task).
+
+# Regression
+
+Consider the model `pitch ~ 1 + gender`, fit on the data from Franke & Roettger [-@franke+roettger:2019].
+
+  1. Is this model equivalent to `pitch ~ gender`?
+  2. Is this model equivalent to `pitch ~ gender + context`?
+  3. Is this model equivalent to `pitch ~ 1 + gender + context`?
+  3. Is `pitch` the outcome, a predictor, or neither?
+  4. Is `gender` the outcome, a predictor, or neither?
+
+Consider the model `pitch ~ 1 + gender + context`, fit on the data from Franke & Roettger [-@franke+roettger:2019]. 
+
+  5. What is the estimated effect on `pitch` in a polite context?
+  6. Does this model explain more variance than the `pitch ~ 1 + gender` model?
+  7. What is the predicted pitch (in Hz) of a female speaker in a polite context?
+  8. What is the actual mean pitch (in Hz) of a female speaker in a polite context according to this data? 
+
+
+# Peer review (part I) 
+
+Submit answers to these four questions concerning your analysis report as a single page PDF-file through Aula Global. This submission makes up 10% of your peer-review grade. Remember that **your submission must be anonymous**. That is: do not put any information that can identify you in the PDF (like your name).
+
+  1.1 Your general research question
+  1.2 Why do you think this question is interesting? / What does this tell us?
+  1.3 Your specific research question
+  1.4 What kind of data would you use to address (1.2) if you had unlimited resources?
+  1.5 What kind of data are you planning to use to address (1.2) within the scope of this class?
+  
+Elaborate with as much detail as you (currently) have but it is perfectly acceptable if you answer in bullet points and single sentences. Y A randomly selected peer will give you feedback on them
+    
+# References

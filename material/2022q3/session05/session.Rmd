@@ -1,0 +1,131 @@
+---
+title: "5 Regression with more than one predictor"
+author:
+- first_name: Thomas
+  last_name: Brochhagen
+  url: https://tbrochhagen.github.io/
+  affiliation: Universitat Pompeu Fabra
+date: "`r Sys.Date()`"
+output:
+  distill::distill_article:
+    toc: yes
+    toc_depth: 2
+  html_document:
+    toc: yes
+    toc_depth: '2'
+    df_print: paged
+  pdf_document:
+    toc: yes
+bibliography: ../../biblio.bib
+---
+
+
+
+```{r preamble, echo=FALSE}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(reshape2)
+library(ggpubr)
+```
+
+## Regression with multiple predictors
+
+We can straightforwardly extend our linear model with a single predictors to account for multiple ones:
+
+$$y = \beta_0 + \beta_1 x_1 + ... + \beta_n x_n + \text{error} $$
+
+In words, outcome $y$ is modelled as a linear combination of $n+1$ parameters, $\beta_0$,  $\beta_1$ up to $\beta_n$, and an error term. The contribution of $\beta_1$ to the prediction is relative to the value of $x_1$, that of $\beta_2$ is relative to the value of predictor $x_2$ and so on. 
+
+#### Case study: pitch (continued)
+
+You already built a regression model with multiple predictors in the assignment: `pitch ~ 1 + gender + context`. Let us look at it more closely
+
+```{r, warning=FALSE, message=FALSE}
+### Packages we will use ###
+library(readr)
+library(dplyr)
+library(ggplot2)
+### ### ###
+
+df <- read_csv("https://tinyurl.com/polite-data") #download data
+glimpse(df) #get a look at the data
+```
+
+We focus on the `pitch` (outcome / $y$) as well as the `gender` (predictor 1) and `context` (predictor 2) columns in this session. 
+
+Let's again first visualize the data to see whether it even makes sense to predict pitch based on gender:
+
+```{r}
+ggplot(df, aes(x = pitch, fill = gender)) +
+         geom_histogram(bins=70, alpha=0.6, position='identity') +
+         theme_minimal() 
+
+```
+
+
+And the same for context:
+
+```{r}
+ggplot(df, aes(x = pitch, fill = context)) +
+         geom_histogram(bins=50, alpha=0.6, position='identity') +
+         theme_minimal() 
+```
+This is a more mixed picture than `gender`. We may also want to numerically see if there may be a difference in the mean pitch in formal vs. polite contexts:
+
+
+
+```{r}
+mean_informal <- df %>% 
+                    filter(context == 'inf') %>%
+                    pull() %>%
+                    mean()
+mean_polite <- df %>% 
+                    filter(context == 'pol') %>%
+                    pull() %>%
+                    mean()
+
+mean_informal
+mean_polite
+mean_informal - mean_polite
+```
+
+So there is a (numeric) difference but it is not clear whether it is meaningful.^[This is crucial to statistical analysis: What does a meaningful difference --in the context of your research question-- look like?] We will use a regression model to answer this question.^[Note that now we did not re-code `gender` and `context` using $1$ and $0$ as we did in the previous session. We will let R do this automatically for us.]
+
+```{r}
+
+pitch_model2 <- lm(formula = pitch ~ 1 + gender + context,
+                   data    = df) 
+summary(pitch_model2)
+```
+
+## Interactions
+
+Is it reasonable to assume that `gender` and `context` do not interact? If we think that, maybe, the effect of `context` varies depending on the `gender` then we can add an interaction to the model. In formulas:
+$$y = \beta_0 + \beta_\text{gender} \; x_{gender} + \beta_\text{context} \; x_{context} + \beta_\text{gender:context} \; x_{gender} \; x_{context}$$
+Visually, 
+```{r}
+ggplot(data = df, aes(x = gender, y = pitch, fill = context)) +
+  geom_boxplot() + 
+  theme_minimal()
+```
+And the model itself,
+
+```{r}
+
+pitch_model3 <- lm(formula = pitch ~ 1 + gender * context,
+                   data    = df) 
+summary(pitch_model3)
+```
+
+
+# Model performance
+
+## Goodness of fit
+For example, $R^2$
+
+## Predictive performance
+For example, accuracy
+
+## Corrections {.appendix}
+If you spot a mistake or have suggestions, please get in touch with [Thomas Brochhagen](https://brochhagen.github.io) or [create an issue](https://github.com/metodesempirics/metodesempirics.github.io/issues/new)

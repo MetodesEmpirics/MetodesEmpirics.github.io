@@ -23,6 +23,7 @@
   * How much data?
   * Pilot studies & simulations
 
+  * Maybe add a tutorial for ggplot2?
 
 # Session 4
 
@@ -32,7 +33,7 @@
   * Submit plan to peer review (10%)
 
 # Session 5
-  * Linear regression II: bivariate
+  * Linear regression II: bivariate & interactions
   * Visualization II
   * Model performance
 
@@ -40,6 +41,7 @@
 
 # Session 6
   * GLMs I: poisson
+  * Exam (20%)
 
 # Session 7
   * GLMs II: logistic

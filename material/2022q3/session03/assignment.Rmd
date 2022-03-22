@@ -113,9 +113,10 @@ print(mean(sample6_informal) - mean(sample6_formal))
 Answer these four questions concerning your analysis report:
 
   1.1 Your general research question (e.g., how does a learner's first language affect learning a second language?)
-  1.2 Your specific research question (e.g., Is there a difference between the speed in which Spanish and German monolinguals learn Catalan?)
-  1.3 What kind of data would you use to address (1.2) if you had unlimited resources?
-  1.4 What kind of data are you planning to use to address (1.2) within the scope of this class?
+  1.2 Why do you think this question is interesting? / What does this tell us?
+  1.3 Your specific research question (e.g., Is there a difference between the speed in which Spanish and German monolinguals learn Catalan?)
+  1.4 What kind of data would you use to address (1.2) if you had unlimited resources?
+  1.5 What kind of data are you planning to use to address (1.2) within the scope of this class?
   
 Elaborate with as much detail as you (currently) have but it is perfectly acceptable if you answer in bullet points and single sentences. You will be asked to submit these answers for next week's assignment. A randomly selected peer will give you feedback on them
     
