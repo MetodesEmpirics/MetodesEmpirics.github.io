@@ -1,0 +1,183 @@
+---
+title: "1 Introducción"
+author: "Métodos empíricos 2"
+date: "05/04/2022"
+output:
+  xaringan::moon_reader:
+    nature:
+      highlightLines: true
+      highlightStyle: github
+---
+
+```{r preamble, echo=FALSE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(ggplot2)
+```
+
+# Hoy
+
+.large[
+* Organización del curso 
+
+* Contenido y motivación
+
+* Replicabilidad y reproduceabilidad  
+
+* Estadística descriptiva
+]
+
+---
+
+class: inverse, center
+
+# Organización
+
+---
+
+# Información básica
+
+.large[
+* 5 ECTS (~125-150 horas)
+
+* Material y comunicación: https://aulaglobal.upf.edu/
+
+* Lengua: castellano, con opciones
+]
+
+---
+
+# Equipo
+.large[
+* Thomas Brochhagen
+
+* Guillermo Montaña 
+]
+
+
+---
+
+
+# Evaluación
+.large[
+* Ejercicios semanales (20%, no recuperable)
+
+* Ejercicio práctico (20%, recuperable)
+
+* Revisión por pares (20%, no recuperable)
+
+* Reporte de diseño de análisis y su ejecución (40%, recuperable)
+]
+
+---
+
+# Evaluación
+
+.large[
+* Ejercicios semanales (20%, no recuperable)
+  * A travéz de Aula Global
+  * Correción automática
+  * Máximo 2 intentos
+  * 6 en total
+]
+
+---
+
+# Evaluación 
+.large[
+* Revisión por pares (20%, no recuperable)
+  * Solamente opción de aprobar, o no
+  * No se aprueba si no se entregan los dos documentos; o si cualquiera de ellos no se adecúa a un estándar mínimo
+]
+
+---
+
+# Evaluación
+.large[
+* Ejercicio práctico (20%, recuperable)
+  * A travéz de Aula Global
+  * Correción automática
+  * Un solo intento
+]
+
+---
+
+# Evaluación
+
+.large[
+* Diseño y ejecución de análisis (40%)
+  * Individual o en grupos (división de trabajo debe ser preaprobada)
+  * Evaluación en función a tema / tamaño del grupo
+  * Máximo dos páginas
+
+* Criterios (max. 100 puntos)
+  * Claridad (30): descripción clara y al punto; uso adequado de visualización
+  * Replicabilidad (15)
+  * Reproduceabilidad (15)
+  * Contenido (40): el análisis está bien motivado y ejecutado con métodos adecuados
+  * Creatividad (20): supera expectativas en una o múltiples dimensiones, como visualización, temática, metodología, documentación  
+]
+
+---
+
+class: inverse, center
+
+# Contenido y motivación
+
+---
+
+# Ciclo de análisis
+
+<img src="cycle.png"/>
+
+---
+
+# Sesiones
+
+.large[
+* Diseño (1-3)
+* Control (3)
+* Crítica (3-9)
+* Ejecución (3)
+* Exploración (3-9)
+* Análisis (4-9)
+]
+
+---
+
+# Motivación(es)
+.large[
+* Manipulación e interpetación de datos
+  * Crítica
+  * Limpieza
+  * Modelaje
+  * (Programación)
+
+* Indispensable dentro de ciencias del lenguaje
+* Cada vez más indispensable en el siglo 21
+
+]
+---
+
+class: center, inverse
+
+# Análisis inferencial
+
+---
+
+# Análisis inferencial: Centrado en modelos
+.large[
+"All models are wrong, but some are useful"
+<br>
+George E.P. Box
+]
+---
+
+class: center
+
+# Análisis inferencial: Centrado en datos
+.large[
+"We should only let data speak for themselves when they have learned to clean themselves"
+<br>
+Erik van Zwet 
+]
+---
