@@ -5,7 +5,6 @@
     <meta charset="utf-8" />
     <meta name="author" content="Métodos empíricos 2" />
     <meta name="date" content="2022-05-04" />
-    <script src="slides_files/header-attrs-2.13/header-attrs.js"></script>
     <link href="slides_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="slides_files/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
   </head>
@@ -27,11 +26,11 @@ class: center, middle, inverse, title-slide
 .large[
 * Organización del curso 
 
-* Contenido y motivación
+* Diseño de análisis y estadística inferencial 
 
 * Replicabilidad y reproduceabilidad  
 
-* Estadística descriptiva
+* Estadística descriptiva, R
 ]
 
 ---
@@ -49,16 +48,27 @@ class: inverse, center
 
 * Material y comunicación: https://aulaglobal.upf.edu/
 
-* Lengua: castellano, con opciones
+* Equipo
+  * Thomas Brochhagen (thomas.brochhagen@upf.edu)
+  
+  * Guillermo Montaña (guillermo.montana@upf.edu)
+
+* Estructura
+  * Martes: Conceptos
+  
+  * Jueves: Práctica
+
 ]
 
 ---
 
-# Equipo
+# Observaciones sobre lengua
 .large[
-* Thomas Brochhagen
+* Instrucción
 
-* Guillermo Montaña 
+* Ejercicios
+
+* Comunicación personal
 ]
 
 
@@ -83,9 +93,12 @@ class: inverse, center
 .large[
 * Ejercicios semanales (20%, no recuperable)
   * A travéz de Aula Global
+  
   * Correción automática
+  
   * Máximo 2 intentos
-  * 6 en total
+  
+  * 5/6 en total
 ]
 
 ---
@@ -93,7 +106,9 @@ class: inverse, center
 # Evaluación 
 .large[
 * Revisión por pares (20%, no recuperable)
+
   * Solamente opción de aprobar, o no
+
   * No se aprueba si no se entregan los dos documentos; o si cualquiera de ellos no se adecúa a un estándar mínimo
 ]
 
@@ -102,8 +117,13 @@ class: inverse, center
 # Evaluación
 .large[
 * Ejercicio práctico (20%, recuperable)
+
   * A travéz de Aula Global
+  
+  * A mitad de curso
+
   * Correción automática
+
   * Un solo intento
 ]
 
@@ -141,50 +161,167 @@ class: inverse, center
 
 # Sesiones
 
-.large[
+.pull-left[
 * Diseño (1-3)
+
 * Control (3)
+
 * Crítica (3-9)
+
 * Ejecución (3)
+
 * Exploración (3-9)
+
 * Análisis (4-9)
+]
+
+.pull-right[
+1. Introducción 
+
+2. Diseño de análisis 
+
+3. Recolección de datos y muestras
+
+4. Introducción a la regresión
+
+5. Regresión multivariada
+6. Regresión generalizada I
+
+7. Regresión generalizada II
+
+8. Corpus I
+
+9. Corpus II
+10. Revisión y predicción
 ]
 
 ---
 
-# Motivación(es)
+# Algunas motivaciones
 .large[
 * Manipulación e interpetación de datos
+
   * Crítica
+
   * Limpieza
+
   * Modelaje
+  
+  * Visualización
+
   * (Programación)
 
-* Indispensable dentro de ciencias del lenguaje
+* Indispensable para ciencias del lenguaje
+
 * Cada vez más indispensable en el siglo 21
 
 ]
 ---
 
+# A efectos prácticos
+.large[
+* Manipulación e interpetación de datos
+
+* Comparación de grupos
+
+* Predicción
+
+* Visualización
+
+* (Programación)
+
+... aplicado a ciencias del lenguaje
+]
+---
+
 class: center, inverse
 
-# Análisis inferencial: Modelos
+# Análisis inferencial
+
+
+---
+
+
+# Análisis inferencial (vs. descriptiva)
 .large[
+* Inferencia de propiedades (más allá de la muestra) 
+
+* Predicción
+
+* Comparación
+
+* Causa-efecto 
+]
+---
+
+&lt;img src='fig1-franconeri.png',  width="500px" height="500px", style="position:absolute; right:200px; top:px;"&gt;
+
+.footnote[
+*** 
+Fig. 1 de Franconeri et al. 2021 [The Science of Visual Data Communication: What Works](https://journals.sagepub.com/stoken/default+domain/10.1177%2F15291006211051956-FREE/full#_i28)]
+---
+
+class: center
+
+# Análisis inferencial: Centrado en modelos
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+.Large[
 "All models are wrong, but some are useful"
 &lt;br&gt;
 George E.P. Box
 ]
 ---
 
-class: center, inverse
+class: center
 
-# Análisis inferencial: Datos
-.large[
-"We should only let data speak for themselves when they have learned to clean themselves"
-&lt;br&gt;
-Erik van Zwet 
+# Análisis inferencial: Centrado en datos
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+.Large[
+"We should only let data speak for themselves when they&lt;br&gt; have learned to clean themselves"
+&lt;br&gt;&lt;br&gt;
+-Erik van Zwet 
 ]
 ---
+
+# Regresión
+
+* Estimación del efecto de uno o más *predictores* en un *resultado*
+
+  * Fluidéz en una segunda lengua a base de la primera
+  
+  * Probabilidad del uso de un pronómbre a base de su entorno lingüístico
+  
+  * Tamaño de una palabra en función a su frequencia
+  
+&lt;br&gt;&lt;br&gt;  
+
+* Estimación de diferencias entre grupos
+
+  * Comparación de un método de aprendizaje de la lengua contra otro
+  
+  * Comparación de políticas lingüísticas
+
+---
+![](slides_files/figure-html/unnamed-chunk-1-1.png)&lt;!-- --&gt;
+
+---
+
+class: inverse, center
+
+# Reproduceabilidad y replicabilidad
+
+--- 
+
+class: inverse, center
+
+# R 
+
+---
+
+class: inverse, center
+
+
+# Estadística descriptivia
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
