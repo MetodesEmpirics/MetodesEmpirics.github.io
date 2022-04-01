@@ -161,6 +161,7 @@ $$\Large median(X) = \frac{x_{n/2} + x_{(n/2)+1}}{2}$$
 
 $$\Large \sigma_X = \sqrt{\frac{1}{n-1}\sum_{i}^{n}(x_i - \bar{x})^2}$$
 
+If you need a refresher, Chapter 5 of @aida is a good reference: [https://michael-franke.github.io/intro-data-analysis/Chap-02-03-summary-statistics.html](https://michael-franke.github.io/intro-data-analysis/Chap-02-03-summary-statistics.html)
 
 # Further reading 
 Useful resources if you're interested in reading more about a topic covered in this session

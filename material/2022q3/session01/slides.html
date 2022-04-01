@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <meta name="author" content="Métodos empíricos 2" />
     <meta name="date" content="2022-05-04" />
+    <script src="slides_files/header-attrs-2.13/header-attrs.js"></script>
     <link href="slides_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="slides_files/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
   </head>
@@ -28,9 +29,12 @@ class: center, middle, inverse, title-slide
 
 * Diseño de análisis y estadística inferencial 
 
-* Replicabilidad y reproduceabilidad  
+* Replicabilidad y reproducibilidad  
 
-* Estadística descriptiva, R
+* R
+
+* Estadística descriptiva 
+
 ]
 
 ---
@@ -54,9 +58,9 @@ class: inverse, center
   * Guillermo Montaña (guillermo.montana@upf.edu)
 
 * Estructura
-  * Martes: Conceptos
+  * Martes: Conceptos y discusión
   
-  * Jueves: Práctica
+  * Jueves: Práctica y más discusión
 
 ]
 
@@ -64,11 +68,11 @@ class: inverse, center
 
 # Observaciones sobre lengua
 .large[
-* Instrucción
+1. Instrucción
 
-* Ejercicios
+2. Ejercicios
 
-* Comunicación personal
+3. Comunicación personal
 ]
 
 
@@ -83,7 +87,7 @@ class: inverse, center
 
 * Revisión por pares (20%, no recuperable)
 
-* Reporte de diseño de análisis y su ejecución (40%, recuperable)
+* Informe de diseño de análisis y su ejecución (40%, recuperable)
 ]
 
 ---
@@ -92,13 +96,13 @@ class: inverse, center
 
 .large[
 * Ejercicios semanales (20%, no recuperable)
-  * A travéz de Aula Global
+  * A través de Aula Global
   
-  * Correción automática
+  * Corrección automática
   
   * Máximo 2 intentos
   
-  * 5/6 en total
+  * 5-6 en total
 ]
 
 ---
@@ -109,7 +113,7 @@ class: inverse, center
 
   * Solamente opción de aprobar, o no
 
-  * No se aprueba si no se entregan los dos documentos; o si cualquiera de ellos no se adecúa a un estándar mínimo
+  * No se aprueba si no se entregan los dos documentos; o si cualquiera de ellos no se adecúa a un estándar mínimo de calidad
 ]
 
 ---
@@ -118,11 +122,11 @@ class: inverse, center
 .large[
 * Ejercicio práctico (20%, recuperable)
 
-  * A travéz de Aula Global
+  * A través de Aula Global
   
   * A mitad de curso
 
-  * Correción automática
+  * Corrección automática
 
   * Un solo intento
 ]
@@ -132,30 +136,42 @@ class: inverse, center
 # Evaluación
 
 .large[
-* Diseño y ejecución de análisis (40%)
-  * Individual o en grupos (división de trabajo debe ser preaprobada)
-  * Evaluación en función a tema / tamaño del grupo
-  * Máximo dos páginas
+Diseño y ejecución de análisis (40%)
+* Individual o en grupos (división de trabajo debe ser aprobada)
 
-* Criterios (max. 100 puntos)
-  * Claridad (30): descripción clara y al punto; uso adequado de visualización
-  * Replicabilidad (15)
-  * Reproduceabilidad (15)
-  * Contenido (40): el análisis está bien motivado y ejecutado con métodos adecuados
-  * Creatividad (20): supera expectativas en una o múltiples dimensiones, como visualización, temática, metodología, documentación  
+* Evaluación en función a tema / tamaño del grupo
+  
+* Máximo dos páginas
+]
+
+***
+
+--
+
+.large[
+**Criterios** (max. 100 puntos)
+* Claridad (30): descripción clara y al punto; uso adecuado de visualización
+  
+* Replicabilidad (15)
+  
+* Reproducibilidad (15)
+  
+* Contenido (40): el análisis está bien motivado y ejecutado con métodos adecuados
+
+* Creatividad (20): supera expectativas en una o múltiples dimensiones, como visualización, temática, metodología, documentación  
 ]
 
 ---
 
 class: inverse, center
 
-# Contenido y motivación
+# Contenido del curso y motivación general
 
 ---
 
 # Ciclo de análisis
 
-&lt;img src="cycle.png"/&gt;
+&lt;img src="cycle.png", style="position:absolute; right:7px; top:100px;"&gt;
 
 ---
 
@@ -175,6 +191,8 @@ class: inverse, center
 * Análisis (4-9)
 ]
 
+--
+
 .pull-right[
 1. Introducción 
 
@@ -192,20 +210,20 @@ class: inverse, center
 8. Corpus I
 
 9. Corpus II
-10. Revisión y predicción
+10. Revisión y temas avanzados
 ]
 
 ---
 
 # Algunas motivaciones
 .large[
-* Manipulación e interpetación de datos
+* Manipulación e interpretación de datos
 
   * Crítica
 
   * Limpieza
 
-  * Modelaje
+  * Modelado
   
   * Visualización
 
@@ -220,7 +238,7 @@ class: inverse, center
 
 # A efectos prácticos
 .large[
-* Manipulación e interpetación de datos
+* Manipulación e interpretación de datos
 
 * Comparación de grupos
 
@@ -229,8 +247,9 @@ class: inverse, center
 * Visualización
 
 * (Programación)
+&lt;br&gt;&lt;br&gt;
 
-... aplicado a ciencias del lenguaje
+.center[... aplicado a ciencias del lenguaje]
 ]
 ---
 
@@ -261,56 +280,109 @@ class: center, inverse
 Fig. 1 de Franconeri et al. 2021 [The Science of Visual Data Communication: What Works](https://journals.sagepub.com/stoken/default+domain/10.1177%2F15291006211051956-FREE/full#_i28)]
 ---
 
-class: center
 
 # Análisis inferencial: Centrado en modelos
 &lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
-.Large[
-"All models are wrong, but some are useful"
-&lt;br&gt;
-George E.P. Box
+
+.center[
+### All models are wrong, but some are useful
+-George E.P. Box
 ]
 ---
 
-class: center
-
 # Análisis inferencial: Centrado en datos
 &lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
-.Large[
-"We should only let data speak for themselves when they&lt;br&gt; have learned to clean themselves"
-&lt;br&gt;&lt;br&gt;
+.center[
+### We should only let data speak for themselves when they&lt;br&gt; have learned to clean themselves
 -Erik van Zwet 
 ]
 ---
 
 # Regresión
 
-* Estimación del efecto de uno o más *predictores* en un *resultado*
+Estimación del efecto de uno o más *predictores* en un *resultado*
 
-  * Fluidéz en una segunda lengua a base de la primera
+* Fluidez en una segunda lengua a base de la primera
   
-  * Probabilidad del uso de un pronómbre a base de su entorno lingüístico
+* Probabilidad del uso de un pronombre a base de su entorno lingüístico
   
-  * Tamaño de una palabra en función a su frequencia
-  
-&lt;br&gt;&lt;br&gt;  
+* Tamaño de una palabra en función a su frecuencia
 
-* Estimación de diferencias entre grupos
-
-  * Comparación de un método de aprendizaje de la lengua contra otro
+* ...
   
-  * Comparación de políticas lingüísticas
+&lt;br&gt;
+***
+
+&lt;br&gt;  
+
+--
+
+Estimación de diferencias entre grupos
+
+* Comparación de un método de aprendizaje de la lengua contra otro
+  
+* Comparación de políticas lingüísticas
+
+* ...
 
 ---
-![](slides_files/figure-html/unnamed-chunk-1-1.png)&lt;!-- --&gt;
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-1-1.png" width="80%" style="display: block; margin: auto;" /&gt;
 
 ---
 
 class: inverse, center
 
-# Reproduceabilidad y replicabilidad
+# Replicabilidad y reproducibilidad
 
---- 
+---
+
+# Crísis de replicabilidad y reproducibilidad
+
+.left[Replication is one of the central issues in any empirical science. 
+
+To confirm results or hypotheses by a repetition procedure is at the basis of any scientific conception. A replication experiment to demonstrate that the same findings can be obtained in any other place by any other researcher is conceived as an operationalization of objectivity. 
+
+It is the proof that the experiment reflects knowledge that can be separated from the specific circumstances (such as time, place, or persons) under which it was gained.
+&lt;br&gt;&lt;br&gt;
+-Stefan Schmidt 
+]
+---
+
+### Replicabilidad
+
+Que se puedan obtener resultados consistentes con los mismo datos de entrada; pasos computacionales; métodos; código; y condiciones de análisis
+
+***
+--
+
+
+### Reproducibilidad
+
+Que se puedan obtener resultados consistentes en diferentes análisis que buscan responder la misma pregunta, cada cual con sus propios datos
+
+---
+
+# Crisis de replicabilidad y reproducibilidad
+
+* Una cantidad importante de resultados no se han podido ni replicar ni reproducir (50%-80%, dependiendo del campo)
+
+--
+
+* Conllevó a un gran cambio en metodología y documentación (estamos en ello)
+
+--
+
+* Independientemente, es central documentar todas tus decisiones y manipulaciones; de principio a fin
+
+--
+
+* Lenguas de programación son una herramienta ideal para 
+  * conducir análisis empírico, y
+  
+  * asegurarse de que sea replicable 
+
+---
 
 class: inverse, center
 
@@ -318,10 +390,83 @@ class: inverse, center
 
 ---
 
+
+
+```r
+library(ggplot2) #librería gráfica
+set.seed(123)    #semilla aleatorea
+
+x   &lt;-   rnorm(n = 34, mean = 20, sd = 2) #valores predictor
+err &lt;-   rnorm(n = 34, mean = 0,sd=1)     #valores variacion
+y   &lt;-   x/2 + err                        #valores resultado
+
+df  &lt;-   data.frame(resultado = y,        #formato conjunto
+                    predictor = x)
+
+ggplot(df, aes(x = predictor, y = resultado)) + #gráfico
+  geom_point() +                                #scatter plot
+  geom_smooth(method='lm') +                    #regresión
+  theme_minimal(base_size=25)                   #apariencia  
+```
+
+---
+
+# En este curso
+
+* Uso rudimentario e interactivo
+
+* Principalmente: intuición sobre estructuras de datos y su manipulación
+
+* Manera de asegurar replicabilidad
+
+* Manera de mejorar comunicación
+
+---
+
 class: inverse, center
 
 
-# Estadística descriptivia
+# Estadística descriptiva
+
+---
+
+# Estadística descriptiva
+
+
+.large[
+* Tendencias centrales (promedio; mediana; moda)
+
+* Dispersión (varianza; desviación típica)
+
+* Variación conjunta (correlación, co-varianza)
+]
+
+.footnote[
+
+*** 
+
+Si falta una revisión: Franke (2021) [*An Introduction to Data Analysis*, capítulo 5](https://michael-franke.github.io/intro-data-analysis/Chap-02-03-summary-statistics.html)
+]
+
+---
+
+class: inverse
+
+# Próxima sesión
+
+* Entrega de "Assignment 1" (08:00 AM 19/04)
+
+* Si hay, preguntas generales sobre el curso
+
+* Si hay, preguntas generales sobre el informe
+
+* Si hay, preguntas generales sobre R
+
+***
+
+* **Diseño de análisis**
+
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
