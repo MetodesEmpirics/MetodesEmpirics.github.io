@@ -11,16 +11,13 @@ bibliography: ../../biblio.bib
 Submit your answers to the eight first exercises through Aula Global. The remainder of your assignments concern self-studies.
 
 # Describing a study
-Kanwal et al. -@kanwal+etal:2017 taught subjects an artificial language. This language only has three (made up) words: *zopudon*, *zopekil* and *zop*. The first two words refered to distinct objects (think: *zopudon* means apples and  *zopekil* means bananas). The short form *zop* could mean either (think: fruit). That is, *zop* is ambiguous between the two meanings, and thus can lead to misunderstandings. They had subjects communicate about the two meanings (apples/bananas) in pairs, alternating who has the speaker and who was the receiver. The core motivation for this study was to see if people would use the ambiguous word, *zop*, even though it is more risky than the unequivocal but longer alternatives *zopudon* and *zopekil* under certain experimental manipulations. 
+Quick reminder from class: Kanwal et al. -@kanwal+etal:2017 taught subjects an artificial language. This language only has three (made up) words: *zopudon*, *zopekil* and *zop*. The first two words refered to distinct objects (think: *zopudon* means apples and  *zopekil* means bananas). The short form *zop* could mean either (think: fruit). That is, *zop* is ambiguous between the two meanings, and thus can lead to misunderstandings. They had subjects communicate about the two meanings (apples/bananas) in pairs, alternating who has the speaker and who was the receiver. The core motivation for this study was to see if people would use the ambiguous word, *zop*, even though it is more risky than the unequivocal but longer alternatives *zopudon* and *zopekil* under certain experimental manipulations. 
 
-Here's a glimpse of the data of the speakers^[You can find the CSV-file in Aula Global.]:
+Here's a glimpse of the data of the speakers:
 
 ```{r, message=FALSE, warning=FALSE}
-library(dplyr)                 #functions to manipulate data
-library(readr)                 #functions to read/write data
-
-read_csv('senderdata.csv') %>% #loading the data from Kanwal et al. 2018 and piping it
-  glimpse()                    #producing an overview of the data found in each column 
+df <- read.csv('https://tinyurl.com/2s3p9s2z')
+head(df) 
 ```
 
 

@@ -1,5 +1,5 @@
 ---
-title: "1 Diseño de informe y tipos de datos"
+title: "2 Diseño de informe y tipos de datos"
 author: "Métodos empíricos 2"
 date: "19/04/2022"
 output:
@@ -31,11 +31,86 @@ library(ggplot2)
 
 class: inverse, center
 
-# Componentes de un análisis
+# Componentes de análisis
+
 
 ---
 
-# Componentes
+# Zipf's Law of Abbreviation
+---
+
+### Zipf's Law of Abbreviation: Formas más frecuentes tienden a ser más cortas
+<br><br>
+.center[### 
+]
+
+<img src="en-zipf.jpg" width="500",
+ height="350", style="position:absolute; right:200px; top:150px;"/>
+ 
+.footnote[
+***
+
+G.K. Zipf (1935) *The psycho-biology of language*<br>
+Kanwal et al *Zipf’s Law of abbreviation as a language universal*
+
+]
+
+---
+
+### Zipf's Law of Abbreviation: Formas más frecuentes tienden a ser más cortas
+<br><br>
+.center[### 
+]
+
+<img src="zipfslaw.png" width="600",
+ height="450", style="position:absolute; right:120px; top:100px;"/>
+ 
+.footnote[
+***
+
+G.K. Zipf (1935) *The psycho-biology of language*<br>
+Benz & Ferrer-i-Cancho (2016) * Zipf’s Law of abbreviation as a language universal*
+
+
+]
+---
+
+# Kanwal et al. 2017
+
+--
+
+<img src="kanwal-sketch.png" width="600",
+ height="500", style="position:absolute; right:120px; top:100px;"/>
+
+
+---
+
+# Kanwal et al. 2017: Condiciones
+
+1. Comunicación con otro jugador, con diferencial de tiempo entre mensajes
+--
+
+2. Comunicación con otro jugador, sin diferencial de tiempo
+
+--
+
+3. Sin otro jugador, con diferencial de tiempo entre mensajes
+
+--
+
+4. Sin otro jugador, sin diferencial de tiempo
+
+---
+
+# Kanwal et al. 2017: Resultado
+
+Sólo con diferencial de tiempo entre mensajes:
+
+ mensaje más corto $\Rightarrow$ significado más frecuente
+
+---
+
+# Componentes de análisis
 
 * Pregunta(s) del análisis
 
@@ -56,7 +131,6 @@ class: inverse, center
   * Pueden variar en grado de granularidad
   
   * Pueden variar en naturaleza: Análisis confirmatorio vs. exploratorio 
-
 
 * Plan de diseño
 
@@ -83,7 +157,7 @@ class: inverse, center
 
 * Plan de analisis
 
----
+--- 
 
 # Componentes
 
@@ -128,89 +202,6 @@ class: inverse, center
 
 * Plan de analisis
   * Descripción de cómo analizarás los datos
-
----
-
-
-### Zipf's Law of Abbreviation: More frequent forms tend to be shorter
-<br><br>
-.center[### 
-]
-
-<img src="en-zipf.jpg" width="500",
- height="350", style="position:absolute; right:200px; top:150px;"/>
- 
-.footnote[
-***
-
-G.K. Zipf (1935) *The psycho-biology of language*<br>
-Kanwal et al *Zipf’s Law of abbreviation as a language universal*
-
-]
-
----
-
-### Zipf's Law of Abbreviation: More frequent forms tend to be shorter
-<br><br>
-.center[### 
-]
-
-<img src="zipfslaw.png" width="600",
- height="450", style="position:absolute; right:120px; top:100px;"/>
- 
-.footnote[
-***
-
-G.K. Zipf (1935) *The psycho-biology of language*<br>
-Benz & Ferrer-i-Cancho (2016) * Zipf’s Law of abbreviation as a language universal*
-
-
-]
----
-
-
-### Zipf's Law of Abbreviation: More frequent forms tend to be shorter
-<br><br>
-.center[### 
-]
-
-<img src="en-zipf.jpg" width="500",
- height="350", style="position:absolute; right:200px; top:150px;"/>
- 
-.footnote[
-***
-
-G.K. Zipf (1935) *The psycho-biology of language*<br>
-Benz & Ferrer-i-Cancho (2016) * Zipf’s Law of abbreviation as a language universal*
-
-]
-
----
-
-# Kanwal et al. 2017
-
---
-
-<img src="kanwal-sketch.png" width="600",
- height="500", style="position:absolute; right:120px; top:100px;"/>
-
-
----
-
-# Kanwal et al. 2017: Condiciones
-
-1. Comunicación con otro jugador, con diferencial de tiempo entre mensajes
---
-
-2. Comunicación con otro jugador, sin diferencial de tiempo
-
---
-
-3. Sin otro jugador, con diferencial de tiempo entre mensajes
-
---
-
-4. Sin otro jugador, sin diferencial de tiempo
 
 ---
 
@@ -278,12 +269,94 @@ Benz & Ferrer-i-Cancho (2016) * Zipf’s Law of abbreviation as a language unive
 
 * Plan de muestreo (sampling plan)
 
-  * 
+  * 124 participantes: 31 por condición
+  
+  * Recrutados a travéz de MTurk
+  
+  * ...
 
 * Especificación de variables
 
 * Plan de analisis
 
+---
+
+
+# Componentes (Kanwal et al. 2017)
+
+* Pregunta(s) del análisis
+
+* Plan de diseño
+
+* Plan de muestreo (sampling plan)
+
+* Especificación de variables
+
+  * Uso de expresión corta
+  
+  * Referente a comunicar
+  
+  * ID de sujeto y par
+  
+  * Turno
+
+* Plan de analisis
+
+---
+
+
+# Componentes (Kanwal et al. 2017)
+
+* Pregunta(s) del análisis
+
+* Plan de diseño
+
+* Plan de muestreo (sampling plan)
+
+* Especificación de variables
+
+* Plan de analisis
+
+  * Regresión logística con expresión como variable dependiente, y frequencia del referente como variable independiente 
+
+---
+
+class: inverse, center
+
+# Datos y terminología
+
+---
+
+# Tipos de variables
+
+* **Nominales** (sexo; idioma materno; lugar de orígen)
+
+* **Ordinales** (años cursados; edad)
+
+* **Binarias** 
+
+* **Metricas** (número de usos de pronómbres; tono)
+
+---
+
+# Representación de datos 
+
+* Cada **variable** forma una columna
+
+* Cada **observación** forma una línea
+
+* (Cada **típo de unidad observacional** forma una tabla)
+
+
+
+<br><br>
+##<center>**"Tidy representation"**</center>
+
+.footnote[
+***
+
+Wickham, Hadley. 2014. “Tidy Data.” Journal of Statistical Software 59 (10). Foundation for Open Access Statistic. https://doi.org/10.18637/jss.v059.i10.
+]
 ---
 
 
