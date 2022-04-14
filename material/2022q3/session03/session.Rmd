@@ -109,7 +109,7 @@ ggplot(data = sample_dataframe,
   geom_histogram(
                  bins=50,
                  color = 1,
-                 fill = 'white') 
+                 fill = 'white') +
   theme_minimal()
   
 ```

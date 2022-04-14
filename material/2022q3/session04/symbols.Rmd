@@ -1,0 +1,56 @@
+---
+title: "Symbols and functions from today's session"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R (Simulations)
+
+### Normal distribution
+
+
+```{r, eval=FALSE}
+#this function draws x samples from a Normal distribution
+#with a mean of y and a standard deviation of z
+rnorm(n = x, mean = y, sd = z) 
+```
+
+For example,
+```{r}
+sample <- rnorm(n = 5, mean = 130, sd = 5)
+sample
+```  
+
+### Bernoulli distribution (Binomial)
+
+```{r, eval=FALSE}
+#this function draws x samples from a Binomial distribution
+#that can take (size+1) values (if size = 1, then it's a Bernoulli dist.),
+#with a probability of z
+rbinom(n = x, size = y, p = z) 
+```
+
+For example,
+```{r}
+sample <- rbinom(n = 5, size = 1, p = 0.5) 
+sample #five fair coin flips (1 = heads; 0 = tails)
+```  
+
+### Poisson distribution
+
+```{r, eval=FALSE}
+#this function draws x samples from a Poisson distribution
+#with a rate of y
+rpois(n = x, lambda = y) 
+```
+
+For example,
+```{r}
+sample <- rpois(n = 5, lambda = 130)
+sample
+```  
