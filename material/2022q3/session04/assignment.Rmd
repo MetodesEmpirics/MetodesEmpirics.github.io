@@ -1,5 +1,5 @@
 ---
-title: '5 Regression with more than one predictor: Assignment'
+title: '4 Introduction to regression: Assignment'
 output:
   pdf_document: default
   html_document:
@@ -9,28 +9,47 @@ bibliography: ../../biblio.bib
 
 # Instructions
 
-Submit your answers to the **n** first exercises through Aula Global (quiz section). Upload the remaining exercise concerning peer review through Aula Global as well (upload task).
+Submit your answers to the 6 first exercises through Aula Global (quiz section). Upload the remaining exercise concerning peer review through Aula Global as well (upload task).
 
 # Regression
 
-Consider the model `pitch ~ 1 + gender * context`, fit on the data from Franke & Roettger [-@franke+roettger:2019].
+Consider the model `pitch ~ 1 + gender`, fit on the data from Franke & Roettger [-@franke+roettger:2019].
 
-  1. What is the estimated effect on `pitch` in a polite context for a female speaker?
-  2. What is the estimated effect on `pitch` in a impolite context for a male speaker?
-  3. How many parameters does this model have?
-  4. Is a male speaker in a polite context predicted to have a higher pitch than a female speaker in an informal context?
+```{r}
+df <- read.csv("https://tinyurl.com/polite-data") #download data
 
+model <- lm(formula = pitch ~ 1 + gender, #fit model
+            data = df)
 
-# Peer review (part II) 
+#N.B.: this is equivalent to:
+#model <- lm (df$pitch ~ 1 + df$gender)
+```
 
-Submit a peer review for the analysis report that you received as a single page PDF-file through Aula Global. This submission makes up 10% of your peer-review grade. Remember that **your submission must be anonymous**. That is: do not put any information that can identify you in the PDF (like your name). 
+  1. Is this model equivalent to `pitch ~ gender`?
+  2. Is this model equivalent to `pitch ~ gender + context`?
+  3. Is this model equivalent to `pitch ~ 1 + gender + context`?
+  4. Is `pitch` the outcome, a predictor, or neither?
+  5. Is `gender` the outcome, a predictor, or neither?
+  6. What is the estimated effect on `pitch` of being a `male` speaker?
+  7. What is the predicted `pitch` of a `female` speaker?
 
-Cover the following points (in bullet points if you want)
+# Peer review (part I) 
 
-  1. Is the analysis well motivated?
-  2. Is the specific research question well connected to the general one?
-  3. Is the analysis feasible in the scope of this class? 
+Submit answers to these questions concerning your analysis report as a single page PDF-file through Aula Global. This submission makes up 10% of your peer-review grade. Remember that **your submission must be anonymous**. That is: do not put any information that can identify you in the PDF (like your name).
+
+1. Your general research question
+
+2. Why do you think this question is interesting? What does an answer to it  tell us?
+
+3. Your specific research question
+
+4. What kind of data would you use to address Question 2 if you had unlimited resources?
+
+5. What kind of data are you planning to use to address Question 2 within the scope of this class?
+    * How will you obtain it? 
+    * How much will you collect? 
+    * Do you think that is enough data to address Question 2? Why (not)?
   
-Elaborate with as much detail as you want but keep in mind that your feedback must be polite, constructive, and nuanced. Always give reasons why you think an aspect of the analysis report of your peer is good/strong or bad/weak. You can find an illustration of a peer review here: **add**
-
+Elaborate with as much detail as you (currently) have but it is perfectly acceptable if you answer in bullet points and single sentences. A randomly selected peer will give you feedback on them
+    
 # References
