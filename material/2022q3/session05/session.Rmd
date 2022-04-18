@@ -19,23 +19,13 @@ output:
 bibliography: ../../biblio.bib
 ---
 
-
-
-```{r preamble, echo=FALSE}
-library(readr)
-library(dplyr)
-library(ggplot2)
-library(reshape2)
-library(ggpubr)
-```
-
 ## Regression with multiple predictors
 
 We can straightforwardly extend our linear model with a single predictors to account for multiple ones:
 
 $$y = \beta_0 + \beta_1 x_1 + ... + \beta_n x_n + \text{error} $$
 
-In words, outcome $y$ is modelled as a linear combination of $n+1$ parameters, $\beta_0$,  $\beta_1$ up to $\beta_n$, and an error term. The contribution of $\beta_1$ to the prediction is relative to the value of $x_1$, that of $\beta_2$ is relative to the value of predictor $x_2$ and so on. 
+In words, outcome $y$ is modelled as a linear combination of $n+1$ parameters  ($\beta_0$,  $\beta_1$ up to $\beta_n$) and an error term. The contribution of $\beta_1$ to the prediction is relative to the value of $x_1$, that of $\beta_2$ is relative to the value of predictor $x_2$ and so on. 
 
 #### Case study: pitch (continued)
 
@@ -59,7 +49,7 @@ Let's again first visualize the data to see whether it even makes sense to predi
 ```{r}
 ggplot(df, aes(x = pitch, fill = gender)) +
          geom_histogram(bins=70, alpha=0.6, position='identity') +
-         theme_minimal() 
+         theme_minimal(base_size=20)
 
 ```
 
@@ -69,20 +59,19 @@ And the same for context:
 ```{r}
 ggplot(df, aes(x = pitch, fill = context)) +
          geom_histogram(bins=50, alpha=0.6, position='identity') +
-         theme_minimal() 
+         theme_minimal(base_size=20) 
 ```
 This is a more mixed picture than `gender`. We may also want to numerically see if there may be a difference in the mean pitch in formal vs. polite contexts:
 
 
-
 ```{r}
 mean_informal <- df %>% 
-                    filter(context == 'inf') %>%
-                    pull() %>%
+                    filter(context == 'inf') %>% #only informal context
+                    pull() %>%                   #extract column as vector
                     mean()
 mean_polite <- df %>% 
-                    filter(context == 'pol') %>%
-                    pull() %>%
+                    filter(context == 'pol') %>% #only polite context
+                    pull() %>%                   #extract column as vector
                     mean()
 
 mean_informal
@@ -99,33 +88,15 @@ pitch_model2 <- lm(formula = pitch ~ 1 + gender + context,
 summary(pitch_model2)
 ```
 
-## Interactions
 
-Is it reasonable to assume that `gender` and `context` do not interact? If we think that, maybe, the effect of `context` varies depending on the `gender` then we can add an interaction to the model. In formulas:
-$$y = \beta_0 + \beta_\text{gender} \; x_{gender} + \beta_\text{context} \; x_{context} + \beta_\text{gender:context} \; x_{gender} \; x_{context}$$
-Visually, 
-```{r}
-ggplot(data = df, aes(x = gender, y = pitch, fill = context)) +
-  geom_boxplot() + 
-  theme_minimal()
-```
-And the model itself,
+# Model interpretation
 
-```{r}
+## Residuals
+The difference between the predictions of your model and the true outcomes are called *residuals* (because it's what's left over: the model could not account for this difference). The residuals from your model fit are used to estimate the *residual standard error*: the value of the error term that comes with the model. When the residual standard error is exactly $0$ then the model fits the data perfectly (likely due to overfitting). 
 
-pitch_model3 <- lm(formula = pitch ~ 1 + gender * context,
-                   data    = df) 
-summary(pitch_model3)
-```
-
-
-# Model performance
 
 ## Goodness of fit
-For example, $R^2$
-
-## Predictive performance
-For example, accuracy
+For example, $R^2$. $R^2$ is the proportion of variation in the outcome that is accounted for by the predictor(s). If $R^2 = 1$ then the predictor(s) perfectly accounts for the outcome. If $R^2 = 0$ then no variability of the outcome has been explained by the predictor(s).
 
 ## Corrections {.appendix}
 If you spot a mistake or have suggestions, please get in touch with [Thomas Brochhagen](https://brochhagen.github.io) or [create an issue](https://github.com/metodesempirics/metodesempirics.github.io/issues/new)

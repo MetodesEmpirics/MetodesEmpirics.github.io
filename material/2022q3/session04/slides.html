@@ -208,7 +208,8 @@ nrow(df)
 
 
 ```r
-lm(df$pitch ~ df$ages) #resultado ~ predictor(es)
+pitch_model &lt;- lm(df$pitch ~ df$ages) #resultado ~ predictor(es)
+pitch_model
 ```
 
 ```
@@ -230,6 +231,196 @@ lm(df$pitch ~ df$ages) #resultado ~ predictor(es)
 ¿Cuál es la predicción del tono esperado de una persona de 12 años de edad? ¿Y de una de 25? 
 
 ---
+# Más allá de predicciones
+
+
+```r
+summary(pitch_model)
+```
+
+```
+## 
+## Call:
+## lm(formula = df$pitch ~ df$ages)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -75.888 -21.364  -0.273  21.562  57.647 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 158.6819    14.3871  11.029  &lt; 2e-16 ***
+## df$ages      -2.9107     0.6925  -4.203 5.81e-05 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 28.99 on 98 degrees of freedom
+## Multiple R-squared:  0.1527,	Adjusted R-squared:  0.1441 
+## F-statistic: 17.67 on 1 and 98 DF,  p-value: 5.814e-05
+```
+
+---
+
+# Residuales
+Differencia entre predicción y resultado real.
+
+
+```r
+summary &lt;- summary(pitch_model)
+summary$residuals[1:5]
+```
+
+```
+##          1          2          3          4          5 
+##  33.702507 -22.547484 -17.979687  23.583169  -3.131381
+```
+
+---
+
+# Más allá de predicciones
+
+
+```r
+summary(pitch_model)
+```
+
+```
+## 
+## Call:
+## lm(formula = df$pitch ~ df$ages)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -75.888 -21.364  -0.273  21.562  57.647 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 158.6819    14.3871  11.029  &lt; 2e-16 ***
+## df$ages      -2.9107     0.6925  -4.203 5.81e-05 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 28.99 on 98 degrees of freedom
+## Multiple R-squared:  0.1527,	Adjusted R-squared:  0.1441 
+## F-statistic: 17.67 on 1 and 98 DF,  p-value: 5.814e-05
+```
+
+---
+
+# Residuales
+
+
+```r
+plot(pitch_model$residuals)
+```
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-19-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Error estándar (standard error)
+Incertidúmbre del modelo al respecto de un parámetro
+
+
+```r
+summary$coefficients
+```
+
+```
+##               Estimate Std. Error   t value     Pr(&gt;|t|)
+## (Intercept) 158.681938 14.3871099 11.029452 7.169041e-19
+## df$ages      -2.910687  0.6924807 -4.203275 5.814231e-05
+```
+
+---
+
+# Más allá de predicciones
+
+
+```r
+summary
+```
+
+```
+## 
+## Call:
+## lm(formula = df$pitch ~ df$ages)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -75.888 -21.364  -0.273  21.562  57.647 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 158.6819    14.3871  11.029  &lt; 2e-16 ***
+## df$ages      -2.9107     0.6925  -4.203 5.81e-05 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 28.99 on 98 degrees of freedom
+## Multiple R-squared:  0.1527,	Adjusted R-squared:  0.1441 
+## F-statistic: 17.67 on 1 and 98 DF,  p-value: 5.814e-05
+```
+
+---
+
+# Residual standard error
+
+El valor (estimado) del error del modelo. Corresponde a `\(\sigma\)` o *error* en las formulas de abajo.
+&lt;br&gt;&lt;br&gt;
+`$$\Large y \sim \text{Normal}(\mu, \mathbf{\sigma})$$`
+`$$\Large\mu_i = \beta_0 + \beta_1 x_1 + ... \beta_n x_n$$`
+&lt;br&gt;
+***
+&lt;br&gt;
+
+`$$\Large y = \beta_0 + \beta_1 x_1 + ... \beta_n x_n + \text{error}$$`
+---
+
+# Goodness of fit
+
+`\(R^2\)` es la proporción de la varianza del resultado que explican los predictores. 
+
+
+```r
+summary$r.squared
+```
+
+```
+## [1] 0.152744
+```
+
+
+---
+
+# Más allá de predicciones
+
+
+```r
+summary
+```
+
+```
+## 
+## Call:
+## lm(formula = df$pitch ~ df$ages)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -75.888 -21.364  -0.273  21.562  57.647 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 158.6819    14.3871  11.029  &lt; 2e-16 ***
+## df$ages      -2.9107     0.6925  -4.203 5.81e-05 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 28.99 on 98 degrees of freedom
+## Multiple R-squared:  0.1527,	Adjusted R-squared:  0.1441 
+## F-statistic: 17.67 on 1 and 98 DF,  p-value: 5.814e-05
+```
+---
 
 class: inverse
 
@@ -240,7 +431,37 @@ class: inverse
 
 ***
 
-* **Introducción a la regresión**
+* **Regresión con más de un predictor**
+
+---
+
+# Transformaciones: Centrar
+
+Centrar datos implica restar una constante a todos los valores de una variable
+
+
+```r
+mean(df$ages)                           #promedio de edades
+```
+
+```
+## [1] 20.35
+```
+
+```r
+df$ages.cent &lt;- df$ages - mean(df$ages) #var. centrado
+lm(df$pitch ~ df$ages.cent)             #coefficiente centrado
+```
+
+```
+## 
+## Call:
+## lm(formula = df$pitch ~ df$ages.cent)
+## 
+## Coefficients:
+##  (Intercept)  df$ages.cent  
+##       99.449        -2.911
+```
 
 
     </textarea>

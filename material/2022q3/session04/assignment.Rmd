@@ -9,7 +9,7 @@ bibliography: ../../biblio.bib
 
 # Instructions
 
-Submit your answers to the 6 first exercises through Aula Global (quiz section). Upload the remaining exercise concerning peer review through Aula Global as well (upload task).
+Submit your answers to the 8 first exercises through Aula Global (quiz section). Upload the remaining exercise concerning peer review through Aula Global as well (upload task).
 
 # Regression
 
@@ -30,8 +30,9 @@ model <- lm(formula = pitch ~ 1 + gender, #fit model
   3. Is this model equivalent to `pitch ~ 1 + gender + context`?
   4. Is `pitch` the outcome, a predictor, or neither?
   5. Is `gender` the outcome, a predictor, or neither?
-  6. What is the estimated effect on `pitch` of being a `male` speaker?
-  7. What is the predicted `pitch` of a `female` speaker?
+  6. What is the estimated effect on `pitch` of being a `M`-gender speaker?
+  7. What is the predicted `pitch` of a `F`-gender speaker?
+  8. What is the estimated difference between `M`- and `F`-gendered speakers?
 
 # Peer review (part I) 
 
@@ -51,5 +52,8 @@ Submit answers to these questions concerning your analysis report as a single pa
     * Do you think that is enough data to address Question 2? Why (not)?
   
 Elaborate with as much detail as you (currently) have but it is perfectly acceptable if you answer in bullet points and single sentences. A randomly selected peer will give you feedback on them
+
+# Self-study
+Read  @winter:2013, pages 1-10: [https://arxiv.org/ftp/arxiv/papers/1308/1308.5499.pdf](https://arxiv.org/ftp/arxiv/papers/1308/1308.5499.pdf). If you find this interesting, read on until page 21. Pages 10-21 cover topics we will briefly touch on but will not be able to discuss in detail. If you're still interested, read the entire tutorial. The second part of the tutorial touches on a very powerful and useful extension of regression models that we won't cover in this class.
     
 # References

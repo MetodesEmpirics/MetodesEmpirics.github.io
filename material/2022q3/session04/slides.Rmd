@@ -370,7 +370,8 @@ nrow(df)
 # Regresión lineal (R)
 
 ```{r, echo=TRUE, message=FALSE, warning=FALSE}
-lm(df$pitch ~ df$ages) #resultado ~ predictor(es)
+pitch_model <- lm(df$pitch ~ df$ages) #resultado ~ predictor(es)
+pitch_model
 ```
 
 <br>
@@ -382,6 +383,87 @@ $$tono_i = 159 + (-2.9 \times \text{edad}_i)$$
 ¿Cuál es la predicción del tono esperado de una persona de 12 años de edad? ¿Y de una de 25? 
 
 ---
+# Más allá de predicciones
+
+```{r}
+summary(pitch_model)
+```
+
+---
+
+# Residuales
+Differencia entre predicción y resultado real.
+
+```{r}
+summary <- summary(pitch_model)
+summary$residuals[1:5]
+```
+
+---
+
+# Más allá de predicciones
+
+```{r}
+summary(pitch_model)
+```
+
+---
+
+# Residuales
+
+```{r, fig.align='center',out.width='65%'}
+plot(pitch_model$residuals)
+```
+
+---
+
+# Error estándar (standard error)
+Incertidúmbre del modelo al respecto de un parámetro
+
+```{r, warning=FALSE, message=FALSE}
+summary$coefficients
+```
+
+---
+
+# Más allá de predicciones
+
+```{r}
+summary
+```
+
+---
+
+# Residual standard error
+
+El valor (estimado) del error del modelo. Corresponde a $\sigma$ o *error* en las formulas de abajo.
+<br><br>
+$$\Large y \sim \text{Normal}(\mu, \mathbf{\sigma})$$
+$$\Large\mu_i = \beta_0 + \beta_1 x_1 + ... \beta_n x_n$$
+<br>
+***
+<br>
+
+$$\Large y = \beta_0 + \beta_1 x_1 + ... \beta_n x_n + \text{error}$$
+---
+
+# Goodness of fit
+
+$R^2$ es la proporción de la varianza del resultado que explican los predictores. 
+
+```{r}
+summary$r.squared
+```
+
+
+---
+
+# Más allá de predicciones
+
+```{r}
+summary
+```
+---
 
 class: inverse
 
@@ -392,6 +474,18 @@ class: inverse
 
 ***
 
-* **Introducción a la regresión**
+* **Regresión con más de un predictor**
+
+---
+
+# Transformaciones: Centrar
+
+Centrar datos implica restar una constante a todos los valores de una variable
+
+```{r}
+mean(df$ages)                           #promedio de edades
+df$ages.cent <- df$ages - mean(df$ages) #var. centrado
+lm(df$pitch ~ df$ages.cent)             #coefficiente centrado
+```
 
 
