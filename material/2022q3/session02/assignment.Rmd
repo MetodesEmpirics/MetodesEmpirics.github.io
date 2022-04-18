@@ -11,7 +11,7 @@ bibliography: ../../biblio.bib
 Submit your answers to the eight first exercises through Aula Global. The remainder of your assignments concern self-studies.
 
 # Describing a study
-Quick reminder from class: Kanwal et al. -@kanwal+etal:2017 taught subjects an artificial language. This language only has three (made up) words: *zopudon*, *zopekil* and *zop*. The first two words refered to distinct objects (think: *zopudon* means apples and  *zopekil* means bananas). The short form *zop* could mean either (think: fruit). That is, *zop* is ambiguous between the two meanings, and thus can lead to misunderstandings. They had subjects communicate about the two meanings (apples/bananas) in pairs, alternating who has the speaker and who was the receiver. The core motivation for this study was to see if people would use the ambiguous word, *zop*, even though it is more risky than the unequivocal but longer alternatives *zopudon* and *zopekil* under certain experimental manipulations. 
+Quick reminder from class: Kanwal et al. -@kanwal+etal:2017 taught subjects an artificial language. This language only has three (made up) words: *zopudon*, *zopekil* and *zop*. The first two words refered to distinct objects (think: *zopudon* means apples and  *zopekil* means bananas). The short form *zop* could mean either (think: fruit). That is, *zop* is ambiguous between the two meanings, and thus can lead to misunderstandings. They had subjects communicate about the two meanings (apples/bananas) in pairs, alternating who was the speaker and who was the receiver. The core motivation for this study was to see if people would use the ambiguous word, *zop*, even though it is more risky than the unequivocal but longer alternatives *zopudon* and *zopekil* under certain experimental manipulations. 
 
 Here's a glimpse of the data of the speakers:
 
@@ -21,14 +21,14 @@ head(df)
 ```
 
 
-The column `pairnum` identifies each pair of subjects (one is the speaker, the other the receiver); the `IP` column identifies each subject; `trials` keep track of the order in which the trials happened; `display` codes whether one type of object (0/1) or another type of object (2/3) was displayed to the speaker; and `label` shows what the speaker actually said to communicate this object.
+The column `pairnum` identifies each pair of subjects (alternating speaker and hearer roles); the `IP` column identifies each subject; `trials` keep track of the order in which the turns happened (trial $1$ is the first time a subject is a speaker, trial $2$ is the second, and so on); `display` codes whether one type of object (0/1) or another type of object (2/3) was displayed to the speaker; and `label` shows what the speaker actually said to communicate this object.
 
   1. What kind of study is this? Observational, experimental, or simulation?
   2. What kind of variable is `pairnum`? 
   3. What kind of variable is `trial`?
   4. What kind of variable is `label`?
   
-Inspect the sender data (`senderdata.csv') from Kanwal et al. yourself.
+Inspect the sender data from Kanwal et al. (2017) yourself.
 
   5. How many times did the sender with `IP` $67.85.42.18$ say *zop*?
   6. How many unique pairs participated in the experiment? 
@@ -38,7 +38,7 @@ Inspect the sender data (`senderdata.csv') from Kanwal et al. yourself.
 
 
 # Self-study 
-1. Work through Chapter 4 and 6 of [Introduction to Data Analysis](https://michael-franke.github.io/intro-data-analysis/Chap-02-01-data.html) [@aida]. If you need a refresher on descriptive statistics, also work through Chapter 5;
+1. Work through Chapter 4 and 6 of [Introduction to Data Analysis](https://michael-franke.github.io/intro-data-analysis/Chap-02-01-data.html) [@aida]. If you need a refresher on descriptive statistics, also look at  Chapter 5;
 2. Apply the terminology from this session to your analysis question of interest. Change your research question if you have come across another that you find more interesting
 
 
