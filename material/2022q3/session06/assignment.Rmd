@@ -1,0 +1,24 @@
+---
+title: 'Practical exercise'
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+bibliography: ../../biblio.bib
+---
+
+# Instructions
+
+You will find a data set prepared for you if you follow the link: *link_description + studentID.csv*. The data is described below.
+
+Submit your answers to the questions as a PDF file, through Aula Global (upload task).
+
+# Data set description
+
+Do frequency, predictability, familiarity.
+
+# Questions
+
+## Descriptive statistics
+
+## Regression

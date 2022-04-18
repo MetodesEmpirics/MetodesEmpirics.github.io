@@ -1,0 +1,257 @@
+---
+title: "6 Regresión generalizada I"
+author: "Métodos empíricos 2"
+date: "03/05/2022"
+output:
+  xaringan::moon_reader:
+    nature:
+      highlightLines: true
+      highlightStyle: github
+---
+
+```{r preamble, echo=FALSE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(ggplot2)
+```
+
+# Hoy
+
+.large[
+
+* Caso de estudios
+
+* Límites de modelos lineales 
+
+* Generalización
+
+]
+
+---
+
+class: inverse, center
+
+# Gestos a travéz de contextos y culturas
+
+.footnote[
+***
+Brown et al. (to appear):  Iconic gestures are modulated
+by social context: A study of multimodal politeness across two cultures. *Gesture*.
+]
+
+---
+
+# Misma formula, más sumandos
+
+$$\Large y = \beta_0 + \beta_1 x_1 + ... \beta_n x_n + \text{error}$$
+<br>
+***
+<br>
+
+$$\Large y \sim \text{Normal}(\mu,\sigma)$$
+$$\Large \mu = \beta_0 + \beta_1 x_1 + ... \beta_n x_n$$
+
+---
+
+# Caso de estudios: tono
+
+```{r}
+df <- read.csv("https://tinyurl.com/polite-data")
+head(df)
+```
+
+<br>
+***
+
+--
+
+<br>
+$$\Large \text{pitch} = \beta_0 + \beta_1 \text{gender} + \beta_2\text{context}$$
+---
+
+# Descripción de variables (género)
+
+````{r}
+unique(df$gender)
+df %>% 
+  filter(gender == 'M') %>%
+  nrow()
+df %>% 
+  filter(gender == 'F') %>%
+  nrow()
+```
+
+---
+
+# Descripción de variables (contexto)
+
+````{r}
+unique(df$context)
+df %>% 
+  filter(context == 'inf') %>%
+  nrow()
+df %>% 
+  filter(context == 'pol') %>%
+  nrow()
+```
+
+---
+
+
+# Descripción de variables (tono)
+
+```{r, warning=FALSE, fig.align='center', out.width='65%', echo=FALSE}
+ggplot(data = df,
+       aes(x = pitch)) +
+  geom_histogram(bins=50, fill = 'indianred', col='black') +
+  theme_minimal(base_size=20)
+```
+
+---
+
+# Posible relación entre predictor y variable (género)
+
+
+```{r, echo=FALSE, fig.align='center', out.width='65%', echo=FALSE}
+ggplot(df, aes(x = pitch, fill = gender)) +
+         geom_histogram(bins=70, alpha=0.6, position='identity') +
+         theme_minimal(base_size=20)
+```
+
+---
+
+# Posible relación entre predictor y variable (género)
+
+
+```{r, echo=FALSE, fig.align='center', out.width='65%', echo=FALSE}
+ggplot(df, aes(y = pitch, x = gender)) +
+         geom_point() +
+         theme_minimal(base_size=20)
+```
+
+---
+# Modelo género
+
+````{r}
+pitch_model1 <- lm(formula = pitch ~ 1 + gender,
+                   data = df)
+summary(pitch_model1)
+```
+
+---
+
+# Modelo género
+
+```{r}
+coef(pitch_model1)
+```
+
+```{r}
+df %>%
+  filter(gender == 'F') %>%
+  pull() %>%
+  mean()
+
+df %>%
+  filter(gender == 'M') %>%
+  pull() %>%
+  mean()
+```
+
+---
+
+# Posible relación entre predictor y variable (contexto)
+
+```{r, echo=FALSE, fig.align='center', out.width='65%'}
+ggplot(df, aes(x = pitch, fill = context)) +
+         geom_histogram(bins=50, alpha=0.6, position='identity') +
+         theme_minimal(base_size=20) 
+```
+
+---
+
+
+# Posible relación entre predictor y variable (contexto)
+
+```{r, echo=FALSE, fig.align='center', out.width='65%'}
+ggplot(df, aes(y = pitch, x = context)) +
+         geom_point() +
+         theme_minimal(base_size=20) 
+```
+
+---
+
+# Modelo contexto
+
+```{r}
+pitch_model2 <- lm(formula = pitch ~ 1 + context,
+                   data = df)
+summary(pitch_model2)
+```
+
+---
+
+# Modelo con ambos predictores
+
+```{r}
+pitch_model3 <- lm(formula = pitch ~ 1 + gender + context,
+                   data = df)
+summary(pitch_model3)
+```
+
+---
+
+# Todos nuestros modelos (parámetros)
+
+```{r}
+summary(pitch_model3)$coefficients
+```
+
+```{r}
+summary(pitch_model2)$coefficients
+```
+
+```{r}
+summary(pitch_model1)$coefficients
+```
+
+
+---
+
+# Todos nuestros modelos (goodness of fit)
+
+```{r}
+summary(pitch_model3)$r.squared
+```
+
+```{r}
+summary(pitch_model2)$r.squared
+```
+
+```{r}
+summary(pitch_model1)$r.squared
+```
+
+---
+
+# Resumen: regresión lineal
+
+* Estimación de relación lineal entre uno o más predictores y un resultado.
+
+* Predicción de resultado a base de predictores (+ error)
+
+* Permite relaciones más complejas<br><br>$$ y = \beta_0 + \beta_1 (\text{context} \times \text{gender})$$<br> $$ y = \beta_0 + \beta_1 \text{log(age)}$$
+
+* Estimación de error de predicciones, e incertidumbre sobre parámetros
+
+---
+
+class: inverse
+
+# Próxima sesión
+
+* Entrega de "Assignment 5" (08:00 AM 10/05)
+* Entrega de parte II de "Revisión por pares" (08:00 AM 17/05)
+
+***
+
+* **Modelos lineales generalizados I**
