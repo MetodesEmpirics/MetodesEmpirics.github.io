@@ -241,7 +241,7 @@ class: inverse
 # Próxima sesión
 
 * Entrega de "Assignment 5" (08:00 AM 10/05)
-* Entrega de parte II de "Revisión por pares" (08:00 AM 17/05)
+* Entrega de parte II de "Revisión por pares" (08:00 AM 10/05)
 
 ***
 

@@ -1,7 +1,7 @@
 ---
 title: "6 Regresión generalizada I"
 author: "Métodos empíricos 2"
-date: "03/05/2022"
+date: "10/05/2022"
 output:
   xaringan::moon_reader:
     nature:
@@ -34,214 +34,388 @@ class: inverse, center
 
 .footnote[
 ***
-Brown et al. (to appear):  Iconic gestures are modulated
-by social context: A study of multimodal politeness across two cultures. *Gesture*.
+Brown et al. (to appear):  [Iconic gestures are modulated
+by social context: A study of multimodal politeness across two cultures](). *Gesture*.
 ]
 
 ---
 
-# Misma formula, más sumandos
+# Datos
 
-$$\Large y = \beta_0 + \beta_1 x_1 + ... \beta_n x_n + \text{error}$$
-<br>
-***
-<br>
-
-$$\Large y \sim \text{Normal}(\mu,\sigma)$$
-$$\Large \mu = \beta_0 + \beta_1 x_1 + ... \beta_n x_n$$
-
----
-
-# Caso de estudios: tono
-
-```{r}
-df <- read.csv("https://tinyurl.com/polite-data")
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+df <- read.csv('https://tinyurl.com/gestures-data') #download data
 head(df)
 ```
 
-<br>
-***
-
---
-
-<br>
-$$\Large \text{pitch} = \beta_0 + \beta_1 \text{gender} + \beta_2\text{context}$$
----
-
-# Descripción de variables (género)
-
-````{r}
-unique(df$gender)
-df %>% 
-  filter(gender == 'M') %>%
-  nrow()
-df %>% 
-  filter(gender == 'F') %>%
-  nrow()
-```
-
----
-
-# Descripción de variables (contexto)
-
-````{r}
-unique(df$context)
-df %>% 
-  filter(context == 'inf') %>%
-  nrow()
-df %>% 
-  filter(context == 'pol') %>%
-  nrow()
-```
-
 ---
 
 
-# Descripción de variables (tono)
+# Variables independientes (predictores)
 
-```{r, warning=FALSE, fig.align='center', out.width='65%', echo=FALSE}
-ggplot(data = df,
-       aes(x = pitch)) +
-  geom_histogram(bins=50, fill = 'indianred', col='black') +
+* `gender`: M o F
+
+* `context`: friend o prof
+
+* `language`: Catalan o Korean
+
+---
+
+# Variable dependiente (resultado)
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.align='center', out.width='65%'}
+library(ggplot2)
+
+ggplot(df, aes(x = gestures)) + 
+  geom_histogram(bins=30, col='black', fill= 'indianred') +
   theme_minimal(base_size=20)
 ```
 
+
 ---
 
-# Posible relación entre predictor y variable (género)
+
+# Variable dependiente (resultado)
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+df$gestures
+```
 
 
-```{r, echo=FALSE, fig.align='center', out.width='65%', echo=FALSE}
-ggplot(df, aes(x = pitch, fill = gender)) +
-         geom_histogram(bins=70, alpha=0.6, position='identity') +
+---
+
+class: inverse
+
+# Límites de modelos lineales 
+<br>
+<br>
+$$\Huge y_i \sim \text{Normal}(\mu_i, \sigma)$$
+
+***
+
+--
+$$\Huge y_i \sim \text{Poisson}(\lambda_i)$$
+$$\Huge y_i \sim \text{Bernoulli}(p_i)$$
+
+
+
+---
+
+# Modelo lineal
+
+$$\Huge y_i \sim \text{Normal}(\mu_i, \sigma)$$
+<br>
+$$\Huge \mu_i = \beta_0 + \beta_1 x_1 + ... \beta_n x_n$$
+
+
+---
+
+# Modelo lineal generalizado: Normal
+
+
+
+$$\Huge y_i \sim \text{Normal}(\mu_i, \sigma)$$
+<br>
+$$\Huge \mu_i = f(\beta_0 + \beta_1 x_1 + ... \beta_n x_n)$$
+<br>
+
+--
+
+$$\Huge f(x) = x$$ 
+
+---
+
+# Modelo lineal generalizado: Poisson
+
+
+$$\Huge y_i \sim \text{Poisson}(\lambda_i)$$
+<br>
+$$\Huge \lambda_i = f(\beta_0 + \beta_1 x_1 + ... \beta_n x_n)$$
+--
+
+<br>
+$$\Huge f(x) = \text{exp}(x)$$ 
+
+---
+
+# Espacio exponencial
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.align='center', out.width='65%'}
+x <- seq(-5,5)
+y <- exp(x)
+
+d <- data.frame(x,y)
+
+ggplot(data = d, aes(x,y)) + geom_point(col='indianred',size=3) + theme_minimal(base_size=20) + xlab('Suma de predictores') + ylab('Lambda') 
+```
+
+
+---
+
+# Modelo lineal generalizado: Poisson
+
+
+$$\Huge y_i \sim \text{Poisson}(\lambda_i)$$
+<br>
+$$\Huge \lambda_i = exp(\beta_0 + \beta_1 x_1 + ... \beta_n x_n)$$
+---
+
+# Modelo lineal generalizado: Poisson
+
+
+$$\Huge y_i \sim \text{Poisson}(\lambda_i)$$
+<br>
+$$\Huge log(\lambda_i) = \beta_0 + \beta_1 x_1 + ... \beta_n x_n$$
+
+---
+
+
+# Link functions canónicas
+
+.pull-left[**Normal**: Identitad 
+
+<br>
+
+**Poisson**: Logarítmo
+
+<br><br>
+**Bernoulli/Binomial**: Logit 
+]
+
+
+.pull-right[
+$$f(x) = x$$
+<br>
+
+$$f(x) = \text{exp}(x)$$
+<br>
+$$f(x) = \frac{exp(x)}{1 + exp(x)}$$
+]
+
+---
+
+# Regresión de Poisson (R)
+
+```{r, warning=FALSE, message=FALSE, eval=FALSE}
+glm(formula = gestures ~ 1 + language,
+    data    = df,
+    family  = poisson(link = 'log')
+    )
+```
+
+---
+
+
+class: inverse, center
+
+# Gestos a travéz de contextos y culturas
+
+.footnote[
+***
+Brown et al. (to appear):  [Iconic gestures are modulated
+by social context: A study of multimodal politeness across two cultures](). *Gesture*.
+]
+
+---
+
+# Datos
+
+```{r}
+head(df)
+```
+
+---
+
+# Gestos ~ Contexto
+
+--
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.align='center', out.width='65%'}
+ggplot(df, aes(x = gestures, fill = context)) +
+         geom_histogram(bins=20, alpha=0.6, position='identity') +
          theme_minimal(base_size=20)
 ```
 
 ---
 
-# Posible relación entre predictor y variable (género)
+
+# Modelo 1: Contexto
+
+```{r, warning=FALSE, message=FALSE}
+m1_contexto <- glm(formula = gestures ~ 1 + context,
+                   data    = df,
+                   family  = poisson(link = 'log')
+                   )
+
+coef(m1_contexto)
+```
+
+--
+
+*** 
+<br>
+$$\Large \lambda_i \approx \text{exp}(3.99 - (\text{polite} \times 0.18))$$
+```{r}
+exp(3.99 - 0.18) #expected gestures in polite context
+exp(3.99)        #expected gestures in informal context
+```
+
+---
 
 
-```{r, echo=FALSE, fig.align='center', out.width='65%', echo=FALSE}
-ggplot(df, aes(y = pitch, x = gender)) +
-         geom_point() +
+# Modelo 1: Contexto
+$$\Large \lambda_i \approx \text{exp}(3.99 - (\text{polite} \times 0.18))$$
+
+<br><br>
+
+```{r}
+exp(3.99 - 0.18) #expected gestures in polite context
+exp(3.99)        #expected gestures in informal context
+```
+
+---
+
+# Gestos ~ Lenguaje
+
+--
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.align='center', out.width='65%'}
+ggplot(df, aes(x = gestures, fill = language)) +
+         geom_histogram(bins=20, alpha=0.6, position='identity') +
          theme_minimal(base_size=20)
 ```
 
 ---
-# Modelo género
-
-````{r}
-pitch_model1 <- lm(formula = pitch ~ 1 + gender,
-                   data = df)
-summary(pitch_model1)
-```
-
----
-
-# Modelo género
-
-```{r}
-coef(pitch_model1)
-```
-
-```{r}
-df %>%
-  filter(gender == 'F') %>%
-  pull() %>%
-  mean()
-
-df %>%
-  filter(gender == 'M') %>%
-  pull() %>%
-  mean()
-```
-
----
-
-# Posible relación entre predictor y variable (contexto)
-
-```{r, echo=FALSE, fig.align='center', out.width='65%'}
-ggplot(df, aes(x = pitch, fill = context)) +
-         geom_histogram(bins=50, alpha=0.6, position='identity') +
-         theme_minimal(base_size=20) 
-```
-
----
 
 
-# Posible relación entre predictor y variable (contexto)
 
-```{r, echo=FALSE, fig.align='center', out.width='65%'}
-ggplot(df, aes(y = pitch, x = context)) +
-         geom_point() +
-         theme_minimal(base_size=20) 
-```
+# Modelo 2: Lenguaje
 
----
+```{r, warning=FALSE, message=FALSE}
+m2_lenguaje <- glm(formula = gestures ~ 1 + language,
+                   data    = df,
+                   family  = poisson(link = 'log')
+                   )
 
-# Modelo contexto
-
-```{r}
-pitch_model2 <- lm(formula = pitch ~ 1 + context,
-                   data = df)
-summary(pitch_model2)
-```
-
----
-
-# Modelo con ambos predictores
-
-```{r}
-pitch_model3 <- lm(formula = pitch ~ 1 + gender + context,
-                   data = df)
-summary(pitch_model3)
-```
-
----
-
-# Todos nuestros modelos (parámetros)
-
-```{r}
-summary(pitch_model3)$coefficients
-```
-
-```{r}
-summary(pitch_model2)$coefficients
-```
-
-```{r}
-summary(pitch_model1)$coefficients
+coef(m2_lenguaje)
 ```
 
 
 ---
 
-# Todos nuestros modelos (goodness of fit)
+# Gestos ~ Género
 
-```{r}
-summary(pitch_model3)$r.squared
-```
+--
 
-```{r}
-summary(pitch_model2)$r.squared
-```
-
-```{r}
-summary(pitch_model1)$r.squared
+```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.align='center', out.width='65%'}
+ggplot(df, aes(x = gestures, fill = gender)) +
+         geom_histogram(bins=20, alpha=0.6, position='identity') +
+         theme_minimal(base_size=20)
 ```
 
 ---
 
-# Resumen: regresión lineal
 
-* Estimación de relación lineal entre uno o más predictores y un resultado.
 
-* Predicción de resultado a base de predictores (+ error)
+# Modelo 3: Género
 
-* Permite relaciones más complejas<br><br>$$ y = \beta_0 + \beta_1 (\text{context} \times \text{gender})$$<br> $$ y = \beta_0 + \beta_1 \text{log(age)}$$
+```{r, warning=FALSE, message=FALSE}
+m3_genero <- glm(formula   = gestures ~ 1 + gender,
+                   data    = df,
+                   family  = poisson(link = 'log')
+                   )
 
-* Estimación de error de predicciones, e incertidumbre sobre parámetros
+coef(m3_genero)
+```
+
+---
+
+# summary(m1_contexto)
+
+
+
+```{r, echo=FALSE}
+summary(m1_contexto)
+```
+
+---
+
+# Akaike Information Criterio (AIC)
+
+* Estimado de predicción fuera de muestra (out of sample prediction)
+
+* Sirve de ranking relativo a otros modelos (que vieron los mismos datos)
+
+* AIC más bajo $\Rightarrow$ mejor
+
+---
+
+# summary(m2_lenguaje)
+
+
+```{r, echo=FALSE}
+summary(m2_lenguaje)
+```
+
+---
+
+# summary(m3_genero)
+
+```{r, echo=FALSE}
+summary(m3_genero)
+```
+
+
+---
+
+# Modelo 4: 3 predictores
+
+```{r}
+m4_todos <-  glm(formula   = gestures ~ 1 + gender + context + language,
+                   data    = df,
+                   family  = poisson(link = 'log')
+                   )
+```
+
+---
+
+# Modelo 4: 3 predictores
+
+```{r, echo=FALSE}
+summary(m4_todos)
+```
+---
+
+---
+
+# Modelo 4: 2 predictores
+
+```{r}
+m5_casi_todos <-  glm(formula   = gestures ~ 1 + context + language,
+                         data    = df,
+                         family  = poisson(link = 'log')
+                   )
+```
+
+---
+
+# Modelo 4: 2 predictores
+
+```{r, echo=FALSE}
+summary(m5_casi_todos)
+```
+
+---
+
+# AICs
+
+```{r}
+m1_contexto$aic
+m2_lenguaje$aic
+m3_genero$aic
+m4_todos$aic
+m5_casi_todos$aic
+
+```
 
 ---
 
@@ -249,9 +423,10 @@ class: inverse
 
 # Próxima sesión
 
-* Entrega de "Assignment 5" (08:00 AM 10/05)
-* Entrega de parte II de "Revisión por pares" (08:00 AM 17/05)
+* Entrega de "Practical exercise" (08:00 AM 20/05)
 
 ***
 
-* **Modelos lineales generalizados I**
+* **Modelos lineales generalizados II**
+
+* **Visualización I**

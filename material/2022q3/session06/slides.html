@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>5 Regresión con más de un predictor</title>
+    <title>6 Regresión generalizada I</title>
     <meta charset="utf-8" />
     <meta name="author" content="Métodos empíricos 2" />
-    <meta name="date" content="2022-03-05" />
-    <script src="slides_files/header-attrs-2.13/header-attrs.js"></script>
+    <meta name="date" content="2022-10-05" />
     <link href="slides_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="slides_files/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
   </head>
@@ -13,9 +12,9 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# 5 Regresión con más de un predictor
+# 6 Regresión generalizada I
 ### Métodos empíricos 2
-### 03/05/2022
+### 10/05/2022
 
 ---
 
@@ -25,9 +24,12 @@ class: center, middle, inverse, title-slide
 # Hoy
 
 .large[
-* Múltiples predictores 
 
-* Caso de estudios (continuado)
+* Caso de estudios
+
+* Límites de modelos lineales 
+
+* Generalización
 
 ]
 
@@ -35,361 +37,581 @@ class: center, middle, inverse, title-slide
 
 class: inverse, center
 
-# Múltiples predictores
+# Gestos a travéz de contextos y culturas
 
----
-
-# Misma formula, más sumandos
-
-`$$\Large y = \beta_0 + \beta_1 x_1 + ... \beta_n x_n + \text{error}$$`
-&lt;br&gt;
+.footnote[
 ***
-&lt;br&gt;
-
-`$$\Large y \sim \text{Normal}(\mu,\sigma)$$`
-`$$\Large \mu = \beta_0 + \beta_1 x_1 + ... \beta_n x_n$$`
+Brown et al. (to appear):  [Iconic gestures are modulated
+by social context: A study of multimodal politeness across two cultures](). *Gesture*.
+]
 
 ---
 
-# Caso de estudios: tono
+# Datos
+
+
+```
+##          ID context dur language gender gestures
+## 1 Catalan_1  friend 137  Catalan      M       61
+## 2 Catalan_1    prof 136  Catalan      M       78
+## 3 Catalan_2  friend  90  Catalan      F       31
+## 4 Catalan_2    prof 107  Catalan      F       40
+## 5 Catalan_3  friend 181  Catalan      M       81
+## 6 Catalan_3    prof 165  Catalan      M       49
+```
+
+---
+
+
+# Variables independientes (predictores)
+
+* `gender`: M o F
+
+* `context`: friend o prof
+
+* `language`: Catalan o Korean
+
+---
+
+# Variable dependiente (resultado)
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-2-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+
+# Variable dependiente (resultado)
+
+
+```
+##  [1]  61  78  31  40  81  49  32  49  39  32  35  30  88  73  59  47  22  13  61  73  58  51 101  82  56  74  40  43  91  76  62  37  89  49  30  30  33  11  26  13  63  62
+## [43]  51  27  67  49  61  61  31  16  63  42  22  10
+```
+
+
+---
+
+class: inverse
+
+# Límites de modelos lineales 
+&lt;br&gt;
+&lt;br&gt;
+`$$\Huge y_i \sim \text{Normal}(\mu_i, \sigma)$$`
+
+***
+
+--
+`$$\Huge y_i \sim \text{Poisson}(\lambda_i)$$`
+`$$\Huge y_i \sim \text{Bernoulli}(p_i)$$`
+
+
+
+---
+
+# Modelo lineal
+
+`$$\Huge y_i \sim \text{Normal}(\mu_i, \sigma)$$`
+&lt;br&gt;
+`$$\Huge \mu_i = \beta_0 + \beta_1 x_1 + ... \beta_n x_n$$`
+
+
+---
+
+# Modelo lineal generalizado: Normal
+
+
+
+`$$\Huge y_i \sim \text{Normal}(\mu_i, \sigma)$$`
+&lt;br&gt;
+`$$\Huge \mu_i = f(\beta_0 + \beta_1 x_1 + ... \beta_n x_n)$$`
+&lt;br&gt;
+
+--
+
+`$$\Huge f(x) = x$$` 
+
+---
+
+# Modelo lineal generalizado: Poisson
+
+
+`$$\Huge y_i \sim \text{Poisson}(\lambda_i)$$`
+&lt;br&gt;
+`$$\Huge \lambda_i = f(\beta_0 + \beta_1 x_1 + ... \beta_n x_n)$$`
+--
+
+&lt;br&gt;
+`$$\Huge f(x) = \text{exp}(x)$$` 
+
+---
+
+# Espacio exponencial
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-4-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Modelo lineal generalizado: Poisson
+
+
+`$$\Huge y_i \sim \text{Poisson}(\lambda_i)$$`
+&lt;br&gt;
+`$$\Huge \lambda_i = exp(\beta_0 + \beta_1 x_1 + ... \beta_n x_n)$$`
+---
+
+# Modelo lineal generalizado: Poisson
+
+
+`$$\Huge y_i \sim \text{Poisson}(\lambda_i)$$`
+&lt;br&gt;
+`$$\Huge log(\lambda_i) = \beta_0 + \beta_1 x_1 + ... \beta_n x_n$$`
+
+---
+
+
+# Link functions canónicas
+
+.pull-left[**Normal**: Identitad 
+
+&lt;br&gt;
+
+**Poisson**: Logarítmo
+
+&lt;br&gt;&lt;br&gt;
+**Bernoulli/Binomial**: Logit 
+]
+
+
+.pull-right[
+`$$f(x) = x$$`
+&lt;br&gt;
+
+`$$f(x) = \text{exp}(x)$$`
+&lt;br&gt;
+`$$f(x) = \frac{exp(x)}{1 + exp(x)}$$`
+]
+
+---
+
+# Regresión de Poisson (R)
 
 
 ```r
-df &lt;- read.csv("https://tinyurl.com/polite-data")
+glm(formula = gestures ~ 1 + language,
+    data    = df,
+    family  = poisson(link = 'log')
+    )
+```
+
+---
+
+
+class: inverse, center
+
+# Gestos a travéz de contextos y culturas
+
+.footnote[
+***
+Brown et al. (to appear):  [Iconic gestures are modulated
+by social context: A study of multimodal politeness across two cultures](). *Gesture*.
+]
+
+---
+
+# Datos
+
+
+```r
 head(df)
 ```
 
 ```
-##   subject gender sentence context pitch
-## 1      F1      F       S1     pol 213.3
-## 2      F1      F       S1     inf 204.5
-## 3      F1      F       S2     pol 285.1
-## 4      F1      F       S2     inf 259.7
-## 5      F1      F       S3     pol 203.9
-## 6      F1      F       S3     inf 286.9
+##          ID context dur language gender gestures
+## 1 Catalan_1  friend 137  Catalan      M       61
+## 2 Catalan_1    prof 136  Catalan      M       78
+## 3 Catalan_2  friend  90  Catalan      F       31
+## 4 Catalan_2    prof 107  Catalan      F       40
+## 5 Catalan_3  friend 181  Catalan      M       81
+## 6 Catalan_3    prof 165  Catalan      M       49
 ```
 
-&lt;br&gt;
-***
+---
+
+# Gestos ~ Contexto
 
 --
 
+&lt;img src="slides_files/figure-html/unnamed-chunk-7-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+# Modelo 1: Contexto
+
+
+```r
+m1_contexto &lt;- glm(formula = gestures ~ 1 + context,
+                   data    = df,
+                   family  = poisson(link = 'log')
+                   )
+
+coef(m1_contexto)
+```
+
+```
+## (Intercept) contextprof 
+##   3.9855488  -0.1772416
+```
+
+--
+
+*** 
 &lt;br&gt;
-`$$\Large \text{pitch} = \beta_0 + \beta_1 \text{gender} + \beta_2\text{context}$$`
----
-
-# Descripción de variables (género)
-
+`$$\Large \lambda_i \approx \text{exp}(3.99 - (\text{polite} \times 0.18))$$`
 
 ```r
-unique(df$gender)
+exp(3.99 - 0.18) #expected gestures in polite context
 ```
 
 ```
-## [1] "F" "M"
+## [1] 45.15044
 ```
 
 ```r
-df %&gt;% 
-  filter(gender == 'M') %&gt;%
-  nrow()
+exp(3.99)        #expected gestures in informal context
 ```
 
 ```
-## [1] 41
-```
-
-```r
-df %&gt;% 
-  filter(gender == 'F') %&gt;%
-  nrow()
-```
-
-```
-## [1] 42
-```
-
----
-
-# Descripción de variables (contexto)
-
-
-```r
-unique(df$context)
-```
-
-```
-## [1] "pol" "inf"
-```
-
-```r
-df %&gt;% 
-  filter(context == 'inf') %&gt;%
-  nrow()
-```
-
-```
-## [1] 42
-```
-
-```r
-df %&gt;% 
-  filter(context == 'pol') %&gt;%
-  nrow()
-```
-
-```
-## [1] 41
+## [1] 54.05489
 ```
 
 ---
 
 
-# Descripción de variables (tono)
+# Modelo 1: Contexto
+`$$\Large \lambda_i \approx \text{exp}(3.99 - (\text{polite} \times 0.18))$$`
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-4-1.png" width="65%" style="display: block; margin: auto;" /&gt;
-
----
-
-# Posible relación entre predictor y variable (género)
-
-
-&lt;img src="slides_files/figure-html/unnamed-chunk-5-1.png" width="65%" style="display: block; margin: auto;" /&gt;
-
----
-
-# Posible relación entre predictor y variable (género)
-
-
-&lt;img src="slides_files/figure-html/unnamed-chunk-6-1.png" width="65%" style="display: block; margin: auto;" /&gt;
-
----
-# Modelo género
+&lt;br&gt;&lt;br&gt;
 
 
 ```r
-pitch_model1 &lt;- lm(formula = pitch ~ 1 + gender,
-                   data = df)
-summary(pitch_model1)
+exp(3.99 - 0.18) #expected gestures in polite context
 ```
 
 ```
-## 
-## Call:
-## lm(formula = pitch ~ 1 + gender, data = df)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -92.186 -28.426  -2.676  23.124  90.124 
-## 
-## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)  246.986      5.680   43.48   &lt;2e-16 ***
-## genderM     -108.110      8.081  -13.38   &lt;2e-16 ***
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## Residual standard error: 36.81 on 81 degrees of freedom
-## Multiple R-squared:  0.6884,	Adjusted R-squared:  0.6846 
-## F-statistic:   179 on 1 and 81 DF,  p-value: &lt; 2.2e-16
+## [1] 45.15044
+```
+
+```r
+exp(3.99)        #expected gestures in informal context
+```
+
+```
+## [1] 54.05489
 ```
 
 ---
 
-# Modelo género
+# Gestos ~ Lenguaje
 
-
-```r
-coef(pitch_model1)
-```
-
-```
-## (Intercept)     genderM 
-##    246.9857   -108.1101
-```
-
-
-```r
-df %&gt;%
-  filter(gender == 'F') %&gt;%
-  pull() %&gt;%
-  mean()
-```
-
-```
-## [1] 246.9857
-```
-
-```r
-df %&gt;%
-  filter(gender == 'M') %&gt;%
-  pull() %&gt;%
-  mean()
-```
-
-```
-## [1] 138.8756
-```
-
----
-
-# Posible relación entre predictor y variable (contexto)
-
-&lt;img src="slides_files/figure-html/unnamed-chunk-10-1.png" width="65%" style="display: block; margin: auto;" /&gt;
-
----
-
-
-# Posible relación entre predictor y variable (contexto)
+--
 
 &lt;img src="slides_files/figure-html/unnamed-chunk-11-1.png" width="65%" style="display: block; margin: auto;" /&gt;
 
 ---
 
-# Modelo contexto
+
+
+# Modelo 2: Lenguaje
 
 
 ```r
-pitch_model2 &lt;- lm(formula = pitch ~ 1 + context,
-                   data = df)
-summary(pitch_model2)
+m2_lenguaje &lt;- glm(formula = gestures ~ 1 + language,
+                   data    = df,
+                   family  = poisson(link = 'log')
+                   )
+
+coef(m2_lenguaje)
 ```
+
+```
+##    (Intercept) languageKorean 
+##      3.9796817     -0.1713112
+```
+
+
+---
+
+# Gestos ~ Género
+
+--
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-13-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+
+# Modelo 3: Género
+
+
+```r
+m3_genero &lt;- glm(formula   = gestures ~ 1 + gender,
+                   data    = df,
+                   family  = poisson(link = 'log')
+                   )
+
+coef(m3_genero)
+```
+
+```
+## (Intercept)     genderM 
+##  3.88082715  0.04114619
+```
+
+---
+
+# summary(m1_contexto)
+
+
+
 
 ```
 ## 
 ## Call:
-## lm(formula = pitch ~ 1 + context, data = df)
+## glm(formula = gestures ~ 1 + context, family = poisson(link = "log"), 
+##     data = df)
 ## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -103.488  -62.122    9.044   51.178  105.044 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -6.3272  -2.8687   0.4296   1.6026   5.7274  
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)   202.59      10.08  20.107   &lt;2e-16 ***
-## contextpol    -18.23      14.34  -1.272    0.207    
+##             Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)  3.98555    0.02623 151.923  &lt; 2e-16 ***
+## contextprof -0.17724    0.03886  -4.561 5.08e-06 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 65.3 on 81 degrees of freedom
-## Multiple R-squared:  0.01958,	Adjusted R-squared:  0.007475 
-## F-statistic: 1.618 on 1 and 81 DF,  p-value: 0.2071
+## (Dispersion parameter for poisson family taken to be 1)
+## 
+##     Null deviance: 583.97  on 53  degrees of freedom
+## Residual deviance: 563.08  on 52  degrees of freedom
+## AIC: 870.22
+## 
+## Number of Fisher Scoring iterations: 4
 ```
 
 ---
 
-# Modelo con ambos predictores
+# Akaike Information Criterio (AIC)
+
+* Estimado de predicción fuera de muestra (out of sample prediction)
+
+* Sirve de ranking relativo a otros modelos (que vieron los mismos datos)
+
+* AIC más bajo `\(\Rightarrow\)` mejor
+
+---
+
+# summary(m2_lenguaje)
 
 
-```r
-pitch_model3 &lt;- lm(formula = pitch ~ 1 + gender + context,
-                   data = df)
-summary(pitch_model3)
-```
 
 ```
 ## 
 ## Call:
-## lm(formula = pitch ~ 1 + gender + context, data = df)
+## glm(formula = gestures ~ 1 + language, family = poisson(link = "log"), 
+##     data = df)
 ## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -82.409 -26.561  -4.262  24.690 100.140 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -6.6496  -2.6240  -0.4041   2.4834   6.0006  
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)  256.762      6.756  38.006   &lt;2e-16 ***
-## genderM     -108.349      7.833 -13.832   &lt;2e-16 ***
-## contextpol   -19.553      7.833  -2.496   0.0146 *  
+##                Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)     3.97968    0.02584 154.030  &lt; 2e-16 ***
+## languageKorean -0.17131    0.03900  -4.393 1.12e-05 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 35.68 on 80 degrees of freedom
-## Multiple R-squared:  0.7109,	Adjusted R-squared:  0.7037 
-## F-statistic: 98.38 on 2 and 80 DF,  p-value: &lt; 2.2e-16
+## (Dispersion parameter for poisson family taken to be 1)
+## 
+##     Null deviance: 583.97  on 53  degrees of freedom
+## Residual deviance: 564.56  on 52  degrees of freedom
+## AIC: 871.7
+## 
+## Number of Fisher Scoring iterations: 4
 ```
 
 ---
 
-# Todos nuestros modelos (parámetros)
+# summary(m3_genero)
 
-
-```r
-summary(pitch_model3)$coefficients
-```
 
 ```
-##               Estimate Std. Error    t value     Pr(&gt;|t|)
-## (Intercept)  256.76238   6.755918  38.005550 5.752326e-53
-## genderM     -108.34856   7.832968 -13.832376 6.398784e-23
-## contextpol   -19.55332   7.832968  -2.496285 1.460499e-02
-```
-
-
-```r
-summary(pitch_model2)$coefficients
-```
-
-```
-##             Estimate Std. Error   t value     Pr(&gt;|t|)
-## (Intercept) 202.5881   10.07528 20.107444 3.125044e-33
-## contextpol  -18.2320   14.33521 -1.271833 2.070720e-01
-```
-
-
-```r
-summary(pitch_model1)$coefficients
-```
-
-```
-##              Estimate Std. Error   t value     Pr(&gt;|t|)
-## (Intercept)  246.9857   5.679855  43.48451 6.397703e-58
-## genderM     -108.1101   8.081359 -13.37771 3.271928e-22
+## 
+## Call:
+## glm(formula = gestures ~ 1 + gender, family = poisson(link = "log"), 
+##     data = df)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -6.7432  -2.7667  -0.2118   1.9619   6.2463  
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)  3.88083    0.02715 142.961   &lt;2e-16 ***
+## genderM      0.04115    0.03871   1.063    0.288    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for poisson family taken to be 1)
+## 
+##     Null deviance: 583.97  on 53  degrees of freedom
+## Residual deviance: 582.84  on 52  degrees of freedom
+## AIC: 889.98
+## 
+## Number of Fisher Scoring iterations: 4
 ```
 
 
 ---
 
-# Todos nuestros modelos (goodness of fit)
+# Modelo 4: 3 predictores
 
 
 ```r
-summary(pitch_model3)$r.squared
-```
-
-```
-## [1] 0.7109337
-```
-
-
-```r
-summary(pitch_model2)$r.squared
-```
-
-```
-## [1] 0.01957888
-```
-
-
-```r
-summary(pitch_model1)$r.squared
-```
-
-```
-## [1] 0.6884175
+m4_todos &lt;-  glm(formula   = gestures ~ 1 + gender + context + language,
+                   data    = df,
+                   family  = poisson(link = 'log')
+                   )
 ```
 
 ---
 
-# Resumen: regresión lineal
+# Modelo 4: 3 predictores
 
-* Estimación de relación lineal entre uno o más predictores y un resultado.
 
-* Predicción de resultado a base de predictores (+ error)
+```
+## 
+## Call:
+## glm(formula = gestures ~ 1 + gender + context + language, family = poisson(link = "log"), 
+##     data = df)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -6.1975  -2.7275  -0.0876   2.2215   5.4705  
+## 
+## Coefficients:
+##                Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)     4.04691    0.03701 109.355  &lt; 2e-16 ***
+## genderM         0.03465    0.03874   0.894    0.371    
+## contextprof    -0.17724    0.03886  -4.561 5.08e-06 ***
+## languageKorean -0.16998    0.03903  -4.356 1.33e-05 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for poisson family taken to be 1)
+## 
+##     Null deviance: 583.97  on 53  degrees of freedom
+## Residual deviance: 542.87  on 50  degrees of freedom
+## AIC: 854.01
+## 
+## Number of Fisher Scoring iterations: 4
+```
+---
 
-* Permite relaciones más complejas&lt;br&gt;&lt;br&gt;$$ y = \beta_0 + \beta_1 (\text{context} \times \text{gender})$$&lt;br&gt; $$ y = \beta_0 + \beta_1 \text{log(age)}$$
+---
 
-* Estimación de error de predicciones, e incertidumbre sobre parámetros
+# Modelo 4: 2 predictores
+
+
+```r
+m5_casi_todos &lt;-  glm(formula   = gestures ~ 1 + context + language,
+                         data    = df,
+                         family  = poisson(link = 'log')
+                   )
+```
+
+---
+
+# Modelo 4: 2 predictores
+
+
+```
+## 
+## Call:
+## glm(formula = gestures ~ 1 + context + language, family = poisson(link = "log"), 
+##     data = df)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -6.0963  -2.7462   0.0327   2.2950   5.3442  
+## 
+## Coefficients:
+##                Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)     4.06438    0.03132 129.749  &lt; 2e-16 ***
+## contextprof    -0.17724    0.03886  -4.561 5.08e-06 ***
+## languageKorean -0.17131    0.03900  -4.393 1.12e-05 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for poisson family taken to be 1)
+## 
+##     Null deviance: 583.97  on 53  degrees of freedom
+## Residual deviance: 543.67  on 51  degrees of freedom
+## AIC: 852.81
+## 
+## Number of Fisher Scoring iterations: 4
+```
+
+---
+
+# AICs
+
+
+```r
+m1_contexto$aic
+```
+
+```
+## [1] 870.2175
+```
+
+```r
+m2_lenguaje$aic
+```
+
+```
+## [1] 871.6956
+```
+
+```r
+m3_genero$aic
+```
+
+```
+## [1] 889.9752
+```
+
+```r
+m4_todos$aic
+```
+
+```
+## [1] 854.0088
+```
+
+```r
+m5_casi_todos$aic
+```
+
+```
+## [1] 852.8084
+```
 
 ---
 
@@ -397,12 +619,13 @@ class: inverse
 
 # Próxima sesión
 
-* Entrega de "Assignment 5" (08:00 AM 10/05)
-* Entrega de parte II de "Revisión por pares" (08:00 AM 17/05)
+* Entrega de "Practical exercise" (08:00 AM 20/05)
 
 ***
 
-* **Modelos lineales generalizados I**
+* **Modelos lineales generalizados II**
+
+* **Visualización I**
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

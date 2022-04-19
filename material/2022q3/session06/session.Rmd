@@ -26,9 +26,11 @@ Recall our formulation of a linear model:
 $$\Large y_i \sim \text{Normal}(\mu_i,\sigma)$$
 $$\Large \mu_i = \beta_0 + \beta x_i$$
 
-Notice that there is no constraint on the outcome of the operations on the right hand side. This was not an issue in the cases we saw so far, because $\mu_i$ could, in principle, be 5; 50; 600; 234.5 or 234.5634233. However, not all parameters and outcomes can take just any value. If we are predicting how likely an event is to occur, the outcome is between $0$ and $1$. It doesn't make sense to predict that the event will occur with a probability of $234.5434$. Similarly, if we are predicting how many times an event occurred, the rate of occurence is $0$ or higher. It doesn't make sense to predict the event is expected to occur at a rate of $-5$ The constraint on the right-hand side thus depends on the distribution we're taking as a starting point. 
+Notice that there is no constraint on the outcome of the operations on the right hand side. This was not an issue in the cases we saw so far, because $\mu_i$ could, in principle, be 5; 50; 600; 234.5 or 234.5634233. However, not all parameters and outcomes can take just any value. 
 
-A *generalized* linear model is a model that takes the values on the right and applies a transformation to them. So far, we didn't have to apply any constraints because $y$ was distributed following a Normal distribution. But now we also want to make predictions about Bernoulli distributed and Poisson distributed outcomes:
+If we are predicting how likely an event is to occur, the outcome is between $0$ and $1$. It doesn't make sense to predict that the event will occur with a probability of $24.54$ or with a probability of $-1$. Similarly, if we are predicting how many times an event occurred, the rate of occurence is $0$ or higher. It doesn't make sense to predict the event is expected to occur at a rate of $-5$. The kind of constraint we need on the right-hand side thus depends on the distribution we're taking as a starting point (what the parameter on the left represents). 
+
+A *generalized* linear model is a model that takes the values on the right and applies a transformation to them to fullfil such a constraint. So far, we didn't have to apply any constraints because $y$ was distributed following a Normal distribution. But now we also want to make predictions about Bernoulli distributed and Poisson distributed outcomes. Recall that they look like this:
 
 $$\Large y_i \sim \text{Poisson}(\lambda_i)$$
 $$\Large y_i \sim \text{Bernoulli}(p_i)$$
@@ -54,17 +56,17 @@ library(dplyr)
 library(ggplot2)
 ### ### ###
 
-df <- read.csv('dyads.csv') #download data
+df <- read.csv('https://tinyurl.com/gestures-data') #download data
 glimpse(df) #get a look at the data
 ```
 
-We focus on the number of `gestures` (outcome / $y$), with `language`, 'gender' and 'gestures' as possible predictors.
+We focus on the number of `gestures` (outcome / $y$), with `language`, `gender` and `context` as possible predictors.
 
 Let's again first visualize the data to get a sense whether it even makes sense to predict number of gestures with any of these predictors:
 
 ```{r}
 ggplot(df, aes(x = gestures, fill = context)) +
-         geom_histogram(bins=70, alpha=0.6, position='identity') +
+         geom_histogram(bins=20, alpha=0.6, position='identity') +
          theme_minimal(base_size=20)
 
 ```
@@ -77,7 +79,9 @@ ggplot(df, aes(x = gestures, fill = language)) +
          geom_histogram(bins=50, alpha=0.6, position='identity') +
          theme_minimal(base_size=20) 
 ```
+
 And gender:
+
 ```{r}
 ggplot(df, aes(x = gestures, fill = gender)) +
          geom_histogram(bins=50, alpha=0.6, position='identity') +
@@ -98,10 +102,12 @@ gestures_context <- glm(formula = gestures ~ 1 + context,
 summary(gestures_context)
 ```
 
-To interpret the coefficient is a little more difficult now. Before we could just read off the intercept's and predictor's contributions, but now everything happens in the *log*-space. The predicted number of gestures of a speaker in a professional context is:
+Interpreting the coefficient is a little more difficult now. Before we could just read off the intercept's and predictor's contributions, but now everything happens in the *log*-space. The predicted number of gestures of a speaker in a professional context is:
 
 $$\Large \text{log}(\lambda_i) \approx 3.99 - 0.178 \approx 3.812 $$
-For an informal context, the prediction is just $3.99$. However, this is $\text{log}(\lambda_i)$ and not $\lambda_i$. So this is the logarithm of the expected number of gestures in both contexts. To get a non-logarithmic (and easier to interpret) prediction, take the inverse of the logarithm: the exponent.
+For an informal context, the prediction is accordingly just $3.99$. 
+
+However, this is $\text{log}(\lambda_i)$ and not $\lambda_i$. So this is the logarithm of the expected number of gestures in both contexts. To get a non-logarithmic (and easier to interpret) prediction, take the inverse of the logarithm: the exponent.
 
 ```{r}
 exp(3.99 - 0.178) #expected number of gestures in a polite context
@@ -136,6 +142,11 @@ gestures_all <- glm(formula = gestures ~ 1 + context + language + gender,
                         )
 summary(gestures_all)
 ```
+
+# Goodness of fit: Information criteria
+
+The AIC (Akaike Information Criterion) estimates out-of-sample prediction error. It provides a relative measure of model quality, penalizing for for model complexity. Lower is better.
+
 
 # Further reading
 
