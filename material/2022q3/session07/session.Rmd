@@ -1,0 +1,173 @@
+---
+title: "7 Generalized linear models II"
+author:
+- first_name: Thomas
+  last_name: Brochhagen
+  url: https://tbrochhagen.github.io/
+  affiliation: Universitat Pompeu Fabra
+date: "`r Sys.Date()`"
+output:
+  distill::distill_article:
+    toc: yes
+    toc_depth: 2
+  html_document:
+    toc: yes
+    toc_depth: '2'
+    df_print: paged
+  pdf_document:
+    toc: yes
+bibliography: ../../biblio.bib
+---
+
+## Generalized linear models (continued)
+
+We discussed count data in the last session. In this session, we will return to the Bernoulli distribution. Recall that for probabilities (Binomial/Bernoulli distributed), the canonical function that constraints the estimates to suit the distribution is the so-called inverse logit function.
+
+$$\Large y_i \sim \text{Bernoulli}(p_i)$$
+
+
+$$\Large y_i \sim \text{Bernoulli}(p_i)$$
+$$\Large p_i = \frac{\text{exp}(\beta_0 + \beta x_i)}{1 + \text{exp}(\beta_0 + \beta x_i)}$$
+
+In this session, we will estimate probabilities, using a Generalized Linear Model and the Bernoulli distribution.
+
+#### Case study: Zipf's Law of Abbreviation in the lab 
+
+Let's use the study of @kanwal+etal:2017 to exemplify a regression using the Bernoulli distribution. 
+
+
+```{r, warning=FALSE, message=FALSE}
+### Packages we will use ###
+library(dplyr)
+library(ggplot2)
+### ### ###
+
+df <- read.csv('https://tinyurl.com/2s3p9s2z')
+head(df)
+```
+
+We focus on the number use of the short `label` (outcome / $y$), with `trial` and `display` as possible predictors. First, let us transform this data slightly for ease of analysis:
+
+```{r}
+df$short <- ifelse(df$label == 'zop', 1, 0)   #new column, 1 if "zop" was used and 0 otherwise.
+df$freq <- ifelse(df$display %in% c(0,1),  'freq', 'infreq') #new column, 1 if object was frequent and 0 otherwise
+```
+
+With these new columns, we can recast our model as predicting `short` (use of the short expression) based on `trial` and `freq`. The assumption is that, the higher the `trial` the more likely speakers were to use `short`. And, also, that they were more likely to use `short` if the object to be communicated was `freq`.
+
+Let's again first visualize the data to get a sense whether it even makes sense to predict the use of a short expression with any of these predictors:
+
+```{r}
+ggplot(df, aes(x = short, fill = as.factor(freq))) +
+         geom_histogram(bins=20, alpha=0.6, position='dodge') +
+         theme_minimal(base_size=20) +
+         xlab('Long expression            Short expression') + 
+        theme(axis.text.x = element_blank(),
+              axis.ticks.x = element_blank()) +
+  scale_fill_discrete(name="Frequent object") 
+
+```
+
+And the same for trial:
+
+```{r}
+ggplot(df, aes(x = trial, fill=as.factor(short))) +
+         geom_histogram(bins=20, alpha=0.8, position='dodge') +
+         facet_wrap(~ as.factor(freq)) +
+         theme_minimal(base_size=20) +
+    scale_fill_discrete(name="Short form") 
+
+```
+
+Let's first build each model individually
+
+```{r}
+#Notice that we're now using a function called glm()
+#Notice that we now specify the family of the model (Binomial)
+#Notice that we now specify the link function (logit)
+
+zipf_freq <- glm(formula = short ~ 1 + freq,
+                       data    = df,
+                       family  = binomial(link = 'logit')
+                        )
+summary(zipf_freq)
+```
+
+Again, interpreting the coefficient is a little more difficult now. Before we could just read off the intercept's and predictor's contributions, but now everything happens in the *logit*-space. The predicted probability of using the short form for the infrequent object is:
+
+$$\Large \text{logit}(p_i) \approx 0.13 - 1.612 \approx -1.482 $$
+For an frequent object, the prediction is accordingly just $0.13$. 
+
+However, this is $\text{logit}(p_i)$ and not $p_i$. So this is the logit of the use of the short expression. To get a non-logit prediction, which is a probability, take the inverse of the logit.
+
+```{r}
+inv.logit <- function(x){exp(x) / (1 + exp(x))}
+
+
+inv.logit(0.13 - 1.612) #probability of zop for infrequent object
+inv.logit(0.13)               #probability of zop for frequent object
+```
+
+Let's do the same for `trial`
+
+```{r}
+#Notice that we're now using a function called glm()
+#Notice that we now specify the family of the model (Binomial)
+#Notice that we now specify the link function (logit)
+
+zipf_trial <- glm(formula = short ~ 1 + trial,
+                       data    = df,
+                       family  = binomial(link = 'logit')
+                        )
+summary(zipf_trial)
+```
+
+Let's unpack this again:
+
+```{r}
+inv.logit(-0.74 + (1 * 0.039))  #probability of zop in the first trial
+inv.logit(-0.74 + (20 * 0.039)) #probability of zop in the 20th trial
+inv.logit(-0.74 + (32 * 0.039)) #probability of zop in the final trial
+```
+
+
+Let's look at a model with both predictors
+
+```{r}
+#Notice that we're now using a function called glm()
+#Notice that we now specify the family of the model (Binomial)
+#Notice that we now specify the link function (logit)
+
+zipf_trial_freq <- glm(formula = short ~ 1 + trial + freq,
+                       data    = df,
+                       family  = binomial(link = 'logit')
+                        )
+summary(zipf_trial_freq)
+```
+
+Final unpacking:
+
+```{r}
+inv.logit(-0.43 + (1 *  0.034) + (1 * -1.64))  #probability of zop in the first trial for infreq.
+inv.logit(-0.43 + (20 * 0.034) + (1 * -1.64))  #probability of zop in the 20th trial for infreq.
+inv.logit(-0.43 + (32 * 0.034) + (1 * -1.64))  #probability of zop in the final trial for infreq.
+
+inv.logit(-0.43 + (1 *  0.034) + (0 * -1.64))  #probability of zop in the first trial for freq.
+inv.logit(-0.43 + (20 * 0.034) + (0 * -1.64))  #probability of zop in the 20th trial for freq.
+inv.logit(-0.43 + (32 * 0.034) + (0 * -1.64))  #probability of zop in the final trial for freq.
+```
+
+
+
+# Goodness of fit: Information criteria
+
+```{r}
+zipf_trial$aic
+zipf_freq$aic
+zipf_trial_freq$aic
+```
+
+
+
+## Corrections {.appendix}
+If you spot a mistake or have suggestions, please get in touch with [Thomas Brochhagen](https://brochhagen.github.io) or [create an issue](https://github.com/metodesempirics/metodesempirics.github.io/issues/new)

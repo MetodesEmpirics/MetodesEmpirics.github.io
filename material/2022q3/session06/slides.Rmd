@@ -254,10 +254,6 @@ coef(m1_contexto)
 *** 
 <br>
 $$\Large \lambda_i \approx \text{exp}(3.99 - (\text{polite} \times 0.18))$$
-```{r}
-exp(3.99 - 0.18) #expected gestures in polite context
-exp(3.99)        #expected gestures in informal context
-```
 
 ---
 
@@ -339,7 +335,7 @@ summary(m1_contexto)
 
 ---
 
-# Akaike Information Criterio (AIC)
+# Akaike Information Criterion (AIC)
 
 * Estimado de predicción fuera de muestra (out of sample prediction)
 
@@ -374,6 +370,7 @@ m4_todos <-  glm(formula   = gestures ~ 1 + gender + context + language,
                    data    = df,
                    family  = poisson(link = 'log')
                    )
+coef(m4_todos)
 ```
 
 ---
@@ -383,7 +380,6 @@ m4_todos <-  glm(formula   = gestures ~ 1 + gender + context + language,
 ```{r, echo=FALSE}
 summary(m4_todos)
 ```
----
 
 ---
 
@@ -394,6 +390,8 @@ m5_casi_todos <-  glm(formula   = gestures ~ 1 + context + language,
                          data    = df,
                          family  = poisson(link = 'log')
                    )
+coef(m5_casi_todos)
+
 ```
 
 ---
@@ -428,5 +426,3 @@ class: inverse
 ***
 
 * **Modelos lineales generalizados II**
-
-* **Visualización I**

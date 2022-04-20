@@ -85,8 +85,9 @@ by social context: A study of multimodal politeness across two cultures](). *Ges
 
 
 ```
-##  [1]  61  78  31  40  81  49  32  49  39  32  35  30  88  73  59  47  22  13  61  73  58  51 101  82  56  74  40  43  91  76  62  37  89  49  30  30  33  11  26  13  63  62
-## [43]  51  27  67  49  61  61  31  16  63  42  22  10
+##  [1]  61  78  31  40  81  49  32  49  39  32  35  30  88  73  59  47  22  13  61
+## [20]  73  58  51 101  82  56  74  40  43  91  76  62  37  89  49  30  30  33  11
+## [39]  26  13  63  62  51  27  67  49  61  61  31  16  63  42  22  10
 ```
 
 
@@ -271,22 +272,6 @@ coef(m1_contexto)
 &lt;br&gt;
 `$$\Large \lambda_i \approx \text{exp}(3.99 - (\text{polite} \times 0.18))$$`
 
-```r
-exp(3.99 - 0.18) #expected gestures in polite context
-```
-
-```
-## [1] 45.15044
-```
-
-```r
-exp(3.99)        #expected gestures in informal context
-```
-
-```
-## [1] 54.05489
-```
-
 ---
 
 
@@ -318,7 +303,7 @@ exp(3.99)        #expected gestures in informal context
 
 --
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-11-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-10-1.png" width="65%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -348,7 +333,7 @@ coef(m2_lenguaje)
 
 --
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-13-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-12-1.png" width="65%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -406,7 +391,7 @@ coef(m3_genero)
 
 ---
 
-# Akaike Information Criterio (AIC)
+# Akaike Information Criterion (AIC)
 
 * Estimado de predicción fuera de muestra (out of sample prediction)
 

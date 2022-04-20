@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>7 Regresión generalizada II</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Métodos empíricos 2" />
+    <link href="slides_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="slides_files/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# 7 Regresión generalizada II
+### Métodos empíricos 2
+### 17/05/2022
+
+---
+
+
+
+
+# Hoy
+
+.large[
+
+* Caso de estudios
+
+* Generalización lineal Binomial/Bernoulli
+
+* Temas avanzados
+
+]
+
+---
+
+class: inverse, center
+
+# Zipf's Law of Abbreviation
+
+.footnote[
+***
+Kanwal et al. (2017):  [Zipf’s Law of Abbreviation and the Principle of Least
+Effort: Language users optimise a miniature lexicon for
+efficient communication](). *Gesture*.
+]
+
+---
+
+# Datos
+
+
+```
+##   pairnum          IP trial display   label
+## 1       1 67.85.42.18     1       0     zop
+## 2       1 67.85.42.18     2       3 zopudon
+## 3       1 67.85.42.18     3       0     zop
+## 4       1 67.85.42.18     4       0 zopekil
+## 5       1 67.85.42.18     5       2 zopudon
+## 6       1 67.85.42.18     6       1 zopekil
+```
+
+---
+
+
+# Variables independientes (predictores)
+
+* `trial`: 1, 2, ..., 31, 32
+
+* `display`: 0, 1, 2, 3
+
+&lt;br&gt;
+--
+&lt;br&gt;
+
+
+```r
+df$freq  &lt;- ifelse(df$display %in% c(0,1),  'freq', 'infreq') 
+```
+
+* `freq`: infreq o freq
+---
+
+# Variable dependiente (resultado)
+
+```r
+df$short &lt;- ifelse(df$label == 'zop', 1, 0)  
+```
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-4-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+
+# Variable dependiente (resultado)
+
+
+```
+##  [1] 1 0 1 0 0 0 1 1 1 1
+```
+
+
+---
+# Modelo lineal generalizado: Bernoulli / Binomial
+
+
+`$$\Huge y_i \sim \text{Bernoulli}(p_i)$$`
+&lt;br&gt;
+`$$\Huge p_i = f(\beta_0 + \beta_1 x_1 + ... \beta_n x_n)$$`
+--
+
+&lt;br&gt;
+`$$\Huge f(x) = \text{inverse logit}(x)$$` 
+
+---
+# Logit y su inverso
+
+`$$\text{logit}(p) = \text{log}(\frac{p}{1-p})$$`
+&lt;br&gt;
+`$$\text{inverse logit}(p) = \frac{\text{exp}(p)}{1 + \text{exp}(p)}$$`
+
+
+```r
+inv.logit &lt;- function(x){
+  return(exp(x) / (1 + exp(x)) )
+}
+```
+
+
+---
+
+# Espacio inverso logit
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-7-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Modelo lineal generalizado: Bernoulli
+
+
+`$$\Huge y_i \sim \text{Bernoulli}(p_i)$$`
+&lt;br&gt;
+`$$\Huge p_i = \text{inv.logit}(\beta_0 + \beta_1 x_1)$$`
+---
+
+# Modelo lineal generalizado: Bernoulli
+
+
+`$$\Huge y_i \sim \text{Bernoulli}(p_i)$$`
+&lt;br&gt;
+`$$\Huge \text{logit}(p_i) = \beta_0 + \beta_1 x_1 + ... \beta_n x_n$$`
+
+---
+
+# Regresión de Bernoulli (R)
+
+
+```r
+glm(formula = short ~ 1 + freq,
+    data    = df,
+    family  = binomial(link = 'logit')
+    )
+```
+
+---
+
+class: inverse, center
+
+# Zipf's Law of Abbreviation
+
+.footnote[
+***
+Kanwal et al. (2017):  [Zipf’s Law of Abbreviation and the Principle of Least
+Effort: Language users optimise a miniature lexicon for
+efficient communication](). *Gesture*.
+]
+
+---
+
+
+# Datos
+
+
+```r
+head(df)
+```
+
+```
+##   pairnum          IP trial display   label   freq short
+## 1       1 67.85.42.18     1       0     zop   freq     1
+## 2       1 67.85.42.18     2       3 zopudon infreq     0
+## 3       1 67.85.42.18     3       0     zop   freq     1
+## 4       1 67.85.42.18     4       0 zopekil   freq     0
+## 5       1 67.85.42.18     5       2 zopudon infreq     0
+## 6       1 67.85.42.18     6       1 zopekil   freq     0
+```
+
+---
+
+# longitud de expresión ~ frecuencia de objeto
+
+--
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-10-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+# Modelo 1: Frecuencia
+
+
+```r
+zipf_freq &lt;- glm(formula = short ~ 1 + freq,
+                       data    = df,
+                       family  = binomial(link = 'logit')
+                        )
+coef(zipf_freq)
+```
+
+```
+## (Intercept)  freqinfreq 
+##   0.1251631  -1.6121461
+```
+
+--
+
+*** 
+&lt;br&gt;
+$$\Large \text{logit}(p_i) \approx 0.13 - (\text{infrec} \times 1.612) \approx -1.482 $$
+
+---
+
+
+# Modelo 1: Frecuencia
+$$\Large \text{logit}(p_i) \approx 0.13 - (\text{infrec} \times 1.612) \approx -1.482 $$
+
+&lt;br&gt;&lt;br&gt;
+
+
+```r
+inv.logit(0.13 - 1.612)
+```
+
+```
+## [1] 0.1851255
+```
+
+```r
+inv.logit(0.13)        
+```
+
+```
+## [1] 0.5324543
+```
+
+---
+
+# summary(zipf_freq)
+
+
+
+```
+## 
+## Call:
+## glm(formula = short ~ 1 + freq, family = binomial(link = "logit"), 
+##     data = df)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.2310  -1.2310  -0.6384   1.1247   1.8389  
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)  0.12516    0.06468   1.935    0.053 .  
+## freqinfreq  -1.61215    0.15800 -10.204   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 1758.7  on 1279  degrees of freedom
+## Residual deviance: 1633.0  on 1278  degrees of freedom
+## AIC: 1637
+## 
+## Number of Fisher Scoring iterations: 4
+```
+
+---
+
+# longitud de expresión ~ turno
+
+--
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-14-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+
+# Modelo 2: Turno
+
+
+```r
+zipf_trial &lt;- glm(formula = short ~ 1 + trial,
+                       data    = df,
+                       family  = binomial(link = 'logit')
+                        )
+coef(zipf_trial)
+```
+
+```
+## (Intercept)       trial 
+## -0.73645501  0.03085928
+```
+
+
+---
+# Predicciones
+
+
+```r
+inv.logit(-0.74 + (1  * 0.039))  
+```
+
+```
+## [1] 0.3315906
+```
+
+```r
+inv.logit(-0.74 + (20 * 0.039))
+```
+
+```
+## [1] 0.5099987
+```
+
+```r
+inv.logit(-0.74 + (32 * 0.039)) 
+```
+
+```
+## [1] 0.6243375
+```
+
+---
+
+# summary(zipf_freq)
+
+
+
+```
+## 
+## Call:
+## glm(formula = short ~ 1 + trial, family = binomial(link = "logit"), 
+##     data = df)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.2857  -1.0889  -0.9189   1.2285   1.4879  
+## 
+## Coefficients:
+##              Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept) -0.736455   0.118639  -6.208 5.38e-10 ***
+## trial        0.030859   0.006204   4.974 6.54e-07 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 1758.7  on 1279  degrees of freedom
+## Residual deviance: 1733.5  on 1278  degrees of freedom
+## AIC: 1737.5
+## 
+## Number of Fisher Scoring iterations: 4
+```
+
+---
+
+
+# Modelo 3: Ambos predictores
+
+
+```r
+zipf_trial_freq &lt;- glm(formula = short ~ 1 + trial + freq,
+                       data    = df,
+                       family  = binomial(link = 'logit')
+                        )
+coef(zipf_trial_freq)
+```
+
+```
+## (Intercept)       trial  freqinfreq 
+## -0.42733747  0.03359338 -1.64081659
+```
+
+---
+
+# Modelo 3: Ambos predictores
+
+
+```
+## 
+## Call:
+## glm(formula = short ~ 1 + trial + freq, family = binomial(link = "logit"), 
+##     data = df)
+## 
+## Deviance Residuals: 
+##    Min      1Q  Median      3Q     Max  
+## -1.462  -1.097  -0.562   1.089   2.077  
+## 
+## Coefficients:
+##              Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept) -0.427337   0.125352  -3.409 0.000652 ***
+## trial        0.033593   0.006536   5.140 2.75e-07 ***
+## freqinfreq  -1.640817   0.159698 -10.275  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 1758.7  on 1279  degrees of freedom
+## Residual deviance: 1606.0  on 1277  degrees of freedom
+## AIC: 1612
+## 
+## Number of Fisher Scoring iterations: 3
+```
+
+---
+
+# AICs
+
+
+```r
+zipf_freq$aic
+```
+
+```
+## [1] 1636.987
+```
+
+```r
+zipf_trial$aic
+```
+
+```
+## [1] 1737.473
+```
+
+```r
+zipf_trial_freq$aic
+```
+
+```
+## [1] 1611.984
+```
+
+---
+
+
+class: inverse, center
+
+# Temas avanzados
+
+
+---
+
+# Interacciones
+
+```r
+m4 &lt;- glm(formula = short ~ 1 + trial + freq + trial:freq,
+                       data    = df,
+                       family  = binomial(link = 'logit')
+                        )
+coef(m4)
+```
+
+```
+##      (Intercept)            trial       freqinfreq trial:freqinfreq 
+##      -0.53501091       0.04018210      -0.99080221      -0.03782272
+```
+
+---
+
+
+# Modelos hierarquicos
+
+```r
+library(lme4)
+
+m5 &lt;- glmer(formula = short ~ 1 + trial + freq +
+                              trial:freq +
+                              (1 | IP),
+                       data    = df,
+                       family  = binomial(link = 'logit')
+                        )
+summary(m5)
+```
+
+```
+## Generalized linear mixed model fit by maximum likelihood (Laplace Approximation) ['glmerMod']
+##  Family: binomial  ( logit )
+## Formula: short ~ 1 + trial + freq + trial:freq + (1 | IP)
+##    Data: df
+## 
+##      AIC      BIC   logLik deviance df.resid 
+##   1193.4   1219.1   -591.7   1183.4     1275 
+## 
+## Scaled residuals: 
+##     Min      1Q  Median      3Q     Max 
+## -2.5879 -0.5030 -0.1125  0.4594 10.7912 
+## 
+## Random effects:
+##  Groups Name        Variance Std.Dev.
+##  IP     (Intercept) 4.013    2.003   
+## Number of obs: 1280, groups:  IP, 40
+## 
+## Fixed effects:
+##                   Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)      -1.192104   0.369043  -3.230 0.001237 ** 
+## trial             0.072323   0.009886   7.316 2.55e-13 ***
+## freqinfreq       -1.185276   0.370464  -3.199 0.001377 ** 
+## trial:freqinfreq -0.073472   0.019811  -3.709 0.000208 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Correlation of Fixed Effects:
+##             (Intr) trial  frqnfr
+## trial       -0.439              
+## freqinfreq  -0.217  0.375       
+## trl:frqnfrq  0.224 -0.507 -0.849
+```
+
+---
+
+class: inverse
+
+# Próxima sesión
+
+* No hay entrega
+
+***
+
+* **Corpus**
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightLines": true,
+"highlightStyle": "github"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
