@@ -1,0 +1,68 @@
+---
+title: "8 Corpora"
+author:
+- first_name: Thomas
+  last_name: Brochhagen
+  url: https://tbrochhagen.github.io/
+  affiliation: Universitat Pompeu Fabra
+date: "`r Sys.Date()`"
+output:
+  distill::distill_article:
+    toc: yes
+    toc_depth: 2
+  html_document:
+    toc: yes
+    toc_depth: '2'
+    df_print: paged
+  pdf_document:
+    toc: yes
+bibliography: ../../biblio.bib
+---
+
+# Corpora
+
+A linguistic corpus is a digital collection of language data. It is usually large, and it is often unstructured. An example of a corpus could be:
+
+* All of Shakespear's poems
+* All Wikipedia pages in Catalan
+* All the tweets of Mariano Rajoy
+* Every post in an online (sub-)community 
+* ...
+
+They allow us to uncover latent patterns in linguistic data. To uncover these patterns, the data often needs to be processed or transformed.
+
+## Some pre-processed resources
+
+* [British National Corpus](http://www.natcorp.ox.ac.uk/) (BCN)
+* [Wikicorpus](https://www.lsi.upc.edu/~nlp/wikicorpus/) (Catalan, Spanish, English)
+* [Corpus of Contemporary American English](https://www.english-corpora.org/coca/) (COCA)
+* ...
+
+## Some libraries
+
+* NLTK (python)
+* spacy (python)
+* tidytext (R)
+
+## Tokenization
+
+To make sense of large amounts of data, we need to define units over which we want do do our analysis. Tokenization is the process of chopping up the corpus into those units. The unit of analysis could be, e.g., words, morphemes, or characters. If you want to count how many times the word *cat* appears in a text, then the tokenization should happen at the word-level.
+
+
+## Stemming and lemmatization
+
+Both of these processes aim at stripping morphological information from words that you may not want to take into consideration. If you want to count how many times the verb *to be* appears in a text, then you probably want to count *am*, *are* and *be* as the same: to lemmatize and count only different lemmas. If you want to count how many times the word *cat* is used, maybe you also want to count *cat's*, *cats* and *cats'*: to only consider the stem. 
+
+
+https://juliasilge.github.io/tidytext/
+
+## Tagging
+
+## Word embeddings & beyond
+
+
+
+
+
+## Corrections {.appendix}
+If you spot a mistake or have suggestions, please get in touch with [Thomas Brochhagen](https://brochhagen.github.io) or [create an issue](https://github.com/metodesempirics/metodesempirics.github.io/issues/new)

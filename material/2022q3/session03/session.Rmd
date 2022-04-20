@@ -31,7 +31,7 @@ A sample is a collection of data points.
 
 Your sample is most likely not the entire population you care about. That is, it is likely not *a complete sample*. Sample size is consequently almost always important, but in which way it matters is a function of your research question (chiefly: how large/small you expect the effect that you are trying to estimate to be). The truism that "more is better" applies but it does not follow that little may not already be enough. 
 
-A sample can be many things. It can be *unbiased* and *representative*; that is, sampled from the complete sample with a procedure that does not depends on the data points being sampled. But it can also be *biased* in some way. For instance, you may want to study a property of spoken Catalan but your sample may be comprised only of data from Catalan speakers from the Vallès Oriental between 20-30 years old. A priori, this is not a problem but it is something that needs to be factored in.
+A sample can be many things. It can be *unbiased* and *representative*; that is, sampled from the complete sample with a procedure that does not depend on the data points being sampled. But it can also be *biased* in some way. For instance, you may want to study a property of spoken Catalan but your sample may be comprised only of data from Catalan speakers from the Vallès Oriental between 20-30 years old. A priori, this is not a problem but it is something that needs to be factored in.
 
 # Analysis checks
 
@@ -39,7 +39,7 @@ It is always a good idea to check your analysis plan throughout all stages. Ther
 
 ## Pilot studies
 
-A pilot study is a small-scale version of your entire analysis. It serves as a proof of concept, checking both the feasability and quality of the analysis plan. It is also a safeguard to make sure you are not spending a lot of time and money on collecting a sample that may not be adequate for your question. 
+A pilot study is a small-scale version of your entire analysis. It serves as a proof of concept, checking both the feasibility and quality of the analysis plan. It is also a safeguard to make sure you are not spending a lot of time and money on collecting a sample that may not be adequate for your question. 
 
 ## Simulation studies
 
@@ -66,10 +66,10 @@ A simulation study uses computational methods to generate virtual data that simu
 A probability distribution describes a random phenomenon (drawing a sample from it) in terms of (i) a sample space (possible values you can expect) and (ii) the probabilities of events (e.g., drawing a with a value greater than 3.4). Rephrasing the same thing more intuitively, a distribution defines all the possible values you can expect in an experiment and how likely they are.
 
 
-Different distributions are useful to speak about different things. We will focus on three important ones: normal/Gaussian; binomial; and Poisson.
+Different distributions are useful to speak about different things. We will focus on three important ones: Normal/Gaussian; Binomial; and Poisson.
 
 ## Normal distribution
-A normal distribution is defined by a mean (often described by the letter $\mu$) and a standard deviation (often described by $\sigma$). You can expect samples from a Normal distribution to center around the mean and to become less likely the further they are away from it. The normal distribution spans across real numbers.
+A Normal distribution is defined by a mean (often described by the letter $\mu$) and a standard deviation (often described by $\sigma$). You can expect samples from a Normal distribution to center around the mean and to become less likely the further they are away from it. The normal distribution spans across real numbers.
 
 Here's an illustration of 5000 samples drawn from a normal distribution with mean 20 and standard deviation of 3:
 
@@ -116,7 +116,7 @@ ggplot(data = sample_dataframe,
 
 
 ## Poisson distribution
-Not all samples can take any real value, as the normal distribution assumes, nor be reduced to a (sequence) of discrete success/failure events, as binomially distributed events. Very often, we count discrete occurences of events. If these events can be assumed to be well-approximated by a constant mean rate (usually denoted by $\lambda$). The Poisson distribution ranges from 0 to positive infinity. In other words, and by contrast to a binomial distribution, the Poisson distribution has no upper bound.
+Not all samples can take any real value, as the normal distribution assumes, nor be reduced to a (sequence) of discrete success/failure events, as binomially distributed events. Very often, we count discrete occurrences of events. If these events can be assumed to be well-approximated by a constant mean rate (usually denoted by $\lambda$). The Poisson distribution ranges from 0 to positive infinity. In other words, and by contrast to a binomial distribution, the Poisson distribution has no upper bound.
 
 Here's an illustration of 5000 samples drawn from a Poisson distribution with $\lambda = 20$:
 
