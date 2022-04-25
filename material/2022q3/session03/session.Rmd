@@ -116,7 +116,7 @@ ggplot(data = sample_dataframe,
 
 
 ## Poisson distribution
-Not all samples can take any real value, as the normal distribution assumes, nor be reduced to a (sequence) of discrete success/failure events, as binomially distributed events. Very often, we count discrete occurrences of events. If these events can be assumed to be well-approximated by a constant mean rate (usually denoted by $\lambda$). The Poisson distribution ranges from 0 to positive infinity. In other words, and by contrast to a binomial distribution, the Poisson distribution has no upper bound.
+Not all samples can take any real value, as the Normal distribution assumes, nor be reduced to a (sequence) of discrete success/failure events, as binomially distributed events. Very often, we count discrete occurrences of events. If these events can be assumed to be well-approximated by a constant mean rate (usually denoted by $\lambda$), then the Poisson distribution may be worth considering. The Poisson distribution ranges from 0 to positive infinity. In other words, and by contrast to a binomial distribution, the Poisson distribution has no upper bound.
 
 Here's an illustration of 5000 samples drawn from a Poisson distribution with $\lambda = 20$:
 

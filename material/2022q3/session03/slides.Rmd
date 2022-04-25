@@ -39,12 +39,29 @@ class: inverse, center
 toda la población  de interés 
 <br>
 <br>
-
+--
 **Muestra representativa/sin sesgo**: tomada de la muestra completa con un método que no depende de la muestra que se está tomando
 <br>
 <br>
+--
+**Muestra no representativa/con sesgo**: los datos son influenciados por el método de toma
 
-**Muestra con sesgo**: los datos son influenciados por el método de toma
+---
+
+## Tipos de muestras
+
+¿Es la l-velarizada (vs. no velarizada) un fonéma del Catalán?
+
+
+---
+
+
+## Tamaño de muestra
+
+--
+
+¿Es la l-velarizada (vs. no velarizada) un fonéma del Catalán?
+
 
 ---
 
@@ -185,6 +202,11 @@ ggplot(df, aes(x = data)) +
 
 ```
 
+---
+
+* Tanto sesgo como tamaño importan
+
+* Pero cuánto importan se responde en función a la pregunta y el efecto que esperas, a priori
 ---
 
 class: inverse, center

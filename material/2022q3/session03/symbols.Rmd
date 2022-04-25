@@ -11,6 +11,12 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## R (Simulations)
 
+### Random seed
+
+```{r, eval=FALSE}
+set.seed(5) #sets the random seet at 5
+```
+
 ### Normal distribution
 
 
