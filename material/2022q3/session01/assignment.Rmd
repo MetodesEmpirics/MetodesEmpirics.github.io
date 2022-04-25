@@ -12,7 +12,7 @@ urlcolor: blue
 Submit your answers to the seven first exercises through Aula Global. Remember to round longer decimals to the second place after the comma. The remainder of the assignment concern self-studies.
 
 # Descriptive statistics
-Imagine you measured the (average) voice pitch of 20 Korean speakers (in Hz)^[This data was randomly sampled from the pre-processed and shortened version of the study of @winter+grawunder:2012, as provided in @aida. The data is accessible [here](https://rdrr.io/github/michael-franke/aida-package/man/data_polite.html).]. The data looks as follows: 
+Imagine you measured the (average) voice pitch of 15 Korean speakers (in Hz)^[This data was randomly sampled from the pre-processed and shortened version of the study of @winter+grawunder:2012, as provided in @aida. The data is accessible [here](https://rdrr.io/github/michael-franke/aida-package/man/data_polite.html).]. The data looks as follows: 
 
 `208, 158, 153.3, 259.7, 102.9, 86.1, 231.9, 285.1, 181.2, 266, 252.5, 185.5, 110.7, 236.8, 207.5` 
 

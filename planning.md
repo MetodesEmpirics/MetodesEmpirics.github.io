@@ -41,16 +41,27 @@
 
 # Session 6
   * GLMs I: poisson
+    * Transformations: Centering
   * Exam (20%)
+
+
 
 # Session 7
   * GLMs II: logistic
 
+  * Homework: Prepare your analysis, , look at a video on ggplot2
+
 # Session 8
   * Corpus I
+  * (Plotting)
+
+  * Homework: Prepare your analysis
 
 # Session 9
   * Corpus II
+  * (Plotting)
+
+  * Assignment 6: Small questionnaire on corpora
 
 # Session 10
   * Review and look forward
