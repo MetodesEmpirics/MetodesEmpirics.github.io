@@ -9,48 +9,30 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R (Simulations)
-
-### Normal distribution
-
+# Regression 
 
 ```{r, eval=FALSE}
-#this function draws x samples from a Normal distribution
-#with a mean of y and a standard deviation of z
-rnorm(n = x, mean = y, sd = z) 
+#this function fits a linear regression with "y" as outcome,
+#"x" as predictor, and takes the information on x and y from
+#the data frame df
+
+lm(formula = y ~ x, 
+   data = df) 
+
+#This is the same as
+lm(df$y ~ df$x)
 ```
 
 For example,
 ```{r}
-sample <- rnorm(n = 5, mean = 130, sd = 5)
-sample
+df <- read.csv("https://tinyurl.com/polite-data") #download data
+model <- lm(formula = pitch ~ 1 + context, #fit model
+            data = df)
 ```  
 
-### Bernoulli distribution (Binomial)
+Fits a linear regression model with `pitch` as the outcome and `context` as a predictor. 
 
-```{r, eval=FALSE}
-#this function draws x samples from a Binomial distribution
-#that can take (size+1) values (if size = 1, then it's a Bernoulli dist.),
-#with a probability of z
-rbinom(n = x, size = y, p = z) 
-```
+In formulae:
 
-For example,
-```{r}
-sample <- rbinom(n = 5, size = 1, p = 0.5) 
-sample #five fair coin flips (1 = heads; 0 = tails)
-```  
-
-### Poisson distribution
-
-```{r, eval=FALSE}
-#this function draws x samples from a Poisson distribution
-#with a rate of y
-rpois(n = x, lambda = y) 
-```
-
-For example,
-```{r}
-sample <- rpois(n = 5, lambda = 130)
-sample
-```  
+$$\large \text{pitch}_i \sim \text{Normal}(\mu_i,\sigma)$$
+$$\large \mu_i = \beta_0 + \beta_1 \text{context}$$

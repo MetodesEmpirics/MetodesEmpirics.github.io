@@ -60,24 +60,24 @@ df <- read.csv("https://tinyurl.com/polite-data") #download data
 glimpse(df) #get a look at the data
 ```
 
-We focus on the pitch (outcome / $y$) and gender (predictor) columns in this session. 
+We focus on the pitch (outcome / $y$) and context (predictor) columns in this session. 
 
-Let's first visualize the data to see whether it even makes sense to predict pitch based on gender:
+Let's first visualize the data to see whether it even makes sense to predict pitch based on context:
 
 ```{r}
-ggplot(df, aes(x = pitch, fill = gender)) +
+ggplot(df, aes(x = pitch, fill = context)) +
          geom_histogram(bins=70, alpha=0.6, position='identity') +
          theme_minimal() 
 
 ```
 Recasting the formula from above, our linear model looks as follows:
 
-$$\text{pitch} = \beta_0 + \beta_1 \text{gender}$$
-But gender is not a numerical variable. To make $\beta_1 \text{gender}$ make sense we should re-code this column.^[R handles this on its own. So you can pass it a variable like `gender` and it will recode it automatically. We are here just being explicit about the process.]
+$$\text{pitch} = \beta_0 + \beta_1 \text{context}$$
+But context is not a numerical variable. To make $\beta_1 \text{context}$ make sense we should re-code this column.^[R handles this on its own. So you can pass it a variable like `context` or `gender` and it will recode it automatically. We are here just being explicit about the process.]
 
 ```{r}
 df <- df %>%
-      mutate(gender = ifelse(gender == 'M',0,1)) #change 'M' into a 0 and 'F' into 1
+      mutate(context = ifelse(context == 'inf',0,1)) #change 'inf' into a 0 and 'pol' into 1
 glimpse(df) #check if this worked as intended
 ```
 
@@ -85,11 +85,11 @@ In `lme`-syntax, this model is written as
 
 ```{r}
 
-pitch_model <- lm(formula = pitch ~ 1 + gender,
+pitch_model <- lm(formula = pitch ~ 1 + context,
                    data    = df)
 ```
 
-That's all! We can now inspect the model's estimate of the effect of `gender` on `pitch`:
+That's all! We can now inspect the model's estimate of the effect of `context` on `pitch`:
 
 ```{r}
 pitch_model
@@ -103,43 +103,44 @@ summary(pitch_model)
 
 ##### Making sense of the model predictions
 
-We can relate these estimates back to our formula. What `lme` writes as *Intercept* is $\beta_0$ and *gender* is $\beta_1$. That is, we go from
+We can relate these estimates back to our formula. What `lme` writes as *Intercept* is $\beta_0$ and *context* is $\beta_1$. That is, we go from
 
-$$\text{pitch} = \beta_0 + \beta_1 \text{gender}$$
+$$\text{pitch} = \beta_0 + \beta_1 \text{context}$$
 to
-$$\text{pitch} = 138.9 + 108.01 \text{gender}$$
-Remember that `gender` is $0$ if the subject is female and $1$ if the subject is male. In other words, we predict a pitch of 
+$$\text{pitch} = 202.59 + (-18.23 \times \text{context})$$
+Remember that `context` is $0$ if the context is informal and $1$ if the context is formal. In other words, we predict an informal pitch of 
 
-$$\text{pitch} = 138.9 + 108.01 * 0$$
+$$\text{pitch} = 202.59 + (-18.23 * 0)$$
 which is the same as 
-$$\text{pitch} = 138.9$$
-In words, the expected value of the pitch of a female speaker is 138.9 Hz. Does this make sense? Let's look at the mean pitch of a female speaker in our model.
+$$\text{pitch} =202.59$$
+In words, the expected value of the pitch of a speaker in an informal context to be 202.59 Hz. Does this make sense? Let's look at the mean pitch of a speaker in an informal context in our data.
 
 ```{r}
 df %>% 
-  filter(gender == 0) %>% #only female subjects
+  filter(context == 0) %>% #only female subjects
   select(pitch) %>% #get the column with pitch information
   pull() %>% #pull it from the data frame
   mean() #take the mean of this vector
 ```
 
-So this is a sensible prediction. What about males? Our model predicts
+So this is a sensible prediction. What about formal contexts? Our model predicts
 
-$$\text{pitch} = 138.9 + 108.01 \text{gender}$$
-Plugging in the *male* value of $1$ for `gender`:
+$$\text{pitch} = 202.59 + (-18.23 \times \text{context})$$
 
-$$\text{pitch} = 138.9 + 108.01 * 1$$
-which gives $138.9 + 108.01 = 246.91$. Does this make sense?
+Plugging in the *formal* value of $1$ for `context`:
+
+$$\text{pitch} = 202.59 + (-18.23  * 1)$$
+which gives $202.59 -18.23 = 184.36$. Does this make sense?
 
 ```{r}
 df %>% 
-  filter(gender == 1) %>% #only male subjects
+  filter(context == 1) %>% #only male subjects
   select(pitch) %>% #get the column with pitch information
   pull() %>% #pull it from the data frame
   mean() #take the mean of this vector
 ```
 
-Perfect. So the model makes sense, but what do we learn from it? First and foremost, that the expected difference between male and female speakers is $108.01$. 
+Perfect. So the model makes sense, but what do we learn from it? First and foremost, that the expected difference between formal and informal contexts is $18.23$. 
 
 We have (1) an estimate of the error of these estimates; (2) indicators of significance; (3) $R^2$.
 
@@ -153,7 +154,7 @@ The **standard error** indicates variability in the estimate. Data rarely, if ev
 
 **Statistical significance** is a topic we will address in later sessions.
 
-**$R^2$** is the proportion of variation in the outcome (here: pitch) that the model can predict based on the predictors (here: gender). In this example, $R^2 \approx 0.68$, meaning that 68% of the variability in pitch is accounted for by `gender`. Reversely, it suggests that over 30% of the data is not explained by `gender`.  More formally, 
+**$R^2$** is the proportion of variation in the outcome (here: pitch) that the model can predict based on the predictors (here: context). In this example, $R^2 \approx 0.01958$, meaning that barely 2% of the variability in pitch is accounted for by `context`. Reversely, it suggests that about 98% of the data is not explained by `context`. The model is pretty bad!  More formally, 
 
 $$R^2 = 1 - \frac{SS_{residual}}{SS_{total}}, \text{ where } $$
 $$SS_{residual} = \sum_i e^2_i, \text{ and }$$
