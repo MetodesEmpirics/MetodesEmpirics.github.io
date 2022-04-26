@@ -74,7 +74,30 @@ ggplot(df, aes(x = predictor, y = resultado)) +
 
 ## Regresión lineal (ejemplo)
 
-Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más predictores ( *sexo*; *contexto*; *edad* ). Otra formulación: Estimación de predicción de *tono* a base de *sexo* y/o *contexto* y/o *edad*.
+Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más predictores ( *género*; *contexto*; *edad* ). Otra formulación: Estimación de predicción de *tono* a base de *género* y/o *contexto* y/o *edad*.
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE,fig.align='center',out.width='55%'}
+set.seed(121)
+#df <- read_csv("https://tinyurl.com/polite-data") #download data 
+#df_male <- df %>% filter(gender == 'M', context=='pol')
+
+ages <- rpois(n=100, lambda=20)
+pitch <- 160 - (3 * ages) + rnorm(n=100,mean=0,sd=30)
+df <- data.frame(ages = ages, pitch = pitch)
+
+ggplot(df, aes(x = ages, y = pitch)) +
+  geom_point() +
+  theme_minimal(base_size=25) +
+  xlab('edad (x)') +
+  ylab('tono (y)')
+```
+
+---
+
+
+## Regresión lineal (ejemplo)
+
+Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más predictores ( *género*; *contexto*; *edad* ). Otra formulación: Estimación de predicción de *tono* a base de *género* y/o *contexto* y/o *edad*.
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE,fig.align='center',out.width='55%'}
 set.seed(121)
@@ -94,9 +117,36 @@ ggplot(df, aes(x = ages, y = pitch)) +
 ```
 
 ---
+
+
 ## Regresión lineal (ejemplo)
 
-Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más predictores ( *sexo*; *contexto*; *edad* ). Otra formulación: Estimación de predicción de *tono* a base de *sexo* y/o *contexto* y/o *edad*.
+Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más predictores ( *género*; *contexto*; *edad* ). Otra formulación: Estimación de predicción de *tono* a base de *género* y/o *contexto* y/o *edad*.
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE,fig.align='center',out.width='55%'}
+set.seed(120)
+library(readr)
+df <- read_csv("https://tinyurl.com/polite-data") %>% #download data 
+      mutate(context = as.factor(context),
+             gender =  as.factor(gender))
+df$ctx = ifelse(df$context == 'pol', 1, 0)
+
+ggplot(df, aes(x = ctx , y = pitch)) +
+  geom_point() +
+  theme_minimal(base_size=25) +
+  xlab('informal           formal') +
+  ylab('tono (y)') +
+  scale_x_discrete(labels=c("0" = "Informal", "1" = "Polite",
+                              "0.5" = ''))
+```
+
+---
+
+
+
+## Regresión lineal (ejemplo)
+
+Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más predictores ( *género*; *contexto*; *edad* ). Otra formulación: Estimación de predicción de *tono* a base de *género* y/o *contexto* y/o *edad*.
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE,fig.align='center',out.width='55%'}
 set.seed(120)

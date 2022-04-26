@@ -5,11 +5,12 @@ output:
   html_document:
     df_print: paged
 bibliography: ../../biblio.bib
+urlcolor: blue
 ---
 
 # Instructions
 
-Submit your answers to the 8 first exercises through Aula Global (quiz section). Upload the remaining exercise concerning peer review through Aula Global as well (upload task).
+Submit your answers to the 6 first exercises through Aula Global (quiz section **in your seminar**). Upload the remaining exercise concerning peer review through Aula Global as well (upload task **in grup gran**).
 
 # Regression
 
@@ -25,18 +26,16 @@ model <- lm(formula = pitch ~ 1 + gender, #fit model
 #model <- lm (df$pitch ~ 1 + df$gender)
 ```
 
-  1. Is this model equivalent to `pitch ~ gender`?
-  2. Is this model equivalent to `pitch ~ gender + context`?
-  3. Is this model equivalent to `pitch ~ 1 + gender + context`?
-  4. Is `pitch` the outcome, a predictor, or neither?
-  5. Is `gender` the outcome, a predictor, or neither?
-  6. What is the estimated effect on `pitch` of being a `M`-gender speaker?
-  7. What is the predicted `pitch` of a `F`-gender speaker?
-  8. What is the estimated difference between `M`- and `F`-gendered speakers?
+  1. Is this model equivalent to `pitch ~ gender` or `pitch ~ gender + context`?
+  2. Is `pitch` the outcome, a predictor, or neither?
+  3. Is `gender` the outcome, a predictor, or neither?
+  4. What is the predicted `pitch` of a `M`-gender speaker? Round your answer to the first decimal after the comma (if there are decimals)
+  5. What is the predicted `pitch` of a `F`-gender speaker? Round your answer to the first decimal after the comma (if there are decimals) 
+  6. What is the estimated difference between `M`- and `F`-gendered speakers? Round your answer to the first decimal after the comma (if there are decimals) 
 
 # Peer review (part I) 
 
-Submit answers to these questions concerning your analysis report as a single page PDF-file through Aula Global. This submission makes up 10% of your peer-review grade. Remember that **your submission must be anonymous**. That is: do not put any information that can identify you in the PDF (like your name).
+Submit answers to these questions concerning your analysis report as a single page PDF-file through Aula Global. This submission makes up 10% of your peer-review grade. Remember that **your submission must be anonymous**. That is: do not put any information that can identify you in the PDF nor in the name of the file (like your name).
 
 1. Your general research question
 

@@ -73,7 +73,7 @@ ggplot(df, aes(x = pitch, fill = gender)) +
 Recasting the formula from above, our linear model looks as follows:
 
 $$\text{pitch} = \beta_0 + \beta_1 \text{gender}$$
-But gender is not a numerical variable. To make $\beta_1 \text{gender}$ make sense we should re-code this column.^[R handles this on its own. So you can pass it a variable like `gender` and it will recode it automatically. We are here just being explicit about the process].
+But gender is not a numerical variable. To make $\beta_1 \text{gender}$ make sense we should re-code this column.^[R handles this on its own. So you can pass it a variable like `gender` and it will recode it automatically. We are here just being explicit about the process.]
 
 ```{r}
 df <- df %>%
