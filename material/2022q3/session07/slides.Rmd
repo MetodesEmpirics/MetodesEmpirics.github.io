@@ -1,7 +1,7 @@
 ---
 title: "7 Regresión generalizada II"
 author: "Métodos empíricos 2"
-date: "17/05/2022"
+date: "24/05/2022"
 output:
   xaringan::moon_reader:
     nature:
@@ -361,8 +361,12 @@ class: inverse
 
 # Próxima sesión
 
-* No hay entrega
+* Entrega parte II de "Revisión por pares": 24/05 - 31/05
 
 ***
 
 * **Corpus**
+
+*** 
+
+* Informe final: 28/06

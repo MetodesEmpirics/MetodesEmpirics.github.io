@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>7 Regresión generalizada II</title>
+    <title>8 Corpora</title>
     <meta charset="utf-8" />
     <meta name="author" content="Métodos empíricos 2" />
+    <script src="slides_files/header-attrs-2.13/header-attrs.js"></script>
     <link href="slides_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="slides_files/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
   </head>
@@ -11,9 +12,9 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# 7 Regresión generalizada II
+# 8 Corpora
 ### Métodos empíricos 2
-### 17/05/2022
+### 31/05/2022
 
 ---
 
@@ -24,13 +25,148 @@ class: center, middle, inverse, title-slide
 
 .large[
 
-* Caso de estudios
+* Corpora y pre-procesamiento
 
-* Generalización lineal Binomial/Bernoulli
+* Utilidad de datos no estructurados
 
-* Temas avanzados
+* La(s) leye(s) de Zipf
+
+* Word embeddings y más allá
 
 ]
+
+---
+
+class: inverse, center
+
+# Corpora y pre-procesamiento
+
+---
+
+# Corpora
+
+* Por definición: Cualquier colección de datos
+
+* Por uso: Colección de datos no estructurados, muchas veces de [gran]() tamaño
+
+
+.footnote[
+***
+
+Lo que significa [gran]() varía en función a la naturaleza de los datos, y de cuándo son.]
+
+---
+
+# Associated Press Corpus 
+
+Collection of 2246 news articles, mostly published around 1988
+
+--
+
+&lt;img src="ap-story.png" width="1931" /&gt;
+
+
+---
+
+# Tokenización
+
+--
+
+Segmentar y transformar tu corpus para que represente las unidades de tu análisis.
+
+Por ejemplo, palabras, morfémas, o caracteres.
+
+---
+
+# Tokenización a nivel de palabras
+
+
+```r
+library(stringr)
+
+first_par &lt;- 'MEXICO CITY (AP) — The Mexican government said Tuesday that COVID-19 has passed from a pandemic to an endemic stage in Mexico, meaning authorities will treat it as a seasonally recurring disease.'
+
+tokenized_first_par &lt;- str_split(first_par, pattern = " ")[[1]]
+tokenized_first_par
+```
+
+```
+##  [1] "MEXICO"      "CITY"        "(AP)"        "—"           "The"         "Mexican"    
+##  [7] "government"  "said"        "Tuesday"     "that"        "COVID-19"    "has"        
+## [13] "passed"      "from"        "a"           "pandemic"    "to"          "an"         
+## [19] "endemic"     "stage"       "in"          "Mexico,"     "meaning"     "authorities"
+## [25] "will"        "treat"       "it"          "as"          "a"           "seasonally" 
+## [31] "recurring"   "disease."
+```
+
+---
+
+# Procesos de normalización de token(e)s
+
+--
+
+## Casing
+
+Convertir todo el texto a minúscula (o mayúscula)
+
+--
+
+## Stemming
+
+Quitar material morfológico, quedandose sólamente con las raíces
+
+
+## Lematización
+
+Cambiar palabras por sus respectivos lemas.
+
+---
+
+# Casing
+
+
+```r
+tolower(tokenized_first_par)
+```
+
+```
+##  [1] "mexico"      "city"        "(ap)"        "—"           "the"         "mexican"    
+##  [7] "government"  "said"        "tuesday"     "that"        "covid-19"    "has"        
+## [13] "passed"      "from"        "a"           "pandemic"    "to"          "an"         
+## [19] "endemic"     "stage"       "in"          "mexico,"     "meaning"     "authorities"
+## [25] "will"        "treat"       "it"          "as"          "a"           "seasonally" 
+## [31] "recurring"   "disease."
+```
+
+---
+
+# Stemming &amp; lemmatization
+
+* cat, cats, cat's, cats'; ...
+
+* to be; am; are; were; ...
+
+
+---
+
+# Tokenized AP
+
+
+
+
+```
+## # A tibble: 6 × 3
+##   document term      count
+##      &lt;int&gt; &lt;chr&gt;     &lt;dbl&gt;
+## 1        1 adding        1
+## 2        1 adult         2
+## 3        1 ago           1
+## 4        1 alcohol       1
+## 5        1 allegedly     1
+## 6        1 allen         1
+```
+
+
 
 ---
 
@@ -87,7 +223,7 @@ df$freq  &lt;- ifelse(df$display %in% c(0,1),  'freq', 'infreq')
 df$short &lt;- ifelse(df$label == 'zop', 1, 0)  
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-4-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-20-1.png" width="65%" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -132,7 +268,7 @@ inv.logit &lt;- function(x){
 
 # Espacio inverso logit
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-7-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-23-1.png" width="65%" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -203,7 +339,7 @@ head(df)
 
 --
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-10-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-26-1.png" width="65%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -293,7 +429,7 @@ inv.logit(0.13)
 
 --
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-14-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-30-1.png" width="65%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -518,10 +654,10 @@ summary(m5)
 ## 
 ## Fixed effects:
 ##                   Estimate Std. Error z value Pr(&gt;|z|)    
-## (Intercept)      -1.192104   0.369043  -3.230 0.001237 ** 
-## trial             0.072323   0.009886   7.316 2.55e-13 ***
-## freqinfreq       -1.185276   0.370464  -3.199 0.001377 ** 
-## trial:freqinfreq -0.073472   0.019811  -3.709 0.000208 ***
+## (Intercept)      -1.192104   0.369049  -3.230 0.001237 ** 
+## trial             0.072323   0.009886   7.316 2.56e-13 ***
+## freqinfreq       -1.185276   0.370469  -3.199 0.001377 ** 
+## trial:freqinfreq -0.073472   0.019812  -3.709 0.000208 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
@@ -538,11 +674,15 @@ class: inverse
 
 # Próxima sesión
 
-* No hay entrega
+* No hay entrega inmediata
 
 ***
 
-* **Corpus**
+* **Visualización**
+
+***
+
+* Entrega parte II de "Revisión por pares": 24/05 - 31/05
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

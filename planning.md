@@ -58,10 +58,8 @@
   * Homework: Prepare your analysis
 
 # Session 9
-  * Corpus II
   * (Plotting)
 
-  * Assignment 6: Small questionnaire on corpora
 
 # Session 10
   * Review and look forward

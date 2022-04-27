@@ -1,7 +1,7 @@
 ---
 title: "6 Regresión generalizada I"
 author: "Métodos empíricos 2"
-date: "10/05/2022"
+date: "17/05/2022"
 output:
   xaringan::moon_reader:
     nature:
@@ -421,8 +421,15 @@ class: inverse
 
 # Próxima sesión
 
-* Entrega de "Practical exercise" (08:00 AM 20/05)
+* Entrega de "Practical exercise" (08:00 AM 24/05)
 
 ***
 
 * **Modelos lineales generalizados II**
+
+*** 
+
+* Entrega parte II de "Revisión por pares": 24/05 - 31/05
+
+* Informe final: 28/06
+

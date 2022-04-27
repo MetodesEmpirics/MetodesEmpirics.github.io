@@ -1,7 +1,7 @@
 ---
 title: "5 Regresión con más de un predictor"
 author: "Métodos empíricos 2"
-date: "03/05/2022"
+date: "10/05/2022"
 output:
   xaringan::moon_reader:
     nature:
@@ -240,9 +240,16 @@ class: inverse
 
 # Próxima sesión
 
-* Entrega de "Assignment 5" (08:00 AM 10/05)
-* Entrega de parte II de "Revisión por pares" (08:00 AM 10/05)
+* Entrega de "Assignment 5" (08:00 AM 17/05)
 
 ***
 
 * **Modelos lineales generalizados I**
+
+*** 
+
+* Ejercicio práctico: 17/05 - 24/05
+
+* Entrega parte II de "Revisión por pares": 24/05 - 31/05
+
+* Informe final: 28/06

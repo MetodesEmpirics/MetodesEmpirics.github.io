@@ -1,7 +1,7 @@
 ---
-title: "7 Regresión generalizada II"
+title: "8 Corpora"
 author: "Métodos empíricos 2"
-date: "17/05/2022"
+date: "31/05/2022"
 output:
   xaringan::moon_reader:
     nature:
@@ -18,13 +18,127 @@ library(ggplot2)
 
 .large[
 
-* Caso de estudios
+* Corpora y pre-procesamiento
 
-* Generalización lineal Binomial/Bernoulli
+* Utilidad de datos no estructurados
 
-* Temas avanzados
+* La(s) leye(s) de Zipf
+
+* Word embeddings y más allá
 
 ]
+
+---
+
+class: inverse, center
+
+# Corpora y pre-procesamiento
+
+---
+
+# Corpora
+
+* Por definición: Cualquier colección de datos
+
+* Por uso: Colección de datos no estructurados, muchas veces de [gran]() tamaño
+
+
+.footnote[
+***
+
+Lo que significa [gran]() varía en función a la naturaleza de los datos, y de cuándo son.]
+
+---
+
+# Associated Press Corpus 
+
+Collection of 2246 news articles, mostly published around 1988
+
+--
+
+```{r, echo=FALSE}
+library(tm)
+library(knitr)
+data("AssociatedPress", package = "topicmodels")
+include_graphics('ap-story.png')
+```
+
+
+---
+
+# Tokenización
+
+--
+
+Segmentar y transformar tu corpus para que represente las unidades de tu análisis.
+
+Por ejemplo, palabras, morfémas, o caracteres.
+
+---
+
+# Tokenización a nivel de palabras
+
+```{r, tidy = TRUE}
+library(stringr)
+
+first_par <- 'MEXICO CITY (AP) — The Mexican government said Tuesday that COVID-19 has passed from a pandemic to an endemic stage in Mexico, meaning authorities will treat it as a seasonally recurring disease.'
+
+tokenized_first_par <- str_split(first_par, pattern = " ")[[1]]
+tokenized_first_par
+```
+
+---
+
+# Procesos de normalización de token(e)s
+
+--
+
+## Casing
+
+Convertir todo el texto a minúscula (o mayúscula)
+
+--
+
+## Stemming
+
+Quitar material morfológico, quedandose sólamente con las raíces
+
+
+## Lematización
+
+Cambiar palabras por sus respectivos lemas.
+
+---
+
+# Casing
+
+```{r}
+tolower(tokenized_first_par)
+```
+
+---
+
+# Stemming & lemmatization
+
+* cat, cats, cat's, cats'; ...
+
+* to be; am; are; were; ...
+
+
+---
+
+# Tokenized AP
+
+```{r, echo=FALSE}
+library(tidytext)
+AP_corpus <- tidy(AssociatedPress)
+````
+
+```{r, echo=FALSE}
+head(AP_corpus)
+```
+
+
 
 ---
 
@@ -361,8 +475,12 @@ class: inverse
 
 # Próxima sesión
 
-* No hay entrega
+* No hay entrega inmediata
 
 ***
 
-* **Corpus**
+* **Visualización**
+
+***
+
+* Entrega parte II de "Revisión por pares": 24/05 - 31/05
