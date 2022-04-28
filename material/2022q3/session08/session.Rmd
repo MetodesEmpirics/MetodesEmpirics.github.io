@@ -16,7 +16,6 @@ output:
     df_print: paged
   pdf_document:
     toc: yes
-bibliography: ../../biblio.bib
 ---
 
 # Corpora
@@ -69,7 +68,7 @@ To illustrate: The model is asked to predict the word following "The ___"; then 
 
 
 ## Zipf's Power Law
-Words rank-frequency distribution is inverse [@zipf:1935; @zipf:1949; @sigurd+etal:2004; @piantadosi+etal:2011;  @ferrer-i-cancho+hernandez-fernandez:2013; @ferrer-i-cancho+etal:2013]. That is, the frequency of any word is inversely proportional to its rank in a frequency table. Consequently, the first most frequent word will appear approximately twice as often as the second ranked word.
+Words' rank-frequency distribution is inverse [@zipf:1935; @zipf:1949; @sigurd+etal:2004; @piantadosi+etal:2011;  @ferrer-i-cancho+hernandez-fernandez:2013; @ferrer-i-cancho+etal:2013]. That is, the frequency of any word is inversely proportional to its rank in a frequency table. Consequently, the first most frequent word will appear approximately twice as often as the second ranked word.
 
 
 ```{r, echo=FALSE, fig.cap="Figure from https://en.wikipedia.org/wiki/Zipf%27s_law. A plot of the rank versus frequency for the first 10 million words in 30 Wikipedias (dumps from October 2015) in a log-log scale."}
@@ -84,6 +83,10 @@ Frequent forms tend to be shorter [@zipf:1935; @zipf:1949; @sigurd+etal:2004; @p
 library(knitr)
 include_graphics('../session02/en-zipf.jpg')
 ```
+
+## Zipf's Meaning-Frequency Law
+Frequent forms have more meanings [@zipf:1949]
+
 
 ## Corrections {.appendix}
 If you spot a mistake or have suggestions, please get in touch with [Thomas Brochhagen](https://brochhagen.github.io) or [create an issue](https://github.com/metodesempirics/metodesempirics.github.io/issues/new)

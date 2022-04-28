@@ -7,6 +7,8 @@ output:
     nature:
       highlightLines: true
       highlightStyle: github
+bibliography: ../../biblio.bib
+
 ---
 
 ```{r preamble, echo=FALSE, message=FALSE, warning=FALSE}
@@ -17,16 +19,72 @@ library(ggplot2)
 # Hoy
 
 .large[
+* Las leyes de Zipf
 
 * Corpora y pre-procesamiento
 
-* Utilidad de datos no estructurados
-
-* La(s) leye(s) de Zipf
+* Aplicaciones
 
 * Word embeddings y más allá
 
 ]
+
+
+class: inverse, center
+
+# Las leyes de Zipf
+
+
+.footnote[
+***
+
+G.K. Zipf (1935) *The psycho-biology of language*⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+
+G.K. Zipf (1949) *Human behavior and the principle of least effort*
+
+]
+
+---
+
+### 1. Zipf's (Rank-Frequency) Law
+
+### 2. Zipf's Law of Abbreviation
+
+### 3. Zipf's Meaning-Frequency Law
+
+---
+
+### Rank-Frequency Law: La distribución rango-frecuencia de palabras es inversa
+
+```{r, echo=FALSE}
+library(knitr)
+include_graphics('Zipf_30wiki_en_labels.png')
+```
+
+---
+
+### Law of Abbreviation: Formas frequentes tienden a ser más cortas 
+
+
+```{r, echo=FALSE, out.width="90%", fig.align='center'}
+include_graphics('en-zipf.jpg')
+```
+
+---
+
+### Meaning-frequency Law: Formas frequentes tienden a tener más significados
+
+```{r, echo=FALSE, fig.align='center'}
+library(ggplot2)
+freqs <- seq(1:100)
+meanings <- freqs**0.5
+df <- data.frame(freq = freqs,
+                 nmeanings = meanings)
+
+ggplot(df, aes(x = freq, y = nmeanings)) + geom_point() +     xlab('Frequency of a word') + ylab('Meanings of the word') + theme_minimal(base_size=22) +
+ theme(axis.text.y = element_blank(), axis.text.x = element_blank()) 
+
+```
 
 ---
 
@@ -127,349 +185,144 @@ tolower(tokenized_first_par)
 
 ---
 
-# Tokenized AP
+# AP tokenizada
 
 ```{r, echo=FALSE}
 library(tidytext)
 AP_corpus <- tidy(AssociatedPress)
-````
+```
 
 ```{r, echo=FALSE}
 head(AP_corpus)
 ```
 
-
-
 ---
 
-class: inverse, center
-
-# Zipf's Law of Abbreviation
-
-.footnote[
-***
-Kanwal et al. (2017):  [Zipf’s Law of Abbreviation and the Principle of Least
-Effort: Language users optimise a miniature lexicon for
-efficient communication](). *Gesture*.
-]
-
----
-
-# Datos
-
-```{r, echo=FALSE, warning=FALSE, message=FALSE}
-df <- read.csv('https://tinyurl.com/2s3p9s2z')
-head(df)
-```
-
----
-
-
-# Variables independientes (predictores)
-
-* `trial`: 1, 2, ..., 31, 32
-
-* `display`: 0, 1, 2, 3
-
-<br>
---
-<br>
-
-```{r}
-df$freq  <- ifelse(df$display %in% c(0,1),  'freq', 'infreq') 
-```
-
-* `freq`: infreq o freq
----
-
-# Variable dependiente (resultado)
-```{r}
-df$short <- ifelse(df$label == 'zop', 1, 0)  
-```
-
-```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.align='center', out.width='65%'}
-library(ggplot2)
-
-ggplot(df, aes(x = short)) + 
-  geom_histogram(bins=30, col='black', fill= 'indianred') +
-  theme_minimal(base_size=20) +
-         xlab('Long expression                     Short expression') + 
-        theme(axis.text.x = element_blank(),
-              axis.ticks.x = element_blank())
-```
-
-
----
-
-
-# Variable dependiente (resultado)
-
-```{r, echo=FALSE, warning=FALSE, message=FALSE}
-df$short[1:10]
-```
-
-
----
-# Modelo lineal generalizado: Bernoulli / Binomial
-
-
-$$\Huge y_i \sim \text{Bernoulli}(p_i)$$
-<br>
-$$\Huge p_i = f(\beta_0 + \beta_1 x_1 + ... \beta_n x_n)$$
---
-
-<br>
-$$\Huge f(x) = \text{inverse logit}(x)$$ 
-
----
-# Logit y su inverso
-
-$$\text{logit}(p) = \text{log}(\frac{p}{1-p})$$
-<br>
-$$\text{inverse logit}(p) = \frac{\text{exp}(p)}{1 + \text{exp}(p)}$$
-
-```{r}
-inv.logit <- function(x){
-  return(exp(x) / (1 + exp(x)) )
-}
-```
-
-
----
-
-# Espacio inverso logit
-
-```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.align='center', out.width='65%'}
-x <- seq(-5,5)
-y <- inv.logit(x)
-
-d <- data.frame(x,y)
-
-ggplot(data = d, aes(x,y)) + geom_point(col='indianred',size=3) + theme_minimal(base_size=20) + xlab('Suma de predictores') + ylab('Probabilidad') 
-```
-
-
----
-
-# Modelo lineal generalizado: Bernoulli
-
-
-$$\Huge y_i \sim \text{Bernoulli}(p_i)$$
-<br>
-$$\Huge p_i = \text{inv.logit}(\beta_0 + \beta_1 x_1)$$
----
-
-# Modelo lineal generalizado: Bernoulli
-
-
-$$\Huge y_i \sim \text{Bernoulli}(p_i)$$
-<br>
-$$\Huge \text{logit}(p_i) = \beta_0 + \beta_1 x_1 + ... \beta_n x_n$$
-
----
-
-# Regresión de Bernoulli (R)
-
-```{r, warning=FALSE, message=FALSE, eval=FALSE}
-glm(formula = short ~ 1 + freq,
-    data    = df,
-    family  = binomial(link = 'logit')
-    )
-```
-
----
-
-class: inverse, center
-
-# Zipf's Law of Abbreviation
-
-.footnote[
-***
-Kanwal et al. (2017):  [Zipf’s Law of Abbreviation and the Principle of Least
-Effort: Language users optimise a miniature lexicon for
-efficient communication](). *Gesture*.
-]
-
----
-
-
-# Datos
-
-```{r}
-head(df)
-```
-
----
-
-# longitud de expresión ~ frecuencia de objeto
-
---
-
-```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.align='center', out.width='65%'}
-ggplot(df, aes(x = short, fill = as.factor(freq))) +
-         geom_histogram(bins=20, alpha=0.6, position='dodge') +
-         theme_minimal(base_size=20) +
-         xlab('Long expression            Short expression') + 
-        theme(axis.text.x = element_blank(),
-              axis.ticks.x = element_blank()) +
-  scale_fill_discrete(name="Frequent object") 
-```
-
----
-
-
-# Modelo 1: Frecuencia
-
-```{r, warning=FALSE, message=FALSE}
-zipf_freq <- glm(formula = short ~ 1 + freq,
-                       data    = df,
-                       family  = binomial(link = 'logit')
-                        )
-coef(zipf_freq)
-```
-
---
-
-*** 
-<br>
-$$\Large \text{logit}(p_i) \approx 0.13 - (\text{infrec} \times 1.612) \approx -1.482 $$
-
----
-
-
-# Modelo 1: Frecuencia
-$$\Large \text{logit}(p_i) \approx 0.13 - (\text{infrec} \times 1.612) \approx -1.482 $$
-
-<br><br>
-
-```{r}
-inv.logit(0.13 - 1.612)
-inv.logit(0.13)        
-```
-
----
-
-# summary(zipf_freq)
-
+# AP y Zipf?
 
 ```{r, echo=FALSE}
-summary(zipf_freq)
+AP_ranked <- AP_corpus %>% select(term, count) %>% group_by(term) %>% mutate(count = sum(count)) %>% unique() %>% arrange(desc(count)) %>% ungroup() %>% mutate(length = nchar(term))
+AP_ranked$rank <- seq(1:nrow(AP_ranked))
+AP_ranked <- AP_ranked %>% mutate(log.count = log(count),
+                                  log.rank = log(rank))
+AP_ranked %>% head()
 ```
 
 ---
 
-# longitud de expresión ~ turno
+# AP y Zipf I
 
---
-
-```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.align='center', out.width='65%'}
-ggplot(df, aes(x = trial, fill=as.factor(short))) +
-         geom_histogram(bins=20, alpha=0.8, position='dodge') +
-         facet_wrap(~ as.factor(freq)) +
-         theme_minimal(base_size=20) +
-    scale_fill_discrete(name="Short form") 
+```{r, echo=FALSE, fig.align='center'}
+ggplot(AP_ranked, aes(x = log.rank, y = log.count)) + geom_point(col='indianred') + theme_minimal(base_size = 22)
 ```
 
 ---
 
+# AP y Zipf II
 
-
-# Modelo 2: Turno
-
-```{r, warning=FALSE, message=FALSE}
-zipf_trial <- glm(formula = short ~ 1 + trial,
-                       data    = df,
-                       family  = binomial(link = 'logit')
-                        )
-coef(zipf_trial)
-```
-
-
----
-# Predicciones
-
-```{r}
-inv.logit(-0.74 + (1  * 0.039))  
-inv.logit(-0.74 + (20 * 0.039))
-inv.logit(-0.74 + (32 * 0.039)) 
+```{r, echo=FALSE, fig.align='center'}
+ggplot(AP_ranked, aes(x = length, y = count)) + geom_point(col='indianred') + theme_minimal(base_size = 22)
 ```
 
 ---
 
-# summary(zipf_freq)
-
+# Jane Austen
 
 ```{r, echo=FALSE}
-summary(zipf_trial)
+library(janeaustenr)
+
+original_books <- austen_books() %>%
+  group_by(book) %>%
+  mutate(line = row_number(),
+         chapter = cumsum(str_detect(text, regex("^chapter [\\divxlc]",
+                                                 ignore_case = TRUE)))) %>%
+  ungroup()
+
+original_books
+
 ```
 
 ---
 
-
-# Modelo 3: Ambos predictores
-
-```{r}
-zipf_trial_freq <- glm(formula = short ~ 1 + trial + freq,
-                       data    = df,
-                       family  = binomial(link = 'logit')
-                        )
-coef(zipf_trial_freq)
-```
-
----
-
-# Modelo 3: Ambos predictores
+# Jane Austen tokenizada y normalizada
 
 ```{r, echo=FALSE}
-summary(zipf_trial_freq)
+tidy_books <- original_books %>%
+  unnest_tokens(word, text)
+tidy_books
 ```
 
----
-
-# AICs
-
-```{r}
-zipf_freq$aic
-zipf_trial$aic
-zipf_trial_freq$aic
-```
 
 ---
 
+# Jane Austen y Zipf?
 
-class: inverse, center
-
-# Temas avanzados
-
-
----
-
-# Interacciones
-```{r}
-m4 <- glm(formula = short ~ 1 + trial + freq + trial:freq,
-                       data    = df,
-                       family  = binomial(link = 'logit')
-                        )
-coef(m4)
+```{r, echo=FALSE}
+JA_ranked <- tidy_books %>% select(word) %>% count(word) %>% arrange(desc(n)) %>% rename(count = n) %>% mutate(length = nchar(word),
+                                                                                                               log.count = log(count))
+JA_ranked$rank <- seq(1:nrow(JA_ranked))
+JA_ranked <- JA_ranked %>% mutate(log.rank = log(rank))
+head(JA_ranked)
 ```
 
 ---
 
 
-# Modelos hierarquicos
-```{r}
-library(lme4)
+# Jane Austen y Zipf I
 
-m5 <- glmer(formula = short ~ 1 + trial + freq +
-                              trial:freq +
-                              (1 | IP),
-                       data    = df,
-                       family  = binomial(link = 'logit')
-                        )
-summary(m5)
+```{r, echo=FALSE}
+ggplot(JA_ranked, aes(x = log.rank, y = log.count)) +  geom_point(col='indianred') + theme_minimal(base_size = 22)
 ```
 
 ---
+
+# Jane Austen y Zipf II
+
+```{r, echo=FALSE}
+ggplot(JA_ranked, aes(x = length, y = count)) +  geom_point(col='indianred') + theme_minimal(base_size = 22)
+```
+
+---
+
+# Y la otra ley de Zipf?
+
+
+---
+
+class: inverse
+
+# Aplicaciones
+
+---
+
+# Investigación
+
+* Indispensable para descubrir o (des)confirmar regularidades en una, o varias lenguas, o todas las lenguas
+
+* Mayor volúmen de datos $\Rightarrow$ mayor sensibilidad para encontrar efectos menores
+
+* Gran potencial --aún por descubrir-- para tipología y lenguas menos descritas
+
+---
+
+
+# Industria
+
+* (Pre-)procesamiento de grandes volúmenes de datos lingüísticos
+
+* Indispensable para descubrir o (des)confirmar regularidades a nivel de individuos, grupos y comunidades
+
+* Enorme mercado que todavía se está abriendo
+
+---
+
+class: inverse
+
+# Word embeddings y más allá
+
+
+---
+
 
 class: inverse
 

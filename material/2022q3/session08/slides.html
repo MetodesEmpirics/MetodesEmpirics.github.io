@@ -4,7 +4,6 @@
     <title>8 Corpora</title>
     <meta charset="utf-8" />
     <meta name="author" content="Métodos empíricos 2" />
-    <script src="slides_files/header-attrs-2.13/header-attrs.js"></script>
     <link href="slides_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="slides_files/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
   </head>
@@ -24,16 +23,57 @@ class: center, middle, inverse, title-slide
 # Hoy
 
 .large[
+* Las leyes de Zipf
 
 * Corpora y pre-procesamiento
 
-* Utilidad de datos no estructurados
-
-* La(s) leye(s) de Zipf
+* Aplicaciones
 
 * Word embeddings y más allá
 
 ]
+
+
+class: inverse, center
+
+# Las leyes de Zipf
+
+
+.footnote[
+***
+
+G.K. Zipf (1935) *The psycho-biology of language*⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+
+G.K. Zipf (1949) *Human behavior and the principle of least effort*
+
+]
+
+---
+
+### 1. Zipf's (Rank-Frequency) Law
+
+### 2. Zipf's Law of Abbreviation
+
+### 3. Zipf's Meaning-Frequency Law
+
+---
+
+### Rank-Frequency Law: La distribución rango-frecuencia de palabras es inversa
+
+&lt;img src="Zipf_30wiki_en_labels.png" width="2560" /&gt;
+
+---
+
+### Law of Abbreviation: Formas frequentes tienden a ser más cortas 
+
+
+&lt;img src="en-zipf.jpg" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+
+### Meaning-frequency Law: Formas frequentes tienden a tener más significados
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -63,6 +103,22 @@ Collection of 2246 news articles, mostly published around 1988
 
 --
 
+
+```
+## Loading required package: NLP
+```
+
+```
+## 
+## Attaching package: 'NLP'
+```
+
+```
+## The following object is masked from 'package:ggplot2':
+## 
+##     annotate
+```
+
 &lt;img src="ap-story.png" width="1931" /&gt;
 
 
@@ -91,11 +147,12 @@ tokenized_first_par
 ```
 
 ```
-##  [1] "MEXICO"      "CITY"        "(AP)"        "—"           "The"         "Mexican"    
-##  [7] "government"  "said"        "Tuesday"     "that"        "COVID-19"    "has"        
-## [13] "passed"      "from"        "a"           "pandemic"    "to"          "an"         
-## [19] "endemic"     "stage"       "in"          "Mexico,"     "meaning"     "authorities"
-## [25] "will"        "treat"       "it"          "as"          "a"           "seasonally" 
+##  [1] "MEXICO"      "CITY"        "(AP)"        "—"           "The"        
+##  [6] "Mexican"     "government"  "said"        "Tuesday"     "that"       
+## [11] "COVID-19"    "has"         "passed"      "from"        "a"          
+## [16] "pandemic"    "to"          "an"          "endemic"     "stage"      
+## [21] "in"          "Mexico,"     "meaning"     "authorities" "will"       
+## [26] "treat"       "it"          "as"          "a"           "seasonally" 
 ## [31] "recurring"   "disease."
 ```
 
@@ -130,11 +187,12 @@ tolower(tokenized_first_par)
 ```
 
 ```
-##  [1] "mexico"      "city"        "(ap)"        "—"           "the"         "mexican"    
-##  [7] "government"  "said"        "tuesday"     "that"        "covid-19"    "has"        
-## [13] "passed"      "from"        "a"           "pandemic"    "to"          "an"         
-## [19] "endemic"     "stage"       "in"          "mexico,"     "meaning"     "authorities"
-## [25] "will"        "treat"       "it"          "as"          "a"           "seasonally" 
+##  [1] "mexico"      "city"        "(ap)"        "—"           "the"        
+##  [6] "mexican"     "government"  "said"        "tuesday"     "that"       
+## [11] "covid-19"    "has"         "passed"      "from"        "a"          
+## [16] "pandemic"    "to"          "an"          "endemic"     "stage"      
+## [21] "in"          "mexico,"     "meaning"     "authorities" "will"       
+## [26] "treat"       "it"          "as"          "a"           "seasonally" 
 ## [31] "recurring"   "disease."
 ```
 
@@ -149,7 +207,7 @@ tolower(tokenized_first_par)
 
 ---
 
-# Tokenized AP
+# AP tokenizada
 
 
 
@@ -166,509 +224,151 @@ tolower(tokenized_first_par)
 ## 6        1 allen         1
 ```
 
-
-
 ---
 
-class: inverse, center
-
-# Zipf's Law of Abbreviation
-
-.footnote[
-***
-Kanwal et al. (2017):  [Zipf’s Law of Abbreviation and the Principle of Least
-Effort: Language users optimise a miniature lexicon for
-efficient communication](). *Gesture*.
-]
-
----
-
-# Datos
+# AP y Zipf?
 
 
 ```
-##   pairnum          IP trial display   label
-## 1       1 67.85.42.18     1       0     zop
-## 2       1 67.85.42.18     2       3 zopudon
-## 3       1 67.85.42.18     3       0     zop
-## 4       1 67.85.42.18     4       0 zopekil
-## 5       1 67.85.42.18     5       2 zopudon
-## 6       1 67.85.42.18     6       1 zopekil
+## # A tibble: 6 × 6
+##   term    count length  rank log.count log.rank
+##   &lt;chr&gt;   &lt;dbl&gt;  &lt;int&gt; &lt;int&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+## 1 i        2073      1     1      7.64    0    
+## 2 new      2014      3     2      7.61    0.693
+## 3 percent  1949      7     3      7.58    1.10 
+## 4 people   1662      6     4      7.42    1.39 
+## 5 year     1576      4     5      7.36    1.61 
+## 6 two      1570      3     6      7.36    1.79
 ```
 
 ---
 
+# AP y Zipf I
 
-# Variables independientes (predictores)
-
-* `trial`: 1, 2, ..., 31, 32
-
-* `display`: 0, 1, 2, 3
-
-&lt;br&gt;
---
-&lt;br&gt;
-
-
-```r
-df$freq  &lt;- ifelse(df$display %in% c(0,1),  'freq', 'infreq') 
-```
-
-* `freq`: infreq o freq
----
-
-# Variable dependiente (resultado)
-
-```r
-df$short &lt;- ifelse(df$label == 'zop', 1, 0)  
-```
-
-&lt;img src="slides_files/figure-html/unnamed-chunk-20-1.png" width="65%" style="display: block; margin: auto;" /&gt;
-
+&lt;img src="slides_files/figure-html/unnamed-chunk-10-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
+# AP y Zipf II
 
-# Variable dependiente (resultado)
+&lt;img src="slides_files/figure-html/unnamed-chunk-11-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Jane Austen
 
 
 ```
-##  [1] 1 0 1 0 0 0 1 1 1 1
+## # A tibble: 73,422 × 4
+##    text                    book                 line chapter
+##    &lt;chr&gt;                   &lt;fct&gt;               &lt;int&gt;   &lt;int&gt;
+##  1 "SENSE AND SENSIBILITY" Sense &amp; Sensibility     1       0
+##  2 ""                      Sense &amp; Sensibility     2       0
+##  3 "by Jane Austen"        Sense &amp; Sensibility     3       0
+##  4 ""                      Sense &amp; Sensibility     4       0
+##  5 "(1811)"                Sense &amp; Sensibility     5       0
+##  6 ""                      Sense &amp; Sensibility     6       0
+##  7 ""                      Sense &amp; Sensibility     7       0
+##  8 ""                      Sense &amp; Sensibility     8       0
+##  9 ""                      Sense &amp; Sensibility     9       0
+## 10 "CHAPTER 1"             Sense &amp; Sensibility    10       1
+## # … with 73,412 more rows
 ```
 
-
 ---
-# Modelo lineal generalizado: Bernoulli / Binomial
+
+# Jane Austen tokenizada y normalizada
 
 
-`$$\Huge y_i \sim \text{Bernoulli}(p_i)$$`
-&lt;br&gt;
-`$$\Huge p_i = f(\beta_0 + \beta_1 x_1 + ... \beta_n x_n)$$`
---
-
-&lt;br&gt;
-`$$\Huge f(x) = \text{inverse logit}(x)$$` 
-
----
-# Logit y su inverso
-
-`$$\text{logit}(p) = \text{log}(\frac{p}{1-p})$$`
-&lt;br&gt;
-`$$\text{inverse logit}(p) = \frac{\text{exp}(p)}{1 + \text{exp}(p)}$$`
-
-
-```r
-inv.logit &lt;- function(x){
-  return(exp(x) / (1 + exp(x)) )
-}
+```
+## # A tibble: 725,055 × 4
+##    book                 line chapter word       
+##    &lt;fct&gt;               &lt;int&gt;   &lt;int&gt; &lt;chr&gt;      
+##  1 Sense &amp; Sensibility     1       0 sense      
+##  2 Sense &amp; Sensibility     1       0 and        
+##  3 Sense &amp; Sensibility     1       0 sensibility
+##  4 Sense &amp; Sensibility     3       0 by         
+##  5 Sense &amp; Sensibility     3       0 jane       
+##  6 Sense &amp; Sensibility     3       0 austen     
+##  7 Sense &amp; Sensibility     5       0 1811       
+##  8 Sense &amp; Sensibility    10       1 chapter    
+##  9 Sense &amp; Sensibility    10       1 1          
+## 10 Sense &amp; Sensibility    13       1 the        
+## # … with 725,045 more rows
 ```
 
 
 ---
 
-# Espacio inverso logit
-
-&lt;img src="slides_files/figure-html/unnamed-chunk-23-1.png" width="65%" style="display: block; margin: auto;" /&gt;
-
-
----
-
-# Modelo lineal generalizado: Bernoulli
-
-
-`$$\Huge y_i \sim \text{Bernoulli}(p_i)$$`
-&lt;br&gt;
-`$$\Huge p_i = \text{inv.logit}(\beta_0 + \beta_1 x_1)$$`
----
-
-# Modelo lineal generalizado: Bernoulli
-
-
-`$$\Huge y_i \sim \text{Bernoulli}(p_i)$$`
-&lt;br&gt;
-`$$\Huge \text{logit}(p_i) = \beta_0 + \beta_1 x_1 + ... \beta_n x_n$$`
-
----
-
-# Regresión de Bernoulli (R)
-
-
-```r
-glm(formula = short ~ 1 + freq,
-    data    = df,
-    family  = binomial(link = 'logit')
-    )
-```
-
----
-
-class: inverse, center
-
-# Zipf's Law of Abbreviation
-
-.footnote[
-***
-Kanwal et al. (2017):  [Zipf’s Law of Abbreviation and the Principle of Least
-Effort: Language users optimise a miniature lexicon for
-efficient communication](). *Gesture*.
-]
-
----
-
-
-# Datos
-
-
-```r
-head(df)
-```
-
-```
-##   pairnum          IP trial display   label   freq short
-## 1       1 67.85.42.18     1       0     zop   freq     1
-## 2       1 67.85.42.18     2       3 zopudon infreq     0
-## 3       1 67.85.42.18     3       0     zop   freq     1
-## 4       1 67.85.42.18     4       0 zopekil   freq     0
-## 5       1 67.85.42.18     5       2 zopudon infreq     0
-## 6       1 67.85.42.18     6       1 zopekil   freq     0
-```
-
----
-
-# longitud de expresión ~ frecuencia de objeto
-
---
-
-&lt;img src="slides_files/figure-html/unnamed-chunk-26-1.png" width="65%" style="display: block; margin: auto;" /&gt;
-
----
-
-
-# Modelo 1: Frecuencia
-
-
-```r
-zipf_freq &lt;- glm(formula = short ~ 1 + freq,
-                       data    = df,
-                       family  = binomial(link = 'logit')
-                        )
-coef(zipf_freq)
-```
-
-```
-## (Intercept)  freqinfreq 
-##   0.1251631  -1.6121461
-```
-
---
-
-*** 
-&lt;br&gt;
-$$\Large \text{logit}(p_i) \approx 0.13 - (\text{infrec} \times 1.612) \approx -1.482 $$
-
----
-
-
-# Modelo 1: Frecuencia
-$$\Large \text{logit}(p_i) \approx 0.13 - (\text{infrec} \times 1.612) \approx -1.482 $$
-
-&lt;br&gt;&lt;br&gt;
-
-
-```r
-inv.logit(0.13 - 1.612)
-```
-
-```
-## [1] 0.1851255
-```
-
-```r
-inv.logit(0.13)        
-```
-
-```
-## [1] 0.5324543
-```
-
----
-
-# summary(zipf_freq)
-
+# Jane Austen y Zipf?
 
 
 ```
-## 
-## Call:
-## glm(formula = short ~ 1 + freq, family = binomial(link = "logit"), 
-##     data = df)
-## 
-## Deviance Residuals: 
-##     Min       1Q   Median       3Q      Max  
-## -1.2310  -1.2310  -0.6384   1.1247   1.8389  
-## 
-## Coefficients:
-##             Estimate Std. Error z value Pr(&gt;|z|)    
-## (Intercept)  0.12516    0.06468   1.935    0.053 .  
-## freqinfreq  -1.61215    0.15800 -10.204   &lt;2e-16 ***
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## (Dispersion parameter for binomial family taken to be 1)
-## 
-##     Null deviance: 1758.7  on 1279  degrees of freedom
-## Residual deviance: 1633.0  on 1278  degrees of freedom
-## AIC: 1637
-## 
-## Number of Fisher Scoring iterations: 4
-```
-
----
-
-# longitud de expresión ~ turno
-
---
-
-&lt;img src="slides_files/figure-html/unnamed-chunk-30-1.png" width="65%" style="display: block; margin: auto;" /&gt;
-
----
-
-
-
-# Modelo 2: Turno
-
-
-```r
-zipf_trial &lt;- glm(formula = short ~ 1 + trial,
-                       data    = df,
-                       family  = binomial(link = 'logit')
-                        )
-coef(zipf_trial)
-```
-
-```
-## (Intercept)       trial 
-## -0.73645501  0.03085928
-```
-
-
----
-# Predicciones
-
-
-```r
-inv.logit(-0.74 + (1  * 0.039))  
-```
-
-```
-## [1] 0.3315906
-```
-
-```r
-inv.logit(-0.74 + (20 * 0.039))
-```
-
-```
-## [1] 0.5099987
-```
-
-```r
-inv.logit(-0.74 + (32 * 0.039)) 
-```
-
-```
-## [1] 0.6243375
-```
-
----
-
-# summary(zipf_freq)
-
-
-
-```
-## 
-## Call:
-## glm(formula = short ~ 1 + trial, family = binomial(link = "logit"), 
-##     data = df)
-## 
-## Deviance Residuals: 
-##     Min       1Q   Median       3Q      Max  
-## -1.2857  -1.0889  -0.9189   1.2285   1.4879  
-## 
-## Coefficients:
-##              Estimate Std. Error z value Pr(&gt;|z|)    
-## (Intercept) -0.736455   0.118639  -6.208 5.38e-10 ***
-## trial        0.030859   0.006204   4.974 6.54e-07 ***
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## (Dispersion parameter for binomial family taken to be 1)
-## 
-##     Null deviance: 1758.7  on 1279  degrees of freedom
-## Residual deviance: 1733.5  on 1278  degrees of freedom
-## AIC: 1737.5
-## 
-## Number of Fisher Scoring iterations: 4
+## # A tibble: 6 × 6
+##   word  count length log.count  rank log.rank
+##   &lt;chr&gt; &lt;int&gt;  &lt;int&gt;     &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt;
+## 1 the   26351      3     10.2      1    0    
+## 2 to    24044      2     10.1      2    0.693
+## 3 and   22515      3     10.0      3    1.10 
+## 4 of    21178      2      9.96     4    1.39 
+## 5 a     13408      1      9.50     5    1.61 
+## 6 her   13055      3      9.48     6    1.79
 ```
 
 ---
 
 
-# Modelo 3: Ambos predictores
+# Jane Austen y Zipf I
 
-
-```r
-zipf_trial_freq &lt;- glm(formula = short ~ 1 + trial + freq,
-                       data    = df,
-                       family  = binomial(link = 'logit')
-                        )
-coef(zipf_trial_freq)
-```
-
-```
-## (Intercept)       trial  freqinfreq 
-## -0.42733747  0.03359338 -1.64081659
-```
+![](slides_files/figure-html/unnamed-chunk-15-1.png)&lt;!-- --&gt;
 
 ---
 
-# Modelo 3: Ambos predictores
+# Jane Austen y Zipf II
 
-
-```
-## 
-## Call:
-## glm(formula = short ~ 1 + trial + freq, family = binomial(link = "logit"), 
-##     data = df)
-## 
-## Deviance Residuals: 
-##    Min      1Q  Median      3Q     Max  
-## -1.462  -1.097  -0.562   1.089   2.077  
-## 
-## Coefficients:
-##              Estimate Std. Error z value Pr(&gt;|z|)    
-## (Intercept) -0.427337   0.125352  -3.409 0.000652 ***
-## trial        0.033593   0.006536   5.140 2.75e-07 ***
-## freqinfreq  -1.640817   0.159698 -10.275  &lt; 2e-16 ***
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## (Dispersion parameter for binomial family taken to be 1)
-## 
-##     Null deviance: 1758.7  on 1279  degrees of freedom
-## Residual deviance: 1606.0  on 1277  degrees of freedom
-## AIC: 1612
-## 
-## Number of Fisher Scoring iterations: 3
-```
+![](slides_files/figure-html/unnamed-chunk-16-1.png)&lt;!-- --&gt;
 
 ---
 
-# AICs
-
-
-```r
-zipf_freq$aic
-```
-
-```
-## [1] 1636.987
-```
-
-```r
-zipf_trial$aic
-```
-
-```
-## [1] 1737.473
-```
-
-```r
-zipf_trial_freq$aic
-```
-
-```
-## [1] 1611.984
-```
-
----
-
-
-class: inverse, center
-
-# Temas avanzados
+# Y la otra ley de Zipf?
 
 
 ---
 
-# Interacciones
+class: inverse
 
-```r
-m4 &lt;- glm(formula = short ~ 1 + trial + freq + trial:freq,
-                       data    = df,
-                       family  = binomial(link = 'logit')
-                        )
-coef(m4)
-```
+# Aplicaciones
 
-```
-##      (Intercept)            trial       freqinfreq trial:freqinfreq 
-##      -0.53501091       0.04018210      -0.99080221      -0.03782272
-```
+---
+
+# Investigación
+
+* Indispensable para descubrir o (des)confirmar regularidades en una, o varias lenguas, o todas las lenguas
+
+* Mayor volúmen de datos `\(\Rightarrow\)` mayor sensibilidad para encontrar efectos menores
+
+* Gran potencial --aún por descubrir-- para tipología y lenguas menos descritas
 
 ---
 
 
-# Modelos hierarquicos
+# Industria
 
-```r
-library(lme4)
+* (Pre-)procesamiento de grandes volúmenes de datos lingüísticos
 
-m5 &lt;- glmer(formula = short ~ 1 + trial + freq +
-                              trial:freq +
-                              (1 | IP),
-                       data    = df,
-                       family  = binomial(link = 'logit')
-                        )
-summary(m5)
-```
+* Indispensable para descubrir o (des)confirmar regularidades a nivel de individuos, grupos y comunidades
 
-```
-## Generalized linear mixed model fit by maximum likelihood (Laplace Approximation) ['glmerMod']
-##  Family: binomial  ( logit )
-## Formula: short ~ 1 + trial + freq + trial:freq + (1 | IP)
-##    Data: df
-## 
-##      AIC      BIC   logLik deviance df.resid 
-##   1193.4   1219.1   -591.7   1183.4     1275 
-## 
-## Scaled residuals: 
-##     Min      1Q  Median      3Q     Max 
-## -2.5879 -0.5030 -0.1125  0.4594 10.7912 
-## 
-## Random effects:
-##  Groups Name        Variance Std.Dev.
-##  IP     (Intercept) 4.013    2.003   
-## Number of obs: 1280, groups:  IP, 40
-## 
-## Fixed effects:
-##                   Estimate Std. Error z value Pr(&gt;|z|)    
-## (Intercept)      -1.192104   0.369049  -3.230 0.001237 ** 
-## trial             0.072323   0.009886   7.316 2.56e-13 ***
-## freqinfreq       -1.185276   0.370469  -3.199 0.001377 ** 
-## trial:freqinfreq -0.073472   0.019812  -3.709 0.000208 ***
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## Correlation of Fixed Effects:
-##             (Intr) trial  frqnfr
-## trial       -0.439              
-## freqinfreq  -0.217  0.375       
-## trl:frqnfrq  0.224 -0.507 -0.849
-```
+* Enorme mercado que todavía se está abriendo
 
 ---
+
+class: inverse
+
+# Word embeddings y más allá
+
+
+---
+
 
 class: inverse
 
