@@ -8,8 +8,19 @@ urlcolor: blue
 bibliography: ../../biblio.bib
 ---
 
+
+# Peer review (part II) 
+
+Submit a peer review for the analysis report that you received as a single page PDF-file through Aula Global. This submission makes up 10% of your peer-review grade. Remember that **your submission must be anonymous**. That is: do not put any information that can identify you in the PDF (like your name). 
+
+Cover the following points (in bullet points if you want)
+
+  1. Is the analysis well motivated?
+  2. Is the specific research question well connected to the general one?
+  3. Is the analysis feasible in the scope of this class? 
+  
+Elaborate with as much detail as you want but keep in mind that your feedback must be polite, constructive, and nuanced. Always give reasons why you think an aspect of the analysis report of your peer is good/strong or bad/weak. You can find further guidelines to write a peer-review in Aula Global.
+
 # Self study
 
-This week there is no practical exercise, and nothing to hand in. Use your time to work on your final report. Make sure you have all its details worked out by the end of the course.
-
-We will cover some practical and theoretical data visualization in one of the upcoming sessions. However, since it is not the focus of this class but it is an incredibly interesting, useful, and new topic, I invite you to check out the following material if you're interested. If you are interested in practical data visualization using `ggplot2`, have a look at this tutorial: [https://uc-r.github.io/ggplot_intro](https://uc-r.github.io/ggplot_intro). If you are interested in the state of the art on what we know about effective data visualization, have a look at [Franconeri et al (2021): The Science of Visual Data Communication: What Works](https://www2.econ.iastate.edu/tesfatsi/ScienceOfVisualDataCommunication.FranconeriEtAl2021.pdf). 
+Use your time to work on your final report. Make sure you have all its details worked out by the end of the course.

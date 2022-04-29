@@ -77,7 +77,7 @@ This class covers empirical methods for language sciences. The main goal is for 
   * Submitted through Aula Global
   * Graded automatically
   * Max. 2 attempts
-  * 6 in total
+  * 5 in total
 
 ### Peer review (20%)
   * You give your peers (blind) feedback about their planned analysis
@@ -85,7 +85,6 @@ This class covers empirical methods for language sciences. The main goal is for 
 
 ### Mid-term exam (20%)
   * Submitted through Aula Global
-  * Graded automatically
   * Single attempt
 
 ### Analysis design and execution (40%)

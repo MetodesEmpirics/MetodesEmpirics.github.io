@@ -63,3 +63,20 @@
 
 # Session 10
   * Review and look forward
+
+
+===
+
+* Entrega de "Assignment 4" (08:00 AM 10/05)
+* Entrega de parte I de "Revisión por pares" (08:00 AM 10/05)
+
+***
+
+* **Regresión con más de un predictor**
+
+*** 
+
+  * Assignment 5: 10/05 - 17/05
+  * Ejercicio práctico: 17/05 - 24/05
+  * Entrega parte II de "Revisión por pares": 24/05 - 31/05
+  * Informe final: 28/06

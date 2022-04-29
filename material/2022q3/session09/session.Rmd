@@ -1,0 +1,56 @@
+---
+title: "9 Visualization"
+author:
+- first_name: Thomas
+  last_name: Brochhagen
+  url: https://tbrochhagen.github.io/
+  affiliation: Universitat Pompeu Fabra
+date: "`r Sys.Date()`"
+output:
+  distill::distill_article:
+    toc: yes
+    toc_depth: 2
+  html_document:
+    toc: yes
+    toc_depth: '2'
+    df_print: paged
+  pdf_document:
+    toc: yes
+---
+
+
+```{r preamble, echo=FALSE}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(reshape2)
+library(ggpubr)
+```
+
+# Visualization
+
+Visualization is a key tool in empirical studies. The way we represent information can either help in conveying, or obfuscate, what we are trying to say. 
+
+The field of visualization is still relatively new. Notwithstanding, there are some general guidelines that can help you along the way (see, e.g.,(Graphic Principles)[https://github.com/GraphicsPrinciples/CheatSheet/blob/master/NVSCheatSheet.pdf]:
+
+* The "Why": Identify the purpose of your visual device (e.g., to make a contrast between two groups clear; or to visualize how the data is distributed)
+
+* The "What": Identify the quantitative evidence to support the purpose
+
+* The "Who": Identify the intended audience and design your visualization to aid them
+
+* The "Where": Adapt design to presentation constraints
+
+
+# Common types of visualizations
+
+## Scatter plots
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
+
+df <- read.csv("https://tinyurl.com/polite-data") #download data
+```
+
+```
+## Corrections {.appendix}
+If you spot a mistake or have suggestions, please get in touch with [Thomas Brochhagen](https://brochhagen.github.io) or [create an issue](https://github.com/metodesempirics/metodesempirics.github.io/issues/new)

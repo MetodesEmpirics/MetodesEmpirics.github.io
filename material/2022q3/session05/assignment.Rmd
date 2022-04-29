@@ -24,17 +24,8 @@ df <- read_csv("https://tinyurl.com/polite-data") #download data
   3. How many parameters does this model have?
   4. Is a male speaker in a polite context predicted to have a higher pitch than a female speaker in an informal context?
 
+# Self study
 
-# Peer review (part II) 
-
-Submit a peer review for the analysis report that you received as a single page PDF-file through Aula Global. This submission makes up 10% of your peer-review grade. Remember that **your submission must be anonymous**. That is: do not put any information that can identify you in the PDF (like your name). 
-
-Cover the following points (in bullet points if you want)
-
-  1. Is the analysis well motivated?
-  2. Is the specific research question well connected to the general one?
-  3. Is the analysis feasible in the scope of this class? 
-  
-Elaborate with as much detail as you want but keep in mind that your feedback must be polite, constructive, and nuanced. Always give reasons why you think an aspect of the analysis report of your peer is good/strong or bad/weak. You can find further guidelines to write a peer-review in Aula Global.
+Use your time to work on your final report. Make sure you have all its details worked out by the end of the course.
 
 # References
