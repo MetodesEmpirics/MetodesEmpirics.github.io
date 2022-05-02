@@ -46,7 +46,7 @@ $$y = \beta_0 + \beta_1x + \text{error} $$
 
 In words, outcome $y$ is modelled as a linear combination of two parameters, $\beta_0$ and $\beta_1$, and an error term. The contribution of $\beta_1$ to the prediction is relative to the value of $x$, the predictor. In this class, we will background the error term.
 
-Let us explore these ideas with a concrete example [@franke+roettger:2019], probing to which extent we can predict voice pitch (outcome / $y$) based on whether the speaker is male or female ($x$). We will add further predictors later.
+Let us explore these ideas with a concrete example [@franke+roettger:2019], probing to which extent we can predict voice pitch (outcome / $y$) based on whether the speaker is in a polite or informal context ($x$). We will add further predictors later.
 
 #### Case study: pitch
 
@@ -76,8 +76,7 @@ $$\text{pitch} = \beta_0 + \beta_1 \text{context}$$
 But context is not a numerical variable. To make $\beta_1 \text{context}$ make sense we should re-code this column.^[R handles this on its own. So you can pass it a variable like `context` or `gender` and it will recode it automatically. We are here just being explicit about the process.]
 
 ```{r}
-df <- df %>%
-      mutate(context = ifelse(context == 'inf',0,1)) #change 'inf' into a 0 and 'pol' into 1
+df <- mutate(df, context = ifelse(context == 'inf',0,1)) #change 'inf' into a 0 and 'pol' into 1
 glimpse(df) #check if this worked as intended
 ```
 
@@ -86,7 +85,7 @@ In `lme`-syntax, this model is written as
 ```{r}
 
 pitch_model <- lm(formula = pitch ~ 1 + context,
-                   data    = df)
+                   data   = df)
 ```
 
 That's all! We can now inspect the model's estimate of the effect of `context` on `pitch`:

@@ -113,8 +113,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2022-04-26" />
-  <meta property="article:created" itemprop="dateCreated" content="2022-04-26" />
+  <meta property="article:published" itemprop="datePublished" content="2022-05-02" />
+  <meta property="article:created" itemprop="dateCreated" content="2022-05-02" />
   <meta name="article:author" content="Thomas Brochhagen" />
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
@@ -133,7 +133,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","author","date","output","bibliography"]}},"value":[{"type":"character","attributes":{},"value":["4 Introduction to regression"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["first_name","last_name","url","affiliation"]}},"value":[{"type":"character","attributes":{},"value":["Thomas"]},{"type":"character","attributes":{},"value":["Brochhagen"]},{"type":"character","attributes":{},"value":["https://tbrochhagen.github.io/"]},{"type":"character","attributes":{},"value":["Universitat Pompeu Fabra"]}]}]},{"type":"character","attributes":{},"value":["2022-04-26"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article","html_document","pdf_document"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[2]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth","df_print"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2"]},{"type":"character","attributes":{},"value":["paged"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"character","attributes":{},"value":["../../biblio.bib"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","author","date","output","bibliography"]}},"value":[{"type":"character","attributes":{},"value":["4 Introduction to regression"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["first_name","last_name","url","affiliation"]}},"value":[{"type":"character","attributes":{},"value":["Thomas"]},{"type":"character","attributes":{},"value":["Brochhagen"]},{"type":"character","attributes":{},"value":["https://tbrochhagen.github.io/"]},{"type":"character","attributes":{},"value":["Universitat Pompeu Fabra"]}]}]},{"type":"character","attributes":{},"value":["2022-05-02"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article","html_document","pdf_document"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[2]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth","df_print"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2"]},{"type":"character","attributes":{},"value":["paged"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"character","attributes":{},"value":["../../biblio.bib"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -2495,7 +2495,7 @@ distill-header .nav a {
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"4 Introduction to regression","authors":[{"author":"Thomas Brochhagen","authorURL":"https://tbrochhagen.github.io/","affiliation":"Universitat Pompeu Fabra","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-04-26T00:00:00.000+02:00","citationText":"Brochhagen, 2022"}
+{"title":"4 Introduction to regression","authors":[{"author":"Thomas Brochhagen","authorURL":"https://tbrochhagen.github.io/","affiliation":"Universitat Pompeu Fabra","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-05-02T00:00:00.000+02:00","citationText":"Brochhagen, 2022"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2515,7 +2515,7 @@ distill-header .nav a {
   
   true
   
-<br />2022-04-26
+<br />2022-05-02
 </div>
 
 <div class="d-article">
@@ -2563,7 +2563,7 @@ background the error term.</p>
 <p>Let us explore these ideas with a concrete example <span class="citation" data-cites="franke+roettger:2019">(<a href="#ref-franke+roettger:2019" role="doc-biblioref">Franke and
 Roettger 2019</a>)</span>, probing to which extent we can predict voice
 pitch (outcome / <span class="math inline">\(y\)</span>) based on
-whether the speaker is male or female (<span class="math inline">\(x\)</span>). We will add further predictors
+whether the speaker is in a polite or informal context (<span class="math inline">\(x\)</span>). We will add further predictors
 later.</p>
 <h4 id="case-study-pitch">Case study: pitch</h4>
 <div class="layout-chunk" data-layout="l-body">
@@ -2606,8 +2606,7 @@ follows:</p>
 we should re-code this column.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-      <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>context <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">context</span> <span class="op">==</span> <span class="st">&#39;inf&#39;</span>,<span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="co">#change &#39;inf&#39; into a 0 and &#39;pol&#39; into 1</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="va">df</span>, context <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">context</span> <span class="op">==</span> <span class="st">&#39;inf&#39;</span>,<span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="co">#change &#39;inf&#39; into a 0 and &#39;pol&#39; into 1</span>
 <span class="fu"><a href="https://dplyr.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="co">#check if this worked as intended</span>
 </code></pre>
 </div>
@@ -2623,7 +2622,7 @@ $ pitch    &lt;dbl&gt; 213.3, 204.5, 285.1, 259.7, 203.9, 286.9, 250.8, 27…</c
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">pitch_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">pitch</span> <span class="op">~</span> <span class="fl">1</span> <span class="op">+</span> <span class="va">context</span>,
-                   data    <span class="op">=</span> <span class="va">df</span><span class="op">)</span>
+                   data   <span class="op">=</span> <span class="va">df</span><span class="op">)</span>
 </code></pre>
 </div>
 </div>

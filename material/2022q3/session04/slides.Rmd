@@ -74,7 +74,7 @@ ggplot(df, aes(x = predictor, y = resultado)) +
 
 ## Regresión lineal (ejemplo)
 
-Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más predictores ( *género*; *contexto*; *edad* ). Otra formulación: Estimación de predicción de *tono* a base de *género* y/o *contexto* y/o *edad*.
+Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más predictores ( *sexo*; *contexto*; *edad* ). Otra formulación: Estimación de predicción de *tono* a base de *sexo* y/o *contexto* y/o *edad*.
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE,fig.align='center',out.width='55%'}
 set.seed(121)
@@ -97,7 +97,7 @@ ggplot(df, aes(x = ages, y = pitch)) +
 
 ## Regresión lineal (ejemplo)
 
-Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más predictores ( *género*; *contexto*; *edad* ). Otra formulación: Estimación de predicción de *tono* a base de *género* y/o *contexto* y/o *edad*.
+Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más predictores ( *sexo*; *contexto*; *edad* ). Otra formulación: Estimación de predicción de *tono* a base de *sexo* y/o *contexto* y/o *edad*.
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE,fig.align='center',out.width='55%'}
 set.seed(121)
@@ -121,7 +121,7 @@ ggplot(df, aes(x = ages, y = pitch)) +
 
 ## Regresión lineal (ejemplo)
 
-Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más predictores ( *género*; *contexto*; *edad* ). Otra formulación: Estimación de predicción de *tono* a base de *género* y/o *contexto* y/o *edad*.
+Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más predictores ( *sexo*; *contexto*; *edad* ). Otra formulación: Estimación de predicción de *tono* a base de *sexo* y/o *contexto* y/o *edad*.
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE,fig.align='center',out.width='55%'}
 set.seed(120)
@@ -146,7 +146,7 @@ ggplot(df, aes(x = ctx , y = pitch)) +
 
 ## Regresión lineal (ejemplo)
 
-Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más predictores ( *género*; *contexto*; *edad* ). Otra formulación: Estimación de predicción de *tono* a base de *género* y/o *contexto* y/o *edad*.
+Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más predictores ( *sexo*; *contexto*; *edad* ). Otra formulación: Estimación de predicción de *tono* a base de *sexo* y/o *contexto* y/o *edad*.
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE,fig.align='center',out.width='55%'}
 set.seed(120)
@@ -261,6 +261,8 @@ ggplot(df, aes(x,y)) +
 ```
 
 ---
+
+# tono en función a edad
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align='center',out.width='65%'}
 set.seed(121)
@@ -381,14 +383,9 @@ Estimado de relación **lineal** entre resultado ( $y$ ) y uno o más predictore
 
 Con un solo predictor $x$:
 
-$$y_i = \beta_0 + \beta_1 x_i + \text{error}$$
-
-<br>
-***
-<br>
-
-$$y_i \sim \text{Normal}(\mu_i,\sigma),$$
-$$\mu_i  = \beta_0 + \beta_1 x_i$$
+<br> 
+$$\Large y_i \sim \text{Normal}(\mu_i,\sigma),$$
+$$\Large \mu_i  = \beta_0 + \beta_1 x_i$$
 
 ---
 
@@ -398,14 +395,10 @@ Estimado de relación **lineal** entre *tono* ( $y$ ) y uno o más predictores.
 
 Con un solo predictor *edad*:
 
-$$y_i = \beta_0 + \beta_1 \text{edad}_i + \text{error}$$
-
-<br>
-***
 <br>
 
-$$y_i \sim \text{Normal}(\mu_i,\sigma),$$
-$$\mu_i  = \beta_0 + \beta_1 \text{edad}_i$$
+$$\Large y_i \sim \text{Normal}(\mu_i,\sigma),$$
+$$\Large \mu_i  = \beta_0 + \beta_1 \text{edad}_i$$
 ---
 # Regresión lineal (R)
 
@@ -420,7 +413,8 @@ nrow(df)
 # Regresión lineal (R)
 
 ```{r, echo=TRUE, message=FALSE, warning=FALSE}
-pitch_model <- lm(df$pitch ~ df$ages) #resultado ~ predictor(es)
+pitch_model <- lm(formula = pitch ~ 1 + ages,
+                  data    = df) 
 pitch_model
 ```
 
@@ -451,18 +445,18 @@ summary$residuals[1:5]
 
 ---
 
-# Más allá de predicciones
-
-```{r}
-summary(pitch_model)
-```
-
----
-
 # Residuales
 
 ```{r, fig.align='center',out.width='65%'}
 plot(pitch_model$residuals)
+```
+
+---
+
+# Más allá de predicciones
+
+```{r}
+summary(pitch_model)
 ```
 
 ---
@@ -486,15 +480,11 @@ summary
 
 # Residual standard error
 
-El valor (estimado) del error del modelo. Corresponde a $\sigma$ o *error* en las formulas de abajo.
+El valor (estimado) del error del modelo. Corresponde a $\sigma$
 <br><br>
 $$\Large y \sim \text{Normal}(\mu, \mathbf{\sigma})$$
 $$\Large\mu_i = \beta_0 + \beta_1 x_1 + ... \beta_n x_n$$
-<br>
-***
-<br>
 
-$$\Large y = \beta_0 + \beta_1 x_1 + ... \beta_n x_n + \text{error}$$
 ---
 
 # Goodness of fit

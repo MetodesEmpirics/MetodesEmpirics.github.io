@@ -66,7 +66,7 @@ Estimación de relación **lineal** entre resultado ( `\(y\)` ) y uno o más pre
 
 ## Regresión lineal (ejemplo)
 
-Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más predictores ( *género*; *contexto*; *edad* ). Otra formulación: Estimación de predicción de *tono* a base de *género* y/o *contexto* y/o *edad*.
+Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más predictores ( *sexo*; *contexto*; *edad* ). Otra formulación: Estimación de predicción de *tono* a base de *sexo* y/o *contexto* y/o *edad*.
 
 &lt;img src="slides_files/figure-html/unnamed-chunk-2-1.png" width="55%" style="display: block; margin: auto;" /&gt;
 
@@ -75,7 +75,7 @@ Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más pred
 
 ## Regresión lineal (ejemplo)
 
-Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más predictores ( *género*; *contexto*; *edad* ). Otra formulación: Estimación de predicción de *tono* a base de *género* y/o *contexto* y/o *edad*.
+Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más predictores ( *sexo*; *contexto*; *edad* ). Otra formulación: Estimación de predicción de *tono* a base de *sexo* y/o *contexto* y/o *edad*.
 
 &lt;img src="slides_files/figure-html/unnamed-chunk-3-1.png" width="55%" style="display: block; margin: auto;" /&gt;
 
@@ -84,7 +84,7 @@ Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más pred
 
 ## Regresión lineal (ejemplo)
 
-Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más predictores ( *género*; *contexto*; *edad* ). Otra formulación: Estimación de predicción de *tono* a base de *género* y/o *contexto* y/o *edad*.
+Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más predictores ( *sexo*; *contexto*; *edad* ). Otra formulación: Estimación de predicción de *tono* a base de *sexo* y/o *contexto* y/o *edad*.
 
 &lt;img src="slides_files/figure-html/unnamed-chunk-4-1.png" width="55%" style="display: block; margin: auto;" /&gt;
 
@@ -94,7 +94,7 @@ Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más pred
 
 ## Regresión lineal (ejemplo)
 
-Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más predictores ( *género*; *contexto*; *edad* ). Otra formulación: Estimación de predicción de *tono* a base de *género* y/o *contexto* y/o *edad*.
+Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más predictores ( *sexo*; *contexto*; *edad* ). Otra formulación: Estimación de predicción de *tono* a base de *sexo* y/o *contexto* y/o *edad*.
 
 &lt;img src="slides_files/figure-html/unnamed-chunk-5-1.png" width="55%" style="display: block; margin: auto;" /&gt;
 
@@ -124,6 +124,8 @@ class: inverse, center
 &lt;img src="slides_files/figure-html/unnamed-chunk-10-1.png" width="80%" style="display: block; margin: auto;" /&gt;
 
 ---
+
+# tono en función a edad
 
 &lt;img src="slides_files/figure-html/unnamed-chunk-11-1.png" width="65%" style="display: block; margin: auto;" /&gt;
 
@@ -171,14 +173,9 @@ Estimado de relación **lineal** entre resultado ( `\(y\)` ) y uno o más predic
 
 Con un solo predictor `\(x\)`:
 
-`$$y_i = \beta_0 + \beta_1 x_i + \text{error}$$`
-
-&lt;br&gt;
-***
-&lt;br&gt;
-
-`$$y_i \sim \text{Normal}(\mu_i,\sigma),$$`
-`$$\mu_i  = \beta_0 + \beta_1 x_i$$`
+&lt;br&gt; 
+`$$\Large y_i \sim \text{Normal}(\mu_i,\sigma),$$`
+`$$\Large \mu_i  = \beta_0 + \beta_1 x_i$$`
 
 ---
 
@@ -188,14 +185,10 @@ Estimado de relación **lineal** entre *tono* ( `\(y\)` ) y uno o más predictor
 
 Con un solo predictor *edad*:
 
-`$$y_i = \beta_0 + \beta_1 \text{edad}_i + \text{error}$$`
-
-&lt;br&gt;
-***
 &lt;br&gt;
 
-`$$y_i \sim \text{Normal}(\mu_i,\sigma),$$`
-`$$\mu_i  = \beta_0 + \beta_1 \text{edad}_i$$`
+`$$\Large y_i \sim \text{Normal}(\mu_i,\sigma),$$`
+`$$\Large \mu_i  = \beta_0 + \beta_1 \text{edad}_i$$`
 ---
 # Regresión lineal (R)
 
@@ -229,17 +222,18 @@ nrow(df)
 
 
 ```r
-pitch_model &lt;- lm(df$pitch ~ df$ages) #resultado ~ predictor(es)
+pitch_model &lt;- lm(formula = pitch ~ 1 + ages,
+                  data    = df) 
 pitch_model
 ```
 
 ```
 ## 
 ## Call:
-## lm(formula = df$pitch ~ df$ages)
+## lm(formula = pitch ~ 1 + ages, data = df)
 ## 
 ## Coefficients:
-## (Intercept)      df$ages  
+## (Intercept)         ages  
 ##     158.682       -2.911
 ```
 
@@ -262,7 +256,7 @@ summary(pitch_model)
 ```
 ## 
 ## Call:
-## lm(formula = df$pitch ~ df$ages)
+## lm(formula = pitch ~ 1 + ages, data = df)
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
@@ -271,7 +265,7 @@ summary(pitch_model)
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
 ## (Intercept) 158.6819    14.3871  11.029  &lt; 2e-16 ***
-## df$ages      -2.9107     0.6925  -4.203 5.81e-05 ***
+## ages         -2.9107     0.6925  -4.203 5.81e-05 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
@@ -298,6 +292,17 @@ summary$residuals[1:5]
 
 ---
 
+# Residuales
+
+
+```r
+plot(pitch_model$residuals)
+```
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-20-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+---
+
 # Más allá de predicciones
 
 
@@ -308,7 +313,7 @@ summary(pitch_model)
 ```
 ## 
 ## Call:
-## lm(formula = df$pitch ~ df$ages)
+## lm(formula = pitch ~ 1 + ages, data = df)
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
@@ -317,7 +322,7 @@ summary(pitch_model)
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
 ## (Intercept) 158.6819    14.3871  11.029  &lt; 2e-16 ***
-## df$ages      -2.9107     0.6925  -4.203 5.81e-05 ***
+## ages         -2.9107     0.6925  -4.203 5.81e-05 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
@@ -325,17 +330,6 @@ summary(pitch_model)
 ## Multiple R-squared:  0.1527,	Adjusted R-squared:  0.1441 
 ## F-statistic: 17.67 on 1 and 98 DF,  p-value: 5.814e-05
 ```
-
----
-
-# Residuales
-
-
-```r
-plot(pitch_model$residuals)
-```
-
-&lt;img src="slides_files/figure-html/unnamed-chunk-21-1.png" width="65%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -350,7 +344,7 @@ summary$coefficients
 ```
 ##               Estimate Std. Error   t value     Pr(&gt;|t|)
 ## (Intercept) 158.681938 14.3871099 11.029452 7.169041e-19
-## df$ages      -2.910687  0.6924807 -4.203275 5.814231e-05
+## ages         -2.910687  0.6924807 -4.203275 5.814231e-05
 ```
 
 ---
@@ -365,7 +359,7 @@ summary
 ```
 ## 
 ## Call:
-## lm(formula = df$pitch ~ df$ages)
+## lm(formula = pitch ~ 1 + ages, data = df)
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
@@ -374,7 +368,7 @@ summary
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
 ## (Intercept) 158.6819    14.3871  11.029  &lt; 2e-16 ***
-## df$ages      -2.9107     0.6925  -4.203 5.81e-05 ***
+## ages         -2.9107     0.6925  -4.203 5.81e-05 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
@@ -387,15 +381,11 @@ summary
 
 # Residual standard error
 
-El valor (estimado) del error del modelo. Corresponde a `\(\sigma\)` o *error* en las formulas de abajo.
+El valor (estimado) del error del modelo. Corresponde a `\(\sigma\)`
 &lt;br&gt;&lt;br&gt;
 `$$\Large y \sim \text{Normal}(\mu, \mathbf{\sigma})$$`
 `$$\Large\mu_i = \beta_0 + \beta_1 x_1 + ... \beta_n x_n$$`
-&lt;br&gt;
-***
-&lt;br&gt;
 
-`$$\Large y = \beta_0 + \beta_1 x_1 + ... \beta_n x_n + \text{error}$$`
 ---
 
 # Goodness of fit
@@ -424,7 +414,7 @@ summary
 ```
 ## 
 ## Call:
-## lm(formula = df$pitch ~ df$ages)
+## lm(formula = pitch ~ 1 + ages, data = df)
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
@@ -433,7 +423,7 @@ summary
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
 ## (Intercept) 158.6819    14.3871  11.029  &lt; 2e-16 ***
-## df$ages      -2.9107     0.6925  -4.203 5.81e-05 ***
+## ages         -2.9107     0.6925  -4.203 5.81e-05 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
@@ -453,6 +443,13 @@ class: inverse
 ***
 
 * **Regresión con más de un predictor**
+
+*** 
+
+  * Assignment 5: 10/05 - 17/05
+  * Ejercicio práctico: 17/05 - 24/05
+  * Entrega parte II de "Revisión por pares": 24/05 - 31/05
+  * Informe final: 28/06
 
 ---
 
