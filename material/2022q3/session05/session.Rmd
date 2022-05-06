@@ -21,11 +21,11 @@ bibliography: ../../biblio.bib
 
 ## Regression with multiple predictors
 
-We can straightforwardly extend our linear model with a single predictors to account for multiple ones:
+We can straightforwardly extend our linear model with a single predictor to include multiple ones:
 
 $$y = \beta_0 + \beta_1 x_1 + ... + \beta_n x_n + \text{error} $$
 
-In words, outcome $y$ is modelled as a linear combination of $n+1$ parameters  ($\beta_0$,  $\beta_1$ up to $\beta_n$) and an error term. The contribution of $\beta_1$ to the prediction is relative to the value of $x_1$, that of $\beta_2$ is relative to the value of predictor $x_2$ and so on. 
+In words, outcome $y$ is modeled as a linear combination of $n+1$ parameters  ($\beta_0$,  $\beta_1$ up to $\beta_n$) and an error term. The contribution of $\beta_1$ to the prediction is relative to the value of $x_1$, that of $\beta_2$ is relative to the value of predictor $x_2$ and so on. 
 
 #### Case study: pitch (continued)
 
@@ -33,12 +33,11 @@ You already built a regression model with multiple predictors in the assignment:
 
 ```{r, warning=FALSE, message=FALSE}
 ### Packages we will use ###
-library(readr)
 library(dplyr)
 library(ggplot2)
 ### ### ###
 
-df <- read_csv("https://tinyurl.com/polite-data") #download data
+df <- read.csv("https://tinyurl.com/polite-data") #download data
 glimpse(df) #get a look at the data
 ```
 

@@ -9,23 +9,25 @@ bibliography: ../../biblio.bib
 
 # Instructions
 
-Submit your answers to the 4 first exercises through Aula Global (quiz section). Upload the remaining exercise concerning peer review through Aula Global as well (upload task).
+Submit your answers to the 5 first exercises through Aula Global (quiz section in your seminar's moodle). Round your answers to the second decimal after the comma.
 
 # Regression
 
-Consider the linear model `pitch ~ 1 + gender + context`, fit on the data from Franke & Roettger [-@franke+roettger:2019].
+Fit a linear model predicting pitch based on context and gender on the data from Franke & Roettger [-@franke+roettger:2019].
 
 ```{r, echo=TRUE, eval=FALSE, warning=FALSE, error=FALSE}
-df <- read_csv("https://tinyurl.com/polite-data") #download data
+df <- read.csv("https://tinyurl.com/polite-data") #download data
 ```
 
   1. What is the estimated effect on `pitch` in a polite context for a female speaker?
-  2. What is the estimated effect on `pitch` in a impolite context for a male speaker?
+  2. What is the estimated effect on `pitch` in an informal context for a male speaker?
   3. How many parameters does this model have?
-  4. Is a male speaker in a polite context predicted to have a higher pitch than a female speaker in an informal context?
+  4. Is a male speaker in an informal context predicted to have a higher pitch than a female speaker in a polite context? If so, by how much?
+  5. How much of the variance in `pitch` does this model explain? Use the "adjusted" metric for this answer
 
 # Self study
+If you didn't do so last week, read  @winter:2013, pages 1-10: [https://arxiv.org/ftp/arxiv/papers/1308/1308.5499.pdf](https://arxiv.org/ftp/arxiv/papers/1308/1308.5499.pdf). If you find this interesting, read on until page 21. Pages 10-21 cover topics we will briefly touch on but will not be able to discuss in detail. If you're still interested, read the entire tutorial. The second part of the tutorial touches on a very powerful and useful extension of regression models that we won't cover in this class.
 
-Use your time to work on your final report. Make sure you have all its details worked out by the end of the course.
+Use your remaining time to work on your final report
 
 # References

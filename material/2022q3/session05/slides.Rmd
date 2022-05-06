@@ -21,6 +21,12 @@ library(ggplot2)
 
 * Caso de estudios (continuado)
 
+***
+
+* Recolección y generación de datos
+
+* (In)significancia estadística
+
 ]
 
 ---
@@ -32,11 +38,6 @@ class: inverse, center
 ---
 
 # Misma formula, más sumandos
-
-$$\Large y = \beta_0 + \beta_1 x_1 + ... \beta_n x_n + \text{error}$$
-<br>
-***
-<br>
 
 $$\Large y \sim \text{Normal}(\mu,\sigma)$$
 $$\Large \mu = \beta_0 + \beta_1 x_1 + ... \beta_n x_n$$
@@ -56,33 +57,32 @@ head(df)
 --
 
 <br>
-$$\Large \text{pitch} = \beta_0 + \beta_1 \text{gender} + \beta_2\text{context}$$
+$$\Large \text{pitch}_i = \beta_0 + \beta_1 \text{gender}_i + \beta_2\text{context}_i$$
 ---
 
 # Descripción de variables (género)
 
-````{r}
+```{r}
 unique(df$gender)
-df %>% 
-  filter(gender == 'M') %>%
-  nrow()
-df %>% 
-  filter(gender == 'F') %>%
-  nrow()
+df_m <- filter(df, gender == 'M')
+nrow(df_m)
+
+df_f <- filter(df, gender == 'F') 
+nrow(df_f)
 ```
 
 ---
 
 # Descripción de variables (contexto)
 
-````{r}
+```{r}
 unique(df$context)
-df %>% 
-  filter(context == 'inf') %>%
-  nrow()
-df %>% 
-  filter(context == 'pol') %>%
-  nrow()
+
+df_inf <- filter(df, context == 'inf')
+nrow(df_inf)
+
+df_pol <- filter(df, context == 'pol')
+nrow(df_pol)
 ```
 
 ---
@@ -99,8 +99,21 @@ ggplot(data = df,
 
 ---
 
-# Posible relación entre predictor y variable (género)
+# Descripción de variables (tono)
 
+```{r}
+mean(df$pitch)
+
+median(df$pitch)
+
+sd(df$pitch)
+
+quantile(df$pitch)
+```
+
+---
+
+# Posible relación entre predictor y variable (género)
 
 ```{r, echo=FALSE, fig.align='center', out.width='65%', echo=FALSE}
 ggplot(df, aes(x = pitch, fill = gender)) +
@@ -120,11 +133,40 @@ ggplot(df, aes(y = pitch, x = gender)) +
 ```
 
 ---
+
+# Posible relación entre predictor y variable (género)
+
+```{r}
+mean(df_m$pitch)
+
+mean(df_f$pitch)
+
+median(df_m$pitch)
+
+median(df_f$pitch)
+```
+
+---
+
+# Posible relación entre predictor y variable (género)
+
+```{r}
+
+sd(df_m$pitch)
+sd(df_f$pitch)
+
+quantile(df_m$pitch)
+quantile(df_f$pitch)
+
+```
+
+---
+
 # Modelo género
 
-````{r}
+```{r}
 pitch_model1 <- lm(formula = pitch ~ 1 + gender,
-                   data = df)
+                   data    = df)
 summary(pitch_model1)
 ```
 
@@ -136,16 +178,12 @@ summary(pitch_model1)
 coef(pitch_model1)
 ```
 
-```{r}
-df %>%
-  filter(gender == 'F') %>%
-  pull() %>%
-  mean()
+--
 
-df %>%
-  filter(gender == 'M') %>%
-  pull() %>%
-  mean()
+```{r}
+mean(df_f$pitch)
+
+mean(df_m$pitch)
 ```
 
 ---
@@ -171,21 +209,78 @@ ggplot(df, aes(y = pitch, x = context)) +
 
 ---
 
+# Posible relación entre predictor y variable (contexto)
+
+```{r}
+mean(df_pol$pitch)
+
+mean(df_inf$pitch)
+
+median(df_pol$pitch)
+
+median(df_inf$pitch)
+```
+
+---
+
+# Posible relación entre predictor y variable (contexto)
+
+```{r}
+sd(df_pol$pitch)
+
+sd(df_inf$pitch)
+
+quantile(df_pol$pitch)
+
+quantile(df_inf$pitch)
+```
+
+---
+
 # Modelo contexto
 
 ```{r}
 pitch_model2 <- lm(formula = pitch ~ 1 + context,
-                   data = df)
+                   data    = df)
 summary(pitch_model2)
 ```
 
 ---
 
+# Modelo contexto
+
+```{r}
+coef(pitch_model2)
+```
+
+--
+
+```{r}
+mean(df_pol$pitch)
+
+mean(df_inf$pitch)
+```
+
+---
+
+## Por qué estamos creando un modelo para descubrir algo que ya nos indica la estadística descriptiva?
+
+--
+
+1. Entre otros: error estándar; $R^2$; y residuales (cf. `pitch_model1` vs. `pitch_model2`)  
+
+2. Porque se pueden expander a más predictores
+
+---
+
+
 # Modelo con ambos predictores
+
+--
 
 ```{r}
 pitch_model3 <- lm(formula = pitch ~ 1 + gender + context,
-                   data = df)
+                   data    = df)
 summary(pitch_model3)
 ```
 
@@ -204,7 +299,6 @@ summary(pitch_model2)$coefficients
 ```{r}
 summary(pitch_model1)$coefficients
 ```
-
 
 ---
 
@@ -232,7 +326,102 @@ summary(pitch_model1)$r.squared
 
 * Permite relaciones más complejas<br><br>$$ y = \beta_0 + \beta_1 (\text{context} \times \text{gender})$$<br> $$ y = \beta_0 + \beta_1 \text{log(age)}$$
 
-* Estimación de error de predicciones, e incertidumbre sobre parámetros
+* Estimación de (i) error de predicciones; (ii) incertidumbre sobre parámetros; (iii) efecto conjunto entre parámetros
+
+---
+
+class: inverse
+
+# Recolección y generación de datos
+
+---
+
+class: inverse
+
+# (In)significancia estadística
+
+---
+
+# Significancia estadística
+
+Intuición: un resultado es estadísticamente significante cuando es [improbable]() de obtener [un resultado así o más extremo]() bajo [la hipotesis nula]()
+
+--
+* Lo que cuenta como *improbable* (debería) depende(r) del contexto de la investigación. Un número común en las ciencias sociales es [bajo 5%](); pero puede (y debe?) ser mucho más bajo.
+
+--
+
+* La *hipótesis nula* es, comúnmente, lo contrario a lo que uno quiere demostrar: No hay efecto diferencia entre grupo A y grupo B; el efecto de A en B es 0; el efecto de A en B es positivo/negativo; etc.
+
+--
+
+* *Así o más extremo* se refiere a: una diferencia entre grupo A y B (de un tamaño suficiente o mayor para decidir que hay una diferencia); el efecto de A en B siendo mayor (o mucho mayor) a 0; o menor (o mucho menor) a 0; el efecto de A en B siendo positivo/negativo (o muy positivo/negativo); etc.
+
+---
+
+# (In)significancia estadística: razones conceptuales para ser críticos
+
+* En general, no nos interesa si A y B son diferentes si no que tan diferentes son
+
+* En general, no nos interesa si el efecto de B en A es positivo, si no cuan positivo
+
+* ...
+
+---
+
+# (In)significancia estadística: razones técnicas para ser críticos
+
+No encontrar un efecto significante es **siempre** un problema de tamaño de muestra.
+
+Con una muestra suficientemente grande todos los efectos son significativos
+
+---
+
+# (In)significancia estadística: razones técnicas para ser críticos
+
+```{r}
+set.seed(12)
+obs <- 5
+datos_A <-   rnorm(n = obs, mean = 160, sd = 5)
+datos_B <-   rnorm(n = obs, mean = 159, sd = 4)
+id_grupo <-  c(rep('A',obs), rep('B', obs))
+
+df <- data.frame(datos  = c(datos_A,datos_B),
+                 grupo  = id_grupo)
+```
+
+---
+
+# (In)significancia estadística: razones técnicas para ser críticos
+
+```{r}
+summary(lm(datos ~ grupo, data = df))
+```
+
+---
+
+# (In)significancia estadística: razones técnicas para ser críticos
+
+```{r}
+set.seed(12)
+obs <- 1000000
+datos_A <-   rnorm(n = obs, mean = 160, sd = 5)
+datos_B <-   rnorm(n = obs, mean = 159, sd = 4)
+id_grupo <-  c(rep('A',obs), rep('B', obs))
+
+df <- data.frame(datos   = c(datos_A,datos_B),
+                 grupo   = id_grupo)
+```
+
+
+
+---
+
+# (In)significancia estadística: razones técnicas para ser críticos
+
+```{r}
+summary(lm(datos ~ grupo, data = df))
+```
 
 ---
 
