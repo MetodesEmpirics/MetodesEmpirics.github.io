@@ -9,7 +9,7 @@ bibliography: ../../biblio.bib
 
 # Instructions
 
-You will find a dataset prepared for you if you modify the **bolded** portion of the following  link:
+You will find a dataset prepared for you if you modify the **bolfaced** portion of the following  link:
 
 https://raw.githubusercontent.com/MetodesEmpirics/MetodesEmpirics.github.io/main/material/2022q3/session06/data/csvs/**insert_your_student_ID**.csv
 
@@ -32,7 +32,7 @@ There are sentences that are syntactically ambiguous while you are processing th
   1. While the narrator read the story **was dramatized** by the troop of skilled actors.
   2. While the narrator read(,) the story **was dramatized** by the troop of skilled actors
 
-When reading (1) for the first time, the sentence may strike you as odd when you reach the bolded portion of the text. This effect should be less pronounced for (2), where the comma helps you interpret the sentence as intended. When reading (1), instead, you may be mislead into thinking that **the story** is the object of **the narrator read**; and not its complement. This kind of syntactic ambiguity is called NP/Z in the literature.
+When reading (1) for the first time, the sentence may strike you as odd when you reach the boldfaced portion of the text. This effect should be less pronounced for (2), where the comma helps you interpret the sentence as intended. When reading (1), instead, you may be mislead into thinking that **the story** is the object of **the narrator read**; and not its complement. This kind of syntactic ambiguity is called NP/Z in the literature.
 
 There are other types of syntactically ambiguous sentences. The sentences in (3) and (4) exemplify a so-called NP/S-type ambiguity.
 
@@ -57,7 +57,7 @@ The column sentence `sentence.ID` identifies which of the 5 sentence pairs the r
 
 # Questions
 
-Help your colleague analze the data from her experiments! Remember to round all answers to the second decimal after the comma.
+Help your colleague analyze the data from her experiments! Remember to round all answers to the second decimal after the comma.
 
 ## Descriptive statistics (0.5 points each)
 
@@ -79,7 +79,7 @@ Help your colleague analze the data from her experiments! Remember to round all 
 
 ## Inferential statistics (1 point each)
 
-Using two regression models, using `status` as predictor and `reading.time` as outcome, estimate
+Using two regression models, with `status` as predictor and `reading.time` as outcome, estimate
 
 1. The difference between ambiguous and unambiguous NP/Z sentences, and the standard error of this difference
 
