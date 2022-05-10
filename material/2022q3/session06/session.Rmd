@@ -28,9 +28,9 @@ $$\Large \mu_i = \beta_0 + \beta x_i$$
 
 Notice that there is no constraint on the outcome of the operations on the right hand side. This was not an issue in the cases we saw so far, because $\mu_i$ could, in principle, be 5; 50; 600; 234.5 or 234.5634233. However, not all parameters and outcomes can take just any value. 
 
-If we are predicting how likely an event is to occur, the outcome is between $0$ and $1$. It doesn't make sense to predict that the event will occur with a probability of $24.54$ or with a probability of $-1$. Similarly, if we are predicting how many times an event occurred, the rate of occurence is $0$ or higher. It doesn't make sense to predict the event is expected to occur at a rate of $-5$. The kind of constraint we need on the right-hand side thus depends on the distribution we're taking as a starting point (what the parameter on the left represents). 
+If we are predicting how likely an event is to occur, the outcome is between $0$ and $1$. It doesn't make sense to predict that the event will occur with a probability of $24.54$ or with a probability of $-1$. Similarly, if we are predicting how many times an event occurred, the rate of occurrence is $0$ or higher. It doesn't make sense to predict the event is expected to occur at a rate of $-5$. The kind of constraint we need on the right-hand side thus depends on the distribution we're taking as a starting point (what the parameter on the left represents). 
 
-A *generalized* linear model is a model that takes the values on the right and applies a transformation to them to fullfil such a constraint. So far, we didn't have to apply any constraints because $y$ was distributed following a Normal distribution. But now we also want to make predictions about Bernoulli distributed and Poisson distributed outcomes. Recall that they look like this:
+A *generalized* linear model is a model that takes the values on the right and applies a transformation to them to fulfill such a constraint. So far, we didn't have to apply any constraints because $y$ was distributed following a Normal distribution. But now we also want to make predictions about Bernoulli distributed and Poisson distributed outcomes. Recall that they look like this:
 
 $$\Large y_i \sim \text{Poisson}(\lambda_i)$$
 $$\Large y_i \sim \text{Bernoulli}(p_i)$$
