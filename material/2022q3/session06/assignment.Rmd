@@ -24,7 +24,7 @@ df <- read.csv('replace_this_with_URL_to_your_data.csv')
 ```
 The data is described below.
 
-Submit your answers to the questions as a PDF file, through Aula Global (upload task in **grup gran**). Round all answers to the second decimal after the comma.
+Submit your answers to the questions as a PDF file, through Aula Global (upload task in **seminari**). Round all answers to the second decimal after the comma.
 
 # Data description
 There are sentences that are syntactically ambiguous while you are processing them. That is, while you're hearing/reading the sentence, you can be mislead to interpret it in a way that turns out to be wrong. This effect is called a *temporal ambiguity*. Temporal ambiguities can be so strong that it may take you a couple of times hearing/reading them before you understand them. For instance, compare the two sentences in (1) and (2).
