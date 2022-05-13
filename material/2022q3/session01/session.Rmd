@@ -83,7 +83,7 @@ This class covers empirical methods for language sciences. The main goal is for 
   * You give your peers (blind) feedback about their planned analysis
   * 1 in total
 
-### Mid-term exam (20%)
+### Practical exercise (20%)
   * Submitted through Aula Global
   * Single attempt
 
