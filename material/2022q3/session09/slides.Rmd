@@ -19,6 +19,8 @@ library(ggplot2)
 # Hoy
 
 .large[
+* Algunos tipos de visualización
+
 * Principios de visualización
 
 * ggplot2
@@ -27,12 +29,83 @@ library(ggplot2)
 
 ---
 
+
+class: inverse, center
+
+# Algunos tipo de visualización
+
+---
+
+## Scatter plots (datos continuos; una sola relación)
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE, fig.align='center'}
+set.seed(113)
+
+age <- rpois(n = 30, lambda = 28)
+pitch <- 220 + (-2 * age) + rnorm(30, 0,5)
+
+df <- data.frame(age,pitch)
+ggplot(df, aes(x = age, y = pitch)) + 
+  geom_point() +
+  theme_minimal(base_size = 22)
+```
+
+---
+
+## Histogramas (distribución de una sola variable)
+
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE, fig.align='center'}
+
+ggplot(df, aes(x = pitch)) +
+  geom_histogram(bins = 10) +
+  theme_minimal(base_size = 22)
+
+```
+
+---
+
+## Boxplots  (distribución de una sola variable [grupos])
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE, fig.align='center'}
+df_gestures <- read.csv('https://tinyurl.com/gestures-data') #download data
+
+ggplot(df_gestures, aes(x = language, y = gestures)) +
+  geom_boxplot() +
+  theme_minimal(base_size = 22) +
+  theme(axis.title.x = element_blank())
+```
+
+---
+
+## Boxplots  (distribución de una sola variable [grupos])
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE, fig.align='center'}
+df_gestures <- read.csv('https://tinyurl.com/gestures-data') #download data
+
+ggplot(df_gestures, aes(x = language, y = gestures, fill = context)) +
+  geom_boxplot() +
+  theme_minimal(base_size = 22) +
+  theme(axis.title.x = element_blank())
+```
+
+---
+
+# El cielo es el límite
+
+[https://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html](https://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
+
+
+
+---
+
+
+
 class: inverse, center
 
 # Principios de visualización
 
 
----
 
 
 ---
@@ -105,10 +178,7 @@ Fig. 2 de Franconeri et al. 2021 [The Science of Visual Data Communication: What
 ## Guia computación de estadísticas 
 
 ```{r, warning=FALSE, message=FALSE, echo=FALSE, fig.align='center'}
-age <- rpois(n = 30, lambda = 28)
-pitch <- 220 + (-2 * age) + rnorm(30, 0,5)
-df <- data.frame(age,pitch)
-set.seed(113)
+
 
 ggplot(df, aes(x = age, y = pitch)) + 
   geom_point() +
@@ -238,6 +308,11 @@ ggplot(df, aes(y = pitch, x = gender)) + geom_bar(position = 'dodge', stat= 'ide
 
 ```
 
+---
+
+class: inverse
+
+# ggplot2
 ---
 
 class: inverse
