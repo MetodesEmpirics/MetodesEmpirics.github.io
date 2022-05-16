@@ -38,7 +38,7 @@ class: inverse, center
 ---
 
 
-<img src='../session01/fig1-franconeri.png',  width="500px" height="500px", style="position:absolute; right:200px; top:px;">
+<img src='fig1-franconeri.png',  width="500px" height="500px", style="position:absolute; right:200px; top:px;">
 
 .footnote[
 *** 
@@ -50,18 +50,22 @@ Fig. 1 de Franconeri et al. 2021 [The Science of Visual Data Communication: What
 
 1. Objetivo: La visualización tiene un objetivo bien definido
 
+--
+
 2. Claridad: Los datos son visualizados de manera clara (y simple)
+
+--
 
 3. Mensaje: Haz que el mensaje sea inmediato/obviou
 
 ---
 
-.pull-left[## Canales visuales 
-##ranking por nitidez 
+.pull-left[# Canales visuales 
+### ranking por nitidez cognitiva
 
-##cognitiva 1:7
+###  1:7
 ]
-<img src='prec-ratio.png',  width="180px" height="660px", style="position:absolute; right:350px; top:px;">
+<img src='prec-ratio.png',  width="180px" height="660px", style="position:absolute; right:250px; top:px;">
 
 ---
 
@@ -80,11 +84,19 @@ Fig. 2 de Franconeri et al. 2021 [The Science of Visual Data Communication: What
 
 * Utiliza visualización para guiar a la computación de estadísticas
 
+--
+
 * Limíta el número de comparaciones por gráfico
 
-* Si estáis en duda: Minimalismo
+--
+
+* En caso de duda: Minimalismo
+
+--
 
 * Respetad direccionalidad "natural", si la hay
+
+--
 
 * Cuidado con ilusiones visuales
 
@@ -96,6 +108,7 @@ Fig. 2 de Franconeri et al. 2021 [The Science of Visual Data Communication: What
 age <- rpois(n = 30, lambda = 28)
 pitch <- 220 + (-2 * age) + rnorm(30, 0,5)
 df <- data.frame(age,pitch)
+set.seed(113)
 
 ggplot(df, aes(x = age, y = pitch)) + 
   geom_point() +
@@ -107,13 +120,123 @@ ggplot(df, aes(x = age, y = pitch)) +
 
 ## Guia computación de estadísticas 
 
-OTRO EJEMPLO: GESTOS Y COMPARACIÓN DE GRUPOS, con solo CAT/COR
+```{r, warning=FALSE, message=FALSE, echo=FALSE, fig.align= 'center'}
+df_gestures <- read.csv('https://tinyurl.com/gestures-data') #download data
+
+ggplot(df_gestures, aes(x = language, y = gestures)) +
+  geom_boxplot() +
+  theme_minimal(base_size = 22) +
+  theme(axis.title.x = element_blank())
+
+```
+---
+
+## Número de comparaciones por gráfico (I/II)
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE, fig.align= 'center'}
+df_gestures <- read.csv('https://tinyurl.com/gestures-data') #download data
+
+ggplot(df_gestures, aes(x = language, y = gestures)) +
+  geom_boxplot() +
+  theme_minimal(base_size = 22) +
+  theme(axis.title.x = element_blank())
+```
 
 ---
 
-## Comparaciones por gráfico
+## Número de comparaciones por gráfico (II/II)
 
-OTRO EJEMPLO: GESTOS Y COMPARACIÓN DE GRUPOS ahora CAT/COR y CONTX
+```{r, warning=FALSE, message=FALSE, echo=FALSE, fig.align= 'center'}
+df_gestures <- read.csv('https://tinyurl.com/gestures-data') #download data
+
+ggplot(df_gestures, aes(x = language, y = gestures, fill = context)) +
+  geom_boxplot() +
+  theme_minimal(base_size = 22) +
+  theme(axis.title.x = element_blank())
+```
+
+
+---
+
+## Mínimalismo vs Maximalismo (I/III)
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE, fig.align= 'center'}
+ggplot(df_gestures, aes(x = language, y = gestures)) +
+  geom_boxplot() +
+  theme_minimal(base_size = 22) +
+  theme(axis.title.x = element_blank())
+```
+
+---
+
+## Mínimalismo vs Maximalismo (II/III)
+
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE, fig.align= 'center'}
+ggplot(df_gestures, aes(x = language, y = gestures, fill = context)) +
+  geom_boxplot() +
+  theme_minimal(base_size = 22) +
+  theme(axis.title.x = element_blank())
+```
+
+---
+
+## Mínimalismo vs Maximalismo (III/III)
+
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE, fig.align= 'center'}
+
+m <- lm(gestures ~ language, df_gestures)
+
+ggplot(df_gestures, aes(x = language, y = gestures, fill = context)) +
+  geom_boxplot() +
+  theme_minimal(base_size = 22) +
+  geom_abline(intercept = coef(m)[[1]], slope = coef(m)[[2]], linetype = 2, size=1.5) +
+    stat_summary(fun.y=mean, geom="point", shape=20, size=14, color="blue", fill="blue") +
+  theme(axis.title.x = element_blank()) 
+
+```
+
+---
+
+# Direccionalidad "natural" (I/II)
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE, fig.align= 'center'}
+
+ggplot(df, aes(x = age, y = pitch)) + 
+  geom_point() +
+  geom_smooth(method= 'lm') + 
+  theme_minimal(base_size = 22) + scale_y_reverse()
+```
+
+---
+
+# Direccionalidad "natural" (II/II)
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE, fig.align= 'center'}
+
+ggplot(df, aes(x = age, y = pitch)) + 
+  geom_point() +
+  geom_smooth(method= 'lm') + 
+  theme_minimal(base_size = 22) + scale_x_reverse()
+
+df$gender <- 'F'
+pitch <- df$pitch + 0.8
+gender <- rep('M', nrow(df))
+age <- df$age
+df <- df %>% rbind(data.frame(pitch,age,gender))
+```
+
+# Ilusiones visuales
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE, fig.align = 'center'}
+
+
+library(scales)
+ggplot(df, aes(y = pitch, x = gender)) + geom_bar(position = 'dodge', stat= 'identity') +  scale_y_continuous(limits=c(183,184.5),oob = rescale_none) +
+  theme_minimal(base_size = 22) + theme(axis.title.x = element_blank())
+
+```
 
 ---
 
