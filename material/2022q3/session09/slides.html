@@ -5,7 +5,6 @@
     <meta charset="utf-8" />
     <meta name="author" content="Métodos empíricos 2" />
     <meta name="date" content="2022-07-06" />
-    <script src="slides_files/header-attrs-2.13/header-attrs.js"></script>
     <link href="slides_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="slides_files/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
   </head>
@@ -13,9 +12,15 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
+.title[
 # 9 Visualización
+]
+.author[
 ### Métodos empíricos 2
+]
+.date[
 ### 07/06/2022
+]
 
 ---
 
@@ -25,6 +30,8 @@ class: center, middle, inverse, title-slide
 # Hoy
 
 .large[
+* Algunos tipos de visualización
+
 * Principios de visualización
 
 * ggplot2
@@ -33,18 +40,59 @@ class: center, middle, inverse, title-slide
 
 ---
 
+
+class: inverse, center
+
+# Algunos tipo de visualización
+
+---
+
+## Scatter plots (datos continuos; una sola relación)
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-1-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Histogramas (distribución de una sola variable)
+
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-2-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Boxplots  (distribución de una sola variable [grupos])
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Boxplots  (distribución de una sola variable [grupos])
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# El cielo es el límite
+
+[https://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html](https://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
+
+
+
+---
+
+
+
 class: inverse, center
 
 # Principios de visualización
 
 
----
 
 
 ---
 
 
-&lt;img src='../session01/fig1-franconeri.png',  width="500px" height="500px", style="position:absolute; right:200px; top:px;"&gt;
+&lt;img src='fig1-franconeri.png',  width="500px" height="500px", style="position:absolute; right:200px; top:px;"&gt;
 
 .footnote[
 *** 
@@ -56,18 +104,22 @@ Fig. 1 de Franconeri et al. 2021 [The Science of Visual Data Communication: What
 
 1. Objetivo: La visualización tiene un objetivo bien definido
 
+--
+
 2. Claridad: Los datos son visualizados de manera clara (y simple)
+
+--
 
 3. Mensaje: Haz que el mensaje sea inmediato/obviou
 
 ---
 
-.pull-left[## Canales visuales 
-##ranking por nitidez 
+.pull-left[# Canales visuales 
+### ranking por nitidez cognitiva
 
-##cognitiva 1:7
+###  1:7
 ]
-&lt;img src='prec-ratio.png',  width="180px" height="660px", style="position:absolute; right:350px; top:px;"&gt;
+&lt;img src='prec-ratio.png',  width="180px" height="660px", style="position:absolute; right:250px; top:px;"&gt;
 
 ---
 
@@ -86,11 +138,19 @@ Fig. 2 de Franconeri et al. 2021 [The Science of Visual Data Communication: What
 
 * Utiliza visualización para guiar a la computación de estadísticas
 
+--
+
 * Limíta el número de comparaciones por gráfico
 
-* Si estáis en duda: Minimalismo
+--
+
+* En caso de duda: Minimalismo
+
+--
 
 * Respetad direccionalidad "natural", si la hay
+
+--
 
 * Cuidado con ilusiones visuales
 
@@ -98,20 +158,67 @@ Fig. 2 de Franconeri et al. 2021 [The Science of Visual Data Communication: What
 
 ## Guia computación de estadísticas 
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-2-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-5-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
 ## Guia computación de estadísticas 
 
-OTRO EJEMPLO: GESTOS Y COMPARACIÓN DE GRUPOS, con solo CAT/COR
+&lt;img src="slides_files/figure-html/unnamed-chunk-6-1.png" style="display: block; margin: auto;" /&gt;
+---
+
+## Número de comparaciones por gráfico (I/II)
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-7-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
-## Comparaciones por gráfico
+## Número de comparaciones por gráfico (II/II)
 
-OTRO EJEMPLO: GESTOS Y COMPARACIÓN DE GRUPOS ahora CAT/COR y CONTX
+&lt;img src="slides_files/figure-html/unnamed-chunk-8-1.png" style="display: block; margin: auto;" /&gt;
 
+
+---
+
+## Mínimalismo vs Maximalismo (I/III)
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-9-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Mínimalismo vs Maximalismo (II/III)
+
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-10-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Mínimalismo vs Maximalismo (III/III)
+
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-11-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Direccionalidad "natural" (I/II)
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-12-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Direccionalidad "natural" (II/II)
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-13-1.png" style="display: block; margin: auto;" /&gt;
+
+# Ilusiones visuales
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-14-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: inverse
+
+# ggplot2
 ---
 
 class: inverse
@@ -173,6 +280,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable
