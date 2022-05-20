@@ -47,7 +47,7 @@ for (i in seq(1:nrow(df))){
 
 				para el Peer Review II tienes que darle feedback al trabajo "', df$peer_reviews[[i]], '.pdf" 
 
-				El link a la carpeta con todos los proyectos está en Aula Global.
+				Más información, y el link a la carpeta con todos los proyectos está en Aula Global.
 
 				Saludos, Thomas'))
 
