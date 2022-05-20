@@ -43,8 +43,10 @@ efficient communication](). *Gesture*.
 
 # Datos
 
-```{r, echo=FALSE, warning=FALSE, message=FALSE}
-df <- read.csv('https://tinyurl.com/2s3p9s2z')
+```{r, echo=FALSE, warning=FALSE, message=FALSE, echo=FALSE}
+
+df <- read.csv('../session02/senderdata.csv')
+#df <- read.csv('https://tinyurl.com/2s3p9s2z')
 head(df)
 ```
 
@@ -70,8 +72,16 @@ df$freq  <- ifelse(df$display %in% c(0,1),  'freq', 'infreq')
 
 # Variable dependiente (resultado)
 ```{r}
-df$short <- ifelse(df$label == 'zop', 1, 0)  
+df$label[1:10]
+df$short <- ifelse(df$label == 'zop', 1, 0) 
+df$short[1:10]
 ```
+
+
+---
+
+
+# Variable dependiente (resultado)
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.align='center', out.width='65%'}
 library(ggplot2)
@@ -84,15 +94,6 @@ ggplot(df, aes(x = short)) +
               axis.ticks.x = element_blank())
 ```
 
-
----
-
-
-# Variable dependiente (resultado)
-
-```{r, echo=FALSE, warning=FALSE, message=FALSE}
-df$short[1:10]
-```
 
 
 ---
@@ -154,7 +155,7 @@ $$\Huge \text{logit}(p_i) = \beta_0 + \beta_1 x_1 + ... \beta_n x_n$$
 
 ---
 
-# Regresión de Bernoulli (R)
+# Regresión de Binomial/Bernoulli (R)
 
 ```{r, warning=FALSE, message=FALSE, eval=FALSE}
 glm(formula = short ~ 1 + freq,
@@ -173,7 +174,7 @@ class: inverse, center
 ***
 Kanwal et al. (2017):  [Zipf’s Law of Abbreviation and the Principle of Least
 Effort: Language users optimise a miniature lexicon for
-efficient communication](). *Gesture*.
+efficient communication](). *Cognition*.
 ]
 
 ---
@@ -343,7 +344,7 @@ coef(m4)
 
 
 # Modelos hierarquicos
-```{r}
+```{r, message=FALSE, warning=FALSE}
 library(lme4)
 
 m5 <- glmer(formula = short ~ 1 + trial + freq +
@@ -352,7 +353,15 @@ m5 <- glmer(formula = short ~ 1 + trial + freq +
                        data    = df,
                        family  = binomial(link = 'logit')
                         )
-summary(m5)
+```
+
+---
+
+# Modelos hierarquicos
+```{r}
+fixef(m5)
+
+head(ranef(m5)$IP)
 ```
 
 ---

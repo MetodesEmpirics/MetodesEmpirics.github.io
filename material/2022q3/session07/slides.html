@@ -4,6 +4,7 @@
     <title>7 Regresión generalizada II</title>
     <meta charset="utf-8" />
     <meta name="author" content="Métodos empíricos 2" />
+    <script src="slides_files/header-attrs-2.13/header-attrs.js"></script>
     <link href="slides_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="slides_files/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
   </head>
@@ -13,7 +14,7 @@ class: center, middle, inverse, title-slide
 
 # 7 Regresión generalizada II
 ### Métodos empíricos 2
-### 17/05/2022
+### 24/05/2022
 
 ---
 
@@ -84,10 +85,22 @@ df$freq  &lt;- ifelse(df$display %in% c(0,1),  'freq', 'infreq')
 # Variable dependiente (resultado)
 
 ```r
-df$short &lt;- ifelse(df$label == 'zop', 1, 0)  
+df$label[1:10]
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-4-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+```
+##  [1] "zop"     "zopudon" "zop"     "zopekil" "zopudon" "zopekil" "zop"    
+##  [8] "zop"     "zop"     "zop"
+```
+
+```r
+df$short &lt;- ifelse(df$label == 'zop', 1, 0) 
+df$short[1:10]
+```
+
+```
+##  [1] 1 0 1 0 0 0 1 1 1 1
+```
 
 
 ---
@@ -95,10 +108,8 @@ df$short &lt;- ifelse(df$label == 'zop', 1, 0)
 
 # Variable dependiente (resultado)
 
+&lt;img src="slides_files/figure-html/unnamed-chunk-4-1.png" width="65%" style="display: block; margin: auto;" /&gt;
 
-```
-##  [1] 1 0 1 0 0 0 1 1 1 1
-```
 
 
 ---
@@ -132,7 +143,7 @@ inv.logit &lt;- function(x){
 
 # Espacio inverso logit
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-7-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-6-1.png" width="65%" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -154,7 +165,7 @@ inv.logit &lt;- function(x){
 
 ---
 
-# Regresión de Bernoulli (R)
+# Regresión de Binomial/Bernoulli (R)
 
 
 ```r
@@ -174,7 +185,7 @@ class: inverse, center
 ***
 Kanwal et al. (2017):  [Zipf’s Law of Abbreviation and the Principle of Least
 Effort: Language users optimise a miniature lexicon for
-efficient communication](). *Gesture*.
+efficient communication](). *Cognition*.
 ]
 
 ---
@@ -203,7 +214,7 @@ head(df)
 
 --
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-10-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-9-1.png" width="65%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -293,7 +304,7 @@ inv.logit(0.13)
 
 --
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-14-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-13-1.png" width="65%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -495,41 +506,33 @@ m5 &lt;- glmer(formula = short ~ 1 + trial + freq +
                        data    = df,
                        family  = binomial(link = 'logit')
                         )
-summary(m5)
+```
+
+---
+
+# Modelos hierarquicos
+
+```r
+fixef(m5)
 ```
 
 ```
-## Generalized linear mixed model fit by maximum likelihood (Laplace Approximation) ['glmerMod']
-##  Family: binomial  ( logit )
-## Formula: short ~ 1 + trial + freq + trial:freq + (1 | IP)
-##    Data: df
-## 
-##      AIC      BIC   logLik deviance df.resid 
-##   1193.4   1219.1   -591.7   1183.4     1275 
-## 
-## Scaled residuals: 
-##     Min      1Q  Median      3Q     Max 
-## -2.5879 -0.5030 -0.1125  0.4594 10.7912 
-## 
-## Random effects:
-##  Groups Name        Variance Std.Dev.
-##  IP     (Intercept) 4.013    2.003   
-## Number of obs: 1280, groups:  IP, 40
-## 
-## Fixed effects:
-##                   Estimate Std. Error z value Pr(&gt;|z|)    
-## (Intercept)      -1.192104   0.369043  -3.230 0.001237 ** 
-## trial             0.072323   0.009886   7.316 2.55e-13 ***
-## freqinfreq       -1.185276   0.370464  -3.199 0.001377 ** 
-## trial:freqinfreq -0.073472   0.019811  -3.709 0.000208 ***
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## Correlation of Fixed Effects:
-##             (Intr) trial  frqnfr
-## trial       -0.439              
-## freqinfreq  -0.217  0.375       
-## trl:frqnfrq  0.224 -0.507 -0.849
+##      (Intercept)            trial       freqinfreq trial:freqinfreq 
+##      -1.19210355       0.07232261      -1.18527634      -0.07347172
+```
+
+```r
+head(ranef(m5)$IP)
+```
+
+```
+##                (Intercept)
+## 100.10.40.83      1.897175
+## 100.2.122.157     1.737037
+## 104.174.222.43   -1.743050
+## 107.161.163.8    -2.364535
+## 115.99.18.32     -1.490564
+## 117.213.33.129   -2.768317
 ```
 
 ---
@@ -538,11 +541,15 @@ class: inverse
 
 # Próxima sesión
 
-* No hay entrega
+* Entrega parte II de "Revisión por pares": 24/05 - 31/05
 
 ***
 
 * **Corpus**
+
+*** 
+
+* Informe final: 28/06
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

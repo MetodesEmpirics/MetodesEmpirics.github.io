@@ -36,13 +36,12 @@ In this session, we will estimate probabilities, using a Generalized Linear Mode
 Let's use the study of @kanwal+etal:2017 to exemplify a regression using the Bernoulli distribution. 
 
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
 ### Packages we will use ###
 library(dplyr)
 library(ggplot2)
-### ### ###
 
-df <- read.csv('https://tinyurl.com/2s3p9s2z')
+df <- read.csv('../session02/senderdata.csv')
 head(df)
 ```
 

@@ -11,7 +11,11 @@ bibliography: ../../biblio.bib
 
 # Peer review (part II) 
 
-Submit a peer review for the analysis report that you received as a single page PDF-file through Aula Global. This submission makes up 10% of your peer-review grade. Remember that **your submission must be anonymous**. That is: do not put any information that can identify you in the PDF (like your name). 
+Submit a peer review for the analysis report that you were assigned through email, as a single page PDF-file through Aula Global (grup gran). You will find a link to the report assigned to you (and all other reports) in Aula Global.
+
+If you did not submit a report for Peer Review I, then you were assigned no report to give feedback to. If you would still like to participate in this second part, feel free to give feedback to a randomly chosen report from the folder.  If you did submit a report for Peer Review I, but you did not receive an email from me, please let me know (thomas.brochhagen@upf.edu).
+
+This submission makes up 50% of your peer-review grade (10% total). Remember that **your submission must be anonymous**. That is: do not put any information that can identify you in the PDF (like your name). 
 
 Cover the following points (in bullet points if you want)
 
@@ -23,4 +27,4 @@ Elaborate with as much detail as you want but keep in mind that your feedback mu
 
 # Self study
 
-Use your time to work on your final report. Make sure you have all its details worked out by the end of the course.
+Use the rest of your time to work on your final report. Make sure you have all its details worked out by the end of the course.
