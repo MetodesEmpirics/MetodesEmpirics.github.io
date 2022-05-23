@@ -94,9 +94,20 @@ ggplot(df, aes(x = short)) +
               axis.ticks.x = element_blank())
 ```
 
+---
+class: center, inverse
 
+## Modelo lineal generalizado: Bernoulli / Binomial
 
 ---
+
+## Sustainability
+.center[
+<img src='sustainable.png' width='90%', height='90%'>
+]
+
+---
+
 # Modelo lineal generalizado: Bernoulli / Binomial
 
 
