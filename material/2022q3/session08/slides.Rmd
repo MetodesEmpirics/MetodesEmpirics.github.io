@@ -29,6 +29,7 @@ library(ggplot2)
 
 ]
 
+---
 
 class: inverse, center
 
@@ -56,7 +57,7 @@ G.K. Zipf (1949) *Human behavior and the principle of least effort*
 
 ### Rank-Frequency Law: La distribución rango-frecuencia de palabras es inversa
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, fig.align='center', out.width='90%%'}
 library(knitr)
 include_graphics('Zipf_30wiki_en_labels.png')
 ```
@@ -66,7 +67,7 @@ include_graphics('Zipf_30wiki_en_labels.png')
 ### Law of Abbreviation: Formas frequentes tienden a ser más cortas 
 
 
-```{r, echo=FALSE, out.width="90%", fig.align='center'}
+```{r, echo=FALSE, out.width="80%", fig.align='center'}
 include_graphics('en-zipf.jpg')
 ```
 
@@ -81,7 +82,7 @@ meanings <- freqs**0.5
 df <- data.frame(freq = freqs,
                  nmeanings = meanings)
 
-ggplot(df, aes(x = freq, y = nmeanings)) + geom_point() +     xlab('Frequency of a word') + ylab('Meanings of the word') + theme_minimal(base_size=22) +
+ggplot(df, aes(x = freq, y = nmeanings)) + geom_point() +     xlab('Frecuencia') + ylab('Número de significados') + theme_minimal(base_size=22) +
  theme(axis.text.y = element_blank(), axis.text.x = element_blank()) 
 
 ```
@@ -98,23 +99,23 @@ class: inverse, center
 
 * Por definición: Cualquier colección de datos
 
-* Por uso: Colección de datos no estructurados, muchas veces de [gran]() tamaño
+* Por uso convencional: Colección de datos no estructurados, muchas veces de [gran]() tamaño
 
 
 .footnote[
 ***
 
-Lo que significa [gran]() varía en función a la naturaleza de los datos, y de cuándo son.]
+Lo que significa [gran]() varía en función a la naturaleza de los datos, y de cuándo son / es el análisis.]
 
 ---
 
 # Associated Press Corpus 
 
-Collection of 2246 news articles, mostly published around 1988
+Colección de 2246 artículos de noticias, la mayoría de alrededor de 1988
 
 --
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
 library(tm)
 library(knitr)
 data("AssociatedPress", package = "topicmodels")
@@ -161,6 +162,8 @@ Convertir todo el texto a minúscula (o mayúscula)
 
 Quitar material morfológico, quedandose sólamente con las raíces
 
+--
+
 
 ## Lematización
 
@@ -186,6 +189,14 @@ tolower(tokenized_first_par)
 ---
 
 # AP tokenizada
+
+
+```{r, eval=FALSE}
+library(tidytext)
+
+data("AssociatedPress", package = "topicmodels")
+tidy(AssociatedPress)
+```
 
 ```{r, echo=FALSE}
 library(tidytext)
@@ -213,7 +224,8 @@ AP_ranked %>% head()
 # AP y Zipf I
 
 ```{r, echo=FALSE, fig.align='center'}
-ggplot(AP_ranked, aes(x = log.rank, y = log.count)) + geom_point(col='indianred') + theme_minimal(base_size = 22)
+ggplot(AP_ranked, aes(x = log.rank, y = log.count)) + geom_point(col='indianred') + theme_minimal(base_size = 22) + 
+  xlab('log(rank)') + ylab('log(frecuencia)')
 ```
 
 ---
@@ -221,7 +233,8 @@ ggplot(AP_ranked, aes(x = log.rank, y = log.count)) + geom_point(col='indianred'
 # AP y Zipf II
 
 ```{r, echo=FALSE, fig.align='center'}
-ggplot(AP_ranked, aes(x = length, y = count)) + geom_point(col='indianred') + theme_minimal(base_size = 22)
+ggplot(AP_ranked, aes(x = length, y = count)) + geom_point(col='indianred') + theme_minimal(base_size = 22)  + 
+  xlab('longitud (caracteres)') + ylab('frecuencia')
 ```
 
 ---
@@ -271,7 +284,8 @@ head(JA_ranked)
 # Jane Austen y Zipf I
 
 ```{r, echo=FALSE}
-ggplot(JA_ranked, aes(x = log.rank, y = log.count)) +  geom_point(col='indianred') + theme_minimal(base_size = 22)
+ggplot(JA_ranked, aes(x = log.rank, y = log.count)) +  geom_point(col='indianred') + theme_minimal(base_size = 22)  + 
+  xlab('log(rank)') + ylab('log(frecuencia)')
 ```
 
 ---
@@ -279,7 +293,8 @@ ggplot(JA_ranked, aes(x = log.rank, y = log.count)) +  geom_point(col='indianred
 # Jane Austen y Zipf II
 
 ```{r, echo=FALSE}
-ggplot(JA_ranked, aes(x = length, y = count)) +  geom_point(col='indianred') + theme_minimal(base_size = 22)
+ggplot(JA_ranked, aes(x = length, y = count)) +  geom_point(col='indianred') + theme_minimal(base_size = 22)  + 
+  xlab('longitud') + ylab('frecuencia')
 ```
 
 ---
@@ -291,17 +306,19 @@ ggplot(JA_ranked, aes(x = length, y = count)) +  geom_point(col='indianred') + t
 
 class: inverse
 
-# Aplicaciones
+# Aplicaciones 
 
 ---
 
 # Investigación
 
-* Indispensable para descubrir o (des)confirmar regularidades en una, o varias lenguas, o todas las lenguas
+* Indispensable para descubrir o (des)confirmar regularidades en una, o varias lenguas
 
-* Mayor volúmen de datos $\Rightarrow$ mayor sensibilidad para encontrar efectos menores
+* Mayor volúmen de datos $\Rightarrow$ mayor sensibilidad para encontrar efectos menores (pero también más peligro de descubrir patrones falsos)
 
-* Gran potencial --aún por descubrir-- para tipología y lenguas menos descritas
+  * [https://www.tylervigen.com/spurious-correlations](https://www.tylervigen.com/spurious-correlations)
+
+* Gran potencial --aún por explorar-- para tipología y lenguas menos descritas
 
 ---
 
@@ -323,7 +340,7 @@ class: inverse
 
 ---
 
-# Predicción como base para conocimiento lingüístico.
+# Predicción como base para conocimiento lingüístico
 
 ### Les ⬛⬛⬛....⬛⬛⬛
 
@@ -348,11 +365,9 @@ class: inverse
 ### Les tasques de remodelació i ampliació ⬛⬛⬛....⬛⬛⬛
 
 
-  i ampliació de l’estadi començaran al juny, quan s’acabin les competicions esportives.
-
 ---
 
-# Predicción como base para conocimiento lingüístico.
+# Predicción como base para conocimiento lingüístico
 
 ### Les tasques de remodelació i ampliació de ⬛⬛⬛....⬛⬛⬛
 
@@ -368,7 +383,10 @@ class: inverse
 
 ### Les tasques de remodelació i ampliació de l'estadi començaran ⬛⬛⬛....⬛⬛⬛
 
---
+---
+
+# Predicción como base para conocimiento lingüístico
+
 
 ### Les tasques de remodelació i ampliació de l'estadi començaran al ⬛⬛⬛....⬛⬛⬛
 
@@ -379,11 +397,11 @@ class: inverse
 
 ---
 
-# Predicción como base para conocimiento lingüístico.
+# Predicción como base para conocimiento lingüístico
 
 Entrenar modelos con muchos parámetros a predecir información lingüística en grandes volúmenes de datos 
 
-$\Large \Rightarrow$  aprendizaje de conocimiento lingüístico
+$\Large \Rightarrow$  aprendizaje de conocimiento lingüístico latente (hasta cierto grado)
 
 --
 
@@ -391,11 +409,28 @@ $\Large \Rightarrow$  aprendizaje de conocimiento lingüístico
 
 * Syntáxis ✔
 
-* Semántica ✔ (✘)
+* Morfología ✔
+
+* Semántica ✔✘
 
 * Pragmática ✘
 
 ---
+
+# Word embeddings
+
+# Language models
+
+---
+
+# Paquetes
+
+* python: spaCy
+
+* R: tidytext
+
+---
+
 
 class: inverse
 

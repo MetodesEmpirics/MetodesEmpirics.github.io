@@ -4,7 +4,6 @@
     <title>8 Corpora</title>
     <meta charset="utf-8" />
     <meta name="author" content="Métodos empíricos 2" />
-    <script src="slides_files/header-attrs-2.13/header-attrs.js"></script>
     <link href="slides_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="slides_files/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
   </head>
@@ -12,9 +11,15 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
+.title[
 # 8 Corpora
+]
+.author[
 ### Métodos empíricos 2
+]
+.date[
 ### 31/05/2022
+]
 
 ---
 
@@ -34,6 +39,7 @@ class: center, middle, inverse, title-slide
 
 ]
 
+---
 
 class: inverse, center
 
@@ -61,14 +67,14 @@ G.K. Zipf (1949) *Human behavior and the principle of least effort*
 
 ### Rank-Frequency Law: La distribución rango-frecuencia de palabras es inversa
 
-&lt;img src="Zipf_30wiki_en_labels.png" width="2560" /&gt;
+&lt;img src="Zipf_30wiki_en_labels.png" width="90%%" style="display: block; margin: auto;" /&gt;
 
 ---
 
 ### Law of Abbreviation: Formas frequentes tienden a ser más cortas 
 
 
-&lt;img src="en-zipf.jpg" width="90%" style="display: block; margin: auto;" /&gt;
+&lt;img src="en-zipf.jpg" width="80%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -88,19 +94,19 @@ class: inverse, center
 
 * Por definición: Cualquier colección de datos
 
-* Por uso: Colección de datos no estructurados, muchas veces de [gran]() tamaño
+* Por uso convencional: Colección de datos no estructurados, muchas veces de [gran]() tamaño
 
 
 .footnote[
 ***
 
-Lo que significa [gran]() varía en función a la naturaleza de los datos, y de cuándo son.]
+Lo que significa [gran]() varía en función a la naturaleza de los datos, y de cuándo son / es el análisis.]
 
 ---
 
 # Associated Press Corpus 
 
-Collection of 2246 news articles, mostly published around 1988
+Colección de 2246 artículos de noticias, la mayoría de alrededor de 1988
 
 --
 
@@ -132,11 +138,12 @@ tokenized_first_par
 ```
 
 ```
-##  [1] "MEXICO"      "CITY"        "(AP)"        "—"           "The"         "Mexican"    
-##  [7] "government"  "said"        "Tuesday"     "that"        "COVID-19"    "has"        
-## [13] "passed"      "from"        "a"           "pandemic"    "to"          "an"         
-## [19] "endemic"     "stage"       "in"          "Mexico,"     "meaning"     "authorities"
-## [25] "will"        "treat"       "it"          "as"          "a"           "seasonally" 
+##  [1] "MEXICO"      "CITY"        "(AP)"        "—"           "The"        
+##  [6] "Mexican"     "government"  "said"        "Tuesday"     "that"       
+## [11] "COVID-19"    "has"         "passed"      "from"        "a"          
+## [16] "pandemic"    "to"          "an"          "endemic"     "stage"      
+## [21] "in"          "Mexico,"     "meaning"     "authorities" "will"       
+## [26] "treat"       "it"          "as"          "a"           "seasonally" 
 ## [31] "recurring"   "disease."
 ```
 
@@ -156,6 +163,8 @@ Convertir todo el texto a minúscula (o mayúscula)
 
 Quitar material morfológico, quedandose sólamente con las raíces
 
+--
+
 
 ## Lematización
 
@@ -171,11 +180,12 @@ tolower(tokenized_first_par)
 ```
 
 ```
-##  [1] "mexico"      "city"        "(ap)"        "—"           "the"         "mexican"    
-##  [7] "government"  "said"        "tuesday"     "that"        "covid-19"    "has"        
-## [13] "passed"      "from"        "a"           "pandemic"    "to"          "an"         
-## [19] "endemic"     "stage"       "in"          "mexico,"     "meaning"     "authorities"
-## [25] "will"        "treat"       "it"          "as"          "a"           "seasonally" 
+##  [1] "mexico"      "city"        "(ap)"        "—"           "the"        
+##  [6] "mexican"     "government"  "said"        "tuesday"     "that"       
+## [11] "covid-19"    "has"         "passed"      "from"        "a"          
+## [16] "pandemic"    "to"          "an"          "endemic"     "stage"      
+## [21] "in"          "mexico,"     "meaning"     "authorities" "will"       
+## [26] "treat"       "it"          "as"          "a"           "seasonally" 
 ## [31] "recurring"   "disease."
 ```
 
@@ -191,6 +201,15 @@ tolower(tokenized_first_par)
 ---
 
 # AP tokenizada
+
+
+
+```r
+library(tidytext)
+
+data("AssociatedPress", package = "topicmodels")
+tidy(AssociatedPress)
+```
 
 
 
@@ -228,13 +247,13 @@ tolower(tokenized_first_par)
 
 # AP y Zipf I
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-10-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-11-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
 # AP y Zipf II
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-11-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-12-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -303,13 +322,13 @@ tolower(tokenized_first_par)
 
 # Jane Austen y Zipf I
 
-![](slides_files/figure-html/unnamed-chunk-15-1.png)&lt;!-- --&gt;
+![](slides_files/figure-html/unnamed-chunk-16-1.png)&lt;!-- --&gt;
 
 ---
 
 # Jane Austen y Zipf II
 
-![](slides_files/figure-html/unnamed-chunk-16-1.png)&lt;!-- --&gt;
+![](slides_files/figure-html/unnamed-chunk-17-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -320,17 +339,19 @@ tolower(tokenized_first_par)
 
 class: inverse
 
-# Aplicaciones
+# Aplicaciones 
 
 ---
 
 # Investigación
 
-* Indispensable para descubrir o (des)confirmar regularidades en una, o varias lenguas, o todas las lenguas
+* Indispensable para descubrir o (des)confirmar regularidades en una, o varias lenguas
 
-* Mayor volúmen de datos `\(\Rightarrow\)` mayor sensibilidad para encontrar efectos menores
+* Mayor volúmen de datos `\(\Rightarrow\)` mayor sensibilidad para encontrar efectos menores (pero también más peligro de descubrir patrones falsos)
 
-* Gran potencial --aún por descubrir-- para tipología y lenguas menos descritas
+  * [https://www.tylervigen.com/spurious-correlations](https://www.tylervigen.com/spurious-correlations)
+
+* Gran potencial --aún por explorar-- para tipología y lenguas menos descritas
 
 ---
 
@@ -352,7 +373,7 @@ class: inverse
 
 ---
 
-# Predicción como base para conocimiento lingüístico.
+# Predicción como base para conocimiento lingüístico
 
 ### Les ⬛⬛⬛....⬛⬛⬛
 
@@ -377,11 +398,9 @@ class: inverse
 ### Les tasques de remodelació i ampliació ⬛⬛⬛....⬛⬛⬛
 
 
-  i ampliació de l’estadi començaran al juny, quan s’acabin les competicions esportives.
-
 ---
 
-# Predicción como base para conocimiento lingüístico.
+# Predicción como base para conocimiento lingüístico
 
 ### Les tasques de remodelació i ampliació de ⬛⬛⬛....⬛⬛⬛
 
@@ -397,7 +416,10 @@ class: inverse
 
 ### Les tasques de remodelació i ampliació de l'estadi començaran ⬛⬛⬛....⬛⬛⬛
 
---
+---
+
+# Predicción como base para conocimiento lingüístico
+
 
 ### Les tasques de remodelació i ampliació de l'estadi començaran al ⬛⬛⬛....⬛⬛⬛
 
@@ -408,11 +430,11 @@ class: inverse
 
 ---
 
-# Predicción como base para conocimiento lingüístico.
+# Predicción como base para conocimiento lingüístico
 
 Entrenar modelos con muchos parámetros a predecir información lingüística en grandes volúmenes de datos 
 
-`\(\Large \Rightarrow\)`  aprendizaje de conocimiento lingüístico
+`\(\Large \Rightarrow\)`  aprendizaje de conocimiento lingüístico latente (hasta cierto grado)
 
 --
 
@@ -420,11 +442,28 @@ Entrenar modelos con muchos parámetros a predecir información lingüística en
 
 * Syntáxis ✔
 
-* Semántica ✔ (✘)
+* Morfología ✔
+
+* Semántica ✔✘
 
 * Pragmática ✘
 
 ---
+
+# Word embeddings
+
+# Language models
+
+---
+
+# Paquetes
+
+* python: spaCy
+
+* R: tidytext
+
+---
+
 
 class: inverse
 
@@ -485,6 +524,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable

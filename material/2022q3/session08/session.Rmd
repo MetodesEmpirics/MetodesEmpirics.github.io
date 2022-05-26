@@ -6,6 +6,7 @@ author:
   url: https://tbrochhagen.github.io/
   affiliation: Universitat Pompeu Fabra
 date: "`r Sys.Date()`"
+bibliography: ../../biblio.bib
 output:
   distill::distill_article:
     toc: yes
@@ -45,7 +46,7 @@ They allow us to uncover latent patterns in linguistic data. To uncover these pa
 
 ## Tokenization
 
-To make sense of large amounts of data, we need to define units over which we want do do our analysis. Tokenization is the process of chopping up the corpus into those units. The unit of analysis could be, e.g., words, morphemes, or characters. If you want to count how many times the word *cat* appears in a text, then tokenization should happen at the word-level.
+To make sense of large amounts of data, we need to define units over which we want do do our analysis. Tokenization is the process of chopping up the corpus into those units. The unit of analysis could be, e.g., words, morphemes, or characters. If, for example, you want to count how many times the word *cat* appears in a text, then tokenization should happen at the word level.
 
 
 ## Stemming and lemmatization
@@ -62,7 +63,7 @@ Tagging refers to a pre-processing step by which you add category labels to your
 
 The last decade has seen an immense increase in both (i) computing capabilities and (ii) amounts of data available. Together with more optimized algorithms, this has lead to the construction of very successful natural language models. A lot of these models share a core commonality: They are exposed to large amounts of data and are trained to predict, for each chunk of data that they see, the word/character/POS/... that will follow.
 
-To illustrate: The model is asked to predict the word following "The ___"; then it is shown what the next word was (e.g., "house"); and it is asked to predict the word following it "The house ___"; and then it is shown was came after and asked, again, to predict the next word "The house was ___"; and so on and so on. This model is like a very distant cousine of the regression models we saw before. Their main difference is that this one has hundreds if not thousands of parameters. After going through a very large corpus like this --and sometimes doing so many times-- the model will become quite good at learning to predict the next word. This simple next-word-prediction ability lies at the center of most recent innovations in natural language processing.
+To illustrate: The model is asked to predict the word following "The ..."; then it is shown what the next word was (e.g., "house"); and it is asked to predict the word following it "The house ..."; and then it is shown what came after and asked, again, to predict the next word "The house was ..."; and so on and so on. This model is like a very distant cousine of the regression models we saw before. Their main difference is that this one has hundreds if not thousands of parameters. After going through a very large corpus like this --and sometimes doing so many times-- the model will become quite good at learning to predict the next word. This simple next-word-prediction ability lies at the center of most recent innovations in natural language processing.
 
 # Zipf's Law(s)
 
