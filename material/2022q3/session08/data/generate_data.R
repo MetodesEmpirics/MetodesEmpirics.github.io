@@ -25,7 +25,7 @@ for (idx in participants$id){
 	icv1 <- tibble(active   = icv1_act,
 				   passive =  icv1_pass,
 				   sentence.ID = sentence_type)
-	icv2 <- tibble(active   = icv1_act,
+	icv2 <- tibble(active   = icv2_act,
 				   passive  = icv2_pass,
 				   sentence.ID = sentence_type)
 
