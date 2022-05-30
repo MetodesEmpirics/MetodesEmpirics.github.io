@@ -57,7 +57,7 @@ G.K. Zipf (1949) *Human behavior and the principle of least effort*
 
 ### Rank-Frequency Law: La distribución rango-frecuencia de palabras es inversa
 
-```{r, echo=FALSE, fig.align='center', out.width='90%%'}
+```{r, echo=FALSE, fig.align='center', out.width='90%'}
 library(knitr)
 include_graphics('Zipf_30wiki_en_labels.png')
 ```
@@ -304,6 +304,15 @@ ggplot(JA_ranked, aes(x = length, y = count)) +  geom_point(col='indianred') + t
 
 ---
 
+# Discusión
+
+* Todo tipo de texto sigue las Leyes de Zipf?
+
+* Toda lengua sigue las Leyes de Zipf?
+
+
+---
+
 class: inverse
 
 # Aplicaciones 
@@ -419,15 +428,46 @@ $\Large \Rightarrow$  aprendizaje de conocimiento lingüístico latente (hasta c
 
 # Word embeddings
 
+```{r, echo=FALSE, fig.align='center', out.width='90%'}
+include_graphics('ds-boleda.png')
+``` 
+
+---
+
+# Word embeddings
+
+```{r, echo=FALSE, fig.align='center', out.width='90%'}
+include_graphics('ds-semantic-change.png')
+``` 
+
+---
+
+
 # Language models
+
+[https://transformer.huggingface.co/doc/distil-gpt2](https://transformer.huggingface.co/doc/distil-gpt2)
+
 
 ---
 
 # Paquetes
 
-* python: spaCy
+* python: spaCy, (py)torch
 
-* R: tidytext
+* R: tidytext, stringr
+
+---
+
+# Siguentes avances
+
+* Modelos multi-modales
+
+* Calidad de datos vs. tamaño de modelo
+
+* Límites de aprendizaje a base de texto
+
+* Black box NLP & lenguaje emergente
+
 
 ---
 
