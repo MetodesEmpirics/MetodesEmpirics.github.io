@@ -19,7 +19,7 @@ for (idx in participants$id){
 	icv1_pass <- rbinom(n=60, size = 1, prob = 0.93)
 
 	icv2_act  <- rbinom(n=60, size = 1, prob = 0.45)
-	icv2_pass <- rbinom(n=60, size = 1, prob = 0.30)
+	icv2_pass <- rbinom(n=60, size = 1, prob = 0.10)
 
 
 	icv1 <- tibble(active   = icv1_act,

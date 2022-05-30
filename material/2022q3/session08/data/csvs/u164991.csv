@@ -124,7 +124,7 @@ sentence.ID,status,subject,type
 2,active,0,icv2
 2,passive,0,icv2
 3,active,0,icv2
-3,passive,1,icv2
+3,passive,0,icv2
 4,active,1,icv2
 4,passive,0,icv2
 5,active,1,icv2
@@ -136,9 +136,9 @@ sentence.ID,status,subject,type
 3,active,0,icv2
 3,passive,0,icv2
 4,active,1,icv2
-4,passive,1,icv2
+4,passive,0,icv2
 5,active,0,icv2
-5,passive,1,icv2
+5,passive,0,icv2
 1,active,0,icv2
 1,passive,0,icv2
 2,active,1,icv2
@@ -146,7 +146,7 @@ sentence.ID,status,subject,type
 3,active,1,icv2
 3,passive,0,icv2
 4,active,1,icv2
-4,passive,1,icv2
+4,passive,0,icv2
 5,active,1,icv2
 5,passive,0,icv2
 1,active,0,icv2
@@ -162,7 +162,7 @@ sentence.ID,status,subject,type
 1,active,0,icv2
 1,passive,0,icv2
 2,active,0,icv2
-2,passive,1,icv2
+2,passive,0,icv2
 3,active,0,icv2
 3,passive,0,icv2
 4,active,0,icv2
@@ -170,7 +170,7 @@ sentence.ID,status,subject,type
 5,active,0,icv2
 5,passive,0,icv2
 1,active,0,icv2
-1,passive,1,icv2
+1,passive,0,icv2
 2,active,0,icv2
 2,passive,0,icv2
 3,active,0,icv2
@@ -194,7 +194,7 @@ sentence.ID,status,subject,type
 2,active,0,icv2
 2,passive,0,icv2
 3,active,0,icv2
-3,passive,1,icv2
+3,passive,0,icv2
 4,active,0,icv2
 4,passive,0,icv2
 5,active,1,icv2
@@ -202,7 +202,7 @@ sentence.ID,status,subject,type
 1,active,1,icv2
 1,passive,0,icv2
 2,active,0,icv2
-2,passive,1,icv2
+2,passive,0,icv2
 3,active,0,icv2
 3,passive,1,icv2
 4,active,0,icv2
@@ -212,7 +212,7 @@ sentence.ID,status,subject,type
 1,active,0,icv2
 1,passive,0,icv2
 2,active,1,icv2
-2,passive,1,icv2
+2,passive,0,icv2
 3,active,0,icv2
 3,passive,0,icv2
 4,active,1,icv2
@@ -220,7 +220,7 @@ sentence.ID,status,subject,type
 5,active,0,icv2
 5,passive,0,icv2
 1,active,0,icv2
-1,passive,1,icv2
+1,passive,0,icv2
 2,active,0,icv2
 2,passive,0,icv2
 3,active,0,icv2
@@ -230,12 +230,12 @@ sentence.ID,status,subject,type
 5,active,0,icv2
 5,passive,0,icv2
 1,active,1,icv2
-1,passive,1,icv2
+1,passive,0,icv2
 2,active,0,icv2
 2,passive,0,icv2
 3,active,1,icv2
-3,passive,1,icv2
+3,passive,0,icv2
 4,active,0,icv2
-4,passive,1,icv2
+4,passive,0,icv2
 5,active,0,icv2
-5,passive,1,icv2
+5,passive,0,icv2
