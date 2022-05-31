@@ -11,7 +11,7 @@ bibliography: ../../biblio.bib
 
 This is a *recuperación* for the practical exercise. You can do this exercise even if you passed the previous one. The highest grade will count. If you are already satisfied with the outcome of the first practical exercise, then don't hand in anything. Use the remainder of your time to work on your final report. Make sure you have all its details worked out by the end of the course.
 
-As before, you will find a dataset prepared for you if you modify the **bolfaced** portion of the following link:
+As before, you will find a data set prepared for you if you modify the **boldfaced** portion of the following link:
 
 https://raw.githubusercontent.com/MetodesEmpirics/MetodesEmpirics.github.io/main/material/2022q3/session08/data/csvs/**insert_your_student_ID**.csv
 
@@ -40,9 +40,9 @@ In other words, people generally take *she* to refer to the subject in this cons
   3. **Sally** scolded Sara because she was late.
   4. Sally scolded **Sara** because she was late.
   
-That is, in this construction, people tend to take *she* to refer to the object: Sara is more often interpreted as the one who was late. In other words, verb type seems to matter when interpreting a pronoun. In the literature, verbs like *scold* are called ICV2 verbs. These are implicit causality verbs that bias the interpretation toward the object. Analogously, verbs like *amaze* are called ICV1 verbs. They are also implicit causality verbs, but they bias the interpretation toward the subject. Beyond verb type, most research (but not all!) suggests that there should be stronger bias to interpret a pronoun as refering to the object if the sentence is passive instead of active.
+That is, in this construction, people tend to take *she* to refer to the object: Sara is more often interpreted as the one who was late. In other words, verb type seems to matter when interpreting a pronoun. In the literature, verbs like *scold* are called ICV2 verbs. These are implicit causality verbs that bias the interpretation toward the object. Analogously, verbs like *amaze* are called ICV1 verbs. They are also implicit causality verbs, but they bias the interpretation toward the subject. Beyond verb type, most research (but not all!) suggests that there should be stronger bias to interpret a pronoun as referring to the object if the sentence is passive instead of active.
 
-Your colleague has collected data from subjects that were asked to read sentences like (1) and (3), and asked whether they think the pronoun refers to the subject or the object. The experiment had 5 different pairs of ICV1 and ICV2 sentences. Each sentence pair consisted of an active and a passive version of the sentence. For instance, the sentence in (1) and its passive alternative "Sara was amazed by Sally because she won the race" were one of five pairs of ICV1 sentences. The sentence in (3) and its passive alternative was one of the five ICV2 sentences. 12 different subjects read each pair. Your colleague recorded whether they interpreted the ambiguous pronoun as refering to the subject ($1$) or the object ($0$); and saved the results in a CSV file.
+Your colleague has collected data from subjects that were asked to read sentences like (1) and (3), and asked whether they think the pronoun refers to the subject or the object. The experiment had 5 different pairs of ICV1 and ICV2 sentences. Each sentence pair consisted of an active and a passive version of the sentence. For instance, the sentence in (1) and its passive alternative "Sara was amazed by Sally because she won the race" were one of five pairs of ICV1 sentences. The sentence in (3) and its passive alternative was one of the five ICV2 sentences. 12 different subjects read each pair. Your colleague recorded whether they interpreted the ambiguous pronoun as referring to the subject ($1$) or the object ($0$); and saved the results in a CSV file.
 
 Here’s how the data may look like:
 
@@ -51,7 +51,7 @@ df <- read.csv('https://raw.githubusercontent.com/MetodesEmpirics/MetodesEmpiric
 head(df)
 ```
 
-The column `sentence.ID` identifies which of the 5 sentence pairs the interpretation is for. The column `status` shows whether the interpretation is for the active (`active`) or passive (`passive`) version of a pair. The column `subject` shows the interpertation of the pronoun: $1$ if it was interpreted as refering to the subject; $0$ if it was interpreted as the object. The column `type` specifies whether this is a ICV1 (`icv1`) or an ICV2 construction (`icv2`).
+The column `sentence.ID` identifies which of the 5 sentence pairs the interpretation is for. The column `status` shows whether the interpretation is for the active (`active`) or passive (`passive`) version of a pair. The column `subject` shows the interpretation of the pronoun: $1$ if it was interpreted as referring to the subject; $0$ if it was interpreted as the object. The column `type` specifies whether this is a ICV1 (`icv1`) or an ICV2 construction (`icv2`).
 
 
 
@@ -61,21 +61,21 @@ Help your colleague analyze the data from her experiments! Remember to round all
 
 ## Descriptive statistics (0.5 points each)
 
-1. What is the median interpretation of pronouns as refering to the subject in active ICV1 sentences?
+1. What is the median interpretation of pronouns as referring to the subject in active ICV1 sentences?
 
-2. What is the variance of the interpretation rate of pronouns as refering to the subject in active ICV1 sentences?
+2. What is the variance of the interpretation rate of pronouns as referring to the subject in active ICV1 sentences?
 
-3. What is the median interpretation of pronouns as refering to the subject in passive ICV1 sentences?
+3. What is the median interpretation of pronouns as referring to the subject in passive ICV1 sentences?
 
-4. What is the variance of the interpretation rate of pronouns as refering to the subject in passive ICV1 sentences?
+4. What is the variance of the interpretation rate of pronouns as referring to the subject in passive ICV1 sentences?
 
-5. What is the median interpretation of pronouns as refering to the subject in active ICV2 sentences?
+5. What is the median interpretation of pronouns as referring to the subject in active ICV2 sentences?
 
-6. What is the variance of the interpretation rate of pronouns as refering to the subject in active ICV2 sentences?
+6. What is the variance of the interpretation rate of pronouns as referring to the subject in active ICV2 sentences?
 
-7. What is the median interpretation of pronouns as refering to the subject in passive ICV2 sentences?
+7. What is the median interpretation of pronouns as referring to the subject in passive ICV2 sentences?
 
-8. What is the variance of the interpretation of pronouns as refering to the subject in passive ICV2 sentences?
+8. What is the variance of the interpretation of pronouns as referring to the subject in passive ICV2 sentences?
 
 
 ## Inferential statistics (1 point each)
@@ -90,6 +90,6 @@ Using two regression models, with `status` as predictor and `subject` as outcome
  
 4. Based on your answer to (2): Do you think there is evidence to suggest a difference between active and passive ICV2 sentences? Why (not)? 
 
-5. Your colleague suggests to compare the models used for (1) and (2) using the Akaike Information Criterion. Is this a good idea? If so, which model performs better? If not, why and how could you compare the two models performance instead? 
+5. Your colleague suggests to compare the models used for (1) and (2) using the Akaike Information Criterion. Is this a good idea? If so, which model performs better? If not, why and how could you compare the two models' performances instead? 
 
 6. Do your findings agree with the expectations from the literature? Explain why (not).
