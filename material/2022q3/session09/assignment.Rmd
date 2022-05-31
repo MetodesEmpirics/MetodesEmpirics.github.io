@@ -82,7 +82,7 @@ Help your colleague analyze the data from her experiments! Remember to round all
 
 Using two regression models, with `status` as predictor and `subject` as outcome, estimate
 
-1. The difference between passive and active ICV1 sentences; the standard error of this difference; and the probability of a pronoun referring the the object in a passive sentence.
+1. The difference between passive and active ICV1 sentences; the standard error of this difference; and the probability of a pronoun referring the object in a passive sentence.
 
 2. The difference between passive and active ICV2 sentences; the standard error of this difference; and the probability of a pronoun referring to the object in a passive sentence.
 

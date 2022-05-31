@@ -66,8 +66,7 @@ cat("\014")
 cat('\n\n')
 
 print(paste0('### Inferential statistics ', student_id, ' ###'))
-print(paste0('1. The difference between passive and active ICV1 sentences; the standard error of this difference; and the
-probability of a pronoun referring the the object'))
+print(paste0('1.The difference between passive and active ICV1 sentences; the standard error of this difference; and the probability of a pronoun referring the the object in a passive sentence.'))
 df_icv1 <- filter(df, type == 'icv1')
 model_icv1 <- glm(formula = subject ~ status, data = df_icv1, family=binomial(link = 'logit'))
 smodel_icv1 <- summary(model_icv1)
@@ -76,7 +75,7 @@ round(smodel_icv1$coefficients[2,1:2],2)
 round(1 - inv.logit(smodel_icv1$coefficients[1,1] + smodel_icv1$coefficients[2,1]),2)
 
 cat('\n\n')
-print(paste0('2. The difference between passive and active ICV2 sentences; the standard error of this difference; and the probability of a pronoun referring to the object'))
+print(paste0('2. The difference between passive and active ICV2 sentences; the standard error of this difference; and the probability of a pronoun referring to the object in a passive sentence.'))
 df_icv2 <- filter(df, type == 'icv2')
 model_icv2 <- glm(formula = subject ~ status, data = df_icv2, family=binomial(link = 'logit'))
 smodel_icv2 <- summary(model_icv2)
