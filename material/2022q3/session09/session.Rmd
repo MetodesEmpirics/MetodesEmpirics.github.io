@@ -35,7 +35,9 @@ df <- data.frame(age,pitch)
 
 Visualization is a key tool in empirical studies. The way we represent information can greatly help in conveying what we are trying to say, but also obfuscate it. 
 
-The field of data visualization is still relatively new. Notwithstanding, there are some general guidelines that can help you along the way (see, e.g.,[Graphic Principles](https://github.com/GraphicsPrinciples/CheatSheet/blob/master/NVSCheatSheet.pdf)
+The field of data visualization is still relatively new. Notwithstanding, there are some general guidelines that can help you along the way (see, e.g., [Graphic Principles](https://github.com/GraphicsPrinciples/CheatSheet/blob/master/NVSCheatSheet.pdf)).
+
+Four core tenants to keep in mind when visualizing data are:
 
 * The "Why": Identify the purpose of your visual device (e.g., to make a contrast between two groups clear; or to visualize how the data is distributed)
 
@@ -50,7 +52,7 @@ The field of data visualization is still relatively new. Notwithstanding, there 
 
 ## Scatter plots
 
-Particularly useful when data are continous and there is a single relationship to depict
+Particularly useful when data are continuous and there is a single relationship to depict
 
 ```{r, warning=FALSE, message=FALSE}
 
