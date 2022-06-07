@@ -1,22 +1,20 @@
 library(dplyr)
 library(stringr)
 library(readr)
+require('stringi')
 
 assignments <- read_csv('MetodesEmpirics.github.io/material/2022q3/session07/peer-review.csv')
 path_to_files     <- 'Downloads/2021-25667-T1-Peer Review II (submit it here)-928137'
 files    <- list.files(path = path_to_files)
-students <- str_remove(files, pattern = '_.*')
+studs <- str_remove(files, pattern = '_.*')
 ids      <- gsub("[^0-9.-]", "", files)
 
 
-groups       <- c()
-anons        <- c()
-peer_reviews <- c()
+for (id in seq(1:length(studs))){
+	print(studs[id])
+	assignments$check_eq <- lapply(assignments$students, stri_compare, e2=studs[id])
 
-for (id in seq(1:length(students))){
-	print(students[id])
-
-	sub_df <- assignments %>% filter(students == students[id])
+	sub_df <- assignments %>% filter(check_eq == 0)
 
 	if (nrow(sub_df) == 0){
 	reviewed <- readline(prompt = 'Student did not do PR I, manually input who they reviewed: ')
