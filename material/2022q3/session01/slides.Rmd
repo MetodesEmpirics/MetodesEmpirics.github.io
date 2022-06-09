@@ -253,7 +253,7 @@ class: center, inverse
 ---
 
 
-# Análisis inferencial (vs. descriptiva)
+# Análisis inferencial (vs. descriptivo)
 .large[
 * Inferencia de propiedades (más allá de la muestra) 
 
@@ -353,6 +353,7 @@ It is the proof that the experiment reflects knowledge that can be separated fro
 <br><br>
 -Stefan Schmidt 
 ]
+
 ---
 
 ### Replicabilidad
