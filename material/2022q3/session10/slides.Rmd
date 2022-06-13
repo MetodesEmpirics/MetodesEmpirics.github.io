@@ -101,15 +101,15 @@ Que se puedan obtener resultados consistentes en diferentes análisis que buscan
 
 ## Terminología: Tipos de variables
 
-* **Nominales** (género; idioma materno; lugar de origen)
+* **Nominales** 
 
-* **Ordinales** (años cursados; edad)
+* **Ordinales** 
 
 * **Binarias** 
 
-* **Booleanas** (verdadero/falso)
+* **Booleanas** 
 
-* **Métricas** (número de usos de pronombres; tono)
+* **Métricas**
 
 ---
 
@@ -205,11 +205,154 @@ toda la población  de interés
 
 ---
 
+class: inverse, center
+
+# Kahoot!
+
+## [www.kahoot.it](http://www.kahoot.it)
+
+
+---
 
 class: inverse
 
 # Más allá: Métodos empiricos inferenciales
 
+---
+
+## Paramétricos
+
+* Modelos lineales (hierárquicos)
+
+* k-means
+
+* ...
+
+*** 
+
+## No-paramétricos
+
+* Modelos generalizados aditivos
+
+* Redes neuronales (en realidad no, pero en términos prácticos sí)
+
+* ...
+
+---
+
+# Modelo hierarquico para Kanwal et al. 2017
+
+Hay dos tipos "latentes" de hablantes:
+
+  1. Arriesgados: Piensan que el interlocutor piensa que el significado frequente es más esperado
+  2. Cuidadosos: Tienen incertidumbre sobre cual es el significado esperado
+  
+Hablantes usan el mensaje (que consideran) más probable a ser entendido, minimizando longitud de mensaje
+
+
+---
+
+<img src="fig5.png", style="position:absolute; right:100px; top:89px;">
+
+
+---
+
+
+
+<img src="fig6.png", style="position:absolute; right:10px; top:50px;">
+
+
+---
+# K-means
+
+--
+
+<img src="k-means.png", style="position:absolute; right:7px; top:140px;">
+
+
+---
+
+# Generalized Additive Models
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.align= 'center'}
+
+n  <- 1e3
+dat <- data.frame("x1" = rnorm(n), "x2" = rnorm(n), "x3" = rnorm(n))
+dat$y <- with(dat, sin(x1) + 0.5*x2^2 + pmax(x2, 0.2) * rnorm(n))
+
+ggplot(dat, aes(x = x1, y = y)) +
+  geom_point() +
+  geom_smooth() + 
+  theme_minimal(base_size = 22)
+
+```
+
+---
+
+<img src="nn", style="position:absolute; right:7px; top:0px;">
+
+
+---
+
+Todos estos métodos siguen el mismo proceso:
+
+* Define objectivo ("función de perdida")
+
+* "Aprende" de los datos
+
+* Encuentra el parámetro, o combinación de parámetoros, que minimizan la perdida (maximizan el objectivo)
+
+---
+
+Todos estos métodos siguen el mismo proceso:
+
+* Define objectivo ("función de perdida")
+
+* "Aprende" de los **[datos]()**
+
+  * Calidad de datos
+  
+  * Razón por qué una o más variables podrían solucionar el problema
+
+* Encuentra el parámetro, o combinación de parámetoros, que minimizan la perdida (maximizan el objectivo)
+
+.footnote[
+*** 
+
+* [Human in the Loop: Active learning and annotation for human-centered AI](https://www.manning.com/books/human-in-the-loop-machine-learning)
+
+* [Linguistic Diversity and Traffic Accidents: Lessons from Statistical Studies of Cultural Traits](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0070902)
+
+]
+
+
+---
+
+
+<img src="accidents.png", style="position:absolute; right:170px; top:55px;">
+
+
+
+.footnote[
+*** 
+
+[Linguistic Diversity and Traffic Accidents: Lessons from Statistical Studies of Cultural Traits](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0070902)
+
+y = Linguistic diversity index: probabilidad que dos personas de una población tengan la misma lengua nativa
+
+]
+---
+
+
+<img src="siesta.png", style="position:absolute; right:90px; top:0px;">
+
+
+
+.footnote[
+*** 
+
+y = Promedio de categorias gramáticales que puede tomar el verbo
+]
 ---
 
 class: inverse
@@ -218,8 +361,40 @@ class: inverse
 
 ---
 
+De momento: Saliendo lentamente de la crísis de replicabilidad
+
+"Nuevas" áreas de investigación/aplicación:
+
+  * Traducción asistida
+  
+  * Tipología computacional
+  
+  * Human in the loop QA
+  
+  * PLN
+  
+  * Metodologías de aprendizaje asistidas / automatizadas
+  
+  * ...
+  
+
+---
+
 class: inverse
 
 # Coda
 
+* Avaldo (20/06)
+
 * Informe final: 28/06
+
+
+---
+
+class: inverse, center
+
+# Gracias!
+
+### [https://brochhagen.github.io/](https://brochhagen.github.io/)
+### [thomas.brochhagen@upf.edu](thomas.brochhagen@upf.edu)
+### [52.631](52.631)
