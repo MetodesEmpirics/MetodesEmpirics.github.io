@@ -377,6 +377,18 @@ De momento: Saliendo lentamente de la crísis de replicabilidad
   
   * ...
   
+---
+
+class: inverse
+
+# Y ahora a dónde?
+
+
+---
+
+class: inverse
+
+# Preguntas?
 
 ---
 
