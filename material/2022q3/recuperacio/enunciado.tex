@@ -1,0 +1,180 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{\includegraphics[width = .5\textwidth]{logo.png}}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+
+~
+
+\textbf{Estudi}: Grau en Llengües Aplicadas
+
+\textbf{Nom de l'assignatura:} Mètodes Empírics per a l'Estudi del
+Llenguatge 2
+
+\textbf{Codi}: 25667
+
+\textbf{Docent Responsable:} Dr.~Thomas Brochhagen
+
+\textbf{Convocatòria:} Recuperació ~~~ \textbf{Data de l'examen:}
+11/07/2022
+
+\textbf{Curs:} 3er ~~~\textbf{Trimestre:} 3er
+
+\textbf{Nom i cognoms}:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{fundamentos-1-punto-por-pregunta-20-total}{%
+\section{Fundamentos (1 punto por pregunta / 20
+total)}\label{fundamentos-1-punto-por-pregunta-20-total}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Da un ejemplo de una muestra en la cual el promedio y la mediana son
+  iguales
+\item
+  Da un ejemplo de una muestra en la cual el promedio es mayor que la
+  mediana
+\item
+  Qué tipo de variable es la edad de un participante en un experimento?
+  Justifica tu respuesta
+\item
+  Qué tipo de variable es el idioma materno de un participante en un
+  experimento? Justifica tu respuesta
+\item
+  Qué tipo de variable es la longitud de una palabra? Justifica tu
+  respuesta
+\item
+  Una muestra no-representativa, puede ser completa? Justifica tu
+  respuesta
+\item
+  Da un ejemplo de un caso en el cual utilizarías el promedio para
+  resumir una muestra, en comparación con la mediana; y vice-versa.
+  Justifica tu respuesta
+\item
+  Da un ejemplo de un caso en el cual utilizarías la desviación estándar
+  para resumir una muestra, en vez de la varianza. Justifica tu
+  respuesta
+\item
+  ¿Cuáles son los parámetros de la distribución Gaussiana? Explica, de
+  manera intuitiva, qué hace cada parámetro
+\item
+  ¿Cuáles son los parámetros de la distribución Binomial? Explica, de
+  manera intuitiva, qué hace cada parámetro
+\item
+  ¿Cuáles son los parámetros de la distribución de Poisson? Explica, de
+  manera intuitiva, qué hace cada parámetro
+\item
+  ¿De qué manera se relacionan el tamaño de una muestra y el efecto que
+  se estima a base de ella?
+\item
+  ¿En qué sentido es lineal una regresión lineal?
+\item
+  ¿Qué indica \(R^2\)?
+\item
+  Menciona tres diferencias entre \(R^2\) y el Akaike Information
+  Criterion (AIC)
+\item
+  Menciona tres maneras en las cuales se puede pre-procesar un corpus de
+  texto antes de analizarlo
+\item
+  La predicción de una regresión de Poisson, ¿puede ser 0? Justifica tu
+  respuesta
+\item
+  La predicción de una regresión de Bernoulli, ¿puede ser 5? Justifica
+  tu respuesta
+\item
+  La predicción de una regressión Normal, ¿puede ser 0? Justifica tu
+  respuesta
+\item
+  Menciona una diferencia entre métodos estadísticos descriptivos e
+  inferenciales
+\end{enumerate}
+
+\hypertarget{interpretaciuxf3n-2-puntos-por-pregunta-20-total}{%
+\section{Interpretación (2 puntos por pregunta / 20
+total)}\label{interpretaciuxf3n-2-puntos-por-pregunta-20-total}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Un ejemplo de una muestra (no) representativa
+\end{enumerate}
+
+\hypertarget{aplicaciuxf3n-5-puntos-por-pregunta-30-total}{%
+\section{Aplicación (5 puntos por pregunta / 30
+total)}\label{aplicaciuxf3n-5-puntos-por-pregunta-30-total}}
+
+\hypertarget{cruxedtica-5-puntos-por-pregunta-30-total}{%
+\section{Crítica (5 puntos por pregunta / 30
+total)}\label{cruxedtica-5-puntos-por-pregunta-30-total}}
+
+\end{document}

@@ -1,0 +1,67 @@
+---
+output:
+  pdf_document: 
+    keep_tex: true
+    includes:
+      in_header: header.tex
+  
+---
+&nbsp;
+
+
+**Estudi**: Grau en Llengües Aplicadas
+
+**Nom de l'assignatura:**  Mètodes Empírics per a l'Estudi del Llenguatge 2
+
+**Codi**: 25667
+
+**Docent Responsable:** Dr. Thomas Brochhagen
+
+**Convocatòria:** Recuperació  &nbsp;&nbsp;&nbsp; **Data de l'examen:** 11/07/2022
+
+**Curs:** 3er &nbsp;&nbsp;&nbsp;**Trimestre:** 3er
+
+**Nom i cognoms**:
+
+***
+
+# Fundamentos (1 punto por pregunta / 20 total)
+
+1. Da un ejemplo de una muestra en la cual el promedio y la mediana son iguales
+2. Da un ejemplo de una muestra en la cual el promedio es mayor que la mediana
+3. Qué tipo de variable es la edad de un participante en un experimento? Justifica tu respuesta
+4. Qué tipo de variable es el idioma materno de un participante en un experimento? Justifica tu respuesta
+5. Qué tipo de variable es la longitud de una palabra? Justifica tu respuesta
+6. Una muestra no-representativa, puede ser completa? Justifica tu respuesta
+7. Da un ejemplo de un caso en el cual utilizarías el promedio para resumir una muestra, en comparación con la mediana; y vice-versa. Justifica tu respuesta
+8. Da un ejemplo de un caso en el cual utilizarías la desviación estándar para resumir una muestra, en vez de la varianza. Justifica tu respuesta
+9. ¿Cuáles son los parámetros de la distribución Gaussiana? Explica, de manera intuitiva, qué hace cada parámetro
+10. ¿Cuáles son los parámetros de la distribución Binomial? Explica, de manera intuitiva, qué hace cada parámetro
+11. ¿Cuáles son los parámetros de la distribución de Poisson? Explica, de manera intuitiva, qué hace cada parámetro
+12. ¿De qué manera se relacionan el tamaño de una muestra y el efecto que se estima a base de ella?
+13. ¿En qué sentido es lineal una regresión lineal?
+14. ¿Qué indica $R^2$?
+15. Menciona tres diferencias entre $R^2$ y el Akaike Information Criterion (AIC)
+16. Menciona tres maneras en las cuales se puede pre-procesar un corpus de texto antes de analizarlo
+17. La predicción de una regresión de Poisson, ¿puede ser 0? Justifica tu respuesta
+18. La predicción de una regresión de Bernoulli, ¿puede ser 5? Justifica tu respuesta
+19. La predicción de una regressión Normal, ¿puede ser 0? Justifica tu respuesta
+20. Menciona una diferencia entre métodos estadísticos descriptivos e inferenciales
+
+# Interpretación (2 puntos por pregunta / 20 total)
+
+1. Un ejemplo de una muestra (no) representativa. Decir por qué es (no) representativa
+2. Un ejemplo de una muestra (no) representativa. Decir por qué es (no) representativa
+3. Introducir datos y mostrar resultado de una regresión de Poisson. Explicar cuantos parámetros tiene el modelo; y que tipo de regresión es
+3. Interpretación de regresión Normal para comparar dos grupos + otro predictor. Decir si hay una diferencia entre los dos
+4. Cuánta varianza explica el modelo?
+8. Predecir error promedio a base de residuales
+5. Hacer predicción para persona de un grupo con un valor en particular para el otro predictor
+6. Interpretación de regresión Bernoulli para comparar dos grupos + otro predictor. Decir si hay una diferencia entre los dos
+7. Hacer predicción para persona de un grupo con un valor en particular para el otro predictor
+9. 
+
+# Aplicación (5 puntos por pregunta / 30 total)
+
+# Crítica (5 puntos por pregunta / 30 total)
+
