@@ -1,13 +1,13 @@
 ---
 output:
-  pdf_document: 
-    keep_tex: true
-    includes:
-      in_header: header.tex
+  pdf_document: default
+header-includes: 
+  - \usepackage{fancyhdr}
   
 ---
-&nbsp;
-
+\addtolength{\headheight}{1.0cm} 
+\pagestyle{fancyplain} 
+\lhead{\includegraphics[height=1.2cm]{logo.png}} 
 
 **Estudi**: Grau en Llengües Aplicadas
 
@@ -25,43 +25,180 @@ output:
 
 ***
 
-# Fundamentos (1 punto por pregunta / 20 total)
+## Fundamentos (1 punto por pregunta / 20 total)
 
 1. Da un ejemplo de una muestra en la cual el promedio y la mediana son iguales
-2. Da un ejemplo de una muestra en la cual el promedio es mayor que la mediana
-3. Qué tipo de variable es la edad de un participante en un experimento? Justifica tu respuesta
-4. Qué tipo de variable es el idioma materno de un participante en un experimento? Justifica tu respuesta
-5. Qué tipo de variable es la longitud de una palabra? Justifica tu respuesta
+
+2. Da un ejemplo de una muestra en la cual el promedio es menor que la mediana
+
+3. Qué tipo de variable es "la edad de un participante" en un experimento? Justifica tu respuesta
+
+4. Qué tipo de variable es "el idioma materno de un participante" en un experimento? Justifica tu respuesta
+
+5. Qué tipo de variable es "la longitud de una palabra"? Justifica tu respuesta
+
 6. Una muestra no-representativa, puede ser completa? Justifica tu respuesta
+
 7. Da un ejemplo de un caso en el cual utilizarías el promedio para resumir una muestra, en comparación con la mediana; y vice-versa. Justifica tu respuesta
+
 8. Da un ejemplo de un caso en el cual utilizarías la desviación estándar para resumir una muestra, en vez de la varianza. Justifica tu respuesta
-9. ¿Cuáles son los parámetros de la distribución Gaussiana? Explica, de manera intuitiva, qué hace cada parámetro
-10. ¿Cuáles son los parámetros de la distribución Binomial? Explica, de manera intuitiva, qué hace cada parámetro
-11. ¿Cuáles son los parámetros de la distribución de Poisson? Explica, de manera intuitiva, qué hace cada parámetro
+
+9. ¿Cuáles son los parámetros de la distribución Gaussiana? Explica, de manera intuitiva, lo que hace cada parámetro
+
+10. ¿Cuáles son los parámetros de la distribución Binomial? Explica, de manera intuitiva, lo que hace cada parámetro
+
+11. ¿Cuáles son los parámetros de la distribución de Poisson? Explica, de manera intuitiva, lo que hace cada parámetro
+
 12. ¿De qué manera se relacionan el tamaño de una muestra y el efecto que se estima a base de ella?
+
 13. ¿En qué sentido es lineal una regresión lineal?
+
 14. ¿Qué indica $R^2$?
+
 15. Menciona tres diferencias entre $R^2$ y el Akaike Information Criterion (AIC)
+
 16. Menciona tres maneras en las cuales se puede pre-procesar un corpus de texto antes de analizarlo
+
 17. La predicción de una regresión de Poisson, ¿puede ser 0? Justifica tu respuesta
+
 18. La predicción de una regresión de Bernoulli, ¿puede ser 5? Justifica tu respuesta
-19. La predicción de una regressión Normal, ¿puede ser 0? Justifica tu respuesta
+
+19. La predicción de una regresión Normal, ¿puede ser 0? Justifica tu respuesta
+
 20. Menciona una diferencia entre métodos estadísticos descriptivos e inferenciales
 
-# Interpretación (2 puntos por pregunta / 20 total)
+## Caso de estudios I (3 puntos por pregunta / 30 total)
 
-1. Un ejemplo de una muestra (no) representativa. Decir por qué es (no) representativa
-2. Un ejemplo de una muestra (no) representativa. Decir por qué es (no) representativa
-3. Introducir datos y mostrar resultado de una regresión de Poisson. Explicar cuantos parámetros tiene el modelo; y que tipo de regresión es
-3. Interpretación de regresión Normal para comparar dos grupos + otro predictor. Decir si hay una diferencia entre los dos
-4. Cuánta varianza explica el modelo?
-8. Predecir error promedio a base de residuales
-5. Hacer predicción para persona de un grupo con un valor en particular para el otro predictor
-6. Interpretación de regresión Bernoulli para comparar dos grupos + otro predictor. Decir si hay una diferencia entre los dos
-7. Hacer predicción para persona de un grupo con un valor en particular para el otro predictor
-9. 
 
-# Aplicación (5 puntos por pregunta / 30 total)
+1. Quieres ver si una intervención mejora la pronunciación del digráfo $<th>$ en estudiantes principiantes del Inglés. Para ello, recoges muestras fonéticas de estudiantes del Inglés de tres niveles --básico, intermedio y avanzado-- antes y después de la intervención. ¿Es representativa esta muestra? Justifica tu respuesta.
 
-# Crítica (5 puntos por pregunta / 30 total)
+2. Quieres ver si una intervención mejora la pronunciación del digráfo $<th>$ en estudiantes principiantes del Inglés. Para ello, recoges muestras fonéticas de estudiantes de principantes del Inglés antes y después de la intervención. ¿Es representativa esta muestra? Justifica tu respuesta.
+
+3. Después de recoger los datos, recodificas el resultado, codificando con $0$ si no hubo mejora en la pronunciación y con $1$ si la hubo. Para ver si la intervención surtió efectos, haces una regresión  que tiene como predictores (i) si el estudiante participó en la intevención y (ii) a cuantas clases asistió. Inspecciona tu modelo. ¿Qué tipo de regresión es? ¿Cuántos parámetros tiene el modelo?
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+set.seed(123)
+asistencia <- rpois(lambda = 8.5, n = 70)
+intervencion <- c(rep(1,40), rep(0,30))
+pronunciacion <- ifelse(asistencia > 7 | intervencion == 1,1,0)
+
+df <- data.frame(asistencia, intervencion, pronunciacion)
+
+m <- glm(pronunciacion ~ asistencia + intervencion, df, family=binomial(link = 'logit'))
+summary(m)
+
+```
+
+4. A base del modelo en (3): En palabras, ¿qué efecto tienen la intervención y el número de clases asistidas? 
+
+5. A base del modelo en (3): ¿Cual es la probabilidad de mejorar en la pronunciación del digrafo $<th>$ si se asiste a 8 clases y se participa en la intervención?
+
+6. A base del modelo en (3): ¿Cual es la probabilidad de mejorar en la pronunciación del digrafo $<th>$ si se asiste a 10 clases pero no se participa en la intervención?
+
+7. Para ver si el efecto de un predictor cambia en función a la presencia de otros, decides también hacer dos regresiones con sólo un predictor. En palabras, ¿Cambió el efecto estimado de la asistencia? Si es así: ¿De qué manera?
+
+```{r, echo=FALSE}
+m <- glm(pronunciacion ~ asistencia , df, family=binomial(link = 'logit'))
+summary(m)
+```
+
+8. Para ver si el efecto de un predictor cambia en función a la presencia de otros, decides también hacer dos regresiones con sólo un predictor. En palabras, ¿Cambió el efecto estimado de la intervención? Si es así: ¿De qué manera?
+
+```{r, echo=FALSE}
+m <- glm(pronunciacion ~ intervencion , df, family=binomial(link = 'logit'))
+summary(m)
+```
+
+9. ¿Cual de los tres modelos es mejor? Justifica tu respuesta
+
+10. A base de tus respuestas anteriores: ¿Que sugieren los datos en cuanto a la efectividad de la intervención? ¿Debería implementarse en futuros cursos de Inglés? Justifica tu respuesta.
+
+## Caso de estudios II (3 puntos por pregunta / 30 total)
+
+Para este caso de estudios, los datos fueron recogidos de corpora de texto en tres idiomas: inglés, francés, y mongol. Después de normalizar los datos, para cada idioma, se midió la frequencia de los lexemas en el corpus y su longitud para ver si la Ley de Abreviación de Zipf se cumple a travéz de diferentes lenguajes naturales. Aquí hay una muestra de los datos:
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+set.seed(123)
+efreq <- c(rpois(n = 100, lambda = 1), rpois(n = 20, lambda = 10), rpois(n=10, lambda = 15), rpois(n = 5, lambda = 20))
+elen <- c(rpois(n = 100, lambda = 5), rpois(n = 20, lambda = 3), rpois(n=10, lambda = 2), rpois(n = 5, lambda = 1))
+
+#English: 100 + 20 + 10 + 5
+
+ffreq <- c(rpois(n = 100, lambda = 1), rpois(n = 20, lambda = 10), rpois(n=10, lambda = 15), rpois(n = 5, lambda = 20))
+flen <- c(rpois(n = 100, lambda = 5), rpois(n = 20, lambda = 3), rpois(n=10, lambda = 2), rpois(n = 5, lambda = 1))
+
+mfreq <- c(rpois(n = 5, lambda = 1), rpois(n = 5, lambda = 5), rpois(n=4, lambda = 6), rpois(n = 2, lambda = 7))
+mlen <- c(rpois(n = 5, lambda = 5), rpois(n = 5, lambda = 3), rpois(n=4, lambda = 2), rpois(n = 2, lambda = 1))
+
+frequency <- c(efreq+1, ffreq+1, mfreq+1)
+length   <- c(elen+1,flen+1,mlen+1)
+language <- c(rep('english', 100+20+10+5), rep('french',100+20+10+5), rep('mongolian',5+5+4+2))
+
+
+df <- data.frame(frequency,length,language)
+head(df)
+```
+
+Y aquí hay una visualización de los datos:
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(ggplot2)
+ggplot(df, aes(y = frequency, x = length)) + 
+  geom_point() + 
+  facet_wrap(~ language) +
+  theme_minimal(base_size = 15)
+
+```
+
+1. A base de la visualización de arriba: ¿Se parece cumplir la Ley de Abreviación de Zipf en las tres lenguas? Justifica tu respuesta
+
+2. Para comprobar si se cumple la Ley de Abreviación de Zipf, haces una regresión con lengua y longitud como predictores. Según el modelo, ¿se cumple la Ley de Abreviación de Zipf en las tres lenguas? Justifica tu respuesta
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+m <- lm(frequency ~ length + language, df)
+summary(m)
+
+```
+
+3. Para ver si el efecto de un predictor cambia en función a la presencia de otros, decides también hacer dos regresiones con sólo un predictor. En palabras, ¿Cambió el efecto estimado de la lengua? Si es así: ¿De qué manera?
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+m <- lm(frequency ~ language, df)
+summary(m)
+
+```
+
+4. Para ver si el efecto de un predictor cambia en función a la presencia de otros, decides también hacer dos regresiones con sólo un predictor. En palabras, ¿Cambió el efecto estimado de la longitud? Si es así: ¿De qué manera?
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+m <- lm(frequency ~ length, df)
+summary(m)
+
+```
+
+5. Compara los tres modelos en (2), (3) y (4). ¿Cual es el mejor modelo? Justifica tu respuesta
+
+6. A base de tu respuestas a las preguntas (1) y (5): ¿Qué aprendemos sobre si hay una diferencia entre lenguas en cuanto a su cumplimiento de la Ley de Abreviación de Zipf?
+
+7. ¿Cuál es el error de predicción promedio del modelo en (2)?
+
+8. ¿Cuánta varianza explica el modelo en (2)? ¿Es una cantidad aceptable? Justifica tu respuesta
+
+9. ¿Qué frequencia predice el modelo de (2) para una palabra de 5 caracteres de longitud en 
+Mongol?
+
+10. ¿Qué frequencia predice el modelo de (4) para una palabra de 5 caracteres de longitud? ¿Es una predicción más acertada para datos del Inglés o para datos del Mongol? Justifica tu respuesta.
+
+## Teoría (5 puntos por pregunta / 20 total)
+
+1. Explica cada una de las leyes de Zipf. Ofrece una hipótesis de lo que causa cada una. Justifica tus respuestas.
+
+2. Menciona tres posibles causas por las cuales el estimado de un predictor puede indicar que no tiene un efecto sobre el resultado.  Para cada posible causa, ofrece una manera de corroborar si esta podría ser la causa.
+
+3. Explica dos maneras para estimar el tamaño de muestra que necesito para comprobar si un predictor tiene un efecto sobre un resultado.
+
+4. Explica por qué hay que utilizar diferentes tipos de regresion, por ejemplo, Poisson, Gaussiana o Bernoulli, para diferentes tipos de datos.  
 
