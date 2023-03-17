@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>4 Introducción a la regresión</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Métodos empíricos 2" />
+    <meta name="date" content="2022-03-05" />
+    <script src="slides_files/header-attrs-2.13/header-attrs.js"></script>
+    <link href="slides_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="slides_files/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# 4 Introducción a la regresión
+### Métodos empíricos 2
+### 03/05/2022
+
+---
+
+
+
+
+# Hoy
+
+.large[
+* Intuiciones 
+
+* Líneas
+
+* Regresión lineal 
+
+
+]
+
+---
+
+class: inverse, center
+
+# Intuiciones
+
+---
+
+## Regresión
+
+Técnica fundamental para predecir un **resultado** a base de uno o más **predictores**
+
+* Predicción
+
+* Exploración de asociaciones
+
+* Extrapolación
+
+* Inferencia causal
+
+---
+
+## Regresión lineal
+
+Estimación de relación **lineal** entre resultado ( `\(y\)` ) y uno o más predictores ( `\(x\)` ). Otra formulación: Estimación de predicción de `\(y\)` a base de `\(x\)`.
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-1-1.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Regresión lineal (ejemplo)
+
+Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más predictores ( *sexo*; *contexto*; *edad* ). Otra formulación: Estimación de predicción de *tono* a base de *sexo* y/o *contexto* y/o *edad*.
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-2-1.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+## Regresión lineal (ejemplo)
+
+Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más predictores ( *sexo*; *contexto*; *edad* ). Otra formulación: Estimación de predicción de *tono* a base de *sexo* y/o *contexto* y/o *edad*.
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-3-1.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+## Regresión lineal (ejemplo)
+
+Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más predictores ( *sexo*; *contexto*; *edad* ). Otra formulación: Estimación de predicción de *tono* a base de *sexo* y/o *contexto* y/o *edad*.
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-4-1.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+
+## Regresión lineal (ejemplo)
+
+Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más predictores ( *sexo*; *contexto*; *edad* ). Otra formulación: Estimación de predicción de *tono* a base de *sexo* y/o *contexto* y/o *edad*.
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-5-1.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: inverse, center
+
+# Repasando líneas
+
+---
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-6-1.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-7-1.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+&lt;img src="slides_files/figure-html/unnamed-chunk-8-1.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+&lt;img src="slides_files/figure-html/unnamed-chunk-9-1.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-10-1.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# tono en función a edad
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-11-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# tono = `\(\beta_0\)` + ( `\(\beta_1 \times\)` edad)
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-12-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# tono = 110 + (1.5 `\(\times\)` edad) ?
+&lt;img src="slides_files/figure-html/unnamed-chunk-13-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+---
+# Intuición del algorítmo de regresión
+
+Busca la línea que minimiza el error (cuadrado)
+
+En otras palabras: Busca la línea que, en promedio, está lo más cerca de los puntos
+
+
+---
+
+# Dónde pondríais la línea?
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-14-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+---
+# tono = 159 + (-2.9 `\(\times\)` edad)
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-15-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: inverse, center
+
+# Regresión lineal
+
+---
+
+## Regresión lineal
+
+Estimado de relación **lineal** entre resultado ( `\(y\)` ) y uno o más predictores. 
+
+Con un solo predictor `\(x\)`:
+
+&lt;br&gt; 
+`$$\Large y_i \sim \text{Normal}(\mu_i,\sigma),$$`
+`$$\Large \mu_i  = \beta_0 + \beta_1 x_i$$`
+
+---
+
+## Regresión lineal
+
+Estimado de relación **lineal** entre *tono* ( `\(y\)` ) y uno o más predictores. 
+
+Con un solo predictor *edad*:
+
+&lt;br&gt;
+
+`$$\Large y_i \sim \text{Normal}(\mu_i,\sigma),$$`
+`$$\Large \mu_i  = \beta_0 + \beta_1 \text{edad}_i$$`
+---
+# Regresión lineal (R)
+
+
+```r
+head(df)
+```
+
+```
+##   ages     pitch
+## 1   18 139.99208
+## 2   20  77.92071
+## 3   20  82.48851
+## 4   19 126.96205
+## 5   16 108.97956
+## 6   23  98.30374
+```
+
+```r
+nrow(df)
+```
+
+```
+## [1] 100
+```
+
+
+---
+
+# Regresión lineal (R)
+
+
+```r
+pitch_model &lt;- lm(formula = pitch ~ 1 + ages,
+                  data    = df) 
+pitch_model
+```
+
+```
+## 
+## Call:
+## lm(formula = pitch ~ 1 + ages, data = df)
+## 
+## Coefficients:
+## (Intercept)         ages  
+##     158.682       -2.911
+```
+
+&lt;br&gt;
+***
+&lt;br&gt;
+`$$tono_i = 159 + (-2.9 \times \text{edad}_i)$$`
+--
+
+¿Cuál es la predicción del tono esperado de una persona de 12 años de edad? ¿Y de una de 25? 
+
+---
+# Más allá de predicciones
+
+
+```r
+summary(pitch_model)
+```
+
+```
+## 
+## Call:
+## lm(formula = pitch ~ 1 + ages, data = df)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -75.888 -21.364  -0.273  21.562  57.647 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 158.6819    14.3871  11.029  &lt; 2e-16 ***
+## ages         -2.9107     0.6925  -4.203 5.81e-05 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 28.99 on 98 degrees of freedom
+## Multiple R-squared:  0.1527,	Adjusted R-squared:  0.1441 
+## F-statistic: 17.67 on 1 and 98 DF,  p-value: 5.814e-05
+```
+
+---
+
+# Residuales
+Differencia entre predicción y resultado real.
+
+
+```r
+summary &lt;- summary(pitch_model)
+summary$residuals[1:5]
+```
+
+```
+##          1          2          3          4          5 
+##  33.702507 -22.547484 -17.979687  23.583169  -3.131381
+```
+
+---
+
+# Residuales
+
+
+```r
+plot(pitch_model$residuals)
+```
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-20-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Más allá de predicciones
+
+
+```r
+summary(pitch_model)
+```
+
+```
+## 
+## Call:
+## lm(formula = pitch ~ 1 + ages, data = df)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -75.888 -21.364  -0.273  21.562  57.647 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 158.6819    14.3871  11.029  &lt; 2e-16 ***
+## ages         -2.9107     0.6925  -4.203 5.81e-05 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 28.99 on 98 degrees of freedom
+## Multiple R-squared:  0.1527,	Adjusted R-squared:  0.1441 
+## F-statistic: 17.67 on 1 and 98 DF,  p-value: 5.814e-05
+```
+
+---
+
+# Error estándar (standard error)
+Incertidúmbre del modelo al respecto de un parámetro
+
+
+```r
+summary$coefficients
+```
+
+```
+##               Estimate Std. Error   t value     Pr(&gt;|t|)
+## (Intercept) 158.681938 14.3871099 11.029452 7.169041e-19
+## ages         -2.910687  0.6924807 -4.203275 5.814231e-05
+```
+
+---
+
+# Más allá de predicciones
+
+
+```r
+summary
+```
+
+```
+## 
+## Call:
+## lm(formula = pitch ~ 1 + ages, data = df)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -75.888 -21.364  -0.273  21.562  57.647 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 158.6819    14.3871  11.029  &lt; 2e-16 ***
+## ages         -2.9107     0.6925  -4.203 5.81e-05 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 28.99 on 98 degrees of freedom
+## Multiple R-squared:  0.1527,	Adjusted R-squared:  0.1441 
+## F-statistic: 17.67 on 1 and 98 DF,  p-value: 5.814e-05
+```
+
+---
+
+# Residual standard error
+
+El valor (estimado) del error del modelo. Corresponde a `\(\sigma\)`
+&lt;br&gt;&lt;br&gt;
+`$$\Large y \sim \text{Normal}(\mu, \mathbf{\sigma})$$`
+`$$\Large\mu_i = \beta_0 + \beta_1 x_1 + ... \beta_n x_n$$`
+
+---
+
+# Goodness of fit
+
+`\(R^2\)` es la proporción de la varianza del resultado que explican los predictores. 
+
+
+```r
+summary$r.squared
+```
+
+```
+## [1] 0.152744
+```
+
+
+---
+
+# Más allá de predicciones
+
+
+```r
+summary
+```
+
+```
+## 
+## Call:
+## lm(formula = pitch ~ 1 + ages, data = df)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -75.888 -21.364  -0.273  21.562  57.647 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 158.6819    14.3871  11.029  &lt; 2e-16 ***
+## ages         -2.9107     0.6925  -4.203 5.81e-05 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 28.99 on 98 degrees of freedom
+## Multiple R-squared:  0.1527,	Adjusted R-squared:  0.1441 
+## F-statistic: 17.67 on 1 and 98 DF,  p-value: 5.814e-05
+```
+---
+
+class: inverse
+
+# Próxima sesión
+
+* Entrega de "Assignment 4" (08:00 AM 10/05)
+* Entrega de parte I de "Revisión por pares" (08:00 AM 10/05)
+
+***
+
+* **Regresión con más de un predictor**
+
+*** 
+
+  * Assignment 5: 10/05 - 17/05
+  * Ejercicio práctico: 17/05 - 24/05
+  * Entrega parte II de "Revisión por pares": 24/05 - 31/05
+  * Informe final: 28/06
+
+---
+
+# Transformaciones: Centrar
+
+Centrar datos implica restar una constante a todos los valores de una variable
+
+
+```r
+mean(df$ages)                           #promedio de edades
+```
+
+```
+## [1] 20.35
+```
+
+```r
+df$ages.cent &lt;- df$ages - mean(df$ages) #var. centrado
+lm(df$pitch ~ df$ages.cent)             #coefficiente centrado
+```
+
+```
+## 
+## Call:
+## lm(formula = df$pitch ~ df$ages.cent)
+## 
+## Coefficients:
+##  (Intercept)  df$ages.cent  
+##       99.449        -2.911
+```
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightLines": true,
+"highlightStyle": "github"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

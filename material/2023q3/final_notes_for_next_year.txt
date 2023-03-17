@@ -1,0 +1,6 @@
+* Weeklies: single attempt for weeklies + one or two more
+* try to simplify peer-review process; and less points for it (maybe 5 for each?)
+* final report: less points for reproduceability and replicability. Maybe 10 for either.
+* recovery exam for practical exercise: in July
+
+* A second session on corpus based on typological research?

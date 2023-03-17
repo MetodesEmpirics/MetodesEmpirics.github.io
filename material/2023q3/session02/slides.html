@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>2 Diseño de informe y tipos de datos</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Métodos empíricos 2" />
+    <script src="slides_files/header-attrs-2.13/header-attrs.js"></script>
+    <link href="slides_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="slides_files/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# 2 Diseño de informe y tipos de datos
+### Métodos empíricos 2
+### 19/04/2022
+
+---
+
+
+
+
+# Hoy
+
+.large[
+* Componentes de un análisis 
+
+* Datos
+
+* Vocabulario de diseño experimental  
+
+* Formatos y manipulación de datos
+
+]
+
+---
+
+class: inverse, center
+
+# Componentes de análisis
+
+
+---
+
+# Componentes
+
+* Pregunta(s) del análisis
+
+* Plan de diseño
+
+* Plan de muestreo (sampling plan)
+
+* Especificación de variables
+
+* Plan de análisis
+
+---
+
+# Componentes
+
+* **Pregunta(s) del análisis**
+  * Pueden variar en grado de granularidad
+  
+  * Pueden variar en naturaleza: Análisis confirmatorio vs. exploratorio 
+
+* Plan de diseño
+
+* Plan de muestreo (sampling plan)
+
+* Especificación de variables
+
+* Plan de análisis
+
+---
+
+# Componentes
+
+* Pregunta(s) del análisis
+
+* **Plan de diseño**
+  * Descripción general del análisis.
+  
+  * Entre otros, especifica qué medirás, y bajo que circunstancias
+
+* Plan de muestreo (sampling plan)
+
+* Especificación de variables
+
+* Plan de análisis
+
+---
+
+# Componentes
+
+* Pregunta(s) del análisis
+
+* Plan de diseño
+
+* **Plan de muestreo (sampling plan)**
+  * Cuántas observaciones recolectarás? Cómo? Por qué?
+
+* Especificación de variables
+
+* Plan de análisis
+
+---
+
+
+# Componentes
+
+* Pregunta(s) del análisis
+
+* Plan de diseño
+
+* Plan de muestreo (sampling plan)
+
+* **Especificación de variables**
+  * Descripción todas las variables que juegan un rol en tu análisis
+
+* Plan de análisis
+
+---
+
+# Componentes
+
+* Pregunta(s) del análisis
+
+* Plan de diseño
+
+* Plan de muestreo (sampling plan)
+
+* Especificación de variables
+
+* **Plan de análisis**
+  * Descripción de cómo analizarás los datos
+
+---
+
+## Zipf's Law of Abbreviation
+---
+
+### Zipf's Law of Abbreviation: Formas más frecuentes tienden a ser más cortas
+&lt;br&gt;&lt;br&gt;
+.center[### 
+]
+
+&lt;img src="en-zipf.jpg" width="500",
+ height="350", style="position:absolute; right:200px; top:150px;"/&gt;
+ 
+.footnote[
+***
+
+G.K. Zipf (1935) *The psycho-biology of language*&lt;br&gt;
+Kanwal et al. (2017) *Zipf’s Law of abbreviation as a language universal*
+
+]
+
+---
+
+### Zipf's Law of Abbreviation: Formas más frecuentes tienden a ser más cortas
+&lt;br&gt;&lt;br&gt;
+.center[### 
+]
+
+&lt;img src="zipfslaw.png" width="600",
+ height="450", style="position:absolute; right:120px; top:100px;"/&gt;
+ 
+.footnote[
+***
+
+G.K. Zipf (1935) *The psycho-biology of language*&lt;br&gt;
+Benz &amp; Ferrer-i-Cancho (2016) * Zipf’s Law of abbreviation as a language universal*
+
+
+]
+---
+
+# Kanwal et al. 2017
+
+--
+
+&lt;img src="kanwal-sketch.png" width="600",
+ height="500", style="position:absolute; right:120px; top:100px;"/&gt;
+
+
+---
+
+# Kanwal et al. 2017: Condiciones
+
+1. Comunicación con otro jugador, con diferencial de tiempo entre mensajes
+
+--
+
+2. Comunicación con otro jugador, sin diferencial de tiempo
+
+--
+
+3. Sin otro jugador, con diferencial de tiempo entre mensajes
+
+--
+
+4. Sin otro jugador, sin diferencial de tiempo
+
+---
+
+# Kanwal et al. 2017: Resultado
+
+Sólo con diferencial de tiempo entre mensajes:
+
+ mensaje más corto `\(\Rightarrow\)` significado más frecuente
+
+---
+
+# Componentes (Kanwal et al. 2017)
+
+* Pregunta(s) del análisis
+
+* Plan de diseño
+
+* Plan de muestreo (sampling plan)
+
+* Especificación de variables
+
+* Plan de análisis
+
+---
+
+# Componentes (Kanwal et al. 2017)
+
+* **Pregunta(s) del análisis**
+  1. Emerge la ley de abreviación de una interacción entre dos presiones lingüísticas: brevedad y comunicación?
+  
+  2. Emerge (1) en un dialogo artificial de laboratorio en un par de rondas?
+  
+  3. Qué aprendemos de (1), si (2) es correcta?
+
+* Plan de diseño
+
+* Plan de muestreo (sampling plan)
+
+* Especificación de variables
+
+* Plan de análisis
+
+---
+
+# Componentes (Kanwal et al. 2017)
+
+* Pregunta(s) del análisis
+
+* **Plan de diseño**
+
+  * Analizaremos si un uso de expresiones referenciales que refleja la ley de abreviación de Zipf (más frecuente `\(\rightarrow\)` más corta) emerge en función a una interacción y presencia de dos presiones lingüísticas: presión por comunicación y por brevedad. 
+  
+  * Controlaremos la presencia/ausencia de las presiones en un experimento de laboratorio, usando una lengua artificial para también controlar el inventario léxico a disposición de cada hablante
+  
+  * Habrán 4 condiciones: `\([\pm comunicación] \; \times \; [\pm brevedad]\)`
+  
+  * Esperamos que uso de expresiones referenciales en línea con la ley de abreviación de Zipf sólo emerja si ambas presiones están presentes: `\([+ comunicación] \; \times \; [+ brevedad]\)`
+
+* Plan de muestreo (sampling plan)
+
+* Especificación de variables
+
+* Plan de análisis
+
+---
+
+
+# Componentes (Kanwal et al. 2017)
+
+* Pregunta(s) del análisis
+
+* Plan de diseño
+
+* **Plan de muestreo (sampling plan)**
+
+  * 124 participantes: 31 por condición
+  
+  * Reclutados a través de MTurk
+  
+  * Criterios de exclusión
+  
+  * ...
+
+* Especificación de variables
+
+* Plan de análisis
+
+---
+
+
+# Componentes (Kanwal et al. 2017)
+
+* Pregunta(s) del análisis
+
+* Plan de diseño
+
+* Plan de muestreo (sampling plan)
+
+* **Especificación de variables**
+
+  * Uso de expresión corta
+  
+  * Referente a comunicar
+  
+  * ID de sujeto y par
+  
+  * Turno
+
+* Plan de análisis
+
+---
+
+
+# Componentes (Kanwal et al. 2017)
+
+* Pregunta(s) del análisis
+
+* Plan de diseño
+
+* Plan de muestreo (sampling plan)
+
+* Especificación de variables
+
+* **Plan de análisis**
+
+  * Regresión logística con expresión como variable dependiente, y frecuencia del referente como variable independiente 
+
+---
+
+class: inverse, center
+
+# Datos y terminología
+
+---
+
+# Tipos de estudios
+
+* Observacionales
+
+* Experimentales
+
+* Virtuales (simulación, predicción)
+
+
+---
+
+# Tipos de variables
+
+* **Nominales** (género; idioma materno; lugar de origen)
+
+* **Ordinales** (años cursados; edad)
+
+* **Binarias** 
+
+* **Métricas** (número de usos de pronombres; tono)
+
+---
+
+# Representación de datos 
+
+* Cada **variable** forma una columna
+
+* Cada **observación** forma una línea
+
+* (Cada **típo de unidad observacional** forma una tabla)
+
+
+
+&lt;br&gt;&lt;br&gt;
+##&lt;center&gt;**"Tidy representation"**&lt;/center&gt;
+
+.footnote[
+***
+
+Wickham, Hadley. 2014. “Tidy Data.” Journal of Statistical Software 59 (10). Foundation for Open Access Statistic. https://doi.org/10.18637/jss.v059.i10.
+]
+---
+
+
+class: inverse
+
+# Próxima sesión
+
+* Entrega de "Assignment 2" (08:00 AM 26/04)
+
+***
+
+* **Recolección de datos y muestras**
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightLines": true,
+"highlightStyle": "github"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

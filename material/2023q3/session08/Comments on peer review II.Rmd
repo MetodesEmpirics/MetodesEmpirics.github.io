@@ -1,0 +1,16 @@
+---
+title: 'Comments on peer review II'
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+urlcolor: blue
+bibliography: ../../biblio.bib
+---
+
+You will find the feedback for all projects in the folder of this week's session. I have two comments:
+
+1. While most of you handed in a peer review, not all did. So it may be that you did were unlucky and the person who was supposed to give you feedback did not submit anything. You can ask Thomas or Guillermo if want some additional feedback. Just let us know.
+
+2. There are a few cases were the feedback was given to the "wrong" report. This means that it may be that the feedback that is supposed to be about your project is about someone elses'. The same as in (1) applies: Since you did no receive any feedback, if you want some, let Thomas or Guillermo know.
+

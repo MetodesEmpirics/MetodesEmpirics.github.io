@@ -1,0 +1,487 @@
+---
+title: "8 Corpora"
+author: "Métodos empíricos 2"
+date: "31/05/2022"
+output:
+  xaringan::moon_reader:
+    nature:
+      highlightLines: true
+      highlightStyle: github
+bibliography: ../../biblio.bib
+
+---
+
+```{r preamble, echo=FALSE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(ggplot2)
+```
+
+# Hoy
+
+.large[
+* Las leyes de Zipf
+
+* Corpora y pre-procesamiento
+
+* Aplicaciones
+
+* Word embeddings y más allá
+
+]
+
+---
+
+class: inverse, center
+
+# Las leyes de Zipf
+
+
+.footnote[
+***
+
+G.K. Zipf (1935) *The psycho-biology of language*⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+
+G.K. Zipf (1949) *Human behavior and the principle of least effort*
+
+]
+
+---
+
+### 1. Zipf's (Rank-Frequency) Law
+
+### 2. Zipf's Law of Abbreviation
+
+### 3. Zipf's Meaning-Frequency Law
+
+---
+
+### Rank-Frequency Law: La distribución rango-frecuencia de palabras es inversa
+
+```{r, echo=FALSE, fig.align='center', out.width='90%'}
+library(knitr)
+include_graphics('Zipf_30wiki_en_labels.png')
+```
+
+---
+
+### Law of Abbreviation: Formas frequentes tienden a ser más cortas 
+
+
+```{r, echo=FALSE, out.width="80%", fig.align='center'}
+include_graphics('en-zipf.jpg')
+```
+
+---
+
+### Meaning-frequency Law: Formas frequentes tienden a tener más significados
+
+```{r, echo=FALSE, fig.align='center'}
+library(ggplot2)
+freqs <- seq(1:100)
+meanings <- freqs**0.5
+df <- data.frame(freq = freqs,
+                 nmeanings = meanings)
+
+ggplot(df, aes(x = freq, y = nmeanings)) + geom_point() +     xlab('Frecuencia') + ylab('Número de significados') + theme_minimal(base_size=22) +
+ theme(axis.text.y = element_blank(), axis.text.x = element_blank()) 
+
+```
+
+---
+
+class: inverse, center
+
+# Corpora y pre-procesamiento
+
+---
+
+# Corpora
+
+* Por definición: Cualquier colección de datos
+
+* Por uso convencional: Colección de datos no estructurados, muchas veces de [gran]() tamaño
+
+
+.footnote[
+***
+
+Lo que significa [gran]() varía en función a la naturaleza de los datos, y de cuándo son / es el análisis.]
+
+---
+
+# Associated Press Corpus 
+
+Colección de 2246 artículos de noticias, la mayoría de alrededor de 1988
+
+--
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(tm)
+library(knitr)
+data("AssociatedPress", package = "topicmodels")
+include_graphics('ap-story.png')
+```
+
+
+---
+
+# Tokenización
+
+--
+
+Segmentar y transformar tu corpus para que represente las unidades de tu análisis.
+
+Por ejemplo, palabras, morfémas, o caracteres.
+
+---
+
+# Tokenización a nivel de palabras
+
+```{r}
+library(stringr)
+
+first_par <- 'MEXICO CITY (AP) — The Mexican government said Tuesday that COVID-19 has passed from a pandemic to an endemic stage in Mexico, meaning authorities will treat it as a seasonally recurring disease.'
+
+tokenized_first_par <- str_split(first_par, pattern = " ")[[1]]
+tokenized_first_par
+```
+
+---
+
+# Procesos de normalización de token(e)s
+
+--
+
+## Casing
+
+Convertir todo el texto a minúscula (o mayúscula)
+
+--
+
+## Stemming
+
+Quitar material morfológico, quedandose sólamente con las raíces
+
+--
+
+
+## Lematización
+
+Cambiar palabras por sus respectivos lemas.
+
+---
+
+# Casing
+
+```{r}
+tolower(tokenized_first_par)
+```
+
+---
+
+# Stemming & lemmatization
+
+* cat, cats, cat's, cats'; ...
+
+* to be; am; are; were; ...
+
+
+---
+
+# AP tokenizada
+
+
+```{r, eval=FALSE}
+library(tidytext)
+
+data("AssociatedPress", package = "topicmodels")
+tidy(AssociatedPress)
+```
+
+```{r, echo=FALSE}
+library(tidytext)
+AP_corpus <- tidy(AssociatedPress)
+```
+
+```{r, echo=FALSE}
+head(AP_corpus)
+```
+
+---
+
+# AP y Zipf?
+
+```{r, echo=FALSE}
+AP_ranked <- AP_corpus %>% select(term, count) %>% group_by(term) %>% mutate(count = sum(count)) %>% unique() %>% arrange(desc(count)) %>% ungroup() %>% mutate(length = nchar(term))
+AP_ranked$rank <- seq(1:nrow(AP_ranked))
+AP_ranked <- AP_ranked %>% mutate(log.count = log(count),
+                                  log.rank = log(rank))
+AP_ranked %>% head()
+```
+
+---
+
+# AP y Zipf I
+
+```{r, echo=FALSE, fig.align='center'}
+ggplot(AP_ranked, aes(x = log.rank, y = log.count)) + geom_point(col='indianred') + theme_minimal(base_size = 22) + 
+  xlab('log(rank)') + ylab('log(frecuencia)')
+```
+
+---
+
+# AP y Zipf II
+
+```{r, echo=FALSE, fig.align='center'}
+ggplot(AP_ranked, aes(x = length, y = count)) + geom_point(col='indianred') + theme_minimal(base_size = 22)  + 
+  xlab('longitud (caracteres)') + ylab('frecuencia')
+```
+
+---
+
+# Jane Austen
+
+```{r, echo=FALSE}
+library(janeaustenr)
+
+original_books <- austen_books() %>%
+  group_by(book) %>%
+  mutate(line = row_number(),
+         chapter = cumsum(str_detect(text, regex("^chapter [\\divxlc]",
+                                                 ignore_case = TRUE)))) %>%
+  ungroup()
+
+original_books
+
+```
+
+---
+
+# Jane Austen tokenizada y normalizada
+
+```{r, echo=FALSE}
+tidy_books <- original_books %>%
+  unnest_tokens(word, text)
+tidy_books
+```
+
+
+---
+
+# Jane Austen y Zipf?
+
+```{r, echo=FALSE}
+JA_ranked <- tidy_books %>% select(word) %>% count(word) %>% arrange(desc(n)) %>% rename(count = n) %>% mutate(length = nchar(word),
+                                                                                                               log.count = log(count))
+JA_ranked$rank <- seq(1:nrow(JA_ranked))
+JA_ranked <- JA_ranked %>% mutate(log.rank = log(rank))
+head(JA_ranked)
+```
+
+---
+
+
+# Jane Austen y Zipf I
+
+```{r, echo=FALSE}
+ggplot(JA_ranked, aes(x = log.rank, y = log.count)) +  geom_point(col='indianred') + theme_minimal(base_size = 22)  + 
+  xlab('log(rank)') + ylab('log(frecuencia)')
+```
+
+---
+
+# Jane Austen y Zipf II
+
+```{r, echo=FALSE}
+ggplot(JA_ranked, aes(x = length, y = count)) +  geom_point(col='indianred') + theme_minimal(base_size = 22)  + 
+  xlab('longitud') + ylab('frecuencia')
+```
+
+---
+
+# Y la otra ley de Zipf?
+
+
+---
+
+# Discusión
+
+* Todo tipo de texto sigue las Leyes de Zipf?
+
+* Toda lengua sigue las Leyes de Zipf?
+
+
+---
+
+class: inverse
+
+# Aplicaciones 
+
+---
+
+# Investigación
+
+* Indispensable para descubrir o (des)confirmar regularidades en una, o varias lenguas
+
+* Mayor volúmen de datos $\Rightarrow$ mayor sensibilidad para encontrar efectos menores (pero también más peligro de descubrir patrones falsos)
+
+  * [https://www.tylervigen.com/spurious-correlations](https://www.tylervigen.com/spurious-correlations)
+
+* Gran potencial --aún por explorar-- para tipología y lenguas menos descritas
+
+---
+
+
+# Industria
+
+* (Pre-)procesamiento de grandes volúmenes de datos lingüísticos
+
+* Indispensable para descubrir o (des)confirmar regularidades a nivel de individuos, grupos y comunidades
+
+* Enorme mercado que todavía se está abriendo
+
+---
+
+class: inverse
+
+# Word embeddings y más allá
+
+
+---
+
+# Predicción como base para conocimiento lingüístico
+
+### Les ⬛⬛⬛....⬛⬛⬛
+
+--
+
+### Les tasques ⬛⬛⬛....⬛⬛⬛
+
+--
+
+### Les tasques de ⬛⬛⬛....⬛⬛⬛
+
+--
+
+### Les tasques de remodelació ⬛⬛⬛....⬛⬛⬛
+
+--
+
+### Les tasques de remodelació i ⬛⬛⬛....⬛⬛⬛
+
+--
+
+### Les tasques de remodelació i ampliació ⬛⬛⬛....⬛⬛⬛
+
+
+---
+
+# Predicción como base para conocimiento lingüístico
+
+### Les tasques de remodelació i ampliació de ⬛⬛⬛....⬛⬛⬛
+
+--
+
+### Les tasques de remodelació i ampliació de l' ⬛⬛⬛....⬛⬛⬛
+
+--
+
+### Les tasques de remodelació i ampliació de l'estadi ⬛⬛⬛....⬛⬛⬛
+
+--
+
+### Les tasques de remodelació i ampliació de l'estadi començaran ⬛⬛⬛....⬛⬛⬛
+
+---
+
+# Predicción como base para conocimiento lingüístico
+
+
+### Les tasques de remodelació i ampliació de l'estadi començaran al ⬛⬛⬛....⬛⬛⬛
+
+--
+
+### Les tasques de remodelació i ampliació de l'estadi començaran al juny ⬛⬛⬛....⬛⬛⬛
+
+
+---
+
+# Predicción como base para conocimiento lingüístico
+
+Entrenar modelos con muchos parámetros a predecir información lingüística en grandes volúmenes de datos 
+
+$\Large \Rightarrow$  aprendizaje de conocimiento lingüístico latente (hasta cierto grado)
+
+--
+
+<br>
+
+* Syntáxis ✔
+
+* Morfología ✔
+
+* Semántica ✔✘
+
+* Pragmática ✘
+
+---
+
+# Word embeddings
+
+```{r, echo=FALSE, fig.align='center', out.width='90%'}
+include_graphics('ds-boleda.png')
+``` 
+
+---
+
+# Word embeddings
+
+```{r, echo=FALSE, fig.align='center', out.width='90%'}
+include_graphics('ds-semantic-change.png')
+``` 
+
+---
+
+
+# Language models
+
+[https://transformer.huggingface.co/doc/distil-gpt2](https://transformer.huggingface.co/doc/distil-gpt2)
+
+
+---
+
+# Paquetes
+
+* python: spaCy, (py)torch
+
+* R: tidytext, stringr
+
+---
+
+# Siguentes avances
+
+* Modelos multi-modales
+
+* Calidad de datos vs. tamaño de modelo
+
+* Límites de aprendizaje a base de texto
+
+* Black box NLP & lenguaje emergente
+
+
+---
+
+
+class: inverse
+
+# Próxima sesión
+
+* No hay entrega
+
+***
+
+* **Visualización**
+
+***
+
+* Informe final: 28/06

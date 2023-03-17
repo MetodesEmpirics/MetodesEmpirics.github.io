@@ -1,0 +1,402 @@
+---
+title: "3 Recolección de datos y muestras"
+author: "Métodos empíricos 2"
+date: "26/04/2022"
+output:
+  xaringan::moon_reader:
+    nature:
+      highlightLines: true
+      highlightStyle: github
+---
+
+```{r preamble, echo=FALSE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(ggplot2)
+```
+
+# Hoy
+
+.large[
+* Muestras 
+
+* Control
+
+* ¿Dónde están los datos?  
+
+* Distribuciones
+
+]
+
+---
+
+class: inverse, center
+
+# Muestras
+
+---
+## Tipos de muestras
+**Muestra completa**: 
+toda la población  de interés 
+<br>
+<br>
+--
+**Muestra representativa/sin sesgo**: tomada de la muestra completa con un método que no depende de la muestra que se está tomando
+<br>
+<br>
+--
+**Muestra no representativa/con sesgo**: los datos son influenciados por el método de toma
+
+---
+
+## Tipos de muestras
+
+¿Es la l-velarizada (vs. no velarizada) un fonéma del Catalán?
+
+
+---
+
+
+## Tamaño de muestra
+
+--
+
+¿Es la l-velarizada (vs. no velarizada) un fonéma del Catalán?
+
+
+---
+
+## Tamaño de muestra (p = 0.52)
+
+Asume que la probabilidad que una palabra corta sea usada para (i) un significado frecuente es $0.52$ vs. (ii) un significado menos frecuente.
+
+---
+
+```{r,echo=FALSE, warning=FALSE, fig.align='center', fig.height=9, fig.width=10}
+set.seed(123)
+p <- 0.52
+sample5 <- rbinom(n=5,size=1,prob=p)
+sample10 <- rbinom(n=10,size=1,prob=p)
+sample15 <- rbinom(n=15,size=1,prob=p)
+sample50 <- rbinom(n=50,size=1,prob=p)
+sample555 <- rbinom(n=555,size=1,prob=p)
+sample1000 <- rbinom(n=1000,size=1,prob=p)
+samplesize <- c(rep('5',5),
+                rep('10',10),
+                rep('15', 15),
+                rep('50', 50),
+                rep('555',555),
+                rep('1000', 1000)) 
+dt <- c(sample5,sample10,sample15,sample50,sample555,sample1000)
+df <- data.frame(sample_size = factor(samplesize,
+                                         levels=c('5', '10', '15',
+                                                  '50', '555', '1000')
+                                         ),
+                 data = dt)
+
+means <-aggregate(data ~  sample_size, df, mean)
+means$data <- round(means$data, 2)
+
+ggplot(df, aes(x = data)) +
+  facet_wrap(~sample_size, scales='free') +
+  geom_histogram(bins=5, fill='indianred') +
+  geom_text(data = means, aes(label = data, y = c(2.5,5,8,25,240,400), x = 0.5), size=12) +
+  theme_minimal(base_size=25) +
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.title.y=element_blank()) 
+
+
+```
+
+---
+
+## Tamaño de muestra (p = 0.65)
+
+Asume que la probabilidad que una palabra corta sea usada para (i) un significado frecuente es $0.65$ vs. (ii) un significado menos frecuente.
+
+---
+
+```{r,echo=FALSE, warning=FALSE, fig.align='center', fig.height=9, fig.width=10}
+set.seed(123)
+p <- 0.65
+sample5 <- rbinom(n=5,size=1,prob=p)
+sample10 <- rbinom(n=10,size=1,prob=p)
+sample15 <- rbinom(n=15,size=1,prob=p)
+sample50 <- rbinom(n=50,size=1,prob=p)
+sample555 <- rbinom(n=555,size=1,prob=p)
+sample1000 <- rbinom(n=1000,size=1,prob=p)
+samplesize <- c(rep('5',5),
+                rep('10',10),
+                rep('15', 15),
+                rep('50', 50),
+                rep('555',555),
+                rep('1000', 1000)) 
+dt <- c(sample5,sample10,sample15,sample50,sample555,sample1000)
+df <- data.frame(sample_size = factor(samplesize,
+                                         levels=c('5', '10', '15',
+                                                  '50', '555', '1000')
+                                         ),
+                 data = dt)
+
+means <-aggregate(data ~  sample_size, df, mean)
+means$data <- round(means$data, 2)
+
+ggplot(df, aes(x = data)) +
+  facet_wrap(~sample_size, scales='free') +
+  geom_histogram(bins=5, fill = 'indianred') +
+  geom_text(data = means, aes(label = data, y = c(2.5,5,8,25,240,400), x = 0.5), size=12) +
+  theme_minimal(base_size=25) +
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.title.y=element_blank()) 
+
+
+```
+
+---
+
+
+## Tamaño de muestra (p = 0.9)
+
+Asume que la probabilidad que una palabra corta sea usada para (i) un significado frecuente es $0.9$ vs. (ii) un significado menos frecuente.
+
+---
+
+```{r,echo=FALSE, warning=FALSE, fig.align='center', fig.height=9, fig.width=10}
+set.seed(123)
+p <- 0.9
+sample5 <- rbinom(n=5,size=1,prob=p)
+sample10 <- rbinom(n=10,size=1,prob=p)
+sample15 <- rbinom(n=15,size=1,prob=p)
+sample50 <- rbinom(n=50,size=1,prob=p)
+sample555 <- rbinom(n=555,size=1,prob=p)
+sample1000 <- rbinom(n=1000,size=1,prob=p)
+samplesize <- c(rep('5',5),
+                rep('10',10),
+                rep('15', 15),
+                rep('50', 50),
+                rep('555',555),
+                rep('1000', 1000)) 
+dt <- c(sample5,sample10,sample15,sample50,sample555,sample1000)
+df <- data.frame(sample_size = factor(samplesize,
+                                         levels=c('5', '10', '15',
+                                                  '50', '555', '1000')
+                                         ),
+                 data = dt)
+
+means <-aggregate(data ~  sample_size, df, mean)
+means$data <- round(means$data, 2)
+
+ggplot(df, aes(x = data)) +
+  facet_wrap(~sample_size, scales='free') +
+  geom_histogram(bins=5, fill='indianred') +
+  geom_text(data = means, aes(label = data, y = c(2.5,5,8,25,240,400), x = 0.5), size=12) +
+  theme_minimal(base_size=25) +
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.title.y=element_blank()) 
+
+
+```
+
+---
+
+* Tanto sesgo como tamaño importan
+
+* Pero cuánto importan se responde en función a la pregunta y el efecto que esperas, a priori
+---
+
+class: inverse, center
+
+# Control
+
+---
+
+# Estudios piloto
+
+Versión a pequeña escala de tu análisis
+
+* Comprueba si el plan de análisis es realizable
+
+* Comprueba la calidad del plan de análisis, pero no necesariamente su sensibilidad (en función al tamaño del efecto)
+
+* Ahorra tiempo y dinero
+
+---
+
+# Simulaciones
+
+Versión idealizada de tu análisis
+
+* Comprueba si el plan de análisis (sin recolección) es realizable
+
+* Comprueba la calidad del plan de análisis y su sensibilidad, pero es ciego a problemas de recolección y es sólo tan bueno como tus suposiciones
+
+* Ahorra (más) tiempo y dinero
+
+---
+
+class: inverse, center
+
+# ¿Dónde están los datos?
+
+---
+
+# Experimentales
+
+* Laboratorio (eye-tracking, fMRI)
+
+* Plataformas online (MTurk, Prolific)
+
+* Recolección "en la calle"
+
+* Datos de previos estudios (SWOW, NoRaRe, SimLex-999, VisualGenome)
+
+---
+
+# Datos no/semi estructurados
+
+* Corpora (Wikipedia, Twitter)
+
+* Scraping 
+
+* Datos de previos estudios (CLICS)
+
+* Modelos (word embeddings; language models)
+
+---
+
+class: inverse, center
+
+# Distribuciones
+
+---
+
+## Distribucion normal (Gaussiana)
+.pull-left[
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+x <- rnorm(n=10000,mean=170,sd=2)
+df <- data.frame(datos = x)
+
+ggplot(df, aes(x = datos)) +
+  geom_histogram(aes(y = ..density..), fill='indianred', col='black', bins=30) + 
+  theme_minimal(base_size=20) + 
+  geom_density() + 
+  theme(axis.title.y=element_blank(),
+        axis.title.x = element_blank())
+
+```
+]
+.pull-right[
+**y ~ Normal(** $\mu$, $\sigma$ **)**
+<br>
+<br>
+**y ~ Normal(** promedio, desv. est. **)**
+<br>
+<br>
+**y ~ Normal(170, 2)**
+
+]
+
+---
+## Distribucion normal (Gaussiana)
+
+* **Valores posibles:** Números reales
+
+* **Parámetros:** promedio, desviación estándar
+
+* Común "en la naturaleza" y epistémicamente liviana
+
+---
+
+## Distribucion Bernoulli (Binomial)
+.pull-left[
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+x <- rbinom(n = 5000, size = 1, p = 0.5) 
+df <- data.frame(datos = x)
+
+ggplot(df, aes(x = datos)) +
+  geom_histogram(fill='indianred', col='black', bins=30) + 
+  theme_minimal(base_size=20) + 
+  theme(axis.title.y=element_blank(),
+        axis.title.x = element_blank())
+
+```
+]
+.pull-right[
+**y ~ Bernoulli(** $p$ **)**
+<br>
+<br>
+**y ~ Bernoulli(** prob. de éxito **)**
+<br>
+<br>
+**y ~ Bernoulli(0.5)**
+
+]
+
+---
+
+## Distribucion Bernoulli (Binomial)
+
+* **Valores posibles:** $0$ o $1$
+
+* **Parámetros:** probabilidad de éxito ( $1$ )
+
+* Común experimentos y ciencias sociales
+
+---
+
+
+## Distribucion Poisson
+.pull-left[
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+x <- rpois(n = 50000, lambda = 170)
+df <- data.frame(datos = x)
+
+ggplot(df, aes(x = datos)) +
+  geom_histogram(fill='indianred', col='black', bins=20) + 
+  theme_minimal(base_size=20) + 
+  theme(axis.title.y=element_blank(),
+        axis.title.x = element_blank())
+
+```
+]
+.pull-right[
+**y ~ Poisson(** $\lambda$ **)**
+<br>
+<br>
+**y ~ Poisson(** ritmo **)**
+<br>
+<br>
+**y ~ Poisson(170)**
+
+]
+
+---
+
+## Distribucion Poisson
+
+* **Valores posibles:** números naturales + 0
+
+* **Parámetros:** ritmo ( expectativa de promedio )
+
+* Común en ciencias sociales, cuando contamos eventos
+
+* Su varianza es igual a su ritmo/promedio $\Rightarrow$ <br>su desviación estándar es $\sqrt{\lambda}$ 
+
+---
+
+class: inverse
+
+# Próxima sesión
+
+* Entrega de "Assignment 3" (08:00 AM 03/05)
+
+***
+
+* **Introducción a la regresión**
+
+

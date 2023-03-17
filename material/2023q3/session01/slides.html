@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>1 Introducción</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Métodos empíricos 2" />
+    <meta name="date" content="2022-05-04" />
+    <script src="slides_files/header-attrs-2.13/header-attrs.js"></script>
+    <link href="slides_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="slides_files/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# 1 Introducción
+### Métodos empíricos 2
+### 05/04/2022
+
+---
+
+
+
+
+# Hoy
+
+.large[
+* Organización del curso 
+
+* Diseño de análisis y estadística inferencial 
+
+* Replicabilidad y reproducibilidad  
+
+* R
+
+* Estadística descriptiva 
+
+]
+
+---
+
+class: inverse, center
+
+# Organización
+
+---
+
+# Información básica
+
+.large[
+* 5 ECTS (~125-150 horas)
+
+* Material y comunicación: https://aulaglobal.upf.edu/
+
+* Equipo
+  * Thomas Brochhagen (thomas.brochhagen@upf.edu)
+  
+  * Guillermo Montaña (guillermo.montana@upf.edu)
+
+* Estructura
+  * Martes: Conceptos y discusión
+  
+  * Jueves: Práctica y más discusión
+
+]
+
+---
+
+# Observaciones sobre lengua
+.large[
+1. Instrucción
+
+2. Ejercicios
+
+3. Comunicación personal
+]
+
+
+---
+
+
+# Evaluación
+.large[
+* Ejercicios semanales (20%, no recuperable)
+
+* Ejercicio práctico (20%, recuperable)
+
+* Revisión por pares (20%, no recuperable)
+
+* Informe de diseño de análisis y su ejecución (40%, recuperable)
+]
+
+---
+
+# Evaluación
+
+.large[
+* Ejercicios semanales (20%, no recuperable)
+  * A través de Aula Global
+  
+  * Corrección automática
+  
+  * Máximo 2 intentos
+  
+  * 5-6 en total
+]
+
+---
+
+# Evaluación 
+.large[
+* Revisión por pares (20%, no recuperable)
+
+  * Solamente opción de aprobar, o no
+
+  * No se aprueba si no se entregan los dos documentos; o si cualquiera de ellos no se adecúa a un estándar mínimo de calidad
+]
+
+---
+
+# Evaluación
+.large[
+* Ejercicio práctico (20%, recuperable)
+
+  * A través de Aula Global
+  
+  * A mitad de curso
+
+  * Corrección automática
+
+  * Un solo intento
+]
+
+---
+
+# Evaluación
+
+.large[
+Diseño y ejecución de análisis (40%)
+* Individual o en grupos (división de trabajo debe ser aprobada)
+
+* Evaluación en función a tema / tamaño del grupo
+  
+* Máximo dos páginas
+]
+
+***
+
+--
+
+.large[
+**Criterios** (max. 100 puntos)
+* Claridad (30): descripción clara y al punto; uso adecuado de visualización
+  
+* Replicabilidad (15)
+  
+* Reproducibilidad (15)
+  
+* Contenido (40): el análisis está bien motivado y ejecutado con métodos adecuados
+
+* Creatividad (20): supera expectativas en una o múltiples dimensiones, como visualización, temática, metodología, documentación  
+]
+
+---
+
+class: inverse, center
+
+# Contenido del curso y motivación general
+
+---
+
+# Ciclo de análisis
+
+&lt;img src="cycle.png", style="position:absolute; right:7px; top:100px;"&gt;
+
+---
+
+# Sesiones
+
+.pull-left[
+* Diseño (1-3)
+
+* Control (3)
+
+* Crítica (3-9)
+
+* Ejecución (3)
+
+* Exploración (3-9)
+
+* Análisis (4-9)
+]
+
+--
+
+.pull-right[
+1. Introducción 
+
+2. Diseño de análisis 
+
+3. Recolección de datos y muestras
+
+4. Introducción a la regresión
+
+5. Regresión multivariada
+6. Regresión generalizada I
+
+7. Regresión generalizada II
+
+8. Corpus I
+
+9. Corpus II
+10. Revisión y temas avanzados
+]
+
+---
+
+# Algunas motivaciones
+.large[
+* Manipulación e interpretación de datos
+
+  * Crítica
+
+  * Limpieza
+
+  * Modelado
+  
+  * Visualización
+
+  * (Programación)
+
+* Indispensable para ciencias del lenguaje
+
+* Cada vez más indispensable en el siglo 21
+
+]
+---
+
+# A efectos prácticos
+.large[
+* Manipulación e interpretación de datos
+
+* Comparación de grupos
+
+* Predicción
+
+* Visualización
+
+* (Programación)
+&lt;br&gt;&lt;br&gt;
+
+.center[... aplicado a ciencias del lenguaje]
+]
+---
+
+class: center, inverse
+
+# Análisis inferencial
+
+
+---
+
+
+# Análisis inferencial (vs. descriptiva)
+.large[
+* Inferencia de propiedades (más allá de la muestra) 
+
+* Predicción
+
+* Comparación
+
+* Causa-efecto 
+]
+---
+
+&lt;img src='fig1-franconeri.png',  width="500px" height="500px", style="position:absolute; right:200px; top:px;"&gt;
+
+.footnote[
+*** 
+Fig. 1 de Franconeri et al. 2021 [The Science of Visual Data Communication: What Works](https://journals.sagepub.com/stoken/default+domain/10.1177%2F15291006211051956-FREE/full#_i28)]
+---
+
+
+# Análisis inferencial: Centrado en modelos
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+.center[
+### All models are wrong, but some are useful
+-George E.P. Box
+]
+---
+
+# Análisis inferencial: Centrado en datos
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+.center[
+### We should only let data speak for themselves when they&lt;br&gt; have learned to clean themselves
+-Erik van Zwet 
+]
+---
+
+# Regresión
+
+Estimación del efecto de uno o más *predictores* en un *resultado*
+
+* Fluidez en una segunda lengua a base de la primera
+  
+* Probabilidad del uso de un pronombre a base de su entorno lingüístico
+  
+* Tamaño de una palabra en función a su frecuencia
+
+* ...
+  
+&lt;br&gt;
+***
+
+&lt;br&gt;  
+
+--
+
+Estimación de diferencias entre grupos
+
+* Comparación de un método de aprendizaje de la lengua contra otro
+  
+* Comparación de políticas lingüísticas
+
+* ...
+
+---
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-1-1.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: inverse, center
+
+# Replicabilidad y reproducibilidad
+
+---
+
+# Crísis de replicabilidad y reproducibilidad
+
+.left[Replication is one of the central issues in any empirical science. 
+
+To confirm results or hypotheses by a repetition procedure is at the basis of any scientific conception. A replication experiment to demonstrate that the same findings can be obtained in any other place by any other researcher is conceived as an operationalization of objectivity. 
+
+It is the proof that the experiment reflects knowledge that can be separated from the specific circumstances (such as time, place, or persons) under which it was gained.
+&lt;br&gt;&lt;br&gt;
+-Stefan Schmidt 
+]
+---
+
+### Replicabilidad
+
+Que se puedan obtener resultados consistentes con los mismo datos de entrada; pasos computacionales; métodos; código; y condiciones de análisis
+
+***
+--
+
+
+### Reproducibilidad
+
+Que se puedan obtener resultados consistentes en diferentes análisis que buscan responder la misma pregunta, cada cual con sus propios datos
+
+---
+
+# Crisis de replicabilidad y reproducibilidad
+
+* Una cantidad importante de resultados no se han podido ni replicar ni reproducir (50%-80%, dependiendo del campo)
+
+--
+
+* Conllevó a un gran cambio en metodología y documentación (estamos en ello)
+
+--
+
+* Independientemente, es central documentar todas tus decisiones y manipulaciones; de principio a fin
+
+--
+
+* Lenguas de programación son una herramienta ideal para 
+  * conducir análisis empírico, y
+  
+  * asegurarse de que sea replicable 
+
+---
+
+class: inverse, center
+
+# R 
+
+---
+
+
+
+```r
+library(ggplot2) #librería gráfica
+set.seed(123)    #semilla aleatorea
+
+x   &lt;-   rnorm(n = 34, mean = 20, sd = 2) #valores predictor
+err &lt;-   rnorm(n = 34, mean = 0,sd=1)     #valores variacion
+y   &lt;-   x/2 + err                        #valores resultado
+
+df  &lt;-   data.frame(resultado = y,        #formato conjunto
+                    predictor = x)
+
+ggplot(df, aes(x = predictor, y = resultado)) + #gráfico
+  geom_point() +                                #scatter plot
+  geom_smooth(method='lm') +                    #regresión
+  theme_minimal(base_size=25)                   #apariencia  
+```
+
+---
+
+# En este curso
+
+* Uso rudimentario e interactivo
+
+* Principalmente: intuición sobre estructuras de datos y su manipulación
+
+* Manera de asegurar replicabilidad
+
+* Manera de mejorar comunicación
+
+---
+
+class: inverse, center
+
+
+# Estadística descriptiva
+
+---
+
+# Estadística descriptiva
+
+
+.large[
+* Tendencias centrales (promedio; mediana; moda)
+
+* Dispersión (varianza; desviación típica)
+
+* Variación conjunta (correlación, co-varianza)
+]
+
+.footnote[
+
+*** 
+
+Si falta una revisión: Franke (2021) [*An Introduction to Data Analysis*, capítulo 5](https://michael-franke.github.io/intro-data-analysis/Chap-02-03-summary-statistics.html)
+]
+
+---
+
+class: inverse
+
+# Próxima sesión
+
+* Entrega de "Assignment 1" (08:00 AM 19/04)
+
+* Si hay, preguntas generales sobre el curso
+
+* Si hay, preguntas generales sobre el informe
+
+* Si hay, preguntas generales sobre R
+
+***
+
+* **Diseño de análisis**
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightLines": true,
+"highlightStyle": "github"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

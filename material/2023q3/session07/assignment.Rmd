@@ -1,0 +1,30 @@
+---
+title: 'Assignment'
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+urlcolor: blue
+bibliography: ../../biblio.bib
+---
+
+
+# Peer review (part II) 
+
+Submit a peer review for the analysis report that you were assigned through email, as a single page PDF-file through Aula Global (grup gran). You will find a link to the report assigned to you (and all other reports) in Aula Global.
+
+If you did not submit a report for Peer Review I, then you were assigned no report to give feedback to. If you would still like to participate in this second part, feel free to give feedback to a randomly chosen report from the folder.  If you did submit a report for Peer Review I, but you did not receive an email from me, please let me know (thomas.brochhagen@upf.edu).
+
+This submission makes up 50% of your peer-review grade (10% total). Remember that **your submission must be anonymous**. That is: do not put any information that can identify you in the PDF (like your name). 
+
+Cover the following points (in bullet points if you want)
+
+  1. Is the analysis well motivated?
+  2. Is the specific research question well connected to the general one?
+  3. Is the analysis feasible in the scope of this class? 
+  
+Elaborate with as much detail as you want but keep in mind that your feedback must be polite, constructive, and nuanced. Always give reasons why you think an aspect of the analysis report of your peer is good/strong or bad/weak. You can find further guidelines to write a peer-review in Aula Global.
+
+# Self study
+
+Use the rest of your time to work on your final report. Make sure you have all its details worked out by the end of the course.

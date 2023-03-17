@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>10 Más temas y más métodos empiricos en las ciencias del lenguaje</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Métodos empíricos 2" />
+    <link href="slides_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="slides_files/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# 10 Más temas y más métodos empiricos en las ciencias del lenguaje
+]
+.author[
+### Métodos empíricos 2
+]
+.date[
+### 14/06/2022
+]
+
+---
+
+
+
+
+# Hoy
+
+.large[
+* Recapitulación
+
+* Más allá: Métodos empiricos inferenciales
+
+* Más allá: Ciencias del lenguaje empiricas
+
+
+]
+
+---
+
+
+class: inverse, center
+
+# Recapitulación
+
+---
+
+# Ciclo de análisis
+
+&lt;img src="cycle.png", style="position:absolute; right:7px; top:100px;"&gt;
+
+
+---
+
+
+
+# Análisis inferencial vs. descriptivo
+
+--
+
+.large[
+* Inferencia de propiedades (más allá de la muestra) 
+
+* Predicción
+
+* Comparación
+
+* Causa-efecto 
+]
+
+
+---
+
+&lt;img src='fig1-franconeri.png',  width="500px" height="500px", style="position:absolute; right:200px; top:px;"&gt;
+
+.footnote[
+*** 
+Fig. 1 de Franconeri et al. 2021 [The Science of Visual Data Communication: What Works](https://journals.sagepub.com/stoken/default+domain/10.1177%2F15291006211051956-FREE/full#_i28)]
+
+---
+
+### Replicabilidad
+
+Que se puedan obtener resultados consistentes con los mismo datos de entrada; pasos computacionales; métodos; código; y condiciones de análisis
+
+***
+--
+
+
+### Reproducibilidad
+
+Que se puedan obtener resultados consistentes en diferentes análisis que buscan responder la misma pregunta, cada cual con sus propios datos
+
+---
+
+# Diseño de análisis (componentes)
+
+* Pregunta(s) del análisis
+
+* Plan de diseño
+
+* Plan de muestreo (sampling plan)
+
+* Especificación de variables
+
+* Plan de análisis
+
+---
+
+## Terminología: Tipos de variables
+
+* **Nominales** 
+
+* **Ordinales** 
+
+* **Binarias** 
+
+* **Booleanas** 
+
+* **Métricas**
+
+---
+
+## Terminología: Tipos de muestras
+**Muestra completa**: 
+toda la población  de interés 
+&lt;br&gt;
+&lt;br&gt;
+--
+**Muestra representativa/sin sesgo**: tomada de la muestra completa con un método que no depende de la muestra que se está tomando
+&lt;br&gt;
+&lt;br&gt;
+--
+**Muestra no representativa/con sesgo**: los datos son influenciados por el método de toma
+
+---
+
+## Terminología: Distribuciones
+
+* Gaussiana/Normal
+
+* Poisson
+
+* Bernoulli (Binomial)
+
+
+---
+
+
+
+# Ciclo de análisis
+
+&lt;img src="cycle.png", style="position:absolute; right:7px; top:100px;"&gt;
+
+
+---
+
+# Control y crítica
+
+* Estudios piloto
+
+* Simulaciones
+
+---
+
+
+# Ciclo de análisis
+
+&lt;img src="cycle.png", style="position:absolute; right:7px; top:100px;"&gt;
+
+
+---
+
+# Exploración
+
+* (Manipulación)
+
+* Estadística descriptiva
+
+* Visualización
+
+---
+
+# Análisis
+
+* Regresión lineal generalizada con uno o más predictores
+
+  * Normal/Gaussiana
+  
+  * Poisson
+  
+  * Bernoulli
+
+* Visualización
+
+* Análisis de corpus
+
+---
+
+# Fenómenos
+
+* Tono
+
+* Gestos
+
+* Ambigüedad temporal
+
+* Resolución de pronómbres
+
+* Leyes de Zipf (laboratorio y gran escala)
+
+* ...
+
+---
+
+class: inverse, center
+
+# Kahoot!
+
+## [www.kahoot.it](http://www.kahoot.it)
+
+
+---
+
+class: inverse
+
+# Más allá: Métodos empiricos inferenciales
+
+---
+
+## Paramétricos
+
+* Modelos lineales (hierárquicos)
+
+* k-means
+
+* ...
+
+*** 
+
+## No-paramétricos
+
+* Modelos generalizados aditivos
+
+* Redes neuronales (en realidad no, pero en términos prácticos sí)
+
+* ...
+
+---
+
+# Modelo hierarquico para Kanwal et al. 2017
+
+Hay dos tipos "latentes" de hablantes:
+
+  1. Arriesgados: Piensan que el interlocutor piensa que el significado frequente es más esperado
+  2. Cuidadosos: Tienen incertidumbre sobre cual es el significado esperado
+  
+Hablantes usan el mensaje (que consideran) más probable a ser entendido, minimizando longitud de mensaje
+
+
+---
+
+&lt;img src="fig5.png", style="position:absolute; right:100px; top:89px;"&gt;
+
+
+---
+
+
+
+&lt;img src="fig6.png", style="position:absolute; right:10px; top:50px;"&gt;
+
+
+---
+# K-means
+
+--
+
+&lt;img src="k-means.png", style="position:absolute; right:7px; top:140px;"&gt;
+
+
+---
+
+# Generalized Additive Models
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-1-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+&lt;img src="nn", style="position:absolute; right:7px; top:0px;"&gt;
+
+
+---
+
+Todos estos métodos siguen el mismo proceso:
+
+* Define objectivo ("función de perdida")
+
+* "Aprende" de los datos
+
+* Encuentra el parámetro, o combinación de parámetoros, que minimizan la perdida (maximizan el objectivo)
+
+---
+
+Todos estos métodos siguen el mismo proceso:
+
+* Define objectivo ("función de perdida")
+
+* "Aprende" de los **[datos]()**
+
+  * Calidad de datos
+  
+  * Razón por qué una o más variables podrían solucionar el problema
+
+* Encuentra el parámetro, o combinación de parámetoros, que minimizan la perdida (maximizan el objectivo)
+
+.footnote[
+*** 
+
+* [Human in the Loop: Active learning and annotation for human-centered AI](https://www.manning.com/books/human-in-the-loop-machine-learning)
+
+* [Linguistic Diversity and Traffic Accidents: Lessons from Statistical Studies of Cultural Traits](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0070902)
+
+]
+
+
+---
+
+
+&lt;img src="accidents.png", style="position:absolute; right:170px; top:55px;"&gt;
+
+
+
+.footnote[
+*** 
+
+[Linguistic Diversity and Traffic Accidents: Lessons from Statistical Studies of Cultural Traits](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0070902)
+
+y = Linguistic diversity index: probabilidad que dos personas de una población tengan la misma lengua nativa
+
+]
+---
+
+
+&lt;img src="siesta.png", style="position:absolute; right:90px; top:0px;"&gt;
+
+
+
+.footnote[
+*** 
+
+y = Promedio de categorias gramáticales que puede tomar el verbo
+]
+---
+
+class: inverse
+
+# Más allá: Ciencias del lenguaje empiricas
+
+---
+
+De momento: Saliendo lentamente de la crísis de replicabilidad
+
+"Nuevas" áreas de investigación/aplicación:
+
+  * Traducción asistida
+  
+  * Tipología computacional
+  
+  * Human in the loop QA
+  
+  * PLN
+  
+  * Metodologías de aprendizaje asistidas / automatizadas
+  
+  * ...
+  
+---
+
+class: inverse
+
+# Y ahora a dónde?
+
+
+---
+
+class: inverse
+
+# Preguntas?
+
+---
+
+class: inverse
+
+# Coda
+
+* Avaldo (20/06)
+
+* Informe final: 28/06
+
+
+---
+
+class: inverse, center
+
+# Gracias!
+
+### [https://brochhagen.github.io/](https://brochhagen.github.io/)
+### [thomas.brochhagen@upf.edu](thomas.brochhagen@upf.edu)
+### [52.631](52.631)
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightLines": true,
+"highlightStyle": "github"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

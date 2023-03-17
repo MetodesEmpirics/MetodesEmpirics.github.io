@@ -1,0 +1,38 @@
+---
+title: "Symbols and functions from today's session"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Regression 
+
+```{r, eval=FALSE}
+#this function fits a linear regression with "y" as outcome,
+#"x" as predictor, and takes the information on x and y from
+#the data frame df
+
+lm(formula = y ~ x, 
+   data = df) 
+
+#This is the same as
+lm(df$y ~ df$x)
+```
+
+For example,
+```{r}
+df <- read.csv("https://tinyurl.com/polite-data") #download data
+model <- lm(formula = pitch ~ 1 + context, #fit model
+            data = df)
+```  
+
+Fits a linear regression model with `pitch` as the outcome and `context` as a predictor. 
+
+In formulae:
+
+$$\large \text{pitch}_i \sim \text{Normal}(\mu_i,\sigma)$$
+$$\large \mu_i = \beta_0 + \beta_1 \text{context}$$
