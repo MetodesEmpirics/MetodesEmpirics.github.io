@@ -1,7 +1,7 @@
 ---
-title: "1 Introducción"
-author: "Métodos empíricos 2"
-date: "05/04/2022"
+title: "1 Introducció"
+author: "Mètodes empírics 2"
+date: "11/04/2023"
 output:
   xaringan::moon_reader:
     nature:
@@ -14,18 +14,18 @@ library(dplyr)
 library(ggplot2)
 ```
 
-# Hoy
+# Avui
 
 .large[
-* Organización del curso 
+* Organització del curs
 
-* Diseño de análisis y estadística inferencial 
+* Sinopsi: Disseny d'anàlisi i estadística inferencial
 
-* Replicabilidad y reproducibilidad  
+* Replicabilitat i reproduïbilitat
 
 * R
 
-* Estadística descriptiva 
+* Resum: Estadística descriptiva
 
 ]
 
@@ -33,235 +33,195 @@ library(ggplot2)
 
 class: inverse, center
 
-# Organización
+# Organització
 
 ---
 
-# Información básica
+# Informació bàsica
 
 .large[
-* 5 ECTS (~125-150 horas)
+* 5 ECTS (~125-150 hores)
 
-* Material y comunicación: https://aulaglobal.upf.edu/
+* Material i comunicació: https://aulaglobal.upf.edu/
 
-* Equipo
-  * Thomas Brochhagen (thomas.brochhagen@upf.edu)
+* Equip
+   * Thomas Brochhagen (thomas.brochhagen@upf.edu)
   
-  * Guillermo Montaña (guillermo.montana@upf.edu)
+   * Guillermo Montaña (guillermo.montana@upf.edu)
 
 * Estructura
-  * Martes: Conceptos y discusión
+   * Dimarts: Conceptes i discussió
   
-  * Jueves: Práctica y más discusión
+   * Divendres: Pràctica i més discussió
 
 ]
 
 ---
 
-# Observaciones sobre lengua
+# Avaluació
 .large[
-1. Instrucción
+* Exercicis setmanals (20%, no recuperable)
 
-2. Ejercicios
+* Exercici pràctic (20%, recuperable)
 
-3. Comunicación personal
+* Revisió per parells (10%, no recuperable)
+
+* Informe: disseny i execució d'anàlisi (50%, recuperable)
 ]
-
-
 ---
 
-
-# Evaluación
-.large[
-* Ejercicios semanales (20%, no recuperable)
-
-* Ejercicio práctico (20%, recuperable)
-
-* Revisión por pares (20%, no recuperable)
-
-* Informe de diseño de análisis y su ejecución (40%, recuperable)
-]
-
----
-
-# Evaluación
+# Avaluació
 
 .large[
-* Ejercicios semanales (20%, no recuperable)
-  * A través de Aula Global
+* Exercicis setmanals (20%, no recuperable; take home)
+   * A través d'Aula Global
   
-  * Corrección automática
+   * Correcció automàtica
   
-  * Máximo 2 intentos
-  
-  * 5-6 en total
+   * 5 en total
 ]
 
 ---
 
-# Evaluación 
+# Avaluació
+
 .large[
-* Revisión por pares (20%, no recuperable)
+* Exercici pràctic (20%, recuperable; take home)
 
-  * Solamente opción de aprobar, o no
+   * A través d'Aula Global
+  
+   * A meitat de curs
 
-  * No se aprueba si no se entregan los dos documentos; o si cualquiera de ellos no se adecúa a un estándar mínimo de calidad
 ]
 
 ---
 
-# Evaluación
+# Avaluació 
 .large[
-* Ejercicio práctico (20%, recuperable)
+* Revisió per parells (10%, no recuperable)
 
-  * A través de Aula Global
-  
-  * A mitad de curso
+   * Només opció d'aprovar, o no
 
-  * Corrección automática
-
-  * Un solo intento
+   * No s'aprova si no es lliuren els dos documents; o si qualsevol no s'adequa a un estàndard mínim de qualitat
 ]
 
 ---
 
-# Evaluación
+# Avaluació
 
 .large[
-Diseño y ejecución de análisis (40%)
-* Individual o en grupos (división de trabajo debe ser aprobada)
+Disseny i execució d'anàlisi (50%)
+* Individual o en grups
 
-* Evaluación en función a tema / tamaño del grupo
-  
-* Máximo dos páginas
+* Avaluació en funció a criteris (a baix) i mida del grup
+
 ]
 
 ***
 
 --
-
 .large[
-**Criterios** (max. 100 puntos)
-* Claridad (30): descripción clara y al punto; uso adecuado de visualización
+**Criteris** (max. 100 punts)
+* Claredat (40): descripció clara i al punt; ús adequat de visualització
   
-* Replicabilidad (15)
+* Replicabilitat (10)
   
-* Reproducibilidad (15)
+* Reproduïbilitat (10)
   
-* Contenido (40): el análisis está bien motivado y ejecutado con métodos adecuados
+* Contingut (40): l'anàlisi està ben motivada i executada amb mètodes adequats
 
-* Creatividad (20): supera expectativas en una o múltiples dimensiones, como visualización, temática, metodología, documentación  
+* Creativitat (10): supera expectatives en una o múltiples dimensions, com visualització, temàtica, metodologia, documentació
 ]
+
+---
+
+<img src='ex1.png',  width="800px" height="600px", style="position:absolute; right:px; top:px;">
+
+
+---
+
+# Altres exemples
+
+* Carrota vs. pastanaga en el territori alt empordanès (català septentrional de transició)
+
+* S'ha substituït més de pressa el dialecte balear pel central que el nord-occidental en venir a Barcelona?
+
+* Intercomprensión románica o plurilingüísmo: análisis de identificación de lenguas
+
+* Evaluating linguistic laws on the Harry Potter saga
+
+* Ús i freqüència de connectors: novel·la vs. text científic
+
+* ...
 
 ---
 
 class: inverse, center
 
-# Contenido del curso y motivación general
+# Sinopsi: Disseny d'anàlisi i estadística inferencial
 
 ---
 
-# Ciclo de análisis
+# Cicle d'anàlisi
 
 <img src="cycle.png", style="position:absolute; right:7px; top:100px;">
 
 ---
 
-# Sesiones
+# Sessions
 
 .pull-left[
-* Diseño (1-3)
+* Disseny (1-3)
 
 * Control (3)
 
 * Crítica (3-9)
 
-* Ejecución (3)
+* Execució (3)
 
-* Exploración (3-9)
+* Exploració (3-9)
 
-* Análisis (4-9)
-]
-
---
-
-.pull-right[
-1. Introducción 
-
-2. Diseño de análisis 
-
-3. Recolección de datos y muestras
-
-4. Introducción a la regresión
-
-5. Regresión multivariada
-6. Regresión generalizada I
-
-7. Regresión generalizada II
-
-8. Corpus I
-
-9. Corpus II
-10. Revisión y temas avanzados
+* Anàlisi (4-9)
 ]
 
 ---
 
-# Algunas motivaciones
+# A efectes pràctics
 .large[
-* Manipulación e interpretación de datos
+* Manipulació i interpretació de dades
 
-  * Crítica
+* Comparació de grups
 
-  * Limpieza
+* Predicció
 
-  * Modelado
-  
-  * Visualización
+* Visualització
 
-  * (Programación)
-
-* Indispensable para ciencias del lenguaje
-
-* Cada vez más indispensable en el siglo 21
-
-]
----
-
-# A efectos prácticos
-.large[
-* Manipulación e interpretación de datos
-
-* Comparación de grupos
-
-* Predicción
-
-* Visualización
-
-* (Programación)
+* (Programació)
 <br><br>
 
-.center[... aplicado a ciencias del lenguaje]
+.center[... aplicat a ciències del llenguatge]
 ]
+
 ---
 
 class: center, inverse
 
-# Análisis inferencial
+# Anàlisi inferencial
 
 
 ---
 
 
-# Análisis inferencial (vs. descriptivo)
+# Anàlisi inferencial (vs. descriptiu)
 .large[
-* Inferencia de propiedades (más allá de la muestra) 
+* Inferència de propietats més enllà de la mostra
 
-* Predicción
+* Predicció
 
-* Comparación
+* Comparació
 
-* Causa-efecto 
+* Causa-efecte
+
 ]
 ---
 
@@ -272,78 +232,41 @@ class: center, inverse
 Fig. 1 de Franconeri et al. 2021 [The Science of Visual Data Communication: What Works](https://journals.sagepub.com/stoken/default+domain/10.1177%2F15291006211051956-FREE/full#_i28)]
 ---
 
+# Exemples
+Estimació de l'efecte d'un o més *predictores* en un *resultat*
 
-# Análisis inferencial: Centrado en modelos
-<br><br><br><br><br>
-
-.center[
-### All models are wrong, but some are useful
--George E.P. Box
-]
----
-
-# Análisis inferencial: Centrado en datos
-<br><br><br><br><br>
-.center[
-### We should only let data speak for themselves when they<br> have learned to clean themselves
--Erik van Zwet 
-]
----
-
-# Regresión
-
-Estimación del efecto de uno o más *predictores* en un *resultado*
-
-* Fluidez en una segunda lengua a base de la primera
+* Fluidez en una segona llengua a base de la primera
   
-* Probabilidad del uso de un pronombre a base de su entorno lingüístico
+* Probabilitat de l'ús d'un pronombre a la base del seu entorn lingüístic
   
-* Tamaño de una palabra en función a su frecuencia
+* Mida d'una paraula en funció a la seva freqüència
 
-* ...
+*...
   
 <br>
 ***
 
-<br>  
+<br>
 
 --
 
-Estimación de diferencias entre grupos
+Estimació de diferències entre grups
 
-* Comparación de un método de aprendizaje de la lengua contra otro
+* Comparació d'un mètode d'aprenentatge de la llengua contra un altre
   
 * Comparación de políticas lingüísticas
 
-* ...
+*...
+
 
 ---
-
-```{r, echo=FALSE, warning=FALSE, message=FALSE,fig.align='center',out.width='80%'}
-library(ggplot2)
-
-set.seed(123)
-
-x <- rnorm(n = 34, mean = 20, sd = 2)
-err <- rnorm(n = 34, mean = 0,sd=1)
-y <- x/2 + err
-
-df <- data.frame(resultado = y, predictor = x)
-ggplot(df, aes(x = predictor, y = resultado)) +
-  geom_point() +
-  geom_smooth(method='lm') +
-  theme_minimal(base_size=25)
-```
-
----
-
 class: inverse, center
 
-# Replicabilidad y reproducibilidad
+# Replicabilitat i reproduïbilitat
 
 ---
 
-# Crísis de replicabilidad y reproducibilidad
+# Crisi de replicabilitat i reproduïbilitat
 
 .left[Replication is one of the central issues in any empirical science. 
 
@@ -356,38 +279,38 @@ It is the proof that the experiment reflects knowledge that can be separated fro
 
 ---
 
-### Replicabilidad
+### Replicabilitat
 
-Que se puedan obtener resultados consistentes con los mismo datos de entrada; pasos computacionales; métodos; código; y condiciones de análisis
+Que es puguin obtenir resultats consistents amb les mateixes dades d'entrada; passos computacionals; mètodes; codi; i condicions d'anàlisi
 
 ***
 --
 
 
-### Reproducibilidad
+### Reproduïbilitat
 
-Que se puedan obtener resultados consistentes en diferentes análisis que buscan responder la misma pregunta, cada cual con sus propios datos
+Que es puguin obtenir resultats consistents en diferents anàlisis que busquen respondre la mateixa pregunta, cadascú amb les seves pròpies dades
 
 ---
 
-# Crisis de replicabilidad y reproducibilidad
+# Crisi de replicabilitat i reproduïbilitat
 
-* Una cantidad importante de resultados no se han podido ni replicar ni reproducir (50%-80%, dependiendo del campo)
-
---
-
-* Conllevó a un gran cambio en metodología y documentación (estamos en ello)
+* Una quantitat important de resultats no s'han pogut ni replicar ni reproduir (50%-80%, depenent del camp)
 
 --
 
-* Independientemente, es central documentar todas tus decisiones y manipulaciones; de principio a fin
+* Va comportar un gran canvi en metodologia i documentació (estem en això)
 
 --
 
-* Lenguas de programación son una herramienta ideal para 
-  * conducir análisis empírico, y
+* Independentment, és central documentar totes les teves decisions i manipulacions; de principi a fi
+
+--
+
+* Llengües de programació són una eina ideal per
+   * conduir anàlisi empírica, i
   
-  * asegurarse de que sea replicable 
+   * assegurar-se que sigui replicable
 
 ---
 
@@ -398,41 +321,28 @@ class: inverse, center
 ---
 
 
-```{r, echo=TRUE, warning=FALSE, eval=FALSE, message=FALSE,fig.align='center',out.width='100%'}
-library(ggplot2) #librería gráfica
-set.seed(123)    #semilla aleatorea
+```{r, echo=TRUE, warning=FALSE, eval=TRUE, message=FALSE,fig.align='center',out.width='100%'}
+x = c(5, 3, 8, 4) # vector of values
 
-x   <-   rnorm(n = 34, mean = 20, sd = 2) #valores predictor
-err <-   rnorm(n = 34, mean = 0,sd=1)     #valores variacion
-y   <-   x/2 + err                        #valores resultado
-
-df  <-   data.frame(resultado = y,        #formato conjunto
-                    predictor = x)
-
-ggplot(df, aes(x = predictor, y = resultado)) + #gráfico
-  geom_point() +                                #scatter plot
-  geom_smooth(method='lm') +                    #regresión
-  theme_minimal(base_size=25)                   #apariencia  
+mean(x)           # mean of x   
 ```
 
 ---
+# En aquest curs
 
-# En este curso
+* Ús rudimentari i interactiu
 
-* Uso rudimentario e interactivo
+* Principalment: intuïció sobre estructures de dades i la seva manipulació
 
-* Principalmente: intuición sobre estructuras de datos y su manipulación
+* Manera d'assegurar replicabilitat
 
-* Manera de asegurar replicabilidad
-
-* Manera de mejorar comunicación
+* Manera de millorar comunicació
 
 ---
 
 class: inverse, center
 
-
-# Estadística descriptiva
+# Resum: Estadística descriptiva
 
 ---
 
@@ -440,36 +350,34 @@ class: inverse, center
 
 
 .large[
-* Tendencias centrales (promedio; mediana; moda)
+* Tendències centrals (mitja; mitjana; moda)
 
-* Dispersión (varianza; desviación típica)
+* Dispersió (variança; desviació típica)
 
-* Variación conjunta (correlación, co-varianza)
+* Variació conjunta (correlació, covariança)
 ]
 
 .footnote[
 
-*** 
+***
 
-Si falta una revisión: Franke (2021) [*An Introduction to Data Analysis*, capítulo 5](https://michael-franke.github.io/intro-data-analysis/Chap-02-03-summary-statistics.html)
+Si falta una revisió: Franke (2021) [*An Introduction to Data Analysis*, capítol 5](https://michael-franke.github.io/intro-data-analysis/Chap-02-03-summary-statistics. html)
 ]
 
 ---
 
 class: inverse
+# Propera sessió
 
-# Próxima sesión
+* Lliurament de "Assignment 1" (08:00 AM 21/04)
 
-* Entrega de "Assignment 1" (08:00 AM 19/04)
+* Si n'hi ha, preguntes generals sobre el curs
 
-* Si hay, preguntas generales sobre el curso
+* Si n'hi ha, preguntes generals sobre l'informe
 
-* Si hay, preguntas generales sobre el informe
-
-* Si hay, preguntas generales sobre R
+* Si n'hi ha, preguntes generals sobre R
 
 ***
 
-* **Diseño de análisis**
-
+* **Disseny d'anàlisi**
 
