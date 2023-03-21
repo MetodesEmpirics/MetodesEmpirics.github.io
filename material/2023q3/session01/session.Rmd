@@ -31,7 +31,7 @@ library(ggpubr)
   * Website & material: [https://aulaglobal.upf.edu](https://aulaglobal.upf.edu)
   * Workload: 5 ECTS (~125-150 hours)
 
-For each session, you will find
+For most sessions, you will find one of the following:
 
 :::float-image
 ```{r out.width='20px', out.extra='style="float:left; padding:10px"', echo=FALSE}
@@ -64,7 +64,7 @@ An assignment
 
 # Overview
 
-This class covers empirical methods for language sciences. The main goal is for you to understand and take control of the full cycle of (linguistic) analysis: planning; collection; processing; exploration; visualization; and analysis. By contrast to previous classes, you will also be introduced to *inferential* statistics. We follow a model-centric and computational approach.
+This class covers empirical methods for language sciences. The main goal is for you to understand and take control of the full cycle of (linguistic) analysis: planning; collection; processing; exploration; visualization; and analysis. By contrast to previous classes, you will also be introduced to *inferential* statistics.
 
 ## Analysis cycle
 
@@ -76,29 +76,27 @@ This class covers empirical methods for language sciences. The main goal is for 
 ### Weekly assignments (20%)
   * Submitted through Aula Global
   * Graded automatically
-  * Max. 2 attempts
   * 5 in total
 
-### Peer review (20%)
+### Peer review (10%)
   * You give your peers (blind) feedback about their planned analysis
-  * 1 in total
+  * Consists of two documents: your planned analysis and feedback for two students
 
 ### Practical exercise (20%)
   * Submitted through Aula Global
-  * Single attempt
 
-### Analysis design and execution (40%)
+### Analysis design and execution (50%)
   * A report of analysis designed and executed by yourself
-  * If done in groups: A clear division of labor between members needs to be decided *and approved*
-  * You will find an illustrative report and further guidelines in Aula Global
+  * If done in groups: A clear division of labor between members needs to be decided
+  * You will find two illustrative reports and further guidelines in Aula Global
   * Evaluation criteria (100 points max)
-    * Clarity: the analysis is clearly and succintly described; appropriate use of visual devices (30 points)
-    * Replicability: the analysis plan covers all steps to allow for its replication (15 points)
+    * Clarity: the analysis is clearly and succintly described; appropriate use of visual devices (40 points)
+    * Replicability: the analysis plan covers all steps to allow for its replication (10 points)
     * Content: the analysis is well motivated and executed using the appropriate techniques (40 points)
-    * Reproduceability: the analysis provides all the information necessary to reproduce it (15 points)
+    * Reproduceability: the analysis provides all the information necessary to reproduce it (10 points)
     * Creativity: The analysis goes above and beyond in one or multiple dimensions: e.g., visual devices; research question; methodology; documentation (20 points)
 
-Failing the "analysis design and execution" the first time entails saving the remainder activities with a 40% of value on the final grade. The mid-term exam will be recovered through another exam. The re-sit of the "analysis design and execution" will also be an exam.
+Failing the "analysis design and execution" the first time entails saving the remainder activities with a 40% of value on the final grade. The re-sit of the "analysis design and execution" will be an exam.
 
 
 ## Inferential statistics

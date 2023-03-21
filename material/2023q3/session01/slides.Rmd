@@ -19,13 +19,13 @@ library(ggplot2)
 .large[
 * Organització del curs
 
-* Sinopsi: Disseny d'anàlisi i estadística inferencial
+* Sinopsi del curs
 
 * Replicabilitat i reproduïbilitat
 
 * R
 
-* Resum: Estadística descriptiva
+* Estadística descriptiva
 
 ]
 
@@ -45,7 +45,7 @@ class: inverse, center
 * Material i comunicació: https://aulaglobal.upf.edu/
 
 * Equip
-   * Thomas Brochhagen (thomas.brochhagen@upf.edu)
+   * Thomas Brochhagen (thomas.brochhagen@upf.edu)<br> https://brochhagen.github.io
   
    * Guillermo Montaña (guillermo.montana@upf.edu)
 
@@ -54,6 +54,111 @@ class: inverse, center
   
    * Divendres: Pràctica i més discussió
 
+]
+
+---
+
+# Horari grup gran
+
+> Per facilitar que els estudiants tinguin temps de canviar d'aula, caldrà deixar sempre 10 minuts de cortesia a l'inici de la sessió [...]
+
+<br><br>
+### $\Rightarrow$ 12:40 - 14:25
+
+
+
+---
+
+# Avaluació
+.large[
+* Exercicis setmanals (20%, no recuperable)
+
+* Exercici pràctic (20%, no recuperable)
+
+* Revisió per parells (10%, no recuperable)
+
+* Informe: disseny i execució d'anàlisi (50%, recuperable)
+]
+---
+
+# Avaluació
+
+.large[
+Exercicis setmanals (20%, no recuperable)
+  
+  * A través d'Aula Global
+  
+  * Correcció automàtica
+  
+  * 5 en total
+]
+
+---
+
+# Avaluació
+
+.large[
+Exercici pràctic (20%, recuperable)
+
+  * *take home exam/study*
+
+  * A través d'Aula Global
+  
+  * A meitat de curs
+
+]
+
+---
+
+# Avaluació
+
+.large[
+Disseny i execució d'anàlisi (50%)
+* Individual o en grup
+
+* Al final del curs
+
+* "Recuperable" com a examen
+
+* Criteris d'avaluació i exemples: Aula Global
+
+]
+
+
+
+---
+
+<img src='ex1.png',  width="800px" height="600px", style="position:absolute; right:px; top:px;">
+
+
+---
+
+# Altres exemples
+
+* "Carrota vs. pastanaga en el territori alt empordanès"
+
+* "S'ha substituït més de pressa el dialecte balear pel central que el nord-occidental en venir a Barcelona?"
+
+* "Intercomprensión románica o plurilingüísmo: análisis de identificación de lenguas"
+
+* "Evaluating linguistic laws on the Harry Potter saga"
+
+* ...
+
+---
+
+# Avaluació 
+.large[
+Revisió per parells (10%, no recuperable)
+
+  * Dues parts:
+    1. Esborrany del vostre anàlisi final
+    
+    2. Feedback sobre el esborrany de dos companyes unes setmanes més tard
+
+  * Només opció d'aprovar, o no
+
+  * No s'aprova si no es lliuren els dos documents; o si qualsevol no s'adequa a un estàndard mínim de qualitat
 ]
 
 ---
@@ -68,121 +173,31 @@ class: inverse, center
 
 * Informe: disseny i execució d'anàlisi (50%, recuperable)
 ]
----
-
-# Avaluació
-
-.large[
-* Exercicis setmanals (20%, no recuperable; take home)
-   * A través d'Aula Global
-  
-   * Correcció automàtica
-  
-   * 5 en total
-]
-
----
-
-# Avaluació
-
-.large[
-* Exercici pràctic (20%, recuperable; take home)
-
-   * A través d'Aula Global
-  
-   * A meitat de curs
-
-]
-
----
-
-# Avaluació 
-.large[
-* Revisió per parells (10%, no recuperable)
-
-   * Només opció d'aprovar, o no
-
-   * No s'aprova si no es lliuren els dos documents; o si qualsevol no s'adequa a un estàndard mínim de qualitat
-]
-
----
-
-# Avaluació
-
-.large[
-Disseny i execució d'anàlisi (50%)
-* Individual o en grups
-
-* Avaluació en funció a criteris (a baix) i mida del grup
-
-]
-
-***
-
---
-.large[
-**Criteris** (max. 100 punts)
-* Claredat (40): descripció clara i al punt; ús adequat de visualització
-  
-* Replicabilitat (10)
-  
-* Reproduïbilitat (10)
-  
-* Contingut (40): l'anàlisi està ben motivada i executada amb mètodes adequats
-
-* Creativitat (10): supera expectatives en una o múltiples dimensions, com visualització, temàtica, metodologia, documentació
-]
-
----
-
-<img src='ex1.png',  width="800px" height="600px", style="position:absolute; right:px; top:px;">
-
-
----
-
-# Altres exemples
-
-* Carrota vs. pastanaga en el territori alt empordanès (català septentrional de transició)
-
-* S'ha substituït més de pressa el dialecte balear pel central que el nord-occidental en venir a Barcelona?
-
-* Intercomprensión románica o plurilingüísmo: análisis de identificación de lenguas
-
-* Evaluating linguistic laws on the Harry Potter saga
-
-* Ús i freqüència de connectors: novel·la vs. text científic
-
-* ...
 
 ---
 
 class: inverse, center
 
-# Sinopsi: Disseny d'anàlisi i estadística inferencial
+# Sinopsi del curs
+
+---
+<br><br><br><br>
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>Què és un mètode empíric?</b>
+<br><br>
+Doneu un exemple
+</p>
+</p></span>
+</div>
+
 
 ---
 
 # Cicle d'anàlisi
 
-<img src="cycle.png", style="position:absolute; right:7px; top:100px;">
-
----
-
-# Sessions
-
-.pull-left[
-* Disseny (1-3)
-
-* Control (3)
-
-* Crítica (3-9)
-
-* Execució (3)
-
-* Exploració (3-9)
-
-* Anàlisi (4-9)
-]
+<img src="cycle.png", style="position:absolute; right:7px; top:99px;">
 
 ---
 
@@ -196,7 +211,6 @@ class: inverse, center
 
 * Visualització
 
-* (Programació)
 <br><br>
 
 .center[... aplicat a ciències del llenguatge]
@@ -210,6 +224,21 @@ class: center, inverse
 
 
 ---
+
+<br><br><br><br>
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>Què és un anàlisi descriptiu?</b>
+<br><br>
+Doneu un exemple
+</p>
+</p></span>
+</div>
+
+
+---
+
 
 
 # Anàlisi inferencial (vs. descriptiu)
@@ -235,28 +264,17 @@ Fig. 1 de Franconeri et al. 2021 [The Science of Visual Data Communication: What
 # Exemples
 Estimació de l'efecte d'un o més *predictores* en un *resultat*
 
-* Fluidez en una segona llengua a base de la primera
-  
-* Probabilitat de l'ús d'un pronombre a la base del seu entorn lingüístic
-  
-* Mida d'una paraula en funció a la seva freqüència
-
-*...
-  
-<br>
-***
-
-<br>
-
 --
 
-Estimació de diferències entre grups
-
+* Fluïdesa en L2 dependent de L1
+  
+* Probabilitat de l'ús d'un (pro)nom a la base del seu entorn lingüístic
+  
 * Comparació d'un mètode d'aprenentatge de la llengua contra un altre
   
-* Comparación de políticas lingüísticas
+* Comparació de polítiques lingüístiques i les seues conseqüències
 
-*...
+* ...
 
 
 ---
@@ -342,7 +360,7 @@ mean(x)           # mean of x
 
 class: inverse, center
 
-# Resum: Estadística descriptiva
+# Estadística descriptiva
 
 ---
 
@@ -361,21 +379,36 @@ class: inverse, center
 
 ***
 
-Si falta una revisió: Franke (2021) [*An Introduction to Data Analysis*, capítol 5](https://michael-franke.github.io/intro-data-analysis/Chap-02-03-summary-statistics. html)
+Si cal fer una revisió: Franke (2021) [*An Introduction to Data Analysis*, capítol 5](https://michael-franke.github.io/intro-data-analysis/Chap-02-03-summary-statistics. html)
 ]
 
 ---
+.large[
+Propera sessió de seminari:
+
+  * Petit resum d'estadística descriptiva
+  
+  * R i collaborate
+
+]
+
+.footnote[
+
+***
+
+Si cal fer una revisió: Franke (2021) [*An Introduction to Data Analysis*, capítol 5](https://michael-franke.github.io/intro-data-analysis/Chap-02-03-summary-statistics. html)
+]
+
+
+---
+
 
 class: inverse
 # Propera sessió
 
-* Lliurament de "Assignment 1" (08:00 AM 21/04)
-
 * Si n'hi ha, preguntes generals sobre el curs
 
 * Si n'hi ha, preguntes generals sobre l'informe
-
-* Si n'hi ha, preguntes generals sobre R
 
 ***
 
