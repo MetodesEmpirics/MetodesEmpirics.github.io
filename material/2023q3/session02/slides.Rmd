@@ -1,7 +1,7 @@
 ---
-title: "2 Diseño de informe y tipos de datos"
-author: "Métodos empíricos 2"
-date: "19/04/2022"
+title: "2 Disseny d'informe i tipus de dades"
+author: "Mètodes empírics 2"
+date: "18/04/2022"
 output:
   xaringan::moon_reader:
     nature:
@@ -14,16 +14,14 @@ library(dplyr)
 library(ggplot2)
 ```
 
-# Hoy
+# Avui
 
 .large[
-* Componentes de un análisis 
+* Components d'una anàlisi
 
-* Datos
+* Vocabulari de disseny experimental
 
-* Vocabulario de diseño experimental  
-
-* Formatos y manipulación de datos
+* Repàs estadística descriptiva
 
 ]
 
@@ -31,109 +29,112 @@ library(ggplot2)
 
 class: inverse, center
 
-# Componentes de análisis
+# Components d'una anàlisi
+
+
+<img src="dog.jpeg" width="500",
+ height="350", style="position:absolute; right:200px; top:150px;"/>
+ 
 
 
 ---
 
-# Componentes
+# Components
 
-* Pregunta(s) del análisis
+* Pregunta(/es) de l'anàlisi
 
-* Plan de diseño
+* Pla de disseny
 
-* Plan de muestreo (sampling plan)
+* Pla de mostreig (sampling plan)
 
-* Especificación de variables
+* Especificació de variables
 
-* Plan de análisis
+* Pla d'anàlisi
 
 ---
 
-# Componentes
+# Components
 
-* **Pregunta(s) del análisis**
-  * Pueden variar en grado de granularidad
+* **Pregunta(s) de l'anàlisi**
+   * Poden variar en grau de granularitat
   
-  * Pueden variar en naturaleza: Análisis confirmatorio vs. exploratorio 
+   * Poden variar en naturalesa: Anàlisi confirmatòria vs. exploratoria
 
-* Plan de diseño
+* Pla de disseny
 
-* Plan de muestreo (sampling plan)
+* Pla de mostreig (sampling pla)
 
-* Especificación de variables
+* Especificació de variables
 
-* Plan de análisis
+* Pla d'anàlisi
 
 ---
 
-# Componentes
+# Components
 
-* Pregunta(s) del análisis
+* Pregunta(es) de l'anàlisi
 
-* **Plan de diseño**
-  * Descripción general del análisis.
+* **Pla de disseny**
+   * Descripció general de l'anàlisi.
   
-  * Entre otros, especifica qué medirás, y bajo que circunstancias
+   * Entre altres, especifica què mesuraràs, i sota quines circumstàncies
 
-* Plan de muestreo (sampling plan)
+* Pla de mostreig (sampling pla)
 
-* Especificación de variables
+* Especificació de variables
 
-* Plan de análisis
-
----
-
-# Componentes
-
-* Pregunta(s) del análisis
-
-* Plan de diseño
-
-* **Plan de muestreo (sampling plan)**
-  * Cuántas observaciones recolectarás? Cómo? Por qué?
-
-* Especificación de variables
-
-* Plan de análisis
+* Pla d'anàlisi
 
 ---
 
+# Components
 
-# Componentes
+* Pregunta(es) de l'anàlisi
 
-* Pregunta(s) del análisis
+* Pla de disseny
 
-* Plan de diseño
+* **Pla de mostreig (sampling pla)**
+   * Quantes observacions recol·lectaràs? Com? Per què?
 
-* Plan de muestreo (sampling plan)
+* Especificació de variables
 
-* **Especificación de variables**
-  * Descripción todas las variables que juegan un rol en tu análisis
-
-* Plan de análisis
-
+* Pla d'anàlisi
 ---
 
-# Componentes
 
-* Pregunta(s) del análisis
+# Components
 
-* Plan de diseño
+* Pregunta(es) de l'anàlisi
 
-* Plan de muestreo (sampling plan)
+* Pla de disseny
 
-* Especificación de variables
+* Pla de mostreig (sampling pla)
 
-* **Plan de análisis**
-  * Descripción de cómo analizarás los datos
+* **Especificació de variables**
+   * Descripció de totes les variables que juguen un rol a la teva anàlisi
 
+* Pla d'anàlisi
+---
+
+# Components
+
+* Pregunta(es) de l'anàlisi
+
+* Pla de disseny
+
+* Pla de mostreig (sampling pla)
+
+* Especificació de variables
+
+* **Pla d'anàlisi**
+   * Descripció de com analitzaràs les dades
+  
 ---
 
 ## Zipf's Law of Abbreviation
 ---
 
-### Zipf's Law of Abbreviation: Formas más frecuentes tienden a ser más cortas
+### Zipf's Law of Abbreviation: Formes més freqüents tendeixen a ser més curtes
 <br><br>
 .center[### 
 ]
@@ -151,7 +152,7 @@ Kanwal et al. (2017) *Zipf’s Law of abbreviation as a language universal*
 
 ---
 
-### Zipf's Law of Abbreviation: Formas más frecuentes tienden a ser más cortas
+### Zipf's Law of Abbreviation: Formes més freqüents tendeixen a ser més curtes
 <br><br>
 .center[### 
 ]
@@ -179,210 +180,230 @@ Benz & Ferrer-i-Cancho (2016) * Zipf’s Law of abbreviation as a language unive
 
 ---
 
-# Kanwal et al. 2017: Condiciones
+# Kanwal et al. 2017: Condicions
 
-1. Comunicación con otro jugador, con diferencial de tiempo entre mensajes
-
---
-
-2. Comunicación con otro jugador, sin diferencial de tiempo
+1. Comunicació amb un altre jugador, amb diferencial de temps entre missatges
 
 --
 
-3. Sin otro jugador, con diferencial de tiempo entre mensajes
+2. Comunicació amb un altre jugador, sense diferencial de temps
 
 --
 
-4. Sin otro jugador, sin diferencial de tiempo
+3. Sense un altre jugador, amb diferencial de temps entre missatges
+
+--
+
+4. Sense un altre jugador, sense diferencial de temps
 
 ---
 
-# Kanwal et al. 2017: Resultado
+# Kanwal et al. 2017: Resultat
 
-Sólo con diferencial de tiempo entre mensajes:
+Només amb diferencial de temps entre missatges:
 
- mensaje más corto $\Rightarrow$ significado más frecuente
-
----
-
-# Componentes (Kanwal et al. 2017)
-
-* Pregunta(s) del análisis
-
-* Plan de diseño
-
-* Plan de muestreo (sampling plan)
-
-* Especificación de variables
-
-* Plan de análisis
+  missatge més curt $\Rightarrow$ significat més freqüent
 
 ---
 
-# Componentes (Kanwal et al. 2017)
+# Components (Kanwal et al. 2017)
 
-* **Pregunta(s) del análisis**
-  1. Emerge la ley de abreviación de una interacción entre dos presiones lingüísticas: brevedad y comunicación?
-  
-  2. Emerge (1) en un dialogo artificial de laboratorio en un par de rondas?
-  
-  3. Qué aprendemos de (1), si (2) es correcta?
+* Preguntes de l'anàlisi
 
-* Plan de diseño
+* Pla de disseny
 
-* Plan de muestreo (sampling plan)
+* Pla de mostreig (sampling plan)
 
-* Especificación de variables
+* Especificació de variables
 
-* Plan de análisis
+* Pla d'anàlisi
 
 ---
 
-# Componentes (Kanwal et al. 2017)
+# Components (Kanwal et al. 2017)
 
-* Pregunta(s) del análisis
-
-* **Plan de diseño**
-
-  * Analizaremos si un uso de expresiones referenciales que refleja la ley de abreviación de Zipf (más frecuente $\rightarrow$ más corta) emerge en función a una interacción y presencia de dos presiones lingüísticas: presión por comunicación y por brevedad. 
+* **Preguntes de l'anàlisi**
+   1. Emergeix la llei d'abreujament d'una interacció entre dues pressions lingüístiques: brevetat i comunicació?
   
-  * Controlaremos la presencia/ausencia de las presiones en un experimento de laboratorio, usando una lengua artificial para también controlar el inventario léxico a disposición de cada hablante
+   2. Emergeix (1) en un diàleg artificial de laboratori en un parell de rondes?
   
-  * Habrán 4 condiciones: $[\pm comunicación] \; \times \; [\pm brevedad]$
-  
-  * Esperamos que uso de expresiones referenciales en línea con la ley de abreviación de Zipf sólo emerja si ambas presiones están presentes: $[+ comunicación] \; \times \; [+ brevedad]$
+   3. Què aprenem de (1), si (2) és correcta?
 
-* Plan de muestreo (sampling plan)
+* Pla de disseny
 
-* Especificación de variables
+* Pla de mostreig (sampling plan)
 
-* Plan de análisis
+* Especificació de variables
+
+* Pla d'anàlisi
 
 ---
 
+# Components (Kanwal et al. 2017)
 
-# Componentes (Kanwal et al. 2017)
+* Preguntes de l'anàlisi
 
-* Pregunta(s) del análisis
+* **Pla de disseny**
 
-* Plan de diseño
-
-* **Plan de muestreo (sampling plan)**
-
-  * 124 participantes: 31 por condición
+   * Analitzarem si un ús d'expressions referencials que reflecteix la llei d'abreujament de Zipf (més freqüent $\rightarrow$ més curta) emergeix en funció d'una interacció i presència de dues pressions lingüístiques: pressió per comunicació i per brevetat.
   
-  * Reclutados a través de MTurk
+   * Controlarem la presència/absència de les pressions en un experiment de laboratori, usant una llengua artificial per també controlar l'inventari lèxic a disposició de cada parlant
   
-  * Criterios de exclusión
+   * Hi haurà 4 condicions: $[\pm comunicació] \; \times \; [\pm brevetat]$
   
-  * ...
+   * Esperem que ús d'expressions referencials en línia amb la llei d'abreujament de Zipf només emergeixi si les dues pressions són presents: $[+ comunicació] \; \times \; [+ brevetat]$
 
-* Especificación de variables
+* Pla de mostreig (sampling plan)
 
-* Plan de análisis
+* Especificació de variables
+
+* Pla d'anàlisi
 
 ---
 
+# Components (Kanwal et al. 2017)
 
-# Componentes (Kanwal et al. 2017)
+* Preguntes de l'anàlisi
 
-* Pregunta(s) del análisis
+* Pla de disseny
 
-* Plan de diseño
+* **Pla de mostreig (sampling plan)**
 
-* Plan de muestreo (sampling plan)
-
-* **Especificación de variables**
-
-  * Uso de expresión corta
+   * 124 participants: 31 per condició
   
-  * Referente a comunicar
+   * Reclutats a través de MTurk
   
-  * ID de sujeto y par
+   * Criteris d'exclusió
   
-  * Turno
+   * ...
 
-* Plan de análisis
+* Especificació de variables
+
+* Pla d'anàlisi
 
 ---
 
 
-# Componentes (Kanwal et al. 2017)
+# Components (Kanwal et al. 2017)
 
-* Pregunta(s) del análisis
+* Preguntes de l'anàlisi
 
-* Plan de diseño
+* Pla de disseny
 
-* Plan de muestreo (sampling plan)
+* Pla de mostreig (sampling pla)
 
-* Especificación de variables
+* **Especificació de variables**
 
-* **Plan de análisis**
+   * Ús d'expressió curta
+  
+   * Referent a comunicar
+  
+   * ID de subjecte i parell
+  
+   * Torn
 
-  * Regresión logística con expresión como variable dependiente, y frecuencia del referente como variable independiente 
+* Pla d'anàlisi
+
+---
+
+
+# Components (Kanwal et al. 2017)
+
+* Pregunta(es) de l'anàlisi
+
+* Pla de disseny
+
+* Pla de mostreig (sampling pla)
+
+* Especificació de variables
+
+* **Pla d'anàlisi**
+
+   * Regressió logística amb expressió com a variable dependent, i freqüència del referent com a variable independent
 
 ---
 
 class: inverse, center
 
-# Datos y terminología
+# Dades i terminologia
 
 ---
 
-# Tipos de estudios
+# Tipus d'estudis
 
-* Observacionales
+* Observacionals
 
-* Experimentales
+* Experimentals
 
-* Virtuales (simulación, predicción)
+* Virtuals (simulació, predicció)
 
 
 ---
 
-# Tipos de variables
+# Tipus de variables
 
-* **Nominales** (género; idioma materno; lugar de origen)
+* **Nominals** 
 
-* **Ordinales** (años cursados; edad)
+* **Ordinals** 
 
-* **Binarias** 
+* **Binàries**
 
-* **Booleanas** (verdadero/falso)
+* **Booleanes** 
 
-* **Métricas** (número de usos de pronombres; tono)
+* **Mètriques**
 
 ---
 
-# Representación de datos 
+# Tipus de variables
 
-* Cada **variable** forma una columna
+* **Nominals** (gènere; idioma matern; lloc d'origen)
 
-* Cada **observación** forma una línea
+* **Ordinals** (anys cursats; edat)
 
-* (Cada **típo de unidad observacional** forma una tabla)
+* **Binàries**
 
+* **Booleanes** (veritat/fals)
 
+* **Mètriques** (nombre d'usos de pronoms; to)
 
-<br><br>
-##<center>**"Tidy representation"**</center>
-
-.footnote[
-***
-
-Wickham, Hadley. 2014. “Tidy Data.” Journal of Statistical Software 59 (10). Foundation for Open Access Statistic. https://doi.org/10.18637/jss.v059.i10.
-]
 ---
 
+# Preregistration
+
+Quan registreu prèviament la vostra recerca, simplement especifiqueu el vostre pla de recerca abans del vostre estudi i l'envieu a un registre.
+
+* Més informació: https://www.cos.io/initiatives/prereg
+
+* Exemple 1:<br>Replication of “Psycholinguistic Evidence for presuppositions: On-line and Off-line Data. Experiment 3: Accommodation”<br>https://osf.io/xugwf/
+
+* Exemple 2:<br>Influence of Centrality on Communication Protocols in Communities of Deep Neural Agents<br>https://osf.io/xn6gc
+
+### 
+
+
+---
+
+# Més informació sobre disseny 
+
+* Experimentology. An Open Science Approach to Experimental Psychology Methods<br>https://experimentology.io/
+
+* An Introduction to Data Analysis<br>https://michael-franke.github.io/intro-data-analysis/index.html
+
+---
+
+class: inverse, center
+
+# Repàs estadística descriptiva
+
+---
 
 class: inverse
 
 # Próxima sesión
 
-* Entrega de "Assignment 2" (08:00 AM 26/04)
+* Lliurament de "Assignment 1" (08:00 AM 25/04)
 
 ***
 
-* **Recolección de datos y muestras**
-
+* **Recol·lecció de dades i mostres**
 
