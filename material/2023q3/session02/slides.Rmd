@@ -39,6 +39,17 @@ class: inverse, center
 
 ---
 
+<br><br><br><br>
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>Quins components té una anàlisi?</b>
+</p>
+</p></span>
+</div>
+
+---
+
 # Components
 
 * Pregunta(/es) de l'anàlisi
@@ -55,7 +66,7 @@ class: inverse, center
 
 # Components
 
-* **Pregunta(s) de l'anàlisi**
+* **Pregunta(/es) de l'anàlisi**
    * Poden variar en grau de granularitat
   
    * Poden variar en naturalesa: Anàlisi confirmatòria vs. exploratoria
@@ -152,6 +163,17 @@ Kanwal et al. (2017) *Zipf’s Law of abbreviation as a language universal*
 
 ---
 
+<br><br><br><br>
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>Originalment, la llei es va descriure abans d'ordinadors o grans corpus; i només per a l'anglès. Penseu que es compleix en tots els idiomes?</b>
+</p>
+</p></span>
+</div>
+
+---
+
 ### Zipf's Law of Abbreviation: Formes més freqüents tendeixen a ser més curtes
 <br><br>
 .center[### 
@@ -168,6 +190,18 @@ Benz & Ferrer-i-Cancho (2016) * Zipf’s Law of abbreviation as a language unive
 
 
 ]
+---
+
+<br><br><br><br>
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>Per què hi ha aquesta relació entre brevetat i freqüència?</b>
+</p>
+</p></span>
+</div>
+
+
 ---
 
 # Kanwal et al. 2017
@@ -227,8 +261,6 @@ Només amb diferencial de temps entre missatges:
   
    2. Emergeix (1) en un diàleg artificial de laboratori en un parell de rondes?
   
-   3. Què aprenem de (1), si (2) és correcta?
-
 * Pla de disseny
 
 * Pla de mostreig (sampling plan)
