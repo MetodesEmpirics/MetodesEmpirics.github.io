@@ -8,10 +8,10 @@ bibliography: ../../biblio.bib
 ---
 
 # Instructions
-Submit your answers to the eight first exercises through Aula Global. The remainder of your assignments concern self-studies.
+Submit your answers to the seven first exercises through Aula Global. The remainder of your assignments concern self-studies.
 
 # Describing a study
-Quick reminder from class: Kanwal et al. -@kanwal+etal:2017 taught subjects an artificial language. This language only has three (made up) words: *zopudon*, *zopekil* and *zop*. The first two words refered to distinct objects (think: *zopudon* means apples and  *zopekil* means bananas). The short form *zop* could mean either (think: fruit). That is, *zop* is ambiguous between the two meanings, and thus can lead to misunderstandings. They had subjects communicate about the two meanings (apples/bananas) in pairs, alternating who was the speaker and who was the receiver. The core motivation for this study was to see if people would use the ambiguous word, *zop*, even though it is more risky than the unequivocal but longer alternatives *zopudon* and *zopekil* under certain experimental manipulations. 
+Quick reminder from class: -@kanwal+etal:2017 taught subjects an artificial language. This language only has three (made up) words: *zopudon*, *zopekil* and *zop*. The first two words refered to distinct objects (think: *zopudon* means apples and  *zopekil* means bananas). The short form *zop* could mean either (think: fruit). That is, *zop* is ambiguous between the two meanings, and thus can lead to misunderstandings. They had subjects communicate about the two meanings (apples/bananas) in pairs, alternating who was the speaker and who was the receiver. The core motivation for this study was to see if people would use the ambiguous word, *zop*, even though it is more risky than the unequivocal but longer alternatives *zopudon* and *zopekil* under certain experimental manipulations. 
 
 Here's a glimpse of the data of the speakers:
 
@@ -33,8 +33,6 @@ Inspect the sender data from Kanwal et al. (2017) yourself.
   5. How many times did the sender with `IP` $67.85.42.18$ say *zop*?
   6. How many unique pairs participated in the experiment? 
   7. How many sender trials did the experiment have for each subject?
-  8. Is this data *tidy*; *untidy* or *almost tidy*? 
-
 
 
 # Self-study 
