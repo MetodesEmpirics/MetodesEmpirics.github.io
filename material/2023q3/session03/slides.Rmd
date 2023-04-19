@@ -1,7 +1,7 @@
 ---
-title: "3 Recolección de datos y muestras"
-author: "Métodos empíricos 2"
-date: "26/04/2022"
+title: "3 Recol·lecció de dades i mostres"
+author: "Mètodes empírics 2"
+date: "25/04/2023"
 output:
   xaringan::moon_reader:
     nature:
@@ -14,16 +14,16 @@ library(dplyr)
 library(ggplot2)
 ```
 
-# Hoy
+# Avui
 
 .large[
-* Muestras 
+* Mostres
 
 * Control
 
-* ¿Dónde están los datos?  
+* On són les dades?
 
-* Distribuciones
+* Distribucions
 
 ]
 
@@ -31,43 +31,78 @@ library(ggplot2)
 
 class: inverse, center
 
-# Muestras
+# Mostres
 
 ---
-## Tipos de muestras
-**Muestra completa**: 
-toda la población  de interés 
+
+<br><br><br><br>
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>Què és una mostra? Dóna un exemple</b>
+</p>
+</p></span>
+</div>
+
+
+---
+
+## Tipus de mostres
+**Mostra completa**:
+tota la població d'interès
 <br>
 <br>
 --
-**Muestra representativa/sin sesgo**: tomada de la muestra completa con un método que no depende de la muestra que se está tomando
+**Mostra representativa/sense biaix**: presa de la mostra completa amb un mètode que no depèn de la mostra que s'està prenent
 <br>
 <br>
 --
-**Muestra no representativa/con sesgo**: los datos son influenciados por el método de toma
+**Mostra no representativa/amb biaix**: les dades són influenciades pel mètode de presa
 
 ---
 
-## Tipos de muestras
+## Tipus de mostres
 
-¿Es la l-velarizada (vs. no velarizada) un fonéma del Catalán?
+
+<br><br><br><br>
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>Per la pregunta <br><br> "És la l-velaritzada (vs. no velaritzada) un fonéma del Català?" <br><br>dóna un exemple d'una mostra representativa i una no representativa</b>
+</p>
+</p></span>
+</div>
+
 
 
 ---
 
 
-## Tamaño de muestra
+## Grandària de mostra
 
---
-
-¿Es la l-velarizada (vs. no velarizada) un fonéma del Catalán?
-
+<br><br><br><br>
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>Per la pregunta <br><br> "És la l-velaritzada (vs. no velaritzada) un fonéma del Català?" <br><br>quina diferència fa si tinc una mostra de 5 persones o una de 1000?</b>
+</p>
+</p></span>
+</div>
 
 ---
 
-## Tamaño de muestra (p = 0.52)
+## Grandària de mostra (p = 0.52)
 
-Asume que la probabilidad que una palabra corta sea usada para (i) un significado frecuente es $0.52$ vs. (ii) un significado menos frecuente.
+Assumeix que la probabilitat que una paraula curta sigui usada per a (i) un significat freqüent és $0.52$ vs. (ii) un significat menys freqüent.
+
+<br><br><br><br>
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>Què tan gran ha de ser la mostra per detectar aquesta diferència?</b>
+</p>
+</p></span>
+</div>
 
 ---
 
@@ -111,9 +146,9 @@ ggplot(df, aes(x = data)) +
 
 ---
 
-## Tamaño de muestra (p = 0.65)
+## Grandària de mostra (p = 0.65)
 
-Asume que la probabilidad que una palabra corta sea usada para (i) un significado frecuente es $0.65$ vs. (ii) un significado menos frecuente.
+Assumeix que la probabilitat que una paraula curta sigui usada per a (i) un significat freqüent és $0.65$ vs. (ii) un significat menys freqüent.
 
 ---
 
@@ -158,9 +193,9 @@ ggplot(df, aes(x = data)) +
 ---
 
 
-## Tamaño de muestra (p = 0.9)
+## Grandària de muestra (p = 0.9)
 
-Asume que la probabilidad que una palabra corta sea usada para (i) un significado frecuente es $0.9$ vs. (ii) un significado menos frecuente.
+Assumeix que la probabilitat que una paraula curta sigui usada per a (i) un significat freqüent és $0.9$ vs. (ii) un significat menys freqüent.
 
 ---
 
@@ -204,9 +239,10 @@ ggplot(df, aes(x = data)) +
 
 ---
 
-* Tanto sesgo como tamaño importan
+* Tant biaix com grandària importen
 
-* Pero cuánto importan se responde en función a la pregunta y el efecto que esperas, a priori
+* Però quant importen es respon en funció de la pregunta i l'efecte que esperes, a priori
+
 ---
 
 class: inverse, center
@@ -215,67 +251,77 @@ class: inverse, center
 
 ---
 
-# Estudios piloto
+# Estudis pilot
 
-Versión a pequeña escala de tu análisis
+Versió a petita escala de la teva anàlisi
 
-* Comprueba si el plan de análisis es realizable
+* Comproveu si el pla d'anàlisi és realitzable
 
-* Comprueba la calidad del plan de análisis, pero no necesariamente su sensibilidad (en función al tamaño del efecto)
+* Comprova la qualitat del pla d'anàlisi, però no necessàriament la seva sensibilitat (en funció de la mida de l'efecte)
 
-* Ahorra tiempo y dinero
+* Estalvia temps i diners
 
 ---
 
-# Simulaciones
+# Simulacions
 
-Versión idealizada de tu análisis
+Versió idealitzada de la teva anàlisi
 
-* Comprueba si el plan de análisis (sin recolección) es realizable
+* Comprova si el pla d'anàlisi (sense recol·lecció) és realitzable
 
-* Comprueba la calidad del plan de análisis y su sensibilidad, pero es ciego a problemas de recolección y es sólo tan bueno como tus suposiciones
+* Comprova la qualitat del pla d'anàlisi i la seva sensibilitat
 
-* Ahorra (más) tiempo y dinero
+* Cec a problemes de recol·lecció; només és tan bo com les teves suposicions
+
+* Estalvia (més) temps i diners
 
 ---
 
 class: inverse, center
 
-# ¿Dónde están los datos?
+# On són les dades?
 
 ---
 
 # Experimentales
 
-* Laboratorio (eye-tracking, fMRI)
+* Laboratori (eye-tracking, fMRI)
 
-* Plataformas online (MTurk, Prolific)
+* Plataformes online (MTurk, Prolific, Google Forms)
 
-* Recolección "en la calle"
+* Recol·lecció "al carrer"
 
-* Datos de previos estudios (SWOW, NoRaRe, SimLex-999, VisualGenome)
+* Dades de previs estudis (SWOW, NoRaRe, SimLex-999, VisualGenome)
+
 
 ---
 
-# Datos no/semi estructurados
+# Dades no/semi estructurades
 
-* Corpora (Wikipedia, Twitter)
+* Corpora (Wikipèdia, Twitter)
 
-* Scraping 
+* Scraping
 
-* Datos de previos estudios (CLICS)
+* Dades de previs estudis (CLICS)
 
-* Modelos (word embeddings; language models)
+* Models (word embeddings; language models)
 
 ---
 
 class: inverse, center
 
-# Distribuciones
+# Manipulació de dades experimentals amb R
 
 ---
 
-## Distribucion normal (Gaussiana)
+class: inverse, center
+
+# Distribucions
+
+---
+
+## Distribucio normal (Gaussiana)
+
 .pull-left[
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 x <- rnorm(n=10000,mean=170,sd=2)
@@ -294,7 +340,7 @@ ggplot(df, aes(x = datos)) +
 **y ~ Normal(** $\mu$, $\sigma$ **)**
 <br>
 <br>
-**y ~ Normal(** promedio, desv. est. **)**
+**y ~ Normal(** mitja, desv. est. **)**
 <br>
 <br>
 **y ~ Normal(170, 2)**
@@ -302,17 +348,19 @@ ggplot(df, aes(x = datos)) +
 ]
 
 ---
-## Distribucion normal (Gaussiana)
 
-* **Valores posibles:** Números reales
+## Distribucio normal (Gaussiana)
 
-* **Parámetros:** promedio, desviación estándar
+* **Valors possibles:** Nombres reals
 
-* Común "en la naturaleza" y epistémicamente liviana
+* **Paràmetres:** mitjana, desviació estàndard
+
+* Comú "a la natura" i epistèmicament lleugera
 
 ---
 
-## Distribucion Bernoulli (Binomial)
+## Distribucio Bernoulli (Binomial)
+
 .pull-left[
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 x <- rbinom(n = 5000, size = 1, p = 0.5) 
@@ -330,7 +378,7 @@ ggplot(df, aes(x = datos)) +
 **y ~ Bernoulli(** $p$ **)**
 <br>
 <br>
-**y ~ Bernoulli(** prob. de éxito **)**
+**y ~ Bernoulli(** prob. d'èxit **)**
 <br>
 <br>
 **y ~ Bernoulli(0.5)**
@@ -339,18 +387,18 @@ ggplot(df, aes(x = datos)) +
 
 ---
 
-## Distribucion Bernoulli (Binomial)
+## Distribucio Bernoulli (Binomial)
 
-* **Valores posibles:** $0$ o $1$
+* **Valors possibles:** $0$ o $1$
 
-* **Parámetros:** probabilidad de éxito ( $1$ )
+* **Paràmetres:** probabilitat d'èxit ( $1$ )
 
-* Común experimentos y ciencias sociales
+* Comú experiments i ciències socials
 
 ---
 
 
-## Distribucion Poisson
+## Distribucio Poisson
 .pull-left[
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 x <- rpois(n = 50000, lambda = 170)
@@ -368,7 +416,7 @@ ggplot(df, aes(x = datos)) +
 **y ~ Poisson(** $\lambda$ **)**
 <br>
 <br>
-**y ~ Poisson(** ritmo **)**
+**y ~ Poisson(** ritme **)**
 <br>
 <br>
 **y ~ Poisson(170)**
@@ -377,26 +425,25 @@ ggplot(df, aes(x = datos)) +
 
 ---
 
-## Distribucion Poisson
+## Distribucio Poisson
 
-* **Valores posibles:** números naturales + 0
+* **Valors possibles:** nombres naturals + 0
 
-* **Parámetros:** ritmo ( expectativa de promedio )
+* **Paràmetres:** ritme ( expectativa de mitja )
 
-* Común en ciencias sociales, cuando contamos eventos
+* Comú en ciències socials, quan comptem esdeveniments
 
-* Su varianza es igual a su ritmo/promedio $\Rightarrow$ <br>su desviación estándar es $\sqrt{\lambda}$ 
+* La seva variància és igual al seu ritme/mitjana $\Rightarrow$ <br>la seva desviació estàndard és $\sqrt{\lambda}$
 
 ---
 
 class: inverse
 
-# Próxima sesión
+# Propera sessió
 
-* Entrega de "Assignment 3" (08:00 AM 03/05)
+* Lliurament de "Assignment 3" (08:00 AM 02/05)
 
 ***
 
-* **Introducción a la regresión**
-
+* **Introducció a la regressió**
 
