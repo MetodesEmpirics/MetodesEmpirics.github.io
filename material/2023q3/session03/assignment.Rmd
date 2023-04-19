@@ -70,7 +70,7 @@ You are tasked to determine what sample sizes, if any, from the six simulated be
 ## Sample 1 (1 subject per condition)
 
 ```{r}
-set.seed(101) #this makes the random draws be the same each time we run the code
+set.seed(122) #this makes the random draws be the same each time we run the code
 
 sample1_informal <- rpois(n = 1, lambda = 55)   #1 draw from Poisson with lambda = 55
 sample1_formal <-  rpois(n = 1, lambda = 45)    #1 draw from Poisson with lambda = 45
@@ -88,7 +88,7 @@ sample2_formal <-  rpois(n = 5, lambda = 45)    #5 draws from Poisson with lambd
 ## Sample 3 (15 subjects per condition)
 
 ```{r}
-set.seed(191) #this makes the random draws be the same each time we run the code
+set.seed(2) #this makes the random draws be the same each time we run the code
 
 sample3_informal <- rpois(n = 15, lambda = 55)   #15 draws from Poisson with lambda = 55
 sample3_formal <-  rpois(n = 15, lambda = 45)    #15 draws from Poisson with lambda = 45
@@ -136,6 +136,6 @@ Answer these four questions concerning your analysis report:
     * How much will you collect? 
     * Do you think that is enough data to address Question 2? Why (not)?
 
-Elaborate with as much detail as you (currently) have but it is perfectly acceptable if you answer in bullet points and single sentences. You will be asked to submit these answers for next week's assignment. A randomly selected peer will give you feedback on them.
+Elaborate with as much detail as you (currently) have but it is perfectly acceptable if you answer in bullet points and single sentences. You will be asked to submit these answers for next week's assignment. Randomly selected peers will give you feedback on them.
     
 # References
