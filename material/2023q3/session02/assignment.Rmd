@@ -37,7 +37,17 @@ Inspect the sender data from Kanwal et al. (2017) yourself.
 
 # Self-study 
 1. Work through Chapter 4 and 6 of [Introduction to Data Analysis](https://michael-franke.github.io/intro-data-analysis/Chap-02-01-data.html) [@aida]. If you need a refresher on descriptive statistics, also look at  Chapter 5;
-2. Apply the terminology from this session to your analysis question of interest. Change your research question if you have come across another that you find more interesting
+2. Answer these four questions concerning your analysis report:
+  * What is your general research question (e.g., How does a learner's first language affect learning a second language?)
+  * Why do you think this question is interesting? What does an answer to it  tell us?
+  * What is your specific research question (e.g., Is there a difference between the speed in which Spanish and German monolinguals learn Catalan?)
+  * What kind of data would you use to address Question 2 if you had unlimited resources?
+  * What kind of data are you planning to use to address 2 within the scope of this class? 
+    * How will you obtain it? 
+    * How much will you collect? 
+    * Do you think that is enough data to address Question 2? Why (not)?
+
+Elaborate with as much detail as you (currently) have but it is perfectly acceptable if you answer in bullet points and single sentences. You will be asked to submit these answers for next week's assignment. Randomly selected peers will give you feedback on them. 
 
 
 # References

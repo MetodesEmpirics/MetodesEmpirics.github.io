@@ -124,18 +124,25 @@ sample6_formal <-  rpois(n = 1000, lambda = 45)  #1000 draws from Poisson  with 
   7. Which is the smallest sample that gives an estimate at least within 4 average gestures of the true mean difference?
   8. Which sample over- or underestimates the true difference between gestures in formal and informal contexts the most?
 
-# Self-study 
-Answer these four questions concerning your analysis report:
+# Peer review (part I) 
 
-1. What is your general research question (e.g., How does a learner's first language affect learning a second language?)
+Submit answers to these questions concerning your analysis report as a **single page** PDF-file through Aula Global. This submission makes up 50% of your peer-review grade. Remember that **your submission must be anonymous**. That is: do not put any information that can identify you in the PDF nor in the name of the file (like your name).
+
+1. What is your general research question?
+
 2. Why do you think this question is interesting? What does an answer to it  tell us?
-3. What is your specific research question (e.g., Is there a difference between the speed in which Spanish and German monolinguals learn Catalan?)
+
+3. What is your specific research question?
+
 4. What kind of data would you use to address Question 2 if you had unlimited resources?
-5. What kind of data are you planning to use to address 2 within the scope of this class? 
+
+5. What kind of data are you planning to use to address Question 2 within the scope of this class?
     * How will you obtain it? 
     * How much will you collect? 
     * Do you think that is enough data to address Question 2? Why (not)?
+  
+Elaborate with as much detail as you (currently) have. It is perfectly acceptable if you answer in bullet points and single sentences. Two randomly selected peers will give you feedback on them.
 
-Elaborate with as much detail as you (currently) have but it is perfectly acceptable if you answer in bullet points and single sentences. You will be asked to submit these answers for next week's assignment. Randomly selected peers will give you feedback on them.
-    
+Finally, remember to give yourself a pseudonym in Aula Global (**pseudonym task**). The peer-review will be made through these pseudonyms.
+
 # References
