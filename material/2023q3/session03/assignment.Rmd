@@ -8,7 +8,7 @@ bibliography: ../../biblio.bib
 ---
 
 # Instructions
-Submit your answers to the 8 first exercises through Aula Global. The remainder of your assignments concern self-studies.
+Submit your answers to the 8 first exercises through Aula Global. Upload the remaining exercise concerning peer review and your pseudonym through Aula Global as well.
 
 # Describing samples
 

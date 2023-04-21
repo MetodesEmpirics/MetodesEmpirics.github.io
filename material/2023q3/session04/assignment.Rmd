@@ -10,7 +10,7 @@ urlcolor: blue
 
 # Instructions
 
-Submit your answers to the 6 first exercises through Aula Global (quiz section **in your seminar**). Upload the remaining exercise concerning peer review through Aula Global as well (upload task **in grup gran**).
+Submit your answers to the 6 first exercises through Aula Global. 
 
 # Regression
 
