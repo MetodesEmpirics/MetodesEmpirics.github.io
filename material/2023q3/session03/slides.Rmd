@@ -320,6 +320,18 @@ class: inverse, center
 
 ---
 
+<br><br><br><br>
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>Què és una distribució?</b>
+</p>
+</p></span>
+</div>
+
+
+---
+
 ## Distribucio normal (Gaussiana)
 
 .pull-left[
@@ -393,7 +405,7 @@ ggplot(df, aes(x = datos)) +
 
 * **Paràmetres:** probabilitat d'èxit ( $1$ )
 
-* Comú experiments i ciències socials
+* Comú en experiments i ciències socials
 
 ---
 
@@ -441,7 +453,7 @@ class: inverse
 
 # Propera sessió
 
-* Lliurament de "Assignment 3" (08:00 AM 02/05)
+* Lliurament de "Assignment 2" (08:00 AM 02/05)
 
 ***
 
