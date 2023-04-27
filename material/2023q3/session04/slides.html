@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>4 Introducción a la regresión</title>
+    <title>4 Introducció a la regressió</title>
     <meta charset="utf-8" />
     <meta name="author" content="Métodos empíricos 2" />
-    <meta name="date" content="2022-03-05" />
-    <script src="slides_files/header-attrs-2.13/header-attrs.js"></script>
+    <meta name="date" content="2023-02-05" />
+    <script src="slides_files/header-attrs-2.20/header-attrs.js"></script>
     <link href="slides_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="slides_files/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
   </head>
@@ -13,23 +13,32 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# 4 Introducción a la regresión
+.title[
+# 4 Introducció a la regressió
+]
+.author[
 ### Métodos empíricos 2
-### 03/05/2022
+]
+.date[
+### 02/05/2023
+]
 
 ---
 
 
 
 
-# Hoy
+# Avui
 
 .large[
-* Intuiciones 
 
-* Líneas
+* Aprofitant distribucions (R)
 
-* Regresión lineal 
+* Intuïcions
+
+* Línies
+
+* Regressió lineal
 
 
 ]
@@ -38,53 +47,61 @@ class: center, middle, inverse, title-slide
 
 class: inverse, center
 
-# Intuiciones
+# Aprofitant distribucions (R)
 
 ---
 
-## Regresión
+class: inverse, center
 
-Técnica fundamental para predecir un **resultado** a base de uno o más **predictores**
-
-* Predicción
-
-* Exploración de asociaciones
-
-* Extrapolación
-
-* Inferencia causal
+# Intuïcions
 
 ---
 
-## Regresión lineal
+## Regressió
 
-Estimación de relación **lineal** entre resultado ( `\(y\)` ) y uno o más predictores ( `\(x\)` ). Otra formulación: Estimación de predicción de `\(y\)` a base de `\(x\)`.
+Tècnica fonamental per predir un **resultat** a base d'un o més **predictors**
+
+* Predicció
+
+* Exploració d'associacions
+
+* Extrapolació
+
+* Inferència causal
+
+---
+
+## Regressió lineal
+
+Estimació de relació **lineal** entre resultat ( `\(y\)` ) i un o més predictors ( `\(x\)` ). Una altra formulació: Estimació de predicció de `\(y\)` a base de `\(x\)`.
 
 &lt;img src="slides_files/figure-html/unnamed-chunk-1-1.png" width="55%" style="display: block; margin: auto;" /&gt;
 
 ---
 
-## Regresión lineal (ejemplo)
+## Regressió lineal (exemple)
 
-Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más predictores ( *sexo*; *contexto*; *edad* ). Otra formulación: Estimación de predicción de *tono* a base de *sexo* y/o *contexto* y/o *edad*.
+Estimació de relació **lineal** entre resultat ( *to* ) i un o més predictors ( *sexe*; *context*; *edat* ). Una altra formulació: Estimació de predicció de *to* a base de *sexe* i/o *context* i/o *edat*.
 
 &lt;img src="slides_files/figure-html/unnamed-chunk-2-1.png" width="55%" style="display: block; margin: auto;" /&gt;
 
 ---
 
 
-## Regresión lineal (ejemplo)
+## Regressió lineal (exemple)
 
-Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más predictores ( *sexo*; *contexto*; *edad* ). Otra formulación: Estimación de predicción de *tono* a base de *sexo* y/o *contexto* y/o *edad*.
+Estimació de relació **lineal** entre resultat ( *to* ) i un o més predictors ( *sexe*; *context*; *edat* ). Una altra formulació: Estimació de predicció de *to* a base de *sexe* i/o *context* i/o *edat*.
+
 
 &lt;img src="slides_files/figure-html/unnamed-chunk-3-1.png" width="55%" style="display: block; margin: auto;" /&gt;
 
 ---
 
 
-## Regresión lineal (ejemplo)
+## Regressió lineal (exemple)
 
-Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más predictores ( *sexo*; *contexto*; *edad* ). Otra formulación: Estimación de predicción de *tono* a base de *sexo* y/o *contexto* y/o *edad*.
+Estimació de relació **lineal** entre resultat ( *to* ) i un o més predictors ( *sexe*; *context*; *edat* ). Una altra formulació: Estimació de predicció de *to* a base de *sexe* i/o *context* i/o *edat*.
+
 
 &lt;img src="slides_files/figure-html/unnamed-chunk-4-1.png" width="55%" style="display: block; margin: auto;" /&gt;
 
@@ -92,9 +109,9 @@ Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más pred
 
 
 
-## Regresión lineal (ejemplo)
+## Regressió lineal (exemple)
 
-Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más predictores ( *sexo*; *contexto*; *edad* ). Otra formulación: Estimación de predicción de *tono* a base de *sexo* y/o *contexto* y/o *edad*.
+Estimació de relació **lineal** entre resultat ( *to* ) i un o més predictors ( *sexe*; *context*; *edat* ). Una altra formulació: Estimació de predicció de *to* a base de *sexe* i/o *context* i/o *edat*.
 
 &lt;img src="slides_files/figure-html/unnamed-chunk-5-1.png" width="55%" style="display: block; margin: auto;" /&gt;
 
@@ -102,7 +119,7 @@ Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más pred
 
 class: inverse, center
 
-# Repasando líneas
+# Repassant línies
 
 ---
 
@@ -125,37 +142,36 @@ class: inverse, center
 
 ---
 
-# tono en función a edad
+# to en funció a edat
 
 &lt;img src="slides_files/figure-html/unnamed-chunk-11-1.png" width="65%" style="display: block; margin: auto;" /&gt;
 
 ---
 
-# tono = `\(\beta_0\)` + ( `\(\beta_1 \times\)` edad)
+# to = `\(\beta_0\)` + ( `\(\beta_1 \times\)` edat)
 
 &lt;img src="slides_files/figure-html/unnamed-chunk-12-1.png" width="65%" style="display: block; margin: auto;" /&gt;
 
 ---
 
-# tono = 110 + (1.5 `\(\times\)` edad) ?
+# to = 110 + (1.5 `\(\times\)` edat) ?
 &lt;img src="slides_files/figure-html/unnamed-chunk-13-1.png" width="65%" style="display: block; margin: auto;" /&gt;
 
 ---
-# Intuición del algorítmo de regresión
+# Intuïció de l'algorisme de regressió
 
-Busca la línea que minimiza el error (cuadrado)
+Cerca la línia que minimitza l'error (quadrat)
 
-En otras palabras: Busca la línea que, en promedio, está lo más cerca de los puntos
-
+En altres paraules: Cerca la línia que és més a prop dels punts (i.e., de les dades)
 
 ---
 
-# Dónde pondríais la línea?
+# On posaríeu la línia?
 
 &lt;img src="slides_files/figure-html/unnamed-chunk-14-1.png" width="65%" style="display: block; margin: auto;" /&gt;
 
 ---
-# tono = 159 + (-2.9 `\(\times\)` edad)
+# to = 159 + (-2.9 `\(\times\)` edat)
 
 &lt;img src="slides_files/figure-html/unnamed-chunk-15-1.png" width="65%" style="display: block; margin: auto;" /&gt;
 
@@ -163,15 +179,15 @@ En otras palabras: Busca la línea que, en promedio, está lo más cerca de los 
 
 class: inverse, center
 
-# Regresión lineal
+# Regressió lineal
 
 ---
 
-## Regresión lineal
+## Regressió lineal
 
-Estimado de relación **lineal** entre resultado ( `\(y\)` ) y uno o más predictores. 
+Estimat de relació **lineal** entre resultat ( `\(y\)` ) i un o més predictors.
 
-Con un solo predictor `\(x\)`:
+Amb un sol predictor `\(x\)`:
 
 &lt;br&gt; 
 `$$\Large y_i \sim \text{Normal}(\mu_i,\sigma),$$`
@@ -179,18 +195,18 @@ Con un solo predictor `\(x\)`:
 
 ---
 
-## Regresión lineal
+## Regressió lineal
 
-Estimado de relación **lineal** entre *tono* ( `\(y\)` ) y uno o más predictores. 
+Estimat de relació **lineal** entre *to* ( `\(y\)` ) i un o més predictors.
 
-Con un solo predictor *edad*:
+Amb un sol predictor *edat*:
 
 &lt;br&gt;
 
 `$$\Large y_i \sim \text{Normal}(\mu_i,\sigma),$$`
-`$$\Large \mu_i  = \beta_0 + \beta_1 \text{edad}_i$$`
+`$$\Large \mu_i  = \beta_0 + \beta_1 \text{edat}_i$$`
 ---
-# Regresión lineal (R)
+# Regresió lineal (R)
 
 
 ```r
@@ -218,7 +234,7 @@ nrow(df)
 
 ---
 
-# Regresión lineal (R)
+# Regresió lineal (R)
 
 
 ```r
@@ -240,13 +256,14 @@ pitch_model
 &lt;br&gt;
 ***
 &lt;br&gt;
-`$$tono_i = 159 + (-2.9 \times \text{edad}_i)$$`
+`$$to_i = 159 + (-2.9 \times \text{edat}_i)$$`
 --
 
-¿Cuál es la predicción del tono esperado de una persona de 12 años de edad? ¿Y de una de 25? 
+Quina és la predicció del to esperat d'una persona de 12 anys? I d'una de 25?
 
 ---
-# Más allá de predicciones
+
+# Més enllà de prediccions
 
 
 ```r
@@ -276,8 +293,9 @@ summary(pitch_model)
 
 ---
 
-# Residuales
-Differencia entre predicción y resultado real.
+# Residuals
+Differència entre predicció i resultat real.
+
 
 
 ```r
@@ -292,7 +310,7 @@ summary$residuals[1:5]
 
 ---
 
-# Residuales
+# Residuals
 
 
 ```r
@@ -303,7 +321,7 @@ plot(pitch_model$residuals)
 
 ---
 
-# Más allá de predicciones
+# Més enllà de prediccions
 
 
 ```r
@@ -333,8 +351,8 @@ summary(pitch_model)
 
 ---
 
-# Error estándar (standard error)
-Incertidúmbre del modelo al respecto de un parámetro
+# Error estàndard (standard error)
+Incertesa del model respecte d'un paràmetre (en funció de les dades)
 
 
 ```r
@@ -349,7 +367,7 @@ summary$coefficients
 
 ---
 
-# Más allá de predicciones
+# Més enllà de prediccions
 
 
 ```r
@@ -379,9 +397,9 @@ summary
 
 ---
 
-# Residual standard error
+# Residual estàndard error
 
-El valor (estimado) del error del modelo. Corresponde a `\(\sigma\)`
+El valor (estimat) de l'error del model. Correspon a `\(\sigma\)`
 &lt;br&gt;&lt;br&gt;
 `$$\Large y \sim \text{Normal}(\mu, \mathbf{\sigma})$$`
 `$$\Large\mu_i = \beta_0 + \beta_1 x_1 + ... \beta_n x_n$$`
@@ -390,7 +408,7 @@ El valor (estimado) del error del modelo. Corresponde a `\(\sigma\)`
 
 # Goodness of fit
 
-`\(R^2\)` es la proporción de la varianza del resultado que explican los predictores. 
+`\(R^2\)` és la proporció de la variància del resultat que expliquen els predictors. 
 
 
 ```r
@@ -404,7 +422,7 @@ summary$r.squared
 
 ---
 
-# Más allá de predicciones
+# Més enllà de prediccions
 
 
 ```r
@@ -434,28 +452,20 @@ summary
 ---
 
 class: inverse
+# Propera sessió
 
-# Próxima sesión
-
-* Entrega de "Assignment 4" (08:00 AM 10/05)
-* Entrega de parte I de "Revisión por pares" (08:00 AM 10/05)
+* Lliurament de "Assignment 3" (08:00 AM 09/05)
+* Lliurament de part I de "Revisió per parells" (08:00 AM 11/05)
 
 ***
 
-* **Regresión con más de un predictor**
-
-*** 
-
-  * Assignment 5: 10/05 - 17/05
-  * Ejercicio práctico: 17/05 - 24/05
-  * Entrega parte II de "Revisión por pares": 24/05 - 31/05
-  * Informe final: 28/06
+* **Regressió amb més d'un predictor**
 
 ---
 
-# Transformaciones: Centrar
+# Transformacions: Centrar
 
-Centrar datos implica restar una constante a todos los valores de una variable
+Centrar dades implica restar una constant a tots els valors d'una variable
 
 
 ```r
@@ -528,6 +538,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable

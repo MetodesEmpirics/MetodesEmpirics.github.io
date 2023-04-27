@@ -1,7 +1,7 @@
 ---
-title: "4 Introducción a la regresión"
+title: "4 Introducció a la regressió"
 author: "Métodos empíricos 2"
-date: "02/05/202"
+date: "02/05/2023"
 output:
   xaringan::moon_reader:
     nature:
@@ -14,14 +14,17 @@ library(dplyr)
 library(ggplot2)
 ```
 
-# Hoy
+# Avui
 
 .large[
-* Intuiciones 
 
-* Líneas
+* Aprofitant distribucions (R)
 
-* Regresión lineal 
+* Intuïcions
+
+* Línies
+
+* Regressió lineal
 
 
 ]
@@ -30,27 +33,33 @@ library(ggplot2)
 
 class: inverse, center
 
-# Intuiciones
+# Aprofitant distribucions (R)
 
 ---
 
-## Regresión
+class: inverse, center
 
-Técnica fundamental para predecir un **resultado** a base de uno o más **predictores**
-
-* Predicción
-
-* Exploración de asociaciones
-
-* Extrapolación
-
-* Inferencia causal
+# Intuïcions
 
 ---
 
-## Regresión lineal
+## Regressió
 
-Estimación de relación **lineal** entre resultado ( $y$ ) y uno o más predictores ( $x$ ). Otra formulación: Estimación de predicción de $y$ a base de $x$.
+Tècnica fonamental per predir un **resultat** a base d'un o més **predictors**
+
+* Predicció
+
+* Exploració d'associacions
+
+* Extrapolació
+
+* Inferència causal
+
+---
+
+## Regressió lineal
+
+Estimació de relació **lineal** entre resultat ( $y$ ) i un o més predictors ( $x$ ). Una altra formulació: Estimació de predicció de $y$ a base de $x$.
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE,fig.align='center',out.width='55%'}
 library(ggplot2)
@@ -61,20 +70,20 @@ x <- rnorm(n = 34, mean = 20, sd = 2)
 err <- rnorm(n = 34, mean = 0,sd=1)
 y <- x/2 + err
 
-df <- data.frame(resultado = y, predictor = x)
-ggplot(df, aes(x = predictor, y = resultado)) +
+df <- data.frame(resultat = y, predictor = x)
+ggplot(df, aes(x = resultat, y = predictor)) +
   geom_point() +
   geom_smooth(method='lm') +
   theme_minimal(base_size=25) +
   xlab('predictor (x)') +
-  ylab('resultado (y)')
+  ylab('resultat (y)')
 ```
 
 ---
 
-## Regresión lineal (ejemplo)
+## Regressió lineal (exemple)
 
-Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más predictores ( *sexo*; *contexto*; *edad* ). Otra formulación: Estimación de predicción de *tono* a base de *sexo* y/o *contexto* y/o *edad*.
+Estimació de relació **lineal** entre resultat ( *to* ) i un o més predictors ( *sexe*; *context*; *edat* ). Una altra formulació: Estimació de predicció de *to* a base de *sexe* i/o *context* i/o *edat*.
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE,fig.align='center',out.width='55%'}
 set.seed(121)
@@ -88,16 +97,17 @@ df <- data.frame(ages = ages, pitch = pitch)
 ggplot(df, aes(x = ages, y = pitch)) +
   geom_point() +
   theme_minimal(base_size=25) +
-  xlab('edad (x)') +
-  ylab('tono (y)')
+  xlab('edat (x)') +
+  ylab('to (y)')
 ```
 
 ---
 
 
-## Regresión lineal (ejemplo)
+## Regressió lineal (exemple)
 
-Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más predictores ( *sexo*; *contexto*; *edad* ). Otra formulación: Estimación de predicción de *tono* a base de *sexo* y/o *contexto* y/o *edad*.
+Estimació de relació **lineal** entre resultat ( *to* ) i un o més predictors ( *sexe*; *context*; *edat* ). Una altra formulació: Estimació de predicció de *to* a base de *sexe* i/o *context* i/o *edat*.
+
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE,fig.align='center',out.width='55%'}
 set.seed(121)
@@ -112,16 +122,17 @@ ggplot(df, aes(x = ages, y = pitch)) +
   geom_point() +
   geom_smooth(method='lm') +
   theme_minimal(base_size=25) +
-  xlab('edad (x)') +
-  ylab('tono (y)')
+  xlab('edat (x)') +
+  ylab('to (y)')
 ```
 
 ---
 
 
-## Regresión lineal (ejemplo)
+## Regressió lineal (exemple)
 
-Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más predictores ( *sexo*; *contexto*; *edad* ). Otra formulación: Estimación de predicción de *tono* a base de *sexo* y/o *contexto* y/o *edad*.
+Estimació de relació **lineal** entre resultat ( *to* ) i un o més predictors ( *sexe*; *context*; *edat* ). Una altra formulació: Estimació de predicció de *to* a base de *sexe* i/o *context* i/o *edat*.
+
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE,fig.align='center',out.width='55%'}
 set.seed(120)
@@ -135,7 +146,7 @@ ggplot(df, aes(x = ctx , y = pitch)) +
   geom_point() +
   theme_minimal(base_size=25) +
   xlab('informal           formal') +
-  ylab('tono (y)') +
+  ylab('to (y)') +
   scale_x_discrete(labels=c("0" = "Informal", "1" = "Polite",
                               "0.5" = ''))
 ```
@@ -144,9 +155,9 @@ ggplot(df, aes(x = ctx , y = pitch)) +
 
 
 
-## Regresión lineal (ejemplo)
+## Regressió lineal (exemple)
 
-Estimación de relación **lineal** entre resultado ( *tono* ) y uno o más predictores ( *sexo*; *contexto*; *edad* ). Otra formulación: Estimación de predicción de *tono* a base de *sexo* y/o *contexto* y/o *edad*.
+Estimació de relació **lineal** entre resultat ( *to* ) i un o més predictors ( *sexe*; *context*; *edat* ). Una altra formulació: Estimació de predicció de *to* a base de *sexe* i/o *context* i/o *edat*.
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE,fig.align='center',out.width='55%'}
 set.seed(120)
@@ -161,7 +172,7 @@ ggplot(df, aes(x = ctx , y = pitch)) +
   geom_smooth(method='lm') +
   theme_minimal(base_size=25) +
   xlab('informal           formal') +
-  ylab('tono (y)') +
+  ylab('to (y)') +
   scale_x_discrete(labels=c("0" = "Informal", "1" = "Polite",
                               "0.5" = ''))
 ```
@@ -170,7 +181,7 @@ ggplot(df, aes(x = ctx , y = pitch)) +
 
 class: inverse, center
 
-# Repasando líneas
+# Repassant línies
 
 ---
 
@@ -262,7 +273,7 @@ ggplot(df, aes(x,y)) +
 
 ---
 
-# tono en función a edad
+# to en funció a edat
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align='center',out.width='65%'}
 set.seed(121)
@@ -274,13 +285,13 @@ df <- data.frame(ages = ages, pitch = pitch)
 ggplot(df, aes(x = ages, y = pitch)) +
   geom_point() +
   theme_minimal(base_size=25) +
-  xlab('edad (x)') +
-  ylab('tono (y)')
+  xlab('edat (x)') +
+  ylab('to (y)')
 ```
 
 ---
 
-# tono = $\beta_0$ + ( $\beta_1 \times$ edad)
+# to = $\beta_0$ + ( $\beta_1 \times$ edat)
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align='center',out.width='65%'}
 set.seed(121)
@@ -294,13 +305,13 @@ df <- data.frame(ages = ages, pitch = pitch)
 ggplot(df, aes(x = ages, y = pitch)) +
   geom_point() +
   theme_minimal(base_size=25) +
-  xlab('edad (x)') +
-  ylab('tono (y)')
+  xlab('edat (x)') +
+  ylab('to (y)')
 ```
 
 ---
 
-# tono = 110 + (1.5 $\times$ edad) ?
+# to = 110 + (1.5 $\times$ edat) ?
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align='center',out.width='65%'}
 set.seed(121)
 #df <- read_csv("https://tinyurl.com/polite-data") #download data 
@@ -315,21 +326,20 @@ ggplot(df, aes(x = ages, y = pitch)) +
   geom_abline(intercept = 110, slope = 1.5, col='indianred', size=2) + 
   geom_text(aes(x = 25, y = 165), label = 'y = 110 + 1.5 * x', size=10, col='indianred') +
   theme_minimal(base_size=25) +
-  xlab('edad (x)') +
-  ylab('tono (y)')
+  xlab('edat (x)') +
+  ylab('to (y)')
 ```
 
 ---
-# Intuición del algorítmo de regresión
+# Intuïció de l'algorisme de regressió
 
-Busca la línea que minimiza el error (cuadrado)
+Cerca la línia que minimitza l'error (quadrat)
 
-En otras palabras: Busca la línea que, en promedio, está lo más cerca de los puntos
-
+En altres paraules: Cerca la línia que és més a prop dels punts (i.e., de les dades)
 
 ---
 
-# Dónde pondríais la línea?
+# On posaríeu la línia?
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align='center',out.width='65%'}
 set.seed(121)
@@ -341,12 +351,12 @@ df <- data.frame(ages = ages, pitch = pitch)
 ggplot(df, aes(x = ages, y = pitch)) +
   geom_point() +
   theme_minimal(base_size=25) +
-  xlab('edad (x)') +
-  ylab('tono (y)')
+  xlab('edat (x)') +
+  ylab('to (y)')
 ```
 
 ---
-# tono = 159 + (-2.9 $\times$ edad)
+# to = 159 + (-2.9 $\times$ edat)
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align='center',out.width='65%'}
 set.seed(121)
@@ -365,23 +375,23 @@ ggplot(df, aes(x = ages, y = pitch)) +
   geom_abline(intercept = coef(m)[[1]], slope =coef(m)[[2]], col='indianred', size=2) + 
   geom_text(aes(x = 25, y = 165), label = 'y = 159 + -2.9 * x', size=10, col='indianred') +
   theme_minimal(base_size=25) +
-  xlab('edad (x)') +
-  ylab('tono (y)')
+  xlab('edat (x)') +
+  ylab('to (y)')
 ```
 
 ---
 
 class: inverse, center
 
-# Regresión lineal
+# Regressió lineal
 
 ---
 
-## Regresión lineal
+## Regressió lineal
 
-Estimado de relación **lineal** entre resultado ( $y$ ) y uno o más predictores. 
+Estimat de relació **lineal** entre resultat ( $y$ ) i un o més predictors.
 
-Con un solo predictor $x$:
+Amb un sol predictor $x$:
 
 <br> 
 $$\Large y_i \sim \text{Normal}(\mu_i,\sigma),$$
@@ -389,18 +399,18 @@ $$\Large \mu_i  = \beta_0 + \beta_1 x_i$$
 
 ---
 
-## Regresión lineal
+## Regressió lineal
 
-Estimado de relación **lineal** entre *tono* ( $y$ ) y uno o más predictores. 
+Estimat de relació **lineal** entre *to* ( $y$ ) i un o més predictors.
 
-Con un solo predictor *edad*:
+Amb un sol predictor *edat*:
 
 <br>
 
 $$\Large y_i \sim \text{Normal}(\mu_i,\sigma),$$
-$$\Large \mu_i  = \beta_0 + \beta_1 \text{edad}_i$$
+$$\Large \mu_i  = \beta_0 + \beta_1 \text{edat}_i$$
 ---
-# Regresión lineal (R)
+# Regresió lineal (R)
 
 ```{r,echo=TRUE,warning=FALSE, message=FALSE}
 head(df)
@@ -410,7 +420,7 @@ nrow(df)
 
 ---
 
-# Regresión lineal (R)
+# Regresió lineal (R)
 
 ```{r, echo=TRUE, message=FALSE, warning=FALSE}
 pitch_model <- lm(formula = pitch ~ 1 + ages,
@@ -421,13 +431,14 @@ pitch_model
 <br>
 ***
 <br>
-$$tono_i = 159 + (-2.9 \times \text{edad}_i)$$
+$$to_i = 159 + (-2.9 \times \text{edat}_i)$$
 --
 
-¿Cuál es la predicción del tono esperado de una persona de 12 años de edad? ¿Y de una de 25? 
+Quina és la predicció del to esperat d'una persona de 12 anys? I d'una de 25?
 
 ---
-# Más allá de predicciones
+
+# Més enllà de prediccions
 
 ```{r}
 summary(pitch_model)
@@ -435,8 +446,9 @@ summary(pitch_model)
 
 ---
 
-# Residuales
-Differencia entre predicción y resultado real.
+# Residuals
+Differència entre predicció i resultat real.
+
 
 ```{r}
 summary <- summary(pitch_model)
@@ -445,7 +457,7 @@ summary$residuals[1:5]
 
 ---
 
-# Residuales
+# Residuals
 
 ```{r, fig.align='center',out.width='65%'}
 plot(pitch_model$residuals)
@@ -453,7 +465,7 @@ plot(pitch_model$residuals)
 
 ---
 
-# Más allá de predicciones
+# Més enllà de prediccions
 
 ```{r}
 summary(pitch_model)
@@ -461,8 +473,8 @@ summary(pitch_model)
 
 ---
 
-# Error estándar (standard error)
-Incertidúmbre del modelo al respecto de un parámetro
+# Error estàndard (standard error)
+Incertesa del model respecte d'un paràmetre (en funció de les dades)
 
 ```{r, warning=FALSE, message=FALSE}
 summary$coefficients
@@ -470,7 +482,7 @@ summary$coefficients
 
 ---
 
-# Más allá de predicciones
+# Més enllà de prediccions
 
 ```{r}
 summary
@@ -478,9 +490,9 @@ summary
 
 ---
 
-# Residual standard error
+# Residual estàndard error
 
-El valor (estimado) del error del modelo. Corresponde a $\sigma$
+El valor (estimat) de l'error del model. Correspon a $\sigma$
 <br><br>
 $$\Large y \sim \text{Normal}(\mu, \mathbf{\sigma})$$
 $$\Large\mu_i = \beta_0 + \beta_1 x_1 + ... \beta_n x_n$$
@@ -489,7 +501,7 @@ $$\Large\mu_i = \beta_0 + \beta_1 x_1 + ... \beta_n x_n$$
 
 # Goodness of fit
 
-$R^2$ es la proporción de la varianza del resultado que explican los predictores. 
+$R^2$ és la proporció de la variància del resultat que expliquen els predictors. 
 
 ```{r}
 summary$r.squared
@@ -498,7 +510,7 @@ summary$r.squared
 
 ---
 
-# Más allá de predicciones
+# Més enllà de prediccions
 
 ```{r}
 summary
@@ -506,28 +518,20 @@ summary
 ---
 
 class: inverse
+# Propera sessió
 
-# Próxima sesión
-
-* Entrega de "Assignment 4" (08:00 AM 10/05)
-* Entrega de parte I de "Revisión por pares" (08:00 AM 10/05)
+* Lliurament de "Assignment 3" (08:00 AM 09/05)
+* Lliurament de part I de "Revisió per parells" (08:00 AM 11/05)
 
 ***
 
-* **Regresión con más de un predictor**
-
-*** 
-
-  * Assignment 5: 10/05 - 17/05
-  * Ejercicio práctico: 17/05 - 24/05
-  * Entrega parte II de "Revisión por pares": 24/05 - 31/05
-  * Informe final: 28/06
+* **Regressió amb més d'un predictor**
 
 ---
 
-# Transformaciones: Centrar
+# Transformacions: Centrar
 
-Centrar datos implica restar una constante a todos los valores de una variable
+Centrar dades implica restar una constant a tots els valors d'una variable
 
 ```{r}
 mean(df$ages)                           #promedio de edades
