@@ -37,6 +37,17 @@ class: inverse, center
 
 ---
 
+<br><br><br><br>
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>Anomena una de les tres distribucions que vam veure la setmana passada. Quants/Quins paràmetres la defineixen? I què controlen aquests paràmetres?</b>
+</p>
+</p></span>
+</div>
+
+---
+
 class: inverse, center
 
 # Intuïcions
