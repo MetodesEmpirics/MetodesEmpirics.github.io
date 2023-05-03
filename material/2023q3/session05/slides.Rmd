@@ -1,7 +1,7 @@
 ---
-title: "5 Regresión con más de un predictor"
-author: "Métodos empíricos 2"
-date: "10/05/2022"
+title: "5 Regressió amb més d'un predictor"
+author: "Mètodes empírics 2" 
+date: "09/05/2022"
 output:
   xaringan::moon_reader:
     nature:
@@ -14,18 +14,16 @@ library(dplyr)
 library(ggplot2)
 ```
 
-# Hoy
+# Avui
 
 .large[
-* Múltiples predictores 
+* Múltiples predictors
 
-* Caso de estudios (continuado)
+* Cas d'estudis (continuat)
 
 ***
 
-* Recolección y generación de datos
-
-* (In)significancia estadística
+* (In)significància estadística
 
 ]
 
@@ -33,34 +31,63 @@ library(ggplot2)
 
 class: inverse, center
 
-# Múltiples predictores
+# Múltiples predictors
 
 ---
 
-# Misma formula, más sumandos
+# Mateixa fórmula, més sumands
 
 $$\Large y \sim \text{Normal}(\mu,\sigma)$$
 $$\Large \mu = \beta_0 + \beta_1 x_1 + ... \beta_n x_n$$
 
 ---
 
-# Caso de estudios: tono
+<br><br><br><br>
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>Vols saber quins factors (no) afecen el to mitjà (Hertz) d'una persona. Un col·lega t'ha donat les dades següents:<br><br>https://tinyurl.com/polite-data<br><br>
+<br>
+1. Descriu les dades
+<br><br>
+2. Descriu com penses que les variables es podrien relacionar</b>
+</p>
+</p></span>
+</div>
+
+---
+
+# Cas d'estudis: to
 
 ```{r}
 df <- read.csv("https://tinyurl.com/polite-data")
 head(df)
 ```
 
-<br>
-***
 
---
 
-<br>
+---
+
+# Cas d'estudis: to
+
 $$\Large \text{pitch}_i = \beta_0 + \beta_1 \text{gender}_i + \beta_2\text{context}_i$$
 ---
 
-# Descripción de variables (género)
+
+<br><br><br><br>
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>Vols saber quins factors (no) afecen el to mitjà (Hertz) d'una persona. Un col·lega t'ha donat les dades següents:<br><br>https://tinyurl.com/polite-data<br><br>
+<br>
+1. Descriu les variants rellevants per a la teva anàlisi
+</p>
+</p></span>
+</div>
+
+---
+
+# Descripció de variables (gènere)
 
 ```{r}
 unique(df$gender)
@@ -73,7 +100,7 @@ nrow(df_f)
 
 ---
 
-# Descripción de variables (contexto)
+# Descripció de variables (context)
 
 ```{r}
 unique(df$context)
@@ -88,7 +115,7 @@ nrow(df_pol)
 ---
 
 
-# Descripción de variables (tono)
+# Descripció de variables (to)
 
 ```{r, warning=FALSE, fig.align='center', out.width='65%', echo=FALSE}
 ggplot(data = df,
@@ -99,7 +126,7 @@ ggplot(data = df,
 
 ---
 
-# Descripción de variables (tono)
+# Descripció de variables (to)
 
 ```{r}
 mean(df$pitch)
@@ -113,7 +140,7 @@ quantile(df$pitch)
 
 ---
 
-# Posible relación entre predictor y variable (género)
+# Possible relació entre predictor i variable (gènere)
 
 ```{r, echo=FALSE, fig.align='center', out.width='65%', echo=FALSE}
 ggplot(df, aes(x = pitch, fill = gender)) +
@@ -123,7 +150,7 @@ ggplot(df, aes(x = pitch, fill = gender)) +
 
 ---
 
-# Posible relación entre predictor y variable (género)
+# Possible relació entre predictor i variable (gènere)
 
 
 ```{r, echo=FALSE, fig.align='center', out.width='65%', echo=FALSE}
@@ -134,7 +161,21 @@ ggplot(df, aes(y = pitch, x = gender)) +
 
 ---
 
-# Posible relación entre predictor y variable (género)
+
+<br><br><br><br>
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>Vols saber quins factors (no) afecen el to mitjà (Hertz) d'una persona. Un col·lega t'ha donat les dades següents:<br><br>https://tinyurl.com/polite-data<br><br>
+<br>
+1. Fes ús de mètodes descriptius per descriure la relació entre predictor (gènere) i resultat
+</p>
+</p></span>
+</div>
+
+---
+
+# Possible relació entre predictor i variable (gènere)
 
 ```{r}
 mean(df_m$pitch)
@@ -148,7 +189,7 @@ median(df_f$pitch)
 
 ---
 
-# Posible relación entre predictor y variable (género)
+# Possible relació entre predictor i variable (gènere)
 
 ```{r}
 
@@ -162,7 +203,24 @@ quantile(df_f$pitch)
 
 ---
 
-# Modelo género
+
+
+<br><br><br><br>
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>Vols saber quins factors (no) afecen el to mitjà (Hertz) d'una persona. Un col·lega t'ha donat les dades següents:<br><br>https://tinyurl.com/polite-data<br><br>
+<br>
+1. Crea un model de regressió lineal que prediu to a base de gènere.<br><br>
+2. Què suggereix el model sobre la relació entre predictor i resultat?
+</p>
+</p></span>
+</div>
+
+
+---
+
+# Model gènere
 
 ```{r}
 pitch_model1 <- lm(formula = pitch ~ 1 + gender,
@@ -172,7 +230,7 @@ summary(pitch_model1)
 
 ---
 
-# Modelo género
+# Model gènere
 
 ```{r}
 coef(pitch_model1)
@@ -188,7 +246,7 @@ mean(df_m$pitch)
 
 ---
 
-# Posible relación entre predictor y variable (contexto)
+# Possible relació entre predictor i variable (context)
 
 ```{r, echo=FALSE, fig.align='center', out.width='65%'}
 ggplot(df, aes(x = pitch, fill = context)) +
@@ -199,7 +257,7 @@ ggplot(df, aes(x = pitch, fill = context)) +
 ---
 
 
-# Posible relación entre predictor y variable (contexto)
+# Possible relació entre predictor i variable (context)
 
 ```{r, echo=FALSE, fig.align='center', out.width='65%'}
 ggplot(df, aes(y = pitch, x = context)) +
@@ -209,7 +267,7 @@ ggplot(df, aes(y = pitch, x = context)) +
 
 ---
 
-# Posible relación entre predictor y variable (contexto)
+# Possible relació entre predictor i variable (context)
 
 ```{r}
 mean(df_pol$pitch)
@@ -223,7 +281,7 @@ median(df_inf$pitch)
 
 ---
 
-# Posible relación entre predictor y variable (contexto)
+# Possible relació entre predictor i variable (context)
 
 ```{r}
 sd(df_pol$pitch)
@@ -237,7 +295,21 @@ quantile(df_inf$pitch)
 
 ---
 
-# Modelo contexto
+<br><br><br><br>
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>Vols saber quins factors (no) afecen el to mitjà (Hertz) d'una persona. Un col·lega t'ha donat les dades següents:<br><br>https://tinyurl.com/polite-data<br><br>
+<br>
+1. Crea un model de regressió lineal que prediu to a base de context<br><br>
+2. Què suggereix el model sobre la relació entre predictor i resultat?
+</p>
+</p></span>
+</div>
+
+---
+
+# Model context
 
 ```{r}
 pitch_model2 <- lm(formula = pitch ~ 1 + context,
@@ -247,7 +319,7 @@ summary(pitch_model2)
 
 ---
 
-# Modelo contexto
+# Model context
 
 ```{r}
 coef(pitch_model2)
@@ -263,18 +335,18 @@ mean(df_inf$pitch)
 
 ---
 
-## Por qué estamos creando un modelo para descubrir algo que ya nos indica la estadística descriptiva?
+## Per què estem creant un model per descobrir una cosa que ja ens indica l'estadística descriptiva?
 
 --
 
-1. Entre otros: error estándar; $R^2$; y residuales (cf. `pitch_model1` vs. `pitch_model2`)  
+1. Entre altres: error estàndard; $R^2$; i residuals (cf. `pitch_model1` vs. `pitch_model2`)
 
-2. Porque se pueden expander a más predictores
+2. Perquè es poden expandir a més predictors
 
 ---
 
 
-# Modelo con ambos predictores
+# Model amb ambdós predictors
 
 --
 
@@ -286,7 +358,7 @@ summary(pitch_model3)
 
 ---
 
-# Todos nuestros modelos (parámetros)
+# Tots els nostres models (paràmetres)
 
 ```{r}
 summary(pitch_model3)$coefficients
@@ -302,7 +374,7 @@ summary(pitch_model1)$coefficients
 
 ---
 
-# Todos nuestros modelos (goodness of fit)
+# Tots els nostres models (goodness of fit)
 
 ```{r}
 summary(pitch_model3)$r.squared
@@ -318,70 +390,65 @@ summary(pitch_model1)$r.squared
 
 ---
 
-# Resumen: regresión lineal
+# Resum: regressió lineal
 
-* Estimación de relación lineal entre uno o más predictores y un resultado.
+* Estimació de relació lineal entre un o més predictors i un resultat.
 
-* Predicción de resultado a base de predictores (+ error)
+* Predicció de resultat a base de predictors (+ error)
 
-* Permite relaciones más complejas<br><br>$$ y = \beta_0 + \beta_1 (\text{context} \times \text{gender})$$<br> $$ y = \beta_0 + \beta_1 \text{log(age)}$$
+* Permet relacions més complexes<br><br>$$ i = \beta_0 + \beta_1 (\text{context} \times \text{gender})$$<br> $$ i = \beta_0 + \beta_1 \text {log(age)}$$
 
-* Estimación de (i) error de predicciones; (ii) incertidumbre sobre parámetros; (iii) efecto condicional entre parámetros
-
----
-
-class: inverse
-
-# Recolección y generación de datos
+* Estimació de (i) error de prediccions; (ii) incertesa sobre paràmetres; (iii) efecte condicional entre paràmetres
 
 ---
 
 class: inverse
 
-# (In)significancia estadística
+# (In)significància estadística
 
 ---
 
-# Significancia estadística
+# Significància estadística
 
-Intuición: un resultado es estadísticamente significante cuando es [improbable]() obtener [un resultado así o más extremo]() bajo [la hipotesis nula]() al repetir el experimento ad infinitum
-
---
-* Lo que cuenta como *improbable* (debería) depende(r) del contexto de la investigación. Un número común en las ciencias sociales es [bajo 5%](); pero puede (y debe?) ser mucho más bajo.
+Intuïció: un resultat és estadísticament significant quan és [improbable]() obtenir [un resultat així o més extrem]() sota [la hipotesi nul·la]() en repetir l'experiment ad infinitum
 
 --
 
-* La *hipótesis nula* es, comúnmente, lo contrario a lo que uno quiere demostrar: No hay efecto diferencia entre grupo A y grupo B; el efecto de A en B es 0; el efecto de A en B es positivo/negativo; etc.
+* El que compta com a *improvable* (deuria) depèn(dre) del context de la investigació. Un nombre comú a les ciències socials és [sota el 5%](); però pot (i deu) ser molt més baix.
 
 --
 
-* *Así o más extremo* se refiere a: una diferencia entre grupo A y B (de un tamaño suficiente o mayor para decidir que hay una diferencia); el efecto de A en B siendo mayor (o mucho mayor) a 0; o menor (o mucho menor) a 0; el efecto de A en B siendo positivo/negativo (o muy positivo/negativo); etc.
+* La *hipòtesi nul·la* és, comunament, el contrari al que un vol demostrar: No hi ha  diferència entre grup A i grup B; l'efecte d'A a B és 0; etc.
+
+--
+
+* *Així o més extrem* es refereix a: una diferència entre grup A i B (d'una mida suficient o més gran per decidir que hi ha una diferència); l'efecte d'A a B sent més gran (o molt més gran) a 0; o menor (o molt menor) a 0; etc.
 
 ---
 
-# (In)significancia estadística: razones conceptuales para ser críticos
+# (In)significància estadística: raons conceptuals per ser crítics
 
-* En general, no nos interesa si A y B son diferentes si no que tan diferentes son
+* En general, no ens interessa si A i B són diferents sinó que tan diferents són
 
-* En general, no nos interesa si el efecto de B en A es positivo, si no cuan positivo
+* En general, no (només) ens interessa si l'efecte de B a A és positiu, si no com de positiu
 
 * ...
 
 ---
 
-# (In)significancia estadística: razones técnicas para ser críticos
+# (In)significància estadística: raons tècniques per ser crítics
 
-No encontrar un efecto significante es **siempre** un problema de tamaño de muestra.
+No trobar un efecte significant és **sempre** un problema de mida de mostra.
 
-Con una muestra suficientemente grande todos los efectos son significativos
+Amb una mostra prou gran tots els efectes són significatius
 
 ---
 
-# (In)significancia estadística: razones técnicas para ser críticos
+# (In)significància estadística: raons tècniques per ser crítics
 
 ```{r}
-set.seed(12)  #semilla aleatoria
-obs <- 5      #cuantas observaciones
+set.seed(12)  #random seed
+obs <- 5      #how many observations
 
 datos_A <-   rnorm(n = obs, mean = 160, sd = 5)
 datos_B <-   rnorm(n = obs, mean = 159, sd = 4)
@@ -390,26 +457,26 @@ id_grupo <-  c( rep('A',obs),
                 rep('B', obs)
               )
 
-#Juntando los datos en un data frame de dos columnas
-df <- data.frame(datos  = c(datos_A,datos_B),
-                 grupo  = id_grupo)
+#Joining data in a data frame with two columns
+df <- data.frame(dades  = c(datos_A,datos_B),
+                 grup  = id_grupo)
 ```
 
 ---
 
-# (In)significancia estadística: razones técnicas para ser críticos
+# (In)significància estadística: raons tècniques per ser crítics
 
 ```{r}
-summary(lm(datos ~ grupo, data = df))
+summary(lm(dades ~ grup, data = df))
 ```
 
 ---
 
-# (In)significancia estadística: razones técnicas para ser críticos
+# (In)significància estadística: raons tècniques per ser crítics
 
 ```{r}
-set.seed(12)   #semilla aleatoria
-obs <- 1000000 #cuantas observaciones
+set.seed(12)  #random seed
+obs <- 1000000      #how many observations
 
 datos_A <-   rnorm(n = obs, mean = 160, sd = 5)
 datos_B <-   rnorm(n = obs, mean = 159, sd = 4)
@@ -418,37 +485,29 @@ id_grupo <-  c( rep('A',obs),
                 rep('B', obs)
               )
 
-#Juntando los datos en un data frame de dos columnas
-df <- data.frame(datos   = c(datos_A,datos_B),
-                 grupo   = id_grupo)
+#Joining data in a data frame with two columns
+df <- data.frame(dades  = c(datos_A,datos_B),
+                 grup  = id_grupo)
 ```
 
 
 
 ---
 
-# (In)significancia estadística: razones técnicas para ser críticos
+# (In)significància estadística: raons tècniques per ser crítics
 
 ```{r}
-summary(lm(datos ~ grupo, data = df))
+summary(lm(dades ~ grup, data = df))
 ```
 
 ---
 
 class: inverse
 
-# Próxima sesión
+# Propera sessió
 
-* Entrega de "Assignment 5" (08:00 AM 17/05)
+* Lliurament de "Assignment 4" (08:00 AM 16/05)
 
 ***
 
-* **Modelos lineales generalizados I**
-
-*** 
-
-* Ejercicio práctico: 17/05 - 24/05
-
-* Entrega parte II de "Revisión por pares": 24/05 - 31/05
-
-* Informe final: 28/06
+* **Models lineals generalitzats I**
