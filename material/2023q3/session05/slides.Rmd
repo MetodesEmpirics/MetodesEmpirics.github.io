@@ -46,7 +46,7 @@ $$\Large \mu = \beta_0 + \beta_1 x_1 + ... \beta_n x_n$$
 <div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
 <span>
 <p style='margin-top:1em; text-align:center'>
-<b>Vols saber quins factors (no) afecen el to mitjà (Hertz) d'una persona. Un col·lega t'ha donat les dades següents:<br><br>https://tinyurl.com/polite-data<br><br>
+<b>Vols saber quins factors (no) afecten el to mitjà (Hertz) d'una persona. Un col·lega t'ha donat les dades següents:<br><br>https://tinyurl.com/polite-data<br><br>
 <br>
 1. Descriu les dades
 <br><br>
@@ -78,7 +78,7 @@ $$\Large \text{pitch}_i = \beta_0 + \beta_1 \text{gender}_i + \beta_2\text{conte
 <div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
 <span>
 <p style='margin-top:1em; text-align:center'>
-<b>Vols saber quins factors (no) afecen el to mitjà (Hertz) d'una persona. Un col·lega t'ha donat les dades següents:<br><br>https://tinyurl.com/polite-data<br><br>
+<b>Vols saber quins factors (no) afecten el to mitjà (Hertz) d'una persona. Un col·lega t'ha donat les dades següents:<br><br>https://tinyurl.com/polite-data<br><br>
 <br>
 1. Descriu les variants rellevants per a la teva anàlisi
 </p>
@@ -166,7 +166,7 @@ ggplot(df, aes(y = pitch, x = gender)) +
 <div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
 <span>
 <p style='margin-top:1em; text-align:center'>
-<b>Vols saber quins factors (no) afecen el to mitjà (Hertz) d'una persona. Un col·lega t'ha donat les dades següents:<br><br>https://tinyurl.com/polite-data<br><br>
+<b>Vols saber quins factors (no) afecten el to mitjà (Hertz) d'una persona. Un col·lega t'ha donat les dades següents:<br><br>https://tinyurl.com/polite-data<br><br>
 <br>
 1. Fes ús de mètodes descriptius per descriure la relació entre predictor (gènere) i resultat
 </p>
@@ -209,7 +209,7 @@ quantile(df_f$pitch)
 <div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
 <span>
 <p style='margin-top:1em; text-align:center'>
-<b>Vols saber quins factors (no) afecen el to mitjà (Hertz) d'una persona. Un col·lega t'ha donat les dades següents:<br><br>https://tinyurl.com/polite-data<br><br>
+<b>Vols saber quins factors (no) afecten el to mitjà (Hertz) d'una persona. Un col·lega t'ha donat les dades següents:<br><br>https://tinyurl.com/polite-data<br><br>
 <br>
 1. Crea un model de regressió lineal que prediu to a base de gènere.<br><br>
 2. Què suggereix el model sobre la relació entre predictor i resultat?
@@ -299,7 +299,7 @@ quantile(df_inf$pitch)
 <div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
 <span>
 <p style='margin-top:1em; text-align:center'>
-<b>Vols saber quins factors (no) afecen el to mitjà (Hertz) d'una persona. Un col·lega t'ha donat les dades següents:<br><br>https://tinyurl.com/polite-data<br><br>
+<b>Vols saber quins factors (no) afecten el to mitjà (Hertz) d'una persona. Un col·lega t'ha donat les dades següents:<br><br>https://tinyurl.com/polite-data<br><br>
 <br>
 1. Crea un model de regressió lineal que prediu to a base de context<br><br>
 2. Què suggereix el model sobre la relació entre predictor i resultat?
