@@ -408,6 +408,20 @@ class: inverse
 
 ---
 
+<br><br><br><br>
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b> Intuïtivament, que vol dir que un resultat és estadísticament significatiu?</b><br><br>Per exemple, "es demostra un efecte estadisticamente significatiu de reducció de desocupació en implementar mesura X"
+<br><br>
+<b>S'hauria d'implementar mesura X?</b>
+</p>
+</p></span>
+</div>
+
+
+---
+
 # Significància estadística
 
 Intuïció: un resultat és estadísticament significant quan és [improbable]() obtenir [un resultat així o més extrem]() sota [la hipotesi nul·la]() en repetir l'experiment ad infinitum
