@@ -1,7 +1,7 @@
 ---
-title: "6 Regresión generalizada I"
-author: "Métodos empíricos 2"
-date: "17/05/2022"
+title: "6 Regressió generalitzada I"
+author: "Mètodes empírics 2"
+date: "16/05/2022"
 output:
   xaringan::moon_reader:
     nature:
@@ -14,15 +14,15 @@ library(dplyr)
 library(ggplot2)
 ```
 
-# Hoy
+# Avui
 
 .large[
 
-* Caso de estudios
+* Cas d'estudis
 
-* Límites de modelos lineales 
+* Límits de models lineals
 
-* Generalización
+* Generalització
 
 ]
 
@@ -30,7 +30,7 @@ library(ggplot2)
 
 class: inverse, center
 
-# Gestos a travéz de contextos y culturas
+# Gestos a través de contextos i cultures
 
 .footnote[
 ***
@@ -40,7 +40,25 @@ by social context: A study of multimodal politeness across two cultures](). *Ges
 
 ---
 
-# Datos
+<br><br><br><br>
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>Vols saber quins factors (no) afecten el nombre de gestos que fa una persona de mitjana en una conversa. Un col·lega t'ha donat les dades següents:<br><br>https://tinyurl.com/gestures-data<br><br>
+<br>
+1. Descriu les dades
+<br><br>
+2. Descriu com penses que les variables es podrien relacionar
+<br><br>
+3. Quins valors poden tenir les variables del teu interès?
+</b>
+</p>
+</p></span>
+</div>
+
+---
+
+# Dades
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 df <- read.csv('https://tinyurl.com/gestures-data') #download data
@@ -50,7 +68,7 @@ head(df)
 ---
 
 
-# Variables independientes (possibles predictores)
+# Variables independents (possibles predictors)
 
 * `gender`: M o F
 
@@ -60,7 +78,7 @@ head(df)
 
 ---
 
-# Variable dependiente (resultado)
+# Variable dependent (resultat)
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.align='center', out.width='65%'}
 library(ggplot2)
@@ -74,7 +92,7 @@ ggplot(df, aes(x = gestures)) +
 ---
 
 
-# Variable dependiente (resultado)
+# Variable dependent (resultat)
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 df$gestures
@@ -85,7 +103,7 @@ df$gestures
 
 class: inverse
 
-# Límites de modelos lineales 
+# Límits de models lineals
 <br>
 <br>
 $$\Huge y_i \sim \text{Normal}(\mu_i, \sigma)$$
@@ -100,7 +118,7 @@ $$\Huge y_i \sim \text{Bernoulli}(p_i)$$
 
 ---
 
-# Modelo lineal
+# Model lineal
 
 $$\Huge y_i \sim \text{Normal}(\mu_i, \sigma)$$
 <br>
@@ -109,8 +127,7 @@ $$\Huge \mu_i = \beta_0 + \beta_1 x_1 + ... \beta_n x_n$$
 
 ---
 
-# Modelo lineal generalizado: Normal
-
+# Model lineal generalitzat: Normal
 
 
 $$\Huge y_i \sim \text{Normal}(\mu_i, \sigma)$$
@@ -124,8 +141,7 @@ $$\Huge f(x) = x$$
 
 ---
 
-# Modelo lineal generalizado: Poisson
-
+# Model lineal generalitzat: Poisson
 
 $$\Huge y_i \sim \text{Poisson}(\lambda_i)$$
 <br>
@@ -137,7 +153,7 @@ $$\Huge f(x) = \text{exp}(x)$$
 
 ---
 
-# Espacio exponencial
+# Espai exponencial
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.align='center', out.width='65%'}
 x <- seq(-5,5)
@@ -145,13 +161,13 @@ y <- exp(x)
 
 d <- data.frame(x,y)
 
-ggplot(data = d, aes(x,y)) + geom_point(col='indianred',size=3) + theme_minimal(base_size=20) + xlab('Suma de predictores') + ylab('Lambda') 
+ggplot(data = d, aes(x,y)) + geom_point(col='indianred',size=3) + theme_minimal(base_size=20) + xlab('Suma de predictors') + ylab('Lambda') 
 ```
 
 
 ---
 
-# Modelo lineal generalizado: Poisson
+# Model lineal generalitzat: Poisson
 
 
 $$\Huge y_i \sim \text{Poisson}(\lambda_i)$$
@@ -159,7 +175,7 @@ $$\Huge y_i \sim \text{Poisson}(\lambda_i)$$
 $$\Huge \lambda_i = exp(\beta_0 + \beta_1 x_1 + ... \beta_n x_n)$$
 ---
 
-# Modelo lineal generalizado: Poisson
+# Model lineal generalitzat: Poisson
 
 
 $$\Huge y_i \sim \text{Poisson}(\lambda_i)$$
@@ -169,13 +185,13 @@ $$\Huge log(\lambda_i) = \beta_0 + \beta_1 x_1 + ... \beta_n x_n$$
 ---
 
 
-# Link functions canónicas
+# Link functions canòniques
 
-.pull-left[**Normal**: Identitad 
+.pull-left[**Normal**: Identitat 
 
 <br>
 
-**Poisson**: Logarítmo
+**Poisson**: Logaritme
 
 <br><br>
 **Bernoulli/Binomial**: Logit 
@@ -193,7 +209,7 @@ $$f(x) = \frac{exp(x)}{1 + exp(x)}$$
 
 ---
 
-# Regresión de Poisson (R)
+# Regressió de Poisson (R)
 
 ```{r, warning=FALSE, message=FALSE, eval=FALSE}
 glm(formula = gestures ~ 1 + language,
@@ -207,7 +223,7 @@ glm(formula = gestures ~ 1 + language,
 
 class: inverse, center
 
-# Gestos a travéz de contextos y culturas
+# Gestos a través de contextos i cultures
 
 .footnote[
 ***
@@ -217,7 +233,7 @@ by social context: A study of multimodal politeness across two cultures](). *Ges
 
 ---
 
-# Datos
+# Dades
 
 ```{r}
 head(df)
@@ -225,7 +241,7 @@ head(df)
 
 ---
 
-# Gestos ~ Contexto
+# Gestos ~ Context
 
 --
 
@@ -238,15 +254,15 @@ ggplot(df, aes(x = gestures, fill = context)) +
 ---
 
 
-# Modelo 1: Contexto
+# Model 1: Context
 
 ```{r, warning=FALSE, message=FALSE}
-m1_contexto <- glm(formula = gestures ~ 1 + context,
+m1_context <- glm(formula = gestures ~ 1 + context,
                    data    = df,
                    family  = poisson(link = 'log')
                    )
 
-coef(m1_contexto)
+coef(m1_context)
 ```
 
 --
@@ -258,7 +274,7 @@ $$\Large \lambda_i \approx \text{exp}(3.99 - (\text{polite} \times 0.18))$$
 ---
 
 
-# Modelo 1: Contexto
+# Model 1: Context
 $$\Large \lambda_i \approx \text{exp}(3.99 - (\text{polite} \times 0.18))$$
 
 <br><br>
@@ -270,7 +286,7 @@ exp(3.99)        #expected gestures in informal context
 
 ---
 
-# Gestos ~ Lenguaje
+# Gestos ~ Llenguatge
 
 --
 
@@ -284,21 +300,21 @@ ggplot(df, aes(x = gestures, fill = language)) +
 
 
 
-# Modelo 2: Lenguaje
+# Model 2: Llenguatge
 
 ```{r, warning=FALSE, message=FALSE}
-m2_lenguaje <- glm(formula = gestures ~ 1 + language,
+m2_lleng <- glm(formula = gestures ~ 1 + language,
                    data    = df,
                    family  = poisson(link = 'log')
                    )
 
-coef(m2_lenguaje)
+coef(m2_lleng)
 ```
 
 
 ---
 
-# Gestos ~ Género
+# Gestos ~ Gènere
 
 --
 
@@ -312,85 +328,85 @@ ggplot(df, aes(x = gestures, fill = gender)) +
 
 
 
-# Modelo 3: Género
+# Modelo 3: Gènere
 
 ```{r, warning=FALSE, message=FALSE}
-m3_genero <- glm(formula   = gestures ~ 1 + gender,
+m3_gen <- glm(formula   = gestures ~ 1 + gender,
                    data    = df,
                    family  = poisson(link = 'log')
                    )
 
-coef(m3_genero)
+coef(m3_gen)
 ```
 
 ---
 
-# summary(m1_contexto)
+# summary(m1_context)
 
 
 
 ```{r, echo=FALSE}
-summary(m1_contexto)
+summary(m1_context)
 ```
 
 ---
 
 # Akaike Information Criterion (AIC)
 
-* Estimado de predicción fuera de muestra (out of sample prediction)
+* Estimat de predicció fora de mostra (out of sample prediction)
 
-* Sirve de ranking relativo a otros modelos (que vieron los mismos datos)
+* Serveix de rànquing relatiu a altres models (que van veure les mateixes dades)
 
-* AIC más bajo $\Rightarrow$ mejor
+* AIC més baix $\Rightarrow$ millor
 
 ---
 
-# summary(m2_lenguaje)
+# summary(m2_lleng)
 
 
 ```{r, echo=FALSE}
-summary(m2_lenguaje)
+summary(m2_lleng)
 ```
 
 ---
 
-# summary(m3_genero)
+# summary(m3_gen)
 
 ```{r, echo=FALSE}
-summary(m3_genero)
+summary(m3_gen)
 ```
 
 
 ---
 
-# Modelo 4: 3 predictores
+# Model 4: 3 predictors
 
 ```{r}
-m4_todos <-  glm(formula   = gestures ~ 1 + gender + context + language,
+m4_all <-  glm(formula   = gestures ~ 1 + gender + context + language,
                    data    = df,
                    family  = poisson(link = 'log')
                    )
-coef(m4_todos)
+coef(m4_all)
 ```
 
 ---
 
-# Modelo 4: 3 predictores
+# Model 4: 3 predictors
 
 ```{r, echo=FALSE}
-summary(m4_todos)
+summary(m4_all)
 ```
 
 ---
 
-# Modelo 4: 2 predictores
+# Model 4: 2 predictors
 
 ```{r}
-m5_casi_todos <-  glm(formula   = gestures ~ 1 + context + language,
+m5_gairabe_tots <-  glm(formula   = gestures ~ 1 + context + language,
                          data    = df,
                          family  = poisson(link = 'log')
                    )
-coef(m5_casi_todos)
+coef(m5_gairabe_tots)
 
 ```
 
@@ -399,7 +415,7 @@ coef(m5_casi_todos)
 # Modelo 4: 2 predictores
 
 ```{r, echo=FALSE}
-summary(m5_casi_todos)
+summary(m5_gairabe_tots)
 ```
 
 ---
@@ -407,11 +423,11 @@ summary(m5_casi_todos)
 # AICs
 
 ```{r}
-m1_contexto$aic
-m2_lenguaje$aic
-m3_genero$aic
-m4_todos$aic
-m5_casi_todos$aic
+m1_context$aic
+m2_lleng$aic
+m3_gen$aic
+m4_all$aic
+m5_gairabe_tots$aic
 
 ```
 
@@ -419,17 +435,10 @@ m5_casi_todos$aic
 
 class: inverse
 
-# Próxima sesión
+# Propera sessió
 
-* Entrega de "Practical exercise" (08:00 AM 24/05)
+* Lliurament de Assignment 5 (08:00 AM 23/05)
 
 ***
 
-* **Modelos lineales generalizados II**
-
-*** 
-
-* Entrega parte II de "Revisión por pares": 24/05 - 31/05
-
-* Informe final: 28/06
-
+* **Models lineals generalitzats II**

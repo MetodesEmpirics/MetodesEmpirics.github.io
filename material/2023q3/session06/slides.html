@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>6 Regresión generalizada I</title>
+    <title>6 Regressió generalitzada I</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Métodos empíricos 2" />
+    <meta name="author" content="Mètodes empírics 2" />
     <link href="slides_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="slides_files/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
   </head>
@@ -12,13 +12,13 @@
 class: center, middle, inverse, title-slide
 
 .title[
-# 6 Regresión generalizada I
+# 6 Regressió generalitzada I
 ]
 .author[
-### Métodos empíricos 2
+### Mètodes empírics 2
 ]
 .date[
-### 17/05/2022
+### 16/05/2022
 ]
 
 ---
@@ -26,15 +26,15 @@ class: center, middle, inverse, title-slide
 
 
 
-# Hoy
+# Avui
 
 .large[
 
-* Caso de estudios
+* Cas d'estudis
 
-* Límites de modelos lineales 
+* Límits de models lineals
 
-* Generalización
+* Generalització
 
 ]
 
@@ -42,7 +42,7 @@ class: center, middle, inverse, title-slide
 
 class: inverse, center
 
-# Gestos a travéz de contextos y culturas
+# Gestos a través de contextos i cultures
 
 .footnote[
 ***
@@ -52,7 +52,25 @@ by social context: A study of multimodal politeness across two cultures](). *Ges
 
 ---
 
-# Datos
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt;Vols saber quins factors (no) afecten el nombre de gestos que fa una persona de mitjana en una conversa. Un col·lega t'ha donat les dades següents:&lt;br&gt;&lt;br&gt;https://tinyurl.com/gestures-data&lt;br&gt;&lt;br&gt;
+&lt;br&gt;
+1. Descriu les dades
+&lt;br&gt;&lt;br&gt;
+2. Descriu com penses que les variables es podrien relacionar
+&lt;br&gt;&lt;br&gt;
+3. Quins valors poden tenir les variables del teu interès?
+&lt;/b&gt;
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+---
+
+# Dades
 
 
 ```
@@ -68,7 +86,7 @@ by social context: A study of multimodal politeness across two cultures](). *Ges
 ---
 
 
-# Variables independientes (possibles predictores)
+# Variables independents (possibles predictors)
 
 * `gender`: M o F
 
@@ -78,7 +96,7 @@ by social context: A study of multimodal politeness across two cultures](). *Ges
 
 ---
 
-# Variable dependiente (resultado)
+# Variable dependent (resultat)
 
 &lt;img src="slides_files/figure-html/unnamed-chunk-2-1.png" width="65%" style="display: block; margin: auto;" /&gt;
 
@@ -86,12 +104,13 @@ by social context: A study of multimodal politeness across two cultures](). *Ges
 ---
 
 
-# Variable dependiente (resultado)
+# Variable dependent (resultat)
 
 
 ```
-##  [1]  61  78  31  40  81  49  32  49  39  32  35  30  88  73  59  47  22  13  61  73  58  51 101  82  56  74  40  43  91  76  62  37  89  49  30  30  33  11  26  13  63  62
-## [43]  51  27  67  49  61  61  31  16  63  42  22  10
+##  [1]  61  78  31  40  81  49  32  49  39  32  35  30  88  73  59  47  22  13  61
+## [20]  73  58  51 101  82  56  74  40  43  91  76  62  37  89  49  30  30  33  11
+## [39]  26  13  63  62  51  27  67  49  61  61  31  16  63  42  22  10
 ```
 
 
@@ -99,7 +118,7 @@ by social context: A study of multimodal politeness across two cultures](). *Ges
 
 class: inverse
 
-# Límites de modelos lineales 
+# Límits de models lineals
 &lt;br&gt;
 &lt;br&gt;
 `$$\Huge y_i \sim \text{Normal}(\mu_i, \sigma)$$`
@@ -114,7 +133,7 @@ class: inverse
 
 ---
 
-# Modelo lineal
+# Model lineal
 
 `$$\Huge y_i \sim \text{Normal}(\mu_i, \sigma)$$`
 &lt;br&gt;
@@ -123,8 +142,7 @@ class: inverse
 
 ---
 
-# Modelo lineal generalizado: Normal
-
+# Model lineal generalitzat: Normal
 
 
 `$$\Huge y_i \sim \text{Normal}(\mu_i, \sigma)$$`
@@ -138,8 +156,7 @@ class: inverse
 
 ---
 
-# Modelo lineal generalizado: Poisson
-
+# Model lineal generalitzat: Poisson
 
 `$$\Huge y_i \sim \text{Poisson}(\lambda_i)$$`
 &lt;br&gt;
@@ -151,14 +168,14 @@ class: inverse
 
 ---
 
-# Espacio exponencial
+# Espai exponencial
 
 &lt;img src="slides_files/figure-html/unnamed-chunk-4-1.png" width="65%" style="display: block; margin: auto;" /&gt;
 
 
 ---
 
-# Modelo lineal generalizado: Poisson
+# Model lineal generalitzat: Poisson
 
 
 `$$\Huge y_i \sim \text{Poisson}(\lambda_i)$$`
@@ -166,7 +183,7 @@ class: inverse
 `$$\Huge \lambda_i = exp(\beta_0 + \beta_1 x_1 + ... \beta_n x_n)$$`
 ---
 
-# Modelo lineal generalizado: Poisson
+# Model lineal generalitzat: Poisson
 
 
 `$$\Huge y_i \sim \text{Poisson}(\lambda_i)$$`
@@ -176,13 +193,13 @@ class: inverse
 ---
 
 
-# Link functions canónicas
+# Link functions canòniques
 
-.pull-left[**Normal**: Identitad 
+.pull-left[**Normal**: Identitat 
 
 &lt;br&gt;
 
-**Poisson**: Logarítmo
+**Poisson**: Logaritme
 
 &lt;br&gt;&lt;br&gt;
 **Bernoulli/Binomial**: Logit 
@@ -200,7 +217,7 @@ class: inverse
 
 ---
 
-# Regresión de Poisson (R)
+# Regressió de Poisson (R)
 
 
 ```r
@@ -215,7 +232,7 @@ glm(formula = gestures ~ 1 + language,
 
 class: inverse, center
 
-# Gestos a travéz de contextos y culturas
+# Gestos a través de contextos i cultures
 
 .footnote[
 ***
@@ -225,7 +242,7 @@ by social context: A study of multimodal politeness across two cultures](). *Ges
 
 ---
 
-# Datos
+# Dades
 
 
 ```r
@@ -244,7 +261,7 @@ head(df)
 
 ---
 
-# Gestos ~ Contexto
+# Gestos ~ Context
 
 --
 
@@ -253,16 +270,16 @@ head(df)
 ---
 
 
-# Modelo 1: Contexto
+# Model 1: Context
 
 
 ```r
-m1_contexto &lt;- glm(formula = gestures ~ 1 + context,
+m1_context &lt;- glm(formula = gestures ~ 1 + context,
                    data    = df,
                    family  = poisson(link = 'log')
                    )
 
-coef(m1_contexto)
+coef(m1_context)
 ```
 
 ```
@@ -279,7 +296,7 @@ coef(m1_contexto)
 ---
 
 
-# Modelo 1: Contexto
+# Model 1: Context
 `$$\Large \lambda_i \approx \text{exp}(3.99 - (\text{polite} \times 0.18))$$`
 
 &lt;br&gt;&lt;br&gt;
@@ -303,7 +320,7 @@ exp(3.99)        #expected gestures in informal context
 
 ---
 
-# Gestos ~ Lenguaje
+# Gestos ~ Llenguatge
 
 --
 
@@ -313,16 +330,16 @@ exp(3.99)        #expected gestures in informal context
 
 
 
-# Modelo 2: Lenguaje
+# Model 2: Llenguatge
 
 
 ```r
-m2_lenguaje &lt;- glm(formula = gestures ~ 1 + language,
+m2_lleng &lt;- glm(formula = gestures ~ 1 + language,
                    data    = df,
                    family  = poisson(link = 'log')
                    )
 
-coef(m2_lenguaje)
+coef(m2_lleng)
 ```
 
 ```
@@ -333,7 +350,7 @@ coef(m2_lenguaje)
 
 ---
 
-# Gestos ~ Género
+# Gestos ~ Gènere
 
 --
 
@@ -343,16 +360,16 @@ coef(m2_lenguaje)
 
 
 
-# Modelo 3: Género
+# Modelo 3: Gènere
 
 
 ```r
-m3_genero &lt;- glm(formula   = gestures ~ 1 + gender,
+m3_gen &lt;- glm(formula   = gestures ~ 1 + gender,
                    data    = df,
                    family  = poisson(link = 'log')
                    )
 
-coef(m3_genero)
+coef(m3_gen)
 ```
 
 ```
@@ -362,7 +379,7 @@ coef(m3_genero)
 
 ---
 
-# summary(m1_contexto)
+# summary(m1_context)
 
 
 
@@ -397,15 +414,15 @@ coef(m3_genero)
 
 # Akaike Information Criterion (AIC)
 
-* Estimado de predicción fuera de muestra (out of sample prediction)
+* Estimat de predicció fora de mostra (out of sample prediction)
 
-* Sirve de ranking relativo a otros modelos (que vieron los mismos datos)
+* Serveix de rànquing relatiu a altres models (que van veure les mateixes dades)
 
-* AIC más bajo `\(\Rightarrow\)` mejor
+* AIC més baix `\(\Rightarrow\)` millor
 
 ---
 
-# summary(m2_lenguaje)
+# summary(m2_lleng)
 
 
 
@@ -437,7 +454,7 @@ coef(m3_genero)
 
 ---
 
-# summary(m3_genero)
+# summary(m3_gen)
 
 
 ```
@@ -469,15 +486,15 @@ coef(m3_genero)
 
 ---
 
-# Modelo 4: 3 predictores
+# Model 4: 3 predictors
 
 
 ```r
-m4_todos &lt;-  glm(formula   = gestures ~ 1 + gender + context + language,
+m4_all &lt;-  glm(formula   = gestures ~ 1 + gender + context + language,
                    data    = df,
                    family  = poisson(link = 'log')
                    )
-coef(m4_todos)
+coef(m4_all)
 ```
 
 ```
@@ -487,7 +504,7 @@ coef(m4_todos)
 
 ---
 
-# Modelo 4: 3 predictores
+# Model 4: 3 predictors
 
 
 ```
@@ -520,15 +537,15 @@ coef(m4_todos)
 
 ---
 
-# Modelo 4: 2 predictores
+# Model 4: 2 predictors
 
 
 ```r
-m5_casi_todos &lt;-  glm(formula   = gestures ~ 1 + context + language,
+m5_gairabe_tots &lt;-  glm(formula   = gestures ~ 1 + context + language,
                          data    = df,
                          family  = poisson(link = 'log')
                    )
-coef(m5_casi_todos)
+coef(m5_gairabe_tots)
 ```
 
 ```
@@ -574,7 +591,7 @@ coef(m5_casi_todos)
 
 
 ```r
-m1_contexto$aic
+m1_context$aic
 ```
 
 ```
@@ -582,7 +599,7 @@ m1_contexto$aic
 ```
 
 ```r
-m2_lenguaje$aic
+m2_lleng$aic
 ```
 
 ```
@@ -590,7 +607,7 @@ m2_lenguaje$aic
 ```
 
 ```r
-m3_genero$aic
+m3_gen$aic
 ```
 
 ```
@@ -598,7 +615,7 @@ m3_genero$aic
 ```
 
 ```r
-m4_todos$aic
+m4_all$aic
 ```
 
 ```
@@ -606,7 +623,7 @@ m4_todos$aic
 ```
 
 ```r
-m5_casi_todos$aic
+m5_gairabe_tots$aic
 ```
 
 ```
@@ -617,19 +634,13 @@ m5_casi_todos$aic
 
 class: inverse
 
-# Próxima sesión
+# Propera sessió
 
-* Entrega de "Practical exercise" (08:00 AM 24/05)
+* Lliurament de Assignment 5 (08:00 AM 23/05)
 
 ***
 
-* **Modelos lineales generalizados II**
-
-*** 
-
-* Entrega parte II de "Revisión por pares": 24/05 - 31/05
-
-* Informe final: 28/06
+* **Models lineals generalitzats II**
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
