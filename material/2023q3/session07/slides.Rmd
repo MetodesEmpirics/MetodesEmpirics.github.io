@@ -1,7 +1,7 @@
 ---
-title: "7 Regresión generalizada II"
-author: "Métodos empíricos 2"
-date: "24/05/2022"
+title: "7 Regressió generalitzada II"
+author: "Mètodes empírics 2"
+date: "23/05/2022"
 output:
   xaringan::moon_reader:
     nature:
@@ -14,15 +14,17 @@ library(dplyr)
 library(ggplot2)
 ```
 
-# Hoy
+# Avui
 
 .large[
 
-* Caso de estudios
+* Cas d'estudis
 
-* Generalización lineal Binomial/Bernoulli
+* Generalització lineal Binomial/Bernoulli
 
-* Temas avanzados
+* Temes avançats
+
+* (Xarxes neuronals & ChatGPT)
 
 ]
 
@@ -41,7 +43,28 @@ efficient communication](). *Gesture*.
 
 ---
 
-# Datos
+<br><br><br><br>
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>Vols saber quins factors (no) afecten l'ús de la paraula curta a l'experiment de Kanwal et al.; aquestes són les dades:<br><br>https://tinyurl.com/2s3p9s2z<br><br>
+<br>
+1. Descriu les dades
+<br><br>
+2. Descriu com penses que les variables es podrien relacionar
+<br><br>
+3. Quins valors poden tenir les variables del teu interès?
+</b>
+</p>
+</p></span>
+</div>
+
+
+
+
+---
+
+# Dades
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, echo=FALSE}
 
@@ -53,7 +76,7 @@ head(df)
 ---
 
 
-# Variables independientes (predictores)
+# Variables independents (predictors)
 
 * `trial`: 1, 2, ..., 31, 32
 
@@ -70,7 +93,7 @@ df$freq  <- ifelse(df$display %in% c(0,1),  'freq', 'infreq')
 * `freq`: infreq o freq
 ---
 
-# Variable dependiente (resultado)
+# Variable dependent (resultat)
 ```{r}
 df$label[1:10]
 df$short <- ifelse(df$label == 'zop', 1, 0) 
@@ -81,7 +104,7 @@ df$short[1:10]
 ---
 
 
-# Variable dependiente (resultado)
+# Variable dependent (resultat)
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.align='center', out.width='65%'}
 library(ggplot2)
@@ -97,7 +120,7 @@ ggplot(df, aes(x = short)) +
 ---
 class: center, inverse
 
-## Modelo lineal generalizado: Bernoulli / Binomial
+## Model lineal generalitzat: Bernoulli / Binomial
 
 ---
 
@@ -108,8 +131,7 @@ class: center, inverse
 
 ---
 
-# Modelo lineal generalizado: Bernoulli / Binomial
-
+## Model lineal generalitzat: Bernoulli / Binomial
 
 $$\Huge y_i \sim \text{Bernoulli}(p_i)$$
 <br>
@@ -120,7 +142,7 @@ $$\Huge p_i = f(\beta_0 + \beta_1 x_1 + ... \beta_n x_n)$$
 $$\Huge f(x) = \text{inverse logit}(x)$$ 
 
 ---
-# Logit y su inverso
+# Logit i el seu invers
 
 $$\text{logit}(p) = \text{log}(\frac{p}{1-p})$$
 <br>
@@ -135,7 +157,7 @@ inv.logit <- function(x){
 
 ---
 
-# Espacio inverso logit
+# Espai invers logit
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.align='center', out.width='65%'}
 x <- seq(-5,5)
@@ -149,16 +171,14 @@ ggplot(data = d, aes(x,y)) + geom_point(col='indianred',size=3) + theme_minimal(
 
 ---
 
-# Modelo lineal generalizado: Bernoulli
-
+# Model lineal generalitzat: Bernoulli
 
 $$\Huge y_i \sim \text{Bernoulli}(p_i)$$
 <br>
 $$\Huge p_i = \text{inv.logit}(\beta_0 + \beta_1 x_1)$$
 ---
 
-# Modelo lineal generalizado: Bernoulli
-
+# Model lineal generalitzat: Bernoulli
 
 $$\Huge y_i \sim \text{Bernoulli}(p_i)$$
 <br>
@@ -166,7 +186,7 @@ $$\Huge \text{logit}(p_i) = \beta_0 + \beta_1 x_1 + ... \beta_n x_n$$
 
 ---
 
-# Regresión de Binomial/Bernoulli (R)
+# Regressió Binomial/Bernoulli (R)
 
 ```{r, warning=FALSE, message=FALSE, eval=FALSE}
 glm(formula = short ~ 1 + freq,
@@ -191,7 +211,7 @@ efficient communication](). *Cognition*.
 ---
 
 
-# Datos
+# Dades
 
 ```{r}
 head(df)
@@ -199,8 +219,7 @@ head(df)
 
 ---
 
-# longitud de expresión ~ frecuencia de objeto
-
+# longitud d'expressió ~ freqüència d'objecte
 --
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.align='center', out.width='65%'}
@@ -216,7 +235,7 @@ ggplot(df, aes(x = short, fill = as.factor(freq))) +
 ---
 
 
-# Modelo 1: Frecuencia
+# Model 1: Freqüència
 
 ```{r, warning=FALSE, message=FALSE}
 zipf_freq <- glm(formula = short ~ 1 + freq,
@@ -235,7 +254,7 @@ $$\Large \text{logit}(p_i) \approx 0.13 - (\text{infrec} \times 1.612) \approx -
 ---
 
 
-# Modelo 1: Frecuencia
+# Model 1: Freqüència
 $$\Large \text{logit}(p_i) \approx 0.13 - (\text{infrec} \times 1.612) \approx -1.482 $$
 
 <br><br>
@@ -256,7 +275,7 @@ summary(zipf_freq)
 
 ---
 
-# longitud de expresión ~ turno
+# longitud d'expressió ~ torn
 
 --
 
@@ -272,7 +291,7 @@ ggplot(df, aes(x = trial, fill=as.factor(short))) +
 
 
 
-# Modelo 2: Turno
+# Model 2: Torn
 
 ```{r, warning=FALSE, message=FALSE}
 zipf_trial <- glm(formula = short ~ 1 + trial,
@@ -284,7 +303,7 @@ coef(zipf_trial)
 
 
 ---
-# Predicciones
+# Prediccions
 
 ```{r}
 inv.logit(-0.74 + (1  * 0.039))  
@@ -304,7 +323,7 @@ summary(zipf_trial)
 ---
 
 
-# Modelo 3: Ambos predictores
+# Model 3: Tots dos predictors
 
 ```{r}
 zipf_trial_freq <- glm(formula = short ~ 1 + trial + freq,
@@ -316,7 +335,7 @@ coef(zipf_trial_freq)
 
 ---
 
-# Modelo 3: Ambos predictores
+# Model 3: Tots dos predictors
 
 ```{r, echo=FALSE}
 summary(zipf_trial_freq)
@@ -337,12 +356,12 @@ zipf_trial_freq$aic
 
 class: inverse, center
 
-# Temas avanzados
-
+# Temes avançats
 
 ---
 
-# Interacciones
+# Interaccions
+
 ```{r}
 m4 <- glm(formula = short ~ 1 + trial + freq + trial:freq,
                        data    = df,
@@ -354,7 +373,8 @@ coef(m4)
 ---
 
 
-# Modelos hierarquicos
+# Models hierarquics
+
 ```{r, message=FALSE, warning=FALSE}
 library(lme4)
 
@@ -368,7 +388,8 @@ m5 <- glmer(formula = short ~ 1 + trial + freq +
 
 ---
 
-# Modelos hierarquicos
+# Models hierarquics
+
 ```{r}
 fixef(m5)
 
@@ -377,11 +398,23 @@ head(ranef(m5)$IP)
 
 ---
 
+# Mes temes
+
+
+* meta anàlisi
+
+* GAMs
+
+* Xarxes neuronals
+
+
+---
+
 class: inverse
 
-# Próxima sesión
+# Propera sessió
 
-* Entrega parte II de "Revisión por pares": 24/05 - 31/05
+* Lliurament part II de "Revisió per parells": 30/05
 
 ***
 
@@ -389,4 +422,4 @@ class: inverse
 
 *** 
 
-* Informe final: 28/06
+* Informe final: 25/06
