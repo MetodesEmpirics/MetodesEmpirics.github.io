@@ -38,7 +38,7 @@ class: inverse, center
 ***
 Kanwal et al. (2017):  [Zipf’s Law of Abbreviation and the Principle of Least
 Effort: Language users optimise a miniature lexicon for
-efficient communication](). *Gesture*.
+efficient communication](). *Cognition*.
 ]
 
 ---
@@ -406,6 +406,80 @@ head(ranef(m5)$IP)
 * GAMs
 
 * Xarxes neuronals
+
+
+---
+
+# Meta anàlisi
+
+<br><br><br><br>
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>T'interessa saber si l'ús d'un pronom (vs. nom) és més probable per a una entitat més predictible. La literatura té resultats que es contradiuen. Alguns experiments diuen que sí; altres que no. Què fas?
+</b>
+</p>
+</p></span>
+</div>
+
+---
+
+# Meta anàlisi
+
+.center[
+<img src='general_effect.png' width='90%', height='90%'>
+]
+
+---
+
+# GAMs
+
+.center[
+<img src='colex1.png' width='75%', height='75%'>
+]
+
+---
+
+# GAMs
+
+.center[
+<img src='colex2.png' width='75%', height='75%'>
+]
+
+---
+
+# GAMs
+
+.center[
+<img src='colex3.png' width='75%', height='75%'>
+]
+
+---
+
+# GAMs
+
+.center[
+<img src='colex4.png' width='75%', height='75%'>
+]
+
+---
+
+# GAMs
+
+.center[
+<img src='colex5.png' width='75%', height='75%'>
+]
+
+
+---
+
+# Xarxes neuronals
+
+
+.center[
+<img src='nns.png' width='75%', height='75%'>
+]
+
 
 
 ---
