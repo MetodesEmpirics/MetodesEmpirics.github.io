@@ -3,7 +3,7 @@
   <head>
     <title>8 Corpora</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Métodos empíricos 2" />
+    <meta name="author" content="Mètodes empírics 2" />
     <link href="slides_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="slides_files/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
   </head>
@@ -15,10 +15,10 @@ class: center, middle, inverse, title-slide
 # 8 Corpora
 ]
 .author[
-### Métodos empíricos 2
+### Mètodes empírics 2
 ]
 .date[
-### 31/05/2022
+### 30/05/2022
 ]
 
 ---
@@ -26,16 +26,16 @@ class: center, middle, inverse, title-slide
 
 
 
-# Hoy
+# Avui
 
 .large[
-* Las leyes de Zipf
+* Les lleis de Zipf
 
-* Corpora y pre-procesamiento
+* Corpora i pre-processament
 
-* Aplicaciones
+* Aplicacions
 
-* Word embeddings y más allá
+* Word embeddings i més enllà
 
 ]
 
@@ -43,7 +43,7 @@ class: center, middle, inverse, title-slide
 
 class: inverse, center
 
-# Las leyes de Zipf
+# Les lleis de Zipf
 
 
 .footnote[
@@ -65,20 +65,20 @@ G.K. Zipf (1949) *Human behavior and the principle of least effort*
 
 ---
 
-### Rank-Frequency Law: La distribución rango-frecuencia de palabras es inversa
+### Rank-Frequency Law: La distribució rang-freqüència de paraules és inversa
 
 &lt;img src="Zipf_30wiki_en_labels.png" width="90%" style="display: block; margin: auto;" /&gt;
 
 ---
 
-### Law of Abbreviation: Formas frequentes tienden a ser más cortas 
+### Law of Abbreviation: Formes freqüents tendeixen a ser més curtes
 
 
 &lt;img src="en-zipf.jpg" width="80%" style="display: block; margin: auto;" /&gt;
 
 ---
 
-### Meaning-frequency Law: Formas frequentes tienden a tener más significados
+### Meaning-frequency Law: Formes freqüents tendeixen a tenir més significats
 
 &lt;img src="slides_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /&gt;
 
@@ -86,27 +86,27 @@ G.K. Zipf (1949) *Human behavior and the principle of least effort*
 
 class: inverse, center
 
-# Corpora y pre-procesamiento
+# Corpora i pre-processament
 
 ---
 
 # Corpora
 
-* Por definición: Cualquier colección de datos
+* Per definició: Qualsevol col·lecció de dades
 
-* Por uso convencional: Colección de datos no estructurados, muchas veces de [gran]() tamaño
+* Per ús convencional: Col·lecció de dades no estructurades, moltes vegades de [gran]() tamany
 
 
 .footnote[
 ***
 
-Lo que significa [gran]() varía en función a la naturaleza de los datos, y de cuándo son / es el análisis.]
+El que significa [gran]() varia en funció de la naturalesa de les dades, i de quan són / és l'anàlisi.]
 
 ---
 
 # Associated Press Corpus 
 
-Colección de 2246 artículos de noticias, la mayoría de alrededor de 1988
+Col·lecció de 2246 articles de notícies, la majoria del voltant de 1988
 
 --
 
@@ -115,17 +115,30 @@ Colección de 2246 artículos de noticias, la mayoría de alrededor de 1988
 
 ---
 
-# Tokenización
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt;Què hauríem de fer per poder analitzar aquestes dades? Per exemple, per comprovar si es compleix la llei de Zipf&lt;/b&gt;
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
 
---
 
-Segmentar y transformar tu corpus para que represente las unidades de tu análisis.
-
-Por ejemplo, palabras, morfémas, o caracteres.
 
 ---
 
-# Tokenización a nivel de palabras
+# Tokenització
+
+--
+
+Segmentar i transformar el teu corpus perquè representi les unitats de la teva anàlisi.
+
+Per exemple, paraules, morfémes, o caràcters.
+
+---
+
+# Tokenització a nivell de paraules
 
 
 ```r
@@ -149,26 +162,25 @@ tokenized_first_par
 
 ---
 
-# Procesos de normalización de token(e)s
+# Processos de normalització de tokens
 
 --
 
 ## Casing
 
-Convertir todo el texto a minúscula (o mayúscula)
+Convertir tot el text a minúscula (o majúscula)
 
 --
 
 ## Stemming
 
-Quitar material morfológico, quedandose sólamente con las raíces
-
+Treure material morfològic, quedant-se només amb les arrels
 --
 
 
 ## Lematización
 
-Cambiar palabras por sus respectivos lemas.
+Canviar paraules pels respectius lemes.
 
 ---
 
@@ -200,7 +212,7 @@ tolower(tokenized_first_par)
 
 ---
 
-# AP tokenizada
+# AP tokenitzada
 
 
 
@@ -228,7 +240,7 @@ tidy(AssociatedPress)
 
 ---
 
-# AP y Zipf?
+# AP i Zipf?
 
 
 ```
@@ -245,13 +257,13 @@ tidy(AssociatedPress)
 
 ---
 
-# AP y Zipf I
+# AP i Zipf I
 
 &lt;img src="slides_files/figure-html/unnamed-chunk-11-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
-# AP y Zipf II
+# AP i Zipf II
 
 &lt;img src="slides_files/figure-html/unnamed-chunk-12-1.png" style="display: block; margin: auto;" /&gt;
 
@@ -279,7 +291,7 @@ tidy(AssociatedPress)
 
 ---
 
-# Jane Austen tokenizada y normalizada
+# Jane Austen tokenitzada i normalitzada
 
 
 ```
@@ -302,7 +314,7 @@ tidy(AssociatedPress)
 
 ---
 
-# Jane Austen y Zipf?
+# Jane Austen i Zipf?
 
 
 ```
@@ -320,69 +332,80 @@ tidy(AssociatedPress)
 ---
 
 
-# Jane Austen y Zipf I
+# Jane Austen i Zipf I
 
 ![](slides_files/figure-html/unnamed-chunk-16-1.png)&lt;!-- --&gt;
 
 ---
 
-# Jane Austen y Zipf II
+# Jane Austen i Zipf II
 
 ![](slides_files/figure-html/unnamed-chunk-17-1.png)&lt;!-- --&gt;
 
 ---
 
-# Y la otra ley de Zipf?
+# I l'altra llei de Zipf?
 
 
 ---
 
-# Discusión
+# Discussió
 
-* Todo tipo de texto sigue las Leyes de Zipf?
+* Tot tipus de text segueix les Lleis de Zipf?
 
-* Toda lengua sigue las Leyes de Zipf?
+* Tota llengua segueix les Lleis de Zipf?
 
-
----
-
-class: inverse
-
-# Aplicaciones 
-
----
-
-# Investigación
-
-* Indispensable para descubrir o (des)confirmar regularidades en una, o varias lenguas
-
-* Mayor volúmen de datos `\(\Rightarrow\)` mayor sensibilidad para encontrar efectos menores (pero también más peligro de descubrir patrones falsos)
-
-  * [https://www.tylervigen.com/spurious-correlations](https://www.tylervigen.com/spurious-correlations)
-
-* Gran potencial --aún por explorar-- para tipología y lenguas menos descritas
-
----
-
-
-# Industria
-
-* (Pre-)procesamiento de grandes volúmenes de datos lingüísticos
-
-* Indispensable para descubrir o (des)confirmar regularidades a nivel de individuos, grupos y comunidades
-
-* Enorme mercado que todavía se está abriendo
 
 ---
 
 class: inverse
 
-# Word embeddings y más allá
+# Aplicacions
+
+---
+
+# Investigació
+
+* Indispensable per descobrir o (des)confirmar regularitats en una, o diverses llengües
+
+* Major volum de dades `\(\Rightarrow\)` més sensibilitat per trobar efectes menors (però també més perill de descobrir patrons falsos)
+
+   * [https://www.tylervigen.com/spurious-correlations](https://www.tylervigen.com/spurious-correlations)
+
+* Gran potencial --encara per explorar-- per a tipologia i llengües menys descrites
+
+---
+
+# Indústria
+
+* (Pre-)processament de grans volums de dades lingüístiques
+
+* Indispensable per descobrir o (des)confirmar regularitats a nivell d'individus, grups i comunitats
+
+* Enorme mercat que encara s'està obrint
+
+---
+
+class: inverse
+
+# Word embeddings i més enllà
 
 
 ---
 
-# Predicción como base para conocimiento lingüístico
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt;Que es ChatGPT? Com funciona?&lt;/b&gt;
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+
+---
+
+# Predicció com a base per a coneixement lingüístic
 
 ### Les ⬛⬛⬛....⬛⬛⬛
 
@@ -409,7 +432,7 @@ class: inverse
 
 ---
 
-# Predicción como base para conocimiento lingüístico
+# Predicció com a base per a coneixement lingüístic
 
 ### Les tasques de remodelació i ampliació de ⬛⬛⬛....⬛⬛⬛
 
@@ -427,8 +450,7 @@ class: inverse
 
 ---
 
-# Predicción como base para conocimiento lingüístico
-
+# Predicció com a base per a coneixement lingüístic
 
 ### Les tasques de remodelació i ampliació de l'estadi començaran al ⬛⬛⬛....⬛⬛⬛
 
@@ -439,23 +461,23 @@ class: inverse
 
 ---
 
-# Predicción como base para conocimiento lingüístico
+# Predicció com a base per a coneixement lingüístic
 
-Entrenar modelos con muchos parámetros a predecir información lingüística en grandes volúmenes de datos 
+Entrenar models amb molts paràmetres a predir informació lingüística en grans volums de dades
 
-`\(\Large \Rightarrow\)`  aprendizaje de conocimiento lingüístico latente (hasta cierto grado)
+`\(\Large \Rightarrow\)` aprenentatge de coneixement lingüístic latent (fins a cert grau)
 
 --
 
 &lt;br&gt;
 
-* Syntáxis ✔
+* Syntàxi ✔
 
-* Morfología ✔
+* Morfologia ✔
 
-* Semántica ✔✘
+* Semàntica ✔✘
 
-* Pragmática ✘
+* Pragmàtica ✘
 
 ---
 
@@ -476,10 +498,11 @@ Entrenar modelos con muchos parámetros a predecir información lingüística en
 
 [https://transformer.huggingface.co/doc/distil-gpt2](https://transformer.huggingface.co/doc/distil-gpt2)
 
+ChatGPT, Bard, ...
 
 ---
 
-# Paquetes
+# Paquets
 
 * python: spaCy, (py)torch
 
@@ -487,15 +510,15 @@ Entrenar modelos con muchos parámetros a predecir información lingüística en
 
 ---
 
-# Siguentes avances
+# Següents avenços
 
-* Modelos multi-modales
+* Models multimodals
 
-* Calidad de datos vs. tamaño de modelo
+* Qualitat de dades i. mida de model
 
-* Límites de aprendizaje a base de texto
+* Límits d'aprenentatge a base de text
 
-* Black box NLP &amp; lenguaje emergente
+* Black box NLP &amp; llenguatge emergent
 
 
 ---
@@ -503,13 +526,13 @@ Entrenar modelos con muchos parámetros a predecir información lingüística en
 
 class: inverse
 
-# Próxima sesión
+# Propera sessió
 
-* No hay entrega
+* Practical exercise (06/06)
 
 ***
 
-* **Visualización**
+* **Visualització**
 
 ***
 

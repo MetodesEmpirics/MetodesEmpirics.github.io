@@ -1,7 +1,7 @@
 ---
 title: "8 Corpora"
-author: "Métodos empíricos 2"
-date: "31/05/2022"
+author: "Mètodes empírics 2"
+date: "30/05/2022"
 output:
   xaringan::moon_reader:
     nature:
@@ -16,16 +16,16 @@ library(dplyr)
 library(ggplot2)
 ```
 
-# Hoy
+# Avui
 
 .large[
-* Las leyes de Zipf
+* Les lleis de Zipf
 
-* Corpora y pre-procesamiento
+* Corpora i pre-processament
 
-* Aplicaciones
+* Aplicacions
 
-* Word embeddings y más allá
+* Word embeddings i més enllà
 
 ]
 
@@ -33,7 +33,7 @@ library(ggplot2)
 
 class: inverse, center
 
-# Las leyes de Zipf
+# Les lleis de Zipf
 
 
 .footnote[
@@ -55,7 +55,7 @@ G.K. Zipf (1949) *Human behavior and the principle of least effort*
 
 ---
 
-### Rank-Frequency Law: La distribución rango-frecuencia de palabras es inversa
+### Rank-Frequency Law: La distribució rang-freqüència de paraules és inversa
 
 ```{r, echo=FALSE, fig.align='center', out.width='90%'}
 library(knitr)
@@ -64,7 +64,7 @@ include_graphics('Zipf_30wiki_en_labels.png')
 
 ---
 
-### Law of Abbreviation: Formas frequentes tienden a ser más cortas 
+### Law of Abbreviation: Formes freqüents tendeixen a ser més curtes
 
 
 ```{r, echo=FALSE, out.width="80%", fig.align='center'}
@@ -73,7 +73,7 @@ include_graphics('en-zipf.jpg')
 
 ---
 
-### Meaning-frequency Law: Formas frequentes tienden a tener más significados
+### Meaning-frequency Law: Formes freqüents tendeixen a tenir més significats
 
 ```{r, echo=FALSE, fig.align='center'}
 library(ggplot2)
@@ -82,7 +82,7 @@ meanings <- freqs**0.5
 df <- data.frame(freq = freqs,
                  nmeanings = meanings)
 
-ggplot(df, aes(x = freq, y = nmeanings)) + geom_point() +     xlab('Frecuencia') + ylab('Número de significados') + theme_minimal(base_size=22) +
+ggplot(df, aes(x = freq, y = nmeanings)) + geom_point() +     xlab('Freqüència') + ylab('Nombre de significats') + theme_minimal(base_size=22) +
  theme(axis.text.y = element_blank(), axis.text.x = element_blank()) 
 
 ```
@@ -91,27 +91,27 @@ ggplot(df, aes(x = freq, y = nmeanings)) + geom_point() +     xlab('Frecuencia')
 
 class: inverse, center
 
-# Corpora y pre-procesamiento
+# Corpora i pre-processament
 
 ---
 
 # Corpora
 
-* Por definición: Cualquier colección de datos
+* Per definició: Qualsevol col·lecció de dades
 
-* Por uso convencional: Colección de datos no estructurados, muchas veces de [gran]() tamaño
+* Per ús convencional: Col·lecció de dades no estructurades, moltes vegades de [gran]() tamany
 
 
 .footnote[
 ***
 
-Lo que significa [gran]() varía en función a la naturaleza de los datos, y de cuándo son / es el análisis.]
+El que significa [gran]() varia en funció de la naturalesa de les dades, i de quan són / és l'anàlisi.]
 
 ---
 
 # Associated Press Corpus 
 
-Colección de 2246 artículos de noticias, la mayoría de alrededor de 1988
+Col·lecció de 2246 articles de notícies, la majoria del voltant de 1988
 
 --
 
@@ -125,17 +125,30 @@ include_graphics('ap-story.png')
 
 ---
 
-# Tokenización
+<br><br><br><br>
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>Què hauríem de fer per poder analitzar aquestes dades? Per exemple, per comprovar si es compleix la llei de Zipf</b>
+</p>
+</p></span>
+</div>
 
---
 
-Segmentar y transformar tu corpus para que represente las unidades de tu análisis.
-
-Por ejemplo, palabras, morfémas, o caracteres.
 
 ---
 
-# Tokenización a nivel de palabras
+# Tokenització
+
+--
+
+Segmentar i transformar el teu corpus perquè representi les unitats de la teva anàlisi.
+
+Per exemple, paraules, morfémes, o caràcters.
+
+---
+
+# Tokenització a nivell de paraules
 
 ```{r}
 library(stringr)
@@ -148,26 +161,25 @@ tokenized_first_par
 
 ---
 
-# Procesos de normalización de token(e)s
+# Processos de normalització de tokens
 
 --
 
 ## Casing
 
-Convertir todo el texto a minúscula (o mayúscula)
+Convertir tot el text a minúscula (o majúscula)
 
 --
 
 ## Stemming
 
-Quitar material morfológico, quedandose sólamente con las raíces
-
+Treure material morfològic, quedant-se només amb les arrels
 --
 
 
 ## Lematización
 
-Cambiar palabras por sus respectivos lemas.
+Canviar paraules pels respectius lemes.
 
 ---
 
@@ -188,7 +200,7 @@ tolower(tokenized_first_par)
 
 ---
 
-# AP tokenizada
+# AP tokenitzada
 
 
 ```{r, eval=FALSE}
@@ -209,7 +221,7 @@ head(AP_corpus)
 
 ---
 
-# AP y Zipf?
+# AP i Zipf?
 
 ```{r, echo=FALSE}
 AP_ranked <- AP_corpus %>% select(term, count) %>% group_by(term) %>% mutate(count = sum(count)) %>% unique() %>% arrange(desc(count)) %>% ungroup() %>% mutate(length = nchar(term))
@@ -221,20 +233,20 @@ AP_ranked %>% head()
 
 ---
 
-# AP y Zipf I
+# AP i Zipf I
 
 ```{r, echo=FALSE, fig.align='center'}
 ggplot(AP_ranked, aes(x = log.rank, y = log.count)) + geom_point(col='indianred') + theme_minimal(base_size = 22) + 
-  xlab('log(rank)') + ylab('log(frecuencia)')
+  xlab('log(rang)') + ylab('log(freq)')
 ```
 
 ---
 
-# AP y Zipf II
+# AP i Zipf II
 
 ```{r, echo=FALSE, fig.align='center'}
 ggplot(AP_ranked, aes(x = length, y = count)) + geom_point(col='indianred') + theme_minimal(base_size = 22)  + 
-  xlab('longitud (caracteres)') + ylab('frecuencia')
+  xlab('longitud (caràcters)') + ylab('freq')
 ```
 
 ---
@@ -257,7 +269,7 @@ original_books
 
 ---
 
-# Jane Austen tokenizada y normalizada
+# Jane Austen tokenitzada i normalitzada
 
 ```{r, echo=FALSE}
 tidy_books <- original_books %>%
@@ -268,7 +280,7 @@ tidy_books
 
 ---
 
-# Jane Austen y Zipf?
+# Jane Austen i Zipf?
 
 ```{r, echo=FALSE}
 JA_ranked <- tidy_books %>% select(word) %>% count(word) %>% arrange(desc(n)) %>% rename(count = n) %>% mutate(length = nchar(word),
@@ -281,75 +293,86 @@ head(JA_ranked)
 ---
 
 
-# Jane Austen y Zipf I
+# Jane Austen i Zipf I
 
 ```{r, echo=FALSE}
 ggplot(JA_ranked, aes(x = log.rank, y = log.count)) +  geom_point(col='indianred') + theme_minimal(base_size = 22)  + 
-  xlab('log(rank)') + ylab('log(frecuencia)')
+  xlab('log(rang)') + ylab('log(freq)')
 ```
 
 ---
 
-# Jane Austen y Zipf II
+# Jane Austen i Zipf II
 
 ```{r, echo=FALSE}
 ggplot(JA_ranked, aes(x = length, y = count)) +  geom_point(col='indianred') + theme_minimal(base_size = 22)  + 
-  xlab('longitud') + ylab('frecuencia')
+  xlab('longitud') + ylab('freq')
 ```
 
 ---
 
-# Y la otra ley de Zipf?
+# I l'altra llei de Zipf?
 
 
 ---
 
-# Discusión
+# Discussió
 
-* Todo tipo de texto sigue las Leyes de Zipf?
+* Tot tipus de text segueix les Lleis de Zipf?
 
-* Toda lengua sigue las Leyes de Zipf?
+* Tota llengua segueix les Lleis de Zipf?
 
-
----
-
-class: inverse
-
-# Aplicaciones 
-
----
-
-# Investigación
-
-* Indispensable para descubrir o (des)confirmar regularidades en una, o varias lenguas
-
-* Mayor volúmen de datos $\Rightarrow$ mayor sensibilidad para encontrar efectos menores (pero también más peligro de descubrir patrones falsos)
-
-  * [https://www.tylervigen.com/spurious-correlations](https://www.tylervigen.com/spurious-correlations)
-
-* Gran potencial --aún por explorar-- para tipología y lenguas menos descritas
-
----
-
-
-# Industria
-
-* (Pre-)procesamiento de grandes volúmenes de datos lingüísticos
-
-* Indispensable para descubrir o (des)confirmar regularidades a nivel de individuos, grupos y comunidades
-
-* Enorme mercado que todavía se está abriendo
 
 ---
 
 class: inverse
 
-# Word embeddings y más allá
+# Aplicacions
+
+---
+
+# Investigació
+
+* Indispensable per descobrir o (des)confirmar regularitats en una, o diverses llengües
+
+* Major volum de dades $\Rightarrow$ més sensibilitat per trobar efectes menors (però també més perill de descobrir patrons falsos)
+
+   * [https://www.tylervigen.com/spurious-correlations](https://www.tylervigen.com/spurious-correlations)
+
+* Gran potencial --encara per explorar-- per a tipologia i llengües menys descrites
+
+---
+
+# Indústria
+
+* (Pre-)processament de grans volums de dades lingüístiques
+
+* Indispensable per descobrir o (des)confirmar regularitats a nivell d'individus, grups i comunitats
+
+* Enorme mercat que encara s'està obrint
+
+---
+
+class: inverse
+
+# Word embeddings i més enllà
 
 
 ---
 
-# Predicción como base para conocimiento lingüístico
+<br><br><br><br>
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>Que es ChatGPT? Com funciona?</b>
+</p>
+</p></span>
+</div>
+
+
+---
+
+# Predicció com a base per a coneixement lingüístic
 
 ### Les ⬛⬛⬛....⬛⬛⬛
 
@@ -376,7 +399,7 @@ class: inverse
 
 ---
 
-# Predicción como base para conocimiento lingüístico
+# Predicció com a base per a coneixement lingüístic
 
 ### Les tasques de remodelació i ampliació de ⬛⬛⬛....⬛⬛⬛
 
@@ -394,8 +417,7 @@ class: inverse
 
 ---
 
-# Predicción como base para conocimiento lingüístico
-
+# Predicció com a base per a coneixement lingüístic
 
 ### Les tasques de remodelació i ampliació de l'estadi començaran al ⬛⬛⬛....⬛⬛⬛
 
@@ -406,23 +428,23 @@ class: inverse
 
 ---
 
-# Predicción como base para conocimiento lingüístico
+# Predicció com a base per a coneixement lingüístic
 
-Entrenar modelos con muchos parámetros a predecir información lingüística en grandes volúmenes de datos 
+Entrenar models amb molts paràmetres a predir informació lingüística en grans volums de dades
 
-$\Large \Rightarrow$  aprendizaje de conocimiento lingüístico latente (hasta cierto grado)
+$\Large \Rightarrow$ aprenentatge de coneixement lingüístic latent (fins a cert grau)
 
 --
 
 <br>
 
-* Syntáxis ✔
+* Syntàxi ✔
 
-* Morfología ✔
+* Morfologia ✔
 
-* Semántica ✔✘
+* Semàntica ✔✘
 
-* Pragmática ✘
+* Pragmàtica ✘
 
 ---
 
@@ -447,10 +469,11 @@ include_graphics('ds-semantic-change.png')
 
 [https://transformer.huggingface.co/doc/distil-gpt2](https://transformer.huggingface.co/doc/distil-gpt2)
 
+ChatGPT, Bard, ...
 
 ---
 
-# Paquetes
+# Paquets
 
 * python: spaCy, (py)torch
 
@@ -458,15 +481,15 @@ include_graphics('ds-semantic-change.png')
 
 ---
 
-# Siguentes avances
+# Següents avenços
 
-* Modelos multi-modales
+* Models multimodals
 
-* Calidad de datos vs. tamaño de modelo
+* Qualitat de dades i. mida de model
 
-* Límites de aprendizaje a base de texto
+* Límits d'aprenentatge a base de text
 
-* Black box NLP & lenguaje emergente
+* Black box NLP & llenguatge emergent
 
 
 ---
@@ -474,13 +497,13 @@ include_graphics('ds-semantic-change.png')
 
 class: inverse
 
-# Próxima sesión
+# Propera sessió
 
-* No hay entrega
+* Practical exercise (06/06)
 
 ***
 
-* **Visualización**
+* **Visualització**
 
 ***
 
