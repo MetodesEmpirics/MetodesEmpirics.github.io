@@ -9,13 +9,16 @@ bibliography: ../../biblio.bib
 
 # Instructions
 
-You will find a dataset prepared for you if you modify the **bolfaced** portion of the following  link:
+You will find a dataset prepared for you if you modify the **bolfaced** portion of the following link:
 
 https://raw.githubusercontent.com/MetodesEmpirics/MetodesEmpirics.github.io/main/material/2022q3/session06/data/csvs/**insert_your_student_ID**.csv
 
 Each student has their own dataset, identified by their student ID. For instance, if your student ID is **u103672**, then your link is:
 
 https://raw.githubusercontent.com/MetodesEmpirics/MetodesEmpirics.github.io/main/material/2022q3/session06/data/csvs/**u103672**.csv
+
+Note that your computer may insert a space in your URL because it spans two lines. Alternatively, if you are having trouble copy/pasting, you will find the link to your dataset here:
+https://docs.google.com/spreadsheets/d/1o_9np5ulNfQMuTipl0DyljVdDpPY51RKqnf0LqZa83A/edit?usp=sharing
 
 You can then load your data as
 
@@ -24,7 +27,7 @@ df <- read.csv('replace_this_with_URL_to_your_data.csv')
 ```
 The data is described below.
 
-Submit your answers to the questions as a PDF file, through Aula Global (upload task in **seminari**). Round all answers to the second decimal after the comma.
+Submit your answers to the questions as a PDF file, through Aula Global. Round all answers to the second decimal after the comma.
 
 # Data description
 There are sentences that are syntactically ambiguous while you are processing them. That is, while you're hearing/reading the sentence, you can be mislead to interpret it in a way that turns out to be wrong. This effect is called a *temporal ambiguity*. Temporal ambiguities can be so strong that it may take you a couple of times hearing/reading them before you understand them. For instance, compare the two sentences in (1) and (2).
@@ -48,7 +51,7 @@ Your colleague has collected data from subjects that were asked to read sentence
 Here's how the data may look like:
 
 ```{r, echo=FALSE}
-df <- read.csv('https://raw.githubusercontent.com/MetodesEmpirics/MetodesEmpirics.github.io/main/material/2022q3/session06/data/csvs/u103672.csv')
+df <- read.csv('https://raw.githubusercontent.com/MetodesEmpirics/MetodesEmpirics.github.io/main/material/2023q3/session08/data/csvs/u167750.csv')
 head(df)
 ```
 
