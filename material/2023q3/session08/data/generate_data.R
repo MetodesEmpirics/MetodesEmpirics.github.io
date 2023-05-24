@@ -39,7 +39,7 @@ for (idx in participants$id){
 
 
 	write_csv(df, paste0('csvs/',idx, '.csv'))
-	urls <- c(urls, paste0('https://raw.githubusercontent.com/MetodesEmpirics/MetodesEmpirics.github.io/main/material/2023q3/session08/data/csvs/session06/data/csvs/', idx, '.csv'))
+	urls <- c(urls, paste0('https://raw.githubusercontent.com/MetodesEmpirics/MetodesEmpirics.github.io/main/material/2023q3/session08/data/csvs/', idx, '.csv'))
 }
 
 participants$dades  <- urls
