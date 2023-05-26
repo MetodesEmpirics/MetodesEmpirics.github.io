@@ -431,7 +431,7 @@ class: inverse, center
 
 class: inverse
 
-# Próxima sesión
+# Propera sessió
 
 * Lliurament de "Assignment 1" (08:00 AM 25/04)
 

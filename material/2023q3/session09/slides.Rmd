@@ -1,7 +1,7 @@
 ---
-title: "9 Visualización"
-author: "Métodos empíricos 2"
-date: "07/06/2022"
+title: "9 Visualització"
+author: "Mètodes empírics 2"
+date: "06/06/2022"
 output:
   xaringan::moon_reader:
     nature:
@@ -16,29 +16,26 @@ library(dplyr)
 library(ggplot2)
 ```
 
-# Hoy
+# Avui
 
 .large[
-* Algunos tipos de visualización
+* Alguns tipus de visualització
 
-* Principios de visualización
+* Principis de visualització
 
 * ggplot2
 
-* Recuperación: ejercicio práctico
-
 ]
-
 ---
 
 
 class: inverse, center
 
-# Algunos tipo de visualización
+# Alguns tipus de visualització
 
 ---
 
-## Scatter plots (datos continuos; una sola relación)
+## Scatter plots (dades contínues; una sola relació)
 
 ```{r, warning=FALSE, message=FALSE, echo=FALSE, fig.align='center'}
 set.seed(113)
@@ -54,7 +51,7 @@ ggplot(df, aes(x = age, y = pitch)) +
 
 ---
 
-## Histogramas (distribución de una sola variable)
+## Histogramas (distribució d'una sola variable)
 
 
 ```{r, warning=FALSE, message=FALSE, echo=FALSE, fig.align='center'}
@@ -67,7 +64,7 @@ ggplot(df, aes(x = pitch)) +
 
 ---
 
-## Boxplots  (distribución de una sola variable [grupos])
+## Boxplots  (distribució d'una sola variable [grups])
 
 ```{r, warning=FALSE, message=FALSE, echo=FALSE, fig.align='center'}
 df_gestures <- read.csv('https://tinyurl.com/gestures-data') #download data
@@ -80,7 +77,7 @@ ggplot(df_gestures, aes(x = language, y = gestures)) +
 
 ---
 
-## Boxplots  (distribución de una sola variable [grupos])
+## Boxplots  (distribució d'una sola variable [grups])
 
 ```{r, warning=FALSE, message=FALSE, echo=FALSE, fig.align='center'}
 df_gestures <- read.csv('https://tinyurl.com/gestures-data') #download data
@@ -93,7 +90,7 @@ ggplot(df_gestures, aes(x = language, y = gestures, fill = context)) +
 
 ---
 
-# El cielo es el límite
+# El cel és el límit
 
 [https://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html](https://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
 
@@ -105,7 +102,7 @@ ggplot(df_gestures, aes(x = language, y = gestures, fill = context)) +
 
 class: inverse, center
 
-# Principios de visualización
+# Principis de visualització
 
 
 
@@ -121,22 +118,22 @@ Fig. 1 de Franconeri et al. 2021 [The Science of Visual Data Communication: What
 
 ---
 
-# Tres heurísticas
+# Tres heurístiques
 
-1. Objetivo: La visualización tiene un objetivo bien definido
-
---
-
-2. Claridad: Los datos son visualizados de manera clara (y simple)
+1. Objectiu: La visualització té un objectiu ben definit
 
 --
 
-3. Mensaje: Haz que el mensaje sea inmediato/evidente
+2. Claredat: Les dades són visualitzades de manera clara (i simple)
+
+--
+
+3. Missatge: Fes que el missatge sigui immediat/evident
 
 ---
 
 .pull-left[# Canales visuales 
-### ranking por nitidez cognitiva
+### rànquing per nitidesa cognitiva
 
 ###  1:7
 ]
@@ -145,7 +142,7 @@ Fig. 1 de Franconeri et al. 2021 [The Science of Visual Data Communication: What
 ---
 
 
-# Accesibilidad y doble codificación
+# Accessibilitat i doble codificació
 
 <img src='accessibility.png',  width="400px" height="400px", style="position:absolute; right:300px; top:px;">
 
@@ -155,29 +152,29 @@ Fig. 2 de Franconeri et al. 2021 [The Science of Visual Data Communication: What
 
 ---
 
-# Recomendaciones
+# Recomanacions
 
-* Utiliza visualización para guiar la computación de estadísticas
-
---
-
-* Limíta el número de comparaciones por gráfico
+* Utilitza visualització per guiar la computació d'estadístiques
 
 --
 
-* En caso de duda: Minimalismo
+* Limita el nombre de comparacions per gràfic
 
 --
 
-* Respeta direccionalidad "natural", si la hay
+* En cas de dubte: Minimalisme
 
 --
 
-* Cuidado con ilusiones visuales
+* Respecta direccionalitat "natural", si n'hi ha
+
+--
+
+* Cura amb il·lusions visuals
 
 ---
 
-## Guia computación de estadísticas 
+## Guia computació d'estadístiques
 
 ```{r, warning=FALSE, message=FALSE, echo=FALSE, fig.align='center'}
 
@@ -190,7 +187,7 @@ ggplot(df, aes(x = age, y = pitch)) +
 
 ---
 
-## Guia computación de estadísticas 
+## Guia computació d'estadístiques
 
 ```{r, warning=FALSE, message=FALSE, echo=FALSE, fig.align= 'center'}
 df_gestures <- read.csv('https://tinyurl.com/gestures-data') #download data
@@ -203,7 +200,7 @@ ggplot(df_gestures, aes(x = language, y = gestures)) +
 ```
 ---
 
-## Número de comparaciones por gráfico (I/II)
+## Nombre de comparacions per gràfic (I/II)
 
 ```{r, warning=FALSE, message=FALSE, echo=FALSE, fig.align= 'center'}
 df_gestures <- read.csv('https://tinyurl.com/gestures-data') #download data
@@ -216,7 +213,7 @@ ggplot(df_gestures, aes(x = language, y = gestures)) +
 
 ---
 
-## Número de comparaciones por gráfico (II/II)
+## Nombre de comparacions per gràfic (II/II)
 
 ```{r, warning=FALSE, message=FALSE, echo=FALSE, fig.align= 'center'}
 df_gestures <- read.csv('https://tinyurl.com/gestures-data') #download data
@@ -230,7 +227,7 @@ ggplot(df_gestures, aes(x = language, y = gestures, fill = context)) +
 
 ---
 
-## Mínimalismo vs Maximalismo (I/III)
+## Mínimalisme vs Maximalisme (I/III)
 
 ```{r, warning=FALSE, message=FALSE, echo=FALSE, fig.align= 'center'}
 ggplot(df_gestures, aes(x = language, y = gestures)) +
@@ -241,7 +238,7 @@ ggplot(df_gestures, aes(x = language, y = gestures)) +
 
 ---
 
-## Mínimalismo vs Maximalismo (II/III)
+## Mínimalisme vs Maximalisme (II/III)
 
 
 ```{r, warning=FALSE, message=FALSE, echo=FALSE, fig.align= 'center'}
@@ -253,7 +250,7 @@ ggplot(df_gestures, aes(x = language, y = gestures, fill = context)) +
 
 ---
 
-## Mínimalismo vs Maximalismo (III/III)
+## Mínimalisme vs Maximalisme (III/III)
 
 
 ```{r, warning=FALSE, message=FALSE, echo=FALSE, fig.align= 'center'}
@@ -271,7 +268,7 @@ ggplot(df_gestures, aes(x = language, y = gestures, fill = context)) +
 
 ---
 
-# Direccionalidad "natural" (I/II)
+# Direccionalitat "natural" (I/II)
 
 ```{r, warning=FALSE, message=FALSE, echo=FALSE, fig.align= 'center'}
 
@@ -283,7 +280,7 @@ ggplot(df, aes(x = age, y = pitch)) +
 
 ---
 
-# Direccionalidad "natural" (II/II)
+# Direccionalitat "natural" (II/II)
 
 ```{r, warning=FALSE, message=FALSE, echo=FALSE, fig.align= 'center'}
 
@@ -299,7 +296,7 @@ age <- df$age
 df <- df %>% rbind(data.frame(pitch,age,gender))
 ```
 
-# Ilusiones visuales
+# Il·lusions visuals
 
 ```{r, warning=FALSE, message=FALSE, echo=FALSE, fig.align = 'center'}
 
@@ -315,24 +312,20 @@ ggplot(df, aes(y = pitch, x = gender)) + geom_bar(position = 'dodge', stat= 'ide
 class: inverse
 
 # ggplot2
----
-
-class: inverse
-
-# Recuperación: ejercicio práctico
 
 ---
 
 class: inverse
 
-# Próxima sesión
+# Propera sessió
 
-* (Recuperación ejercicio práctico)
+Res / informe final
 
-***
-
-* **Más temas y más métodos empiricos en las ciencias del lenguaje**
 
 ***
 
-* Informe final: 28/06
+* **Més temes i més mètodes empírics en les ciències del llenguatge**
+
+***
+
+* Informe final: 25/06
