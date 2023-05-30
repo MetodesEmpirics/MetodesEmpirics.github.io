@@ -25,7 +25,7 @@ library(ggplot2)
 
 * Aplicacions
 
-* Word embeddings i més enllà
+* Language models i més enllà
 
 ]
 
@@ -64,12 +64,64 @@ include_graphics('Zipf_30wiki_en_labels.png')
 
 ---
 
+
+<br><br><br><br>
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>Per què segueix el llenguatge aquesta llei?
+</b>
+</p>
+</p></span>
+</div>
+
+---
+
+<br><br><br><br>
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>Quines conseqüències té aquesta llei per a (i) l'anàlisi lingüística; (ii) l'aprenentatge de llengües; (iii) la traducció?
+</b>
+</p>
+</p></span>
+</div>
+
+---
+
 ### Law of Abbreviation: Formes freqüents tendeixen a ser més curtes
 
 
 ```{r, echo=FALSE, out.width="80%", fig.align='center'}
 include_graphics('en-zipf.jpg')
 ```
+
+---
+
+
+<br><br><br><br>
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>Per què segueix el llenguatge aquesta llei?
+</b>
+</p>
+</p></span>
+</div>
+
+---
+
+<br><br><br><br>
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>Quines conseqüències té aquesta llei per a (i) l'anàlisi lingüística; (ii) l'aprenentatge de llengües; (iii) la traducció?
+</b>
+</p>
+</p></span>
+</div>
+
+
 
 ---
 
@@ -86,6 +138,32 @@ ggplot(df, aes(x = freq, y = nmeanings)) + geom_point() +     xlab('Freqüència
  theme(axis.text.y = element_blank(), axis.text.x = element_blank()) 
 
 ```
+
+---
+
+
+<br><br><br><br>
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>Per què segueix el llenguatge aquesta llei?
+</b>
+</p>
+</p></span>
+</div>
+
+---
+
+<br><br><br><br>
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>Quines conseqüències té aquesta llei per a (i) l'anàlisi lingüística; (ii) l'aprenentatge de llengües; (iii) la traducció?
+</b>
+</p>
+</p></span>
+</div>
+
 
 ---
 
@@ -372,6 +450,15 @@ class: inverse
 
 ---
 
+# Xarxes neuronals
+
+
+.center[
+<img src='nns.png' width='75%', height='75%'>
+]
+
+---
+
 # Predicció com a base per a coneixement lingüístic
 
 ### Les ⬛⬛⬛....⬛⬛⬛
@@ -448,34 +535,44 @@ $\Large \Rightarrow$ aprenentatge de coneixement lingüístic latent (fins a cer
 
 ---
 
-# Word embeddings
-
-```{r, echo=FALSE, fig.align='center', out.width='90%'}
-include_graphics('ds-boleda.png')
-``` 
-
----
-
-# Word embeddings
-
-```{r, echo=FALSE, fig.align='center', out.width='90%'}
-include_graphics('ds-semantic-change.png')
-``` 
-
----
-
 
 # Language models
 
 [https://transformer.huggingface.co/doc/distil-gpt2](https://transformer.huggingface.co/doc/distil-gpt2)
 
-ChatGPT, Bard, ...
+GPT2, Llama, BERT, ChatGPT, Bard, ...
+
+
+---
+
+# ChatGPT
+
+Després d'aprendre amb self-supervision (predint text per compte propi), aprèn humans amb reinforcement learning en una segona fase 
+
+
+* $\Rightarrow$ millora notable en pragmàtica
+
+* $\Rightarrow$ bona compressió de coneixement lingüístic i coneixement general
+
+* $\Rightarrow$ compressió comporta halucinació i repetició
+
+---
+
+<br><br><br><br>
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>Preguntes o inquietuds sobre ChatGPT? Canviarà el mercat laboral? El mercat de la traducció? La lingüística? L'educació?</b>
+</p>
+</p></span>
+</div>
+
 
 ---
 
 # Paquets
 
-* python: spaCy, (py)torch
+* python: spaCy, (py)torch, huggingface 
 
 * R: tidytext, stringr
 
@@ -485,12 +582,13 @@ ChatGPT, Bard, ...
 
 * Models multimodals
 
-* Qualitat de dades i. mida de model
+* Qualitat de dades i mida de model
 
 * Límits d'aprenentatge a base de text
 
 * Black box NLP & llenguatge emergent
 
+* Self-supervised reinforcement learning
 
 ---
 

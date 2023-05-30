@@ -35,7 +35,7 @@ class: center, middle, inverse, title-slide
 
 * Aplicacions
 
-* Word embeddings i més enllà
+* Language models i més enllà
 
 ]
 
@@ -71,6 +71,31 @@ G.K. Zipf (1949) *Human behavior and the principle of least effort*
 
 ---
 
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt;Per què segueix el llenguatge aquesta llei?
+&lt;/b&gt;
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+---
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt;Quines conseqüències té aquesta llei per a (i) l'anàlisi lingüística; (ii) l'aprenentatge de llengües; (iii) la traducció?
+&lt;/b&gt;
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+---
+
 ### Law of Abbreviation: Formes freqüents tendeixen a ser més curtes
 
 
@@ -78,9 +103,62 @@ G.K. Zipf (1949) *Human behavior and the principle of least effort*
 
 ---
 
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt;Per què segueix el llenguatge aquesta llei?
+&lt;/b&gt;
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+---
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt;Quines conseqüències té aquesta llei per a (i) l'anàlisi lingüística; (ii) l'aprenentatge de llengües; (iii) la traducció?
+&lt;/b&gt;
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+
+
+---
+
 ### Meaning-frequency Law: Formes freqüents tendeixen a tenir més significats
 
 &lt;img src="slides_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt;Per què segueix el llenguatge aquesta llei?
+&lt;/b&gt;
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+---
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt;Quines conseqüències té aquesta llei per a (i) l'anàlisi lingüística; (ii) l'aprenentatge de llengües; (iii) la traducció?
+&lt;/b&gt;
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+
 
 ---
 
@@ -397,6 +475,15 @@ class: inverse
 
 ---
 
+# Xarxes neuronals
+
+
+.center[
+&lt;img src='nns.png' width='75%', height='75%'&gt;
+]
+
+---
+
 # Predicció com a base per a coneixement lingüístic
 
 ### Les ⬛⬛⬛....⬛⬛⬛
@@ -473,30 +560,44 @@ Entrenar models amb molts paràmetres a predir informació lingüística en gran
 
 ---
 
-# Word embeddings
-
-&lt;img src="ds-boleda.png" width="90%" style="display: block; margin: auto;" /&gt;
-
----
-
-# Word embeddings
-
-&lt;img src="ds-semantic-change.png" width="90%" style="display: block; margin: auto;" /&gt;
-
----
-
 
 # Language models
 
 [https://transformer.huggingface.co/doc/distil-gpt2](https://transformer.huggingface.co/doc/distil-gpt2)
 
-ChatGPT, Bard, ...
+GPT2, Llama, BERT, ChatGPT, Bard, ...
+
+
+---
+
+# ChatGPT
+
+Després d'aprendre amb self-supervision (predint text per compte propi), aprèn humans amb reinforcement learning en una segona fase 
+
+
+* `\(\Rightarrow\)` millora notable en pragmàtica
+
+* `\(\Rightarrow\)` bona compressió de coneixement lingüístic i coneixement general
+
+* `\(\Rightarrow\)` compressió comporta halucinació i repetició
+
+---
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt;Preguntes o inquietuds sobre ChatGPT? Canviarà el mercat laboral? El mercat de la traducció? La lingüística? L'educació?&lt;/b&gt;
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+
 
 ---
 
 # Paquets
 
-* python: spaCy, (py)torch
+* python: spaCy, (py)torch, huggingface 
 
 * R: tidytext, stringr
 
@@ -506,12 +607,13 @@ ChatGPT, Bard, ...
 
 * Models multimodals
 
-* Qualitat de dades i. mida de model
+* Qualitat de dades i mida de model
 
 * Límits d'aprenentatge a base de text
 
 * Black box NLP &amp; llenguatge emergent
 
+* Self-supervised reinforcement learning
 
 ---
 
