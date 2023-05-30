@@ -558,6 +558,17 @@ Després d'aprendre amb self-supervision (predint text per compte propi), aprèn
 
 ---
 
+# Monty Hall i "parroting"
+
+
+```{r, echo=FALSE, out.width="80%", fig.align='center'}
+include_graphics('monty.jpeg')
+```
+
+
+
+---
+
 <br><br><br><br>
 <div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
 <span>
