@@ -605,4 +605,4 @@ class: inverse
 
 ***
 
-* Informe final: 28/06
+* Informe final: 25/06
