@@ -77,6 +77,28 @@ ggplot(df_gestures, aes(x = language, y = gestures)) +
 
 ---
 
+# Boxplots
+
+* mínim 
+
+* màxim
+
+* mediana
+
+* Q1
+
+* Q3
+
+* IQR (Q3 - Q1)
+
+***
+
+.footnote[
+https://ggplot2.tidyverse.org/reference/geom_boxplot.html#summary-statistics
+]
+
+---
+
 ## Boxplots  (distribució d'una sola variable [grups])
 
 ```{r, warning=FALSE, message=FALSE, echo=FALSE, fig.align='center'}
