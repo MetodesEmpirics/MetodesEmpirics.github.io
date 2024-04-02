@@ -1,0 +1,157 @@
+---
+title: "6 Generalized linear models I"
+author:
+- first_name: Thomas
+  last_name: Brochhagen
+  url: https://tbrochhagen.github.io/
+  affiliation: Universitat Pompeu Fabra
+date: "`r Sys.Date()`"
+output:
+  distill::distill_article:
+    toc: yes
+    toc_depth: 2
+  html_document:
+    toc: yes
+    toc_depth: '2'
+    df_print: paged
+  pdf_document:
+    toc: yes
+bibliography: ../../biblio.bib
+---
+
+## Generalized linear models
+
+Recall our formulation of a linear model:
+
+$$\Large y_i \sim \text{Normal}(\mu_i,\sigma)$$
+$$\Large \mu_i = \beta_0 + \beta x_i$$
+
+Notice that there is no constraint on the outcome of the operations on the right hand side. This was not an issue in the cases we saw so far, because $\mu_i$ could, in principle, be 5; 50; 600; 234.5 or 234.5634233. However, not all parameters and outcomes can take just any value. 
+
+If we are predicting how likely an event is to occur, the outcome is between $0$ and $1$. It doesn't make sense to predict that the event will occur with a probability of $24.54$ or with a probability of $-1$. Similarly, if we are predicting how many times an event occurred, the rate of occurrence is $0$ or higher. It doesn't make sense to predict the event is expected to occur at a rate of $-5$. The kind of constraint we need on the right-hand side thus depends on the distribution we're taking as a starting point (what the parameter on the left represents). 
+
+A *generalized* linear model is a model that takes the values on the right and applies a transformation to them to fulfill such a constraint. So far, we didn't have to apply any constraints because $y$ was distributed following a Normal distribution. But now we also want to make predictions about Bernoulli distributed and Poisson distributed outcomes. Recall that they look like this:
+
+$$\Large y_i \sim \text{Poisson}(\lambda_i)$$
+$$\Large y_i \sim \text{Bernoulli}(p_i)$$
+For count data (Poisson distributed), the canonical function that constraints the estimates to suit the distribution is the exponential function.
+
+$$\Large y_i \sim \text{Poisson}(\lambda_i)$$
+$$\Large \lambda_i = \text{exp}(\beta_0 + \beta x_i)$$
+For probabilities (Bernoulli distributed), the canonical function that constraints the estimates to suit the distribution is the so-called inverse logit function.
+
+$$\Large y_i \sim \text{Bernoulli}(p_i)$$
+$$\Large p_i = \frac{\text{exp}(\beta_0 + \beta x_i)}{1 + \text{exp}(\beta_0 + \beta x_i)}$$
+
+In this session, we will look at count data, using a Generalized Linear Model and the Poisson distribution
+
+#### Case study: Gestures 
+
+Let's use the study of @brown+etal:toappear to exemplify a regression for count data. 
+
+
+```{r, warning=FALSE, message=FALSE}
+### Packages we will use ###
+library(dplyr)
+library(ggplot2)
+### ### ###
+
+df <- read.csv('https://tinyurl.com/gestures-data') #download data
+glimpse(df) #get a look at the data
+```
+
+We focus on the number of `gestures` (outcome / $y$), with `language`, `gender` and `context` as possible predictors.
+
+Let's again first visualize the data to get a sense whether it even makes sense to predict number of gestures with any of these predictors:
+
+```{r}
+ggplot(df, aes(x = gestures, fill = context)) +
+         geom_histogram(bins=20, alpha=0.6, position='identity') +
+         theme_minimal(base_size=20)
+
+```
+
+
+And the same for language:
+
+```{r}
+ggplot(df, aes(x = gestures, fill = language)) +
+         geom_histogram(bins=50, alpha=0.6, position='identity') +
+         theme_minimal(base_size=20) 
+```
+
+And gender:
+
+```{r}
+ggplot(df, aes(x = gestures, fill = gender)) +
+         geom_histogram(bins=50, alpha=0.6, position='identity') +
+         theme_minimal(base_size=20) 
+```
+
+Let's first build each model individually
+
+```{r}
+#Notice that we're now using a function called glm()
+#Notice that we now specify the family of the model (Poisson)
+#Notice that we now specify the link function (log)
+
+gestures_context <- glm(formula = gestures ~ 1 + context,
+                       data    = df,
+                       family  = poisson(link = 'log')
+                        )
+summary(gestures_context)
+```
+
+Interpreting the coefficient is a little more difficult now. Before we could just read off the intercept's and predictor's contributions, but now everything happens in the *log*-space. The predicted number of gestures of a speaker in a professional context is:
+
+$$\Large \text{log}(\lambda_i) \approx 3.99 - 0.178 \approx 3.812 $$
+For an informal context, the prediction is accordingly just $3.99$. 
+
+However, this is $\text{log}(\lambda_i)$ and not $\lambda_i$. So this is the logarithm of the expected number of gestures in both contexts. To get a non-logarithmic (and easier to interpret) prediction, take the inverse of the logarithm: the exponent.
+
+```{r}
+exp(3.99 - 0.178) #expected number of gestures in a polite context
+exp(3.99)         #expected number of gestures in an informal context
+```
+
+Keeping this in mind, we fit the remaining two univariate models:
+
+```{r}
+gestures_lang <- glm(formula = gestures ~ 1 + language,
+                       data    = df,
+                       family  = poisson(link = 'log')
+                        )
+
+summary(gestures_lang)
+
+gestures_context <- glm(formula = gestures ~ 1 + gender,
+                       data    = df,
+                       family  = poisson(link = 'log')
+                        )
+summary(gestures_context)
+```
+
+In words, being a speaker of Korean suggests less gestures than being a speaker of Catalan. But gender (alone) seems to be a bad predictor of number of gestures. 
+
+Let's look at a model with all three predictors
+
+```{r}
+gestures_all <- glm(formula = gestures ~ 1 + context + language + gender,
+                       data    = df,
+                       family  = poisson(link = 'log')
+                        )
+summary(gestures_all)
+```
+
+# Goodness of fit: Information criteria
+
+The AIC (Akaike Information Criterion) estimates out-of-sample prediction error. It provides a relative measure of model quality, penalizing for for model complexity. Lower is better.
+
+
+# Further reading
+
+The paper [Poisson regression for linguists: A tutorial introduction to modeling count data with brms](https://osf.io/93kaf/) discusses Poisson regression using the same data.
+
+
+## Corrections {.appendix}
+If you spot a mistake or have suggestions, please get in touch with [Thomas Brochhagen](https://brochhagen.github.io) or [create an issue](https://github.com/metodesempirics/metodesempirics.github.io/issues/new)

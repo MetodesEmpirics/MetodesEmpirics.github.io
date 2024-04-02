@@ -1,0 +1,444 @@
+---
+title: "6 Regressió generalitzada I"
+author: "Mètodes empírics 2"
+date: "16/05/2022"
+output:
+  xaringan::moon_reader:
+    nature:
+      highlightLines: true
+      highlightStyle: github
+---
+
+```{r preamble, echo=FALSE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(ggplot2)
+```
+
+# Avui
+
+.large[
+
+* Cas d'estudis
+
+* Límits de models lineals
+
+* Generalització
+
+]
+
+---
+
+class: inverse, center
+
+# Gestos a través de contextos i cultures
+
+.footnote[
+***
+Brown et al. (to appear):  [Iconic gestures are modulated
+by social context: A study of multimodal politeness across two cultures](). *Gesture*.
+]
+
+---
+
+<br><br><br><br>
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>Vols saber quins factors (no) afecten el nombre de gestos que fa una persona de mitjana en una conversa. Un col·lega t'ha donat les dades següents:<br><br>https://tinyurl.com/gestures-data<br><br>
+<br>
+1. Descriu les dades
+<br><br>
+2. Descriu com penses que les variables es podrien relacionar
+<br><br>
+3. Quins valors poden tenir les variables del teu interès?
+</b>
+</p>
+</p></span>
+</div>
+
+---
+
+# Dades
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+df <- read.csv('https://tinyurl.com/gestures-data') #download data
+head(df)
+```
+
+---
+
+
+# Variables independents (possibles predictors)
+
+* `gender`: M o F
+
+* `context`: friend o prof
+
+* `language`: Catalan o Korean
+
+---
+
+# Variable dependent (resultat)
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.align='center', out.width='65%'}
+library(ggplot2)
+
+ggplot(df, aes(x = gestures)) + 
+  geom_histogram(bins=30, col='black', fill= 'indianred') +
+  theme_minimal(base_size=20)
+```
+
+
+---
+
+
+# Variable dependent (resultat)
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+df$gestures
+```
+
+
+---
+
+class: inverse
+
+# Límits de models lineals
+<br>
+<br>
+$$\Huge y_i \sim \text{Normal}(\mu_i, \sigma)$$
+
+***
+
+--
+$$\Huge y_i \sim \text{Poisson}(\lambda_i)$$
+$$\Huge y_i \sim \text{Bernoulli}(p_i)$$
+
+
+
+---
+
+# Model lineal
+
+$$\Huge y_i \sim \text{Normal}(\mu_i, \sigma)$$
+<br>
+$$\Huge \mu_i = \beta_0 + \beta_1 x_1 + ... \beta_n x_n$$
+
+
+---
+
+# Model lineal generalitzat: Normal
+
+
+$$\Huge y_i \sim \text{Normal}(\mu_i, \sigma)$$
+<br>
+$$\Huge \mu_i = f(\beta_0 + \beta_1 x_1 + ... \beta_n x_n)$$
+<br>
+
+--
+
+$$\Huge f(x) = x$$ 
+
+---
+
+# Model lineal generalitzat: Poisson
+
+$$\Huge y_i \sim \text{Poisson}(\lambda_i)$$
+<br>
+$$\Huge \lambda_i = f(\beta_0 + \beta_1 x_1 + ... \beta_n x_n)$$
+--
+
+<br>
+$$\Huge f(x) = \text{exp}(x)$$ 
+
+---
+
+# Espai exponencial
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.align='center', out.width='65%'}
+x <- seq(-5,5)
+y <- exp(x)
+
+d <- data.frame(x,y)
+
+ggplot(data = d, aes(x,y)) + geom_point(col='indianred',size=3) + theme_minimal(base_size=20) + xlab('Suma de predictors') + ylab('Lambda') 
+```
+
+
+---
+
+# Model lineal generalitzat: Poisson
+
+
+$$\Huge y_i \sim \text{Poisson}(\lambda_i)$$
+<br>
+$$\Huge \lambda_i = exp(\beta_0 + \beta_1 x_1 + ... \beta_n x_n)$$
+---
+
+# Model lineal generalitzat: Poisson
+
+
+$$\Huge y_i \sim \text{Poisson}(\lambda_i)$$
+<br>
+$$\Huge log(\lambda_i) = \beta_0 + \beta_1 x_1 + ... \beta_n x_n$$
+
+---
+
+
+# Link functions canòniques
+
+.pull-left[**Normal**: Identitat 
+
+<br>
+
+**Poisson**: Logaritme
+
+<br><br>
+**Bernoulli/Binomial**: Logit 
+]
+
+
+.pull-right[
+$$f(x) = x$$
+<br>
+
+$$f(x) = \text{exp}(x)$$
+<br>
+$$f(x) = \frac{exp(x)}{1 + exp(x)}$$
+]
+
+---
+
+# Regressió de Poisson (R)
+
+```{r, warning=FALSE, message=FALSE, eval=FALSE}
+glm(formula = gestures ~ 1 + language,
+    data    = df,
+    family  = poisson(link = 'log')
+    )
+```
+
+---
+
+
+class: inverse, center
+
+# Gestos a través de contextos i cultures
+
+.footnote[
+***
+Brown et al. (to appear):  [Iconic gestures are modulated
+by social context: A study of multimodal politeness across two cultures](). *Gesture*.
+]
+
+---
+
+# Dades
+
+```{r}
+head(df)
+```
+
+---
+
+# Gestos ~ Context
+
+--
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.align='center', out.width='65%'}
+ggplot(df, aes(x = gestures, fill = context)) +
+         geom_histogram(bins=20, alpha=0.6, position='identity') +
+         theme_minimal(base_size=20)
+```
+
+---
+
+
+# Model 1: Context
+
+```{r, warning=FALSE, message=FALSE}
+m1_context <- glm(formula = gestures ~ 1 + context,
+                   data    = df,
+                   family  = poisson(link = 'log')
+                   )
+
+coef(m1_context)
+```
+
+--
+
+*** 
+<br>
+$$\Large \lambda_i \approx \text{exp}(3.99 - (\text{polite} \times 0.18))$$
+
+---
+
+
+# Model 1: Context
+$$\Large \lambda_i \approx \text{exp}(3.99 - (\text{polite} \times 0.18))$$
+
+<br><br>
+
+```{r}
+exp(3.99 - 0.18) #expected gestures in polite context
+exp(3.99)        #expected gestures in informal context
+```
+
+---
+
+# Gestos ~ Llenguatge
+
+--
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.align='center', out.width='65%'}
+ggplot(df, aes(x = gestures, fill = language)) +
+         geom_histogram(bins=20, alpha=0.6, position='identity') +
+         theme_minimal(base_size=20)
+```
+
+---
+
+
+
+# Model 2: Llenguatge
+
+```{r, warning=FALSE, message=FALSE}
+m2_lleng <- glm(formula = gestures ~ 1 + language,
+                   data    = df,
+                   family  = poisson(link = 'log')
+                   )
+
+coef(m2_lleng)
+```
+
+
+---
+
+# Gestos ~ Gènere
+
+--
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.align='center', out.width='65%'}
+ggplot(df, aes(x = gestures, fill = gender)) +
+         geom_histogram(bins=20, alpha=0.6, position='identity') +
+         theme_minimal(base_size=20)
+```
+
+---
+
+
+
+# Modelo 3: Gènere
+
+```{r, warning=FALSE, message=FALSE}
+m3_gen <- glm(formula   = gestures ~ 1 + gender,
+                   data    = df,
+                   family  = poisson(link = 'log')
+                   )
+
+coef(m3_gen)
+```
+
+---
+
+# summary(m1_context)
+
+
+
+```{r, echo=FALSE}
+summary(m1_context)
+```
+
+---
+
+# Akaike Information Criterion (AIC)
+
+* Estimat de predicció fora de mostra (out of sample prediction)
+
+* Serveix de rànquing relatiu a altres models (que van veure les mateixes dades)
+
+* AIC més baix $\Rightarrow$ millor
+
+---
+
+# summary(m2_lleng)
+
+
+```{r, echo=FALSE}
+summary(m2_lleng)
+```
+
+---
+
+# summary(m3_gen)
+
+```{r, echo=FALSE}
+summary(m3_gen)
+```
+
+
+---
+
+# Model 4: 3 predictors
+
+```{r}
+m4_all <-  glm(formula   = gestures ~ 1 + gender + context + language,
+                   data    = df,
+                   family  = poisson(link = 'log')
+                   )
+coef(m4_all)
+```
+
+---
+
+# Model 4: 3 predictors
+
+```{r, echo=FALSE}
+summary(m4_all)
+```
+
+---
+
+# Model 4: 2 predictors
+
+```{r}
+m5_gairabe_tots <-  glm(formula   = gestures ~ 1 + context + language,
+                         data    = df,
+                         family  = poisson(link = 'log')
+                   )
+coef(m5_gairabe_tots)
+
+```
+
+---
+
+# Modelo 4: 2 predictores
+
+```{r, echo=FALSE}
+summary(m5_gairabe_tots)
+```
+
+---
+
+# AICs
+
+```{r}
+m1_context$aic
+m2_lleng$aic
+m3_gen$aic
+m4_all$aic
+m5_gairabe_tots$aic
+
+```
+
+---
+
+class: inverse
+
+# Propera sessió
+
+* Lliurament de Assignment 5 (08:00 AM 23/05)
+
+***
+
+* **Models lineals generalitzats II**

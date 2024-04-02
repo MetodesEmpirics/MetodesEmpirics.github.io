@@ -1,0 +1,90 @@
+---
+title: "2 Plan design & data types"
+date: "`r Sys.Date()`"
+author:
+  - first_name: "Thomas"
+    last_name: "Brochhagen"
+    url: https://tbrochhagen.github.io/
+    affiliation: Universitat Pompeu Fabra
+bibliography: ../../biblio.bib
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 2
+  pdf_document:
+    toc: true
+---
+
+
+
+```{r preamble, echo=FALSE}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(reshape2)
+library(ggpubr)
+```
+
+# What's in an analysis plan
+For a detailed breakdown see this [OSF pre-registration template](https://osf.io/preprints/metaarxiv/epgjd/) [@osf-prereg]
+
+For a concrete example see [Replication of Experiment 1 of “The Adams family”](https://magpie-ea.github.io/magpie-esslli-2019-course-material/site/script/materials/prereg_report_Adams.pdf) by Michael Franke
+
+### Research question(s)
+Consider formulating your questions at different degrees of granularity. You may be curious about how phenomenon X works, in general, but your analysis may ultimately only address how some aspect of X, let's call it Y, works. It is crucial to always keep in mind how Y and X relate (i.e., what you can[not] learn from your study of Y about X).
+
+An analysis can address questions but it can also generate questions. Often, the latter is called  *exploratory* analysis; and the former is called *confirmatory*.
+
+### Design plan
+A description of the overall design of your analysis. Among others, specify its type: What will you measure under which (varying?) circumstances? 
+
+### Sampling plan
+How, and how many, observations will you collect? And why?
+
+### Variables
+Give details for all variables that you will use in your analysis plan 
+
+### Analysis plan
+Describe how you will analyze the data
+
+***
+
+# Data
+  * **Empirical** data comes in two main guises: **observational** --gathered with no intervention (i.e., by observation)-- and **experimental** --gathered through an intervention (i.e., an experiment).
+  * **Virtual** data is synthetic in nature. It can stem from simulations or model predictions, among others.
+
+## Variables
+They are what you are measuring, i.e., an attribute of interest in your analysis (height; pitch; weight; gender; and so on).  Common types of variables are: 
+  
+  * **nominal variables**: unordered descriptions 
+  * **ordinal variables**: ordered descriptions
+  * **binary variables**: two mutually exclusive outcomes (nominal variables)
+  * **metric variable**:  description that allows for quantitative comparisons 
+
+## Basic design vocabulary
+What matters is what is in your analysis plan, irrespective of how you call it. But it helps to be familiar with the basic vocabulary used to talk about experimental design.
+
+  * **Sample size** describes how many observations go into your analysis
+  * A **factor** is a discrete independent variable
+  * A **n $\times  m$ factorial design** has two factors: one with $n$ levels (e.g., for $n = 2$: *informal* and *polite*) and the other with $m$ levels (e.g., for $m = 3$: *US*; *UK*; *India*). There are $n \times m$ experimental conditions in such a design.
+  * There are three common types of **trials**
+    * **critical trials** measure (one of) the conditions we care about
+    * **control trials** are checks that will not go into the analysis but allow for quality control (e.g., if a subject is paying attention)
+    * **filler trials** pad the critical trials to avoid repeated exposure to the critical trials to influence the experiment (e.g., subjects getting bored; figuring out what the experiment is about; and so on)
+
+# Further reading 
+Useful resources if you're interested in reading more about a topic covered in this session
+
+  1. [Andrew Gelman's notes on R](http://www.stat.columbia.edu/~gelman/communication/Rnotes.pdf)
+  2. On pre-registration: [OSF on pre-registration](https://www.cos.io/initiatives/prereg) and [The preregistration revolution](https://www.pnas.org/content/115/11/2600) [@pnas-prereg]
+  3. Michael Franke's [Primer on replication, preregistration and open science through browser-based experiments in _magpie](https://magpie-ea.github.io/magpie-esslli-2019-course-material/site/script/)
+  4. Andrew Gelman's [The Connection Between Varying Treatment
+Effects and the Crisis of Unreplicable Research: A
+Bayesian Perspective](http://www.stat.columbia.edu/~gelman/research/published/bayes_management.pdf)
+  5. [Experimentology. An Open Science Approach to Experimental Psychology Methods](https://experimentology.io/)
+
+
+***
+
+## Corrections {.appendix}
+If you spot a mistake or have suggestions, please get in touch with [Thomas Brochhagen](https://brochhagen.github.io) or [create an issue](https://github.com/metodesempirics/metodesempirics.github.io/issues/new)

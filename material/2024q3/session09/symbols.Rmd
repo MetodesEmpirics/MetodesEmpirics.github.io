@@ -1,0 +1,32 @@
+---
+title: "Symbols and functions from today's session"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R (Simulations)
+
+### Generalized linear models
+
+
+```{r, eval=FALSE}
+#this function fits a generalized linear model, using a Poisson distribution and a log-link function
+glm(formula = outcome ~ 1 + predictor,
+    data    = data,
+   family  = poisson(link = 'log')
+) 
+```
+
+
+```{r, eval=FALSE}
+#this function fits a generalized linear model, using a Binomial distribution and a logit-link function
+glm(formula = outcome ~ 1 + predictor,
+    data    = data,
+   family  = binomial(link = 'logit')
+) 
+```

@@ -1,0 +1,22 @@
+---
+title: 'How to: Peer review'
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+bibliography: ../../biblio.bib
+---
+
+A peer review provides feedback on another person's work (here: your fellow students). The idea is for you to (i) summarize the main goals of the work you are reviewing; (ii) highlight strengths; and to (iii) highlight weaknesses. Throughout (ii) and (iii), the ultimate goal is to provide helpful suggestions to either strengthen or modify the proposal. Be honest but kind. If you don't understand something, then say so (e.g. just say ``I couldn't quite understand how the analysis related to the research question'')
+
+# Summary
+
+The summary is just a couple of sentences long. Summarize, in your own words, what the work you're assessing is about. **Why:** Because this gives indirect feedback to your peers about how well their project is understood by others. If you either could not summarize the work well or the summary in inaccurate, the author of the project will realize that they need to better explain what they want to do.
+
+# Strengths
+
+The paragraph on strengths is also rather brief. Just synthesize what you think is nice about the proposal. Some usual criteria are: It's well written; it's well motivated; the question is interesting; answers to the question would be very useful because of X. **Why:** Because the author of the project may not have realized that their project has a particular strength. If you point it out, you can help them steer their analysis toward the most promising parts of the project.
+
+# Weaknesses
+
+The paragraph on weaknesses is the most difficult to write. Be clear about what you think is not so good, but don't be mean. **Why:** This can be the most helpful feedback the author gets. If there is a weakness, we would like to know and address it! 

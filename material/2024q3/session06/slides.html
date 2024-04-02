@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>6 Regressió generalitzada I</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Mètodes empírics 2" />
+    <link href="slides_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="slides_files/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# 6 Regressió generalitzada I
+]
+.author[
+### Mètodes empírics 2
+]
+.date[
+### 16/05/2022
+]
+
+---
+
+
+
+
+# Avui
+
+.large[
+
+* Cas d'estudis
+
+* Límits de models lineals
+
+* Generalització
+
+]
+
+---
+
+class: inverse, center
+
+# Gestos a través de contextos i cultures
+
+.footnote[
+***
+Brown et al. (to appear):  [Iconic gestures are modulated
+by social context: A study of multimodal politeness across two cultures](). *Gesture*.
+]
+
+---
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt;Vols saber quins factors (no) afecten el nombre de gestos que fa una persona de mitjana en una conversa. Un col·lega t'ha donat les dades següents:&lt;br&gt;&lt;br&gt;https://tinyurl.com/gestures-data&lt;br&gt;&lt;br&gt;
+&lt;br&gt;
+1. Descriu les dades
+&lt;br&gt;&lt;br&gt;
+2. Descriu com penses que les variables es podrien relacionar
+&lt;br&gt;&lt;br&gt;
+3. Quins valors poden tenir les variables del teu interès?
+&lt;/b&gt;
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+---
+
+# Dades
+
+
+```
+##          ID context dur language gender gestures
+## 1 Catalan_1  friend 137  Catalan      M       61
+## 2 Catalan_1    prof 136  Catalan      M       78
+## 3 Catalan_2  friend  90  Catalan      F       31
+## 4 Catalan_2    prof 107  Catalan      F       40
+## 5 Catalan_3  friend 181  Catalan      M       81
+## 6 Catalan_3    prof 165  Catalan      M       49
+```
+
+---
+
+
+# Variables independents (possibles predictors)
+
+* `gender`: M o F
+
+* `context`: friend o prof
+
+* `language`: Catalan o Korean
+
+---
+
+# Variable dependent (resultat)
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-2-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+
+# Variable dependent (resultat)
+
+
+```
+##  [1]  61  78  31  40  81  49  32  49  39  32  35  30  88  73  59  47  22  13  61  73  58  51 101  82  56  74  40  43  91  76  62  37  89  49  30  30  33  11  26  13  63  62  51  27  67  49  61  61  31  16  63  42  22  10
+```
+
+
+---
+
+class: inverse
+
+# Límits de models lineals
+&lt;br&gt;
+&lt;br&gt;
+`$$\Huge y_i \sim \text{Normal}(\mu_i, \sigma)$$`
+
+***
+
+--
+`$$\Huge y_i \sim \text{Poisson}(\lambda_i)$$`
+`$$\Huge y_i \sim \text{Bernoulli}(p_i)$$`
+
+
+
+---
+
+# Model lineal
+
+`$$\Huge y_i \sim \text{Normal}(\mu_i, \sigma)$$`
+&lt;br&gt;
+`$$\Huge \mu_i = \beta_0 + \beta_1 x_1 + ... \beta_n x_n$$`
+
+
+---
+
+# Model lineal generalitzat: Normal
+
+
+`$$\Huge y_i \sim \text{Normal}(\mu_i, \sigma)$$`
+&lt;br&gt;
+`$$\Huge \mu_i = f(\beta_0 + \beta_1 x_1 + ... \beta_n x_n)$$`
+&lt;br&gt;
+
+--
+
+`$$\Huge f(x) = x$$` 
+
+---
+
+# Model lineal generalitzat: Poisson
+
+`$$\Huge y_i \sim \text{Poisson}(\lambda_i)$$`
+&lt;br&gt;
+`$$\Huge \lambda_i = f(\beta_0 + \beta_1 x_1 + ... \beta_n x_n)$$`
+--
+
+&lt;br&gt;
+`$$\Huge f(x) = \text{exp}(x)$$` 
+
+---
+
+# Espai exponencial
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-4-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Model lineal generalitzat: Poisson
+
+
+`$$\Huge y_i \sim \text{Poisson}(\lambda_i)$$`
+&lt;br&gt;
+`$$\Huge \lambda_i = exp(\beta_0 + \beta_1 x_1 + ... \beta_n x_n)$$`
+---
+
+# Model lineal generalitzat: Poisson
+
+
+`$$\Huge y_i \sim \text{Poisson}(\lambda_i)$$`
+&lt;br&gt;
+`$$\Huge log(\lambda_i) = \beta_0 + \beta_1 x_1 + ... \beta_n x_n$$`
+
+---
+
+
+# Link functions canòniques
+
+.pull-left[**Normal**: Identitat 
+
+&lt;br&gt;
+
+**Poisson**: Logaritme
+
+&lt;br&gt;&lt;br&gt;
+**Bernoulli/Binomial**: Logit 
+]
+
+
+.pull-right[
+`$$f(x) = x$$`
+&lt;br&gt;
+
+`$$f(x) = \text{exp}(x)$$`
+&lt;br&gt;
+`$$f(x) = \frac{exp(x)}{1 + exp(x)}$$`
+]
+
+---
+
+# Regressió de Poisson (R)
+
+
+```r
+glm(formula = gestures ~ 1 + language,
+    data    = df,
+    family  = poisson(link = 'log')
+    )
+```
+
+---
+
+
+class: inverse, center
+
+# Gestos a través de contextos i cultures
+
+.footnote[
+***
+Brown et al. (to appear):  [Iconic gestures are modulated
+by social context: A study of multimodal politeness across two cultures](). *Gesture*.
+]
+
+---
+
+# Dades
+
+
+```r
+head(df)
+```
+
+```
+##          ID context dur language gender gestures
+## 1 Catalan_1  friend 137  Catalan      M       61
+## 2 Catalan_1    prof 136  Catalan      M       78
+## 3 Catalan_2  friend  90  Catalan      F       31
+## 4 Catalan_2    prof 107  Catalan      F       40
+## 5 Catalan_3  friend 181  Catalan      M       81
+## 6 Catalan_3    prof 165  Catalan      M       49
+```
+
+---
+
+# Gestos ~ Context
+
+--
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-7-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+# Model 1: Context
+
+
+```r
+m1_context &lt;- glm(formula = gestures ~ 1 + context,
+                   data    = df,
+                   family  = poisson(link = 'log')
+                   )
+
+coef(m1_context)
+```
+
+```
+## (Intercept) contextprof 
+##   3.9855488  -0.1772416
+```
+
+--
+
+*** 
+&lt;br&gt;
+`$$\Large \lambda_i \approx \text{exp}(3.99 - (\text{polite} \times 0.18))$$`
+
+---
+
+
+# Model 1: Context
+`$$\Large \lambda_i \approx \text{exp}(3.99 - (\text{polite} \times 0.18))$$`
+
+&lt;br&gt;&lt;br&gt;
+
+
+```r
+exp(3.99 - 0.18) #expected gestures in polite context
+```
+
+```
+## [1] 45.15044
+```
+
+```r
+exp(3.99)        #expected gestures in informal context
+```
+
+```
+## [1] 54.05489
+```
+
+---
+
+# Gestos ~ Llenguatge
+
+--
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-10-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+
+# Model 2: Llenguatge
+
+
+```r
+m2_lleng &lt;- glm(formula = gestures ~ 1 + language,
+                   data    = df,
+                   family  = poisson(link = 'log')
+                   )
+
+coef(m2_lleng)
+```
+
+```
+##    (Intercept) languageKorean 
+##      3.9796817     -0.1713112
+```
+
+
+---
+
+# Gestos ~ Gènere
+
+--
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-12-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+
+# Modelo 3: Gènere
+
+
+```r
+m3_gen &lt;- glm(formula   = gestures ~ 1 + gender,
+                   data    = df,
+                   family  = poisson(link = 'log')
+                   )
+
+coef(m3_gen)
+```
+
+```
+## (Intercept)     genderM 
+##  3.88082715  0.04114619
+```
+
+---
+
+# summary(m1_context)
+
+
+
+
+```
+## 
+## Call:
+## glm(formula = gestures ~ 1 + context, family = poisson(link = "log"), 
+##     data = df)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -6.3272  -2.8687   0.4296   1.6026   5.7274  
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)  3.98555    0.02623 151.923  &lt; 2e-16 ***
+## contextprof -0.17724    0.03886  -4.561 5.08e-06 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for poisson family taken to be 1)
+## 
+##     Null deviance: 583.97  on 53  degrees of freedom
+## Residual deviance: 563.08  on 52  degrees of freedom
+## AIC: 870.22
+## 
+## Number of Fisher Scoring iterations: 4
+```
+
+---
+
+# Akaike Information Criterion (AIC)
+
+* Estimat de predicció fora de mostra (out of sample prediction)
+
+* Serveix de rànquing relatiu a altres models (que van veure les mateixes dades)
+
+* AIC més baix `\(\Rightarrow\)` millor
+
+---
+
+# summary(m2_lleng)
+
+
+
+```
+## 
+## Call:
+## glm(formula = gestures ~ 1 + language, family = poisson(link = "log"), 
+##     data = df)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -6.6496  -2.6240  -0.4041   2.4834   6.0006  
+## 
+## Coefficients:
+##                Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)     3.97968    0.02584 154.030  &lt; 2e-16 ***
+## languageKorean -0.17131    0.03900  -4.393 1.12e-05 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for poisson family taken to be 1)
+## 
+##     Null deviance: 583.97  on 53  degrees of freedom
+## Residual deviance: 564.56  on 52  degrees of freedom
+## AIC: 871.7
+## 
+## Number of Fisher Scoring iterations: 4
+```
+
+---
+
+# summary(m3_gen)
+
+
+```
+## 
+## Call:
+## glm(formula = gestures ~ 1 + gender, family = poisson(link = "log"), 
+##     data = df)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -6.7432  -2.7667  -0.2118   1.9619   6.2463  
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)  3.88083    0.02715 142.961   &lt;2e-16 ***
+## genderM      0.04115    0.03871   1.063    0.288    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for poisson family taken to be 1)
+## 
+##     Null deviance: 583.97  on 53  degrees of freedom
+## Residual deviance: 582.84  on 52  degrees of freedom
+## AIC: 889.98
+## 
+## Number of Fisher Scoring iterations: 4
+```
+
+
+---
+
+# Model 4: 3 predictors
+
+
+```r
+m4_all &lt;-  glm(formula   = gestures ~ 1 + gender + context + language,
+                   data    = df,
+                   family  = poisson(link = 'log')
+                   )
+coef(m4_all)
+```
+
+```
+##    (Intercept)        genderM    contextprof languageKorean 
+##     4.04690799     0.03464544    -0.17724157    -0.16997795
+```
+
+---
+
+# Model 4: 3 predictors
+
+
+```
+## 
+## Call:
+## glm(formula = gestures ~ 1 + gender + context + language, family = poisson(link = "log"), 
+##     data = df)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -6.1975  -2.7275  -0.0876   2.2215   5.4705  
+## 
+## Coefficients:
+##                Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)     4.04691    0.03701 109.355  &lt; 2e-16 ***
+## genderM         0.03465    0.03874   0.894    0.371    
+## contextprof    -0.17724    0.03886  -4.561 5.08e-06 ***
+## languageKorean -0.16998    0.03903  -4.356 1.33e-05 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for poisson family taken to be 1)
+## 
+##     Null deviance: 583.97  on 53  degrees of freedom
+## Residual deviance: 542.87  on 50  degrees of freedom
+## AIC: 854.01
+## 
+## Number of Fisher Scoring iterations: 4
+```
+
+---
+
+# Model 4: 2 predictors
+
+
+```r
+m5_gairabe_tots &lt;-  glm(formula   = gestures ~ 1 + context + language,
+                         data    = df,
+                         family  = poisson(link = 'log')
+                   )
+coef(m5_gairabe_tots)
+```
+
+```
+##    (Intercept)    contextprof languageKorean 
+##      4.0643807     -0.1772416     -0.1713112
+```
+
+---
+
+# Modelo 4: 2 predictores
+
+
+```
+## 
+## Call:
+## glm(formula = gestures ~ 1 + context + language, family = poisson(link = "log"), 
+##     data = df)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -6.0963  -2.7462   0.0327   2.2950   5.3442  
+## 
+## Coefficients:
+##                Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)     4.06438    0.03132 129.749  &lt; 2e-16 ***
+## contextprof    -0.17724    0.03886  -4.561 5.08e-06 ***
+## languageKorean -0.17131    0.03900  -4.393 1.12e-05 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for poisson family taken to be 1)
+## 
+##     Null deviance: 583.97  on 53  degrees of freedom
+## Residual deviance: 543.67  on 51  degrees of freedom
+## AIC: 852.81
+## 
+## Number of Fisher Scoring iterations: 4
+```
+
+---
+
+# AICs
+
+
+```r
+m1_context$aic
+```
+
+```
+## [1] 870.2175
+```
+
+```r
+m2_lleng$aic
+```
+
+```
+## [1] 871.6956
+```
+
+```r
+m3_gen$aic
+```
+
+```
+## [1] 889.9752
+```
+
+```r
+m4_all$aic
+```
+
+```
+## [1] 854.0088
+```
+
+```r
+m5_gairabe_tots$aic
+```
+
+```
+## [1] 852.8084
+```
+
+---
+
+class: inverse
+
+# Propera sessió
+
+* Lliurament de Assignment 5 (08:00 AM 23/05)
+
+***
+
+* **Models lineals generalitzats II**
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightLines": true,
+"highlightStyle": "github"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

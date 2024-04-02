@@ -1,0 +1,143 @@
+---
+title: "Symbols and functions from today's session"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R 
+
+### Naming (assigning a variable)
+
+```{r, eval=FALSE}
+any_name_I_like <- ... #gives "..." the name 'any_name_I_like'
+```
+
+For example,
+```{r}
+any_name_I_like <- 5 #now the value 5 is given the name 'any_name_I_like'
+any_name_I_like + any_name_I_like #the same as 5+5
+```
+
+```{r}
+another_name <- c(172,175,185) #"another_name"corresponds to a collection of three values
+sum(another_name) #the sum of the values that go by the name "another_name"
+```
+
+### Mean
+
+```{r, eval=FALSE}
+mean(...) #computes the mean of "..."
+```
+
+For example,
+```{r}
+mean(c(172,175,185)) #the mean of the collection of values 172, 175, 185
+mean(another_name)   #the mean of the values assigned to "another_name"
+```
+
+### Median
+
+```{r, eval=FALSE}
+median(...) #computes the median of "..."
+```
+
+For example,
+```{r}
+median(c(172,175,185)) #the median of the collection of values 172, 175, 185
+median(another_name)   #the median of the values assigned to "another_name"
+```
+
+### Variance
+
+```{r, eval=FALSE}
+var(...) #computes the variance of "..."
+```
+
+For example, 
+```{r}
+var(c(172,175,185)) #the variance of the collection of values 172, 175, 185
+var(another_name)   #the variance of the values assigned to "another_name"
+```
+
+### Standard deviation
+
+```{r, eval=FALSE}
+sd(...) #computes the standard deviation of "..."
+```
+
+For example,
+```{r}
+sd(c(172,175,185)) #the standard deviation of the collection of values 172, 175, 185
+sd(another_name)   #the standard deviation of the values assigned to "another_name"
+```
+
+### Rounding
+
+```{r, eval=FALSE}
+round(..., digits = n) #round the value of "..." by n-digits after the comma
+```
+
+For example,
+```{r}
+round(123.4578, digits = 3)   #rounds 123.4578 to the third place after the comma
+round(123.4578, digits = 1)   #rounds 123.4578 to the first place after the comma
+```
+
+
+### Mathematics
+Capital sigma ($\sum$) is the *summation sign*. It's a convenient way to say that you will sum over all the values to the right of the sign. For instance,
+
+$$\Large \sum_i x_i$$
+means "sum over all the values in $x$"; $x_i$ refers to the observation $i$ in $x$. In other words, 
+
+$$\Large \sum_i x_i = x_1 + ... + x_n$$,
+
+where $x_1$ is the first element in $x$ and $x_n$ is the last. For example, if you have the values `172, 175` and `178` then your $x$ is a list of these values. 
+
+$$\Large \sum_i x_i = 172 + 175 + 178$$
+
+In R, this is the same as:
+
+```{r}
+x <- c(172, 175, 178) #I call my list of three observations x
+sum(x)                #I sum the elements in x
+```
+
+which is the same as:
+```{r}
+172 + 175 + 178
+```
+
+Now what does, e.g., 
+$$\Large \sum_i x_i^2$$ 
+mean? 
+
+It means that it is the sum of the elements of $x$ but squared. So $172^2 + 175^2 + 178^2$. In other words, apply everything that happens to the right of $\sum$ to each element of $x$ and then sum them up.
+
+In R:
+```{r}
+x_squared <- x**2 #square all the elements in x and call them "x_squared"
+sum(x_squared)    #the sum of the elements in "x_squared"
+
+## which is the same as:
+172**2 + 175**2 + 178**2
+```
+
+As a final example,
+
+$$\Large \sum_i x_i + 1$$
+
+takes each element in $x$, sums $1$ to it, and then adds them all up; so $(172 + 1) + (175 + 1) + (178 + 1)$
+
+In R:
+```{r}
+x_plus_one <- x + 1 #add the value "1" to all elements in R
+sum(x_plus_one)     #the sum of all elements in "x_plusöne"
+
+## which is the same as:
+(172 + 1) + (175 + 1) + (178 + 1)

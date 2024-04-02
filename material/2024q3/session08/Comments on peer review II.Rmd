@@ -1,0 +1,18 @@
+---
+title: 'Comments on peer review II'
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+urlcolor: blue
+bibliography: ../../biblio.bib
+---
+
+You will find the feedback for all projects in the folder of this week's session. I have three comments:
+
+1. While most of you handed in a peer review, not everyone did. So it may be that some of you were unlucky and the person who was supposed to give you feedback did not submit anything. That's also why we asked for two and not only one review; to both maximize the chances that you will get at least some feedback and also for you to read more reports by others. Irrespective of how many persons gave you feedback on your report, you can always ask Thomas or Guillermo if want some additional feedback. Just let us know.
+
+2. Not everyone followed the required naming format. I am relatively confident that I managed to format even the files of those who didn't but --as always-- let me know if anything is amiss.
+
+3. Most of you did a really good and thoughtful job at providing feedback to others. Thank you a lot! 
+

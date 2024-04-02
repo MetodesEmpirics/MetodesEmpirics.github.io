@@ -1,0 +1,48 @@
+---
+title: "Report guidelines"
+date: "`r Sys.Date()`"
+author:
+  - "Mètodes Empírics per a l'Estudi del Llenguatge 2"
+bibliography: ../../biblio.bib
+output:
+  pdf_document
+---
+
+
+
+The report cannot exceed 2 PDF pages. This limit does not include *references*; *supplementary material* (optional); and the *list of contributions* (only if working in groups). 
+
+As a rule of thumb, a report includes one to two figures/plots.
+
+## Sections 
+You are encouraged to include the following sections. That being said, except for exceeding 2 pages, you can always deviate from these suggestions if you think doing it differently works better for your report. If you are in doubt: ask/discuss!
+
+### Introduction 
+The introduction gives an overview of the object of study and serves as a motivation for the analysis conducted. It covers (i) what the topic of the analysis is; (ii) what we know from other research about this topic;^[Be selective! You don't have much space so focus on the most important findings that relate to your analysis] and (iii) what you will analyze and why this is interesting/important.
+
+### Material and methods
+This is a concise overview of the material your analysis is based on (where did you get it from? how does it fit the question you are addressing?) and the way you will analyse it.
+
+### Results
+Main results of your analysis. Remember to link them back to the larger topic you're addressing (what do they [not] teach us about the object of study?).
+
+### Division of labor (unlimited space / only if working in groups)
+Who did what in your group
+
+### References (unlimited space)
+Citations of the sources you mention in the report
+
+### Supplementary material (unlimited space)
+This is optional. You can add information that you couldn't include in the main report due to lack of space here. Keep in mind that the report needs to stand on its own. The supplementary material is not subject to the evaluation.
+
+## Evaluation criteria (100 points max)
+
+  1. Clarity: the analysis is clearly and succintly described; appropriate use of visual devices (30 points)
+  2. Replicability: the analysis plan covers all steps to allow for its replication (15 points)
+  3. Content: the analysis is well motivated and executed using appropriate techniques (40 points)
+  4. Reproduceability: the analysis provides all the information necessary to reproduce it (15 points)
+  5. Creativity: The analysis goes above and beyond in one or multiple dimensions: e.g., visual devices; research question; methodology; documentation (20 points)
+  
+## Examples from previous editions
+In Aula Global, you will find two exemplary reports from past students (*Report example 1* and *Report example 2*) that may help you get a better idea of what is expected of you, and of the kinds of things you will be able to do by the end of this class.
+

@@ -1,0 +1,74 @@
+---
+title: "Symbols and functions from today's session"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R 
+
+### Import data (CSV)
+
+```{r, eval=FALSE}
+df <- read.csv(...) # imports the data at '...' as a data frame
+```
+
+For example,
+```{r}
+df <- read.csv('https://tinyurl.com/2s3p9s2z') #loads the CSV from this link
+another_df <- read.csv('senderdata.csv') #loads the same data, but from my computer
+```
+
+### Inspect data
+
+```{r, eval=TRUE}
+head(df) #shows first lines of the data frame 'df'
+```
+
+```{r}
+tail(df) #shows the last lines of df
+```
+
+```{r}
+nrow(df) #number of rows of df
+```
+
+```{r}
+colnames(df) #column names of df
+```
+
+### Extract and manipulate column data
+
+```{r, eval=FALSE}
+data <- df$column_name #the operator $ extracts the column named "column_name" from "df" 
+```
+
+For example,
+```{r}
+labels_used <- df$label #data in the "label" column
+```
+
+```{r}
+unique(labels_used) #unique values in "labels_used
+```
+
+### Filtering
+
+```{r, eval=TRUE, warning=FALSE, message=FALSE}
+library(dplyr) #library with functions to filter/select data
+```
+
+```{r, eval = FALSE}
+filter(x,y == z) #takes the data frame x and selects all lines in which column y has value z 
+```
+
+For example,
+```{r}
+df_zopudon <- filter(df, label == 'zopudon')
+head(df_zopudon)
+nrow(df_zopudon)
+```

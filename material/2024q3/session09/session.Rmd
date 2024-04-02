@@ -1,0 +1,211 @@
+---
+title: "9 Visualization"
+author:
+- first_name: Thomas
+  last_name: Brochhagen
+  url: https://tbrochhagen.github.io/
+  affiliation: Universitat Pompeu Fabra
+date: "`r Sys.Date()`"
+output:
+  distill::distill_article:
+    toc: yes
+    toc_depth: 2
+  html_document:
+    toc: yes
+    toc_depth: '2'
+    df_print: paged
+  pdf_document:
+    toc: yes
+---
+
+
+```{r preamble, echo=FALSE}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(reshape2)
+library(ggpubr)
+
+age <- rpois(n = 30, lambda = 28)
+pitch <- 220 + (-2 * age) + rnorm(30, 0,5)
+df <- data.frame(age,pitch)
+```
+
+# Visualization
+
+Visualization is a key tool in empirical studies. The way we represent information can greatly help in conveying what we are trying to say, but also obfuscate it. 
+
+The field of data visualization is still relatively new. Notwithstanding, there are some general guidelines that can help you along the way (see, e.g., [Graphic Principles](https://github.com/GraphicsPrinciples/CheatSheet/blob/master/NVSCheatSheet.pdf)).
+
+Four core tenants to keep in mind when visualizing data are:
+
+* The "Why": Identify the purpose of your visual device (e.g., to make a contrast between two groups clear; or to visualize how the data is distributed)
+
+* The "What": Identify the quantitative evidence to support the purpose
+
+* The "Who": Identify the intended audience and design your visualization to aid them
+
+* The "Where": Adapt design to presentation constraints
+
+
+# Common types of visualizations
+
+## Scatter plots
+
+Particularly useful when data are continuous and there is a single relationship to depict
+
+```{r, warning=FALSE, message=FALSE}
+
+ggplot(df, aes(x = age, y = pitch)) + 
+  geom_point() +
+  theme_minimal(base_size = 22)
+```
+## Histograms
+
+Particularly useful when you want to depict the distribution of a single variable
+
+```{r}
+
+ggplot(df, aes(x = pitch)) +
+  geom_histogram(bins = 10) +
+  theme_minimal(base_size = 22)
+
+```
+
+## Boxplots
+
+Particularly useful when you want to depict the distribution of a single variable, often grouped
+
+
+```{r}
+df_gestures <- read.csv('https://tinyurl.com/gestures-data') #download data
+
+ggplot(df_gestures, aes(x = language, y = gestures)) +
+  geom_boxplot() +
+  theme_minimal(base_size = 22) +
+  theme(axis.title.x = element_blank())
+```
+
+```{r}
+df_gestures <- read.csv('https://tinyurl.com/gestures-data') #download data
+
+ggplot(df_gestures, aes(x = language, y = gestures, fill = context)) +
+  geom_boxplot() +
+  theme_minimal(base_size = 22) +
+  theme(axis.title.x = element_blank())
+```
+
+## Other types of visualizations
+
+There are many more types of plots, and combinations thereof. You can, e.g., see a long array of possibilities here: [https://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html](https://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
+
+
+# ggplot2
+
+`ggplot2` is a powerful package for plotting data. It is based on a theoretical analysis of data graphics: “The Grammar of Graphics” by Leland Wikinson.
+
+## Components
+
+Main ones:
+
+* **data** what is plotted
+
+* **mapping** how the data relates to what you see ("aesthetics")
+
+* **geom** what geometric object is used to draw each observation (points, lines, bars, etc)
+
+Secondary ones:
+
+* **stat**: optional transformations of the data
+
+* **facet**: split data into multiple panels by criterion
+
+
+## Example 1
+
+```{r}
+ggplot(data = df) #just specifies where data comes from 
+                  #but doesn't say what to draw nor how to draw it
+```
+
+```{r}
+ggplot(data = df, aes(x = age, y = pitch)) #says what to draw
+                                           #but not how
+```
+```{r}
+ggplot(data = df, aes(x = age, y = pitch)) + #what to draw
+  geom_point()                               #how to draw it
+```
+
+
+```{r}
+ggplot(data = df, aes(x = age, y = pitch)) +    #what to draw
+  geom_point()                             +    #how to draw it
+  geom_abline(intercept = 214.7, slope = -1.83) #add a line
+```
+
+## Example 2
+
+```{r}
+ggplot(data = df_gestures) #just specifies where data comes from 
+                  #but doesn't say what to draw nor how to draw it
+```
+
+```{r}
+ggplot(data = df_gestures, aes(x = language, y = gestures)) #says what to draw
+                                           #but not how
+```
+
+```{r}
+ggplot(data = df_gestures, aes(x = language, y = gestures)) +
+  geom_boxplot()
+```
+```{r}
+ggplot(data = df_gestures, aes(x = language, y = gestures, fill = context)) +
+  geom_boxplot()
+```
+```{r}
+ggplot(data = df_gestures, aes(x = language, y = gestures)) +
+  geom_boxplot() + 
+  facet_wrap( ~ context) #split into panels
+```
+
+## Beautification
+
+Let's make these plots a bit prettier
+
+```{r}
+ggplot(data = df_gestures, aes(x = language, y = gestures, fill = context)) +
+  geom_boxplot() +
+  theme_minimal() #change overall appeareance of the plot
+```
+```{r}
+ggplot(data = df_gestures, aes(x = language, y = gestures, fill = context)) +
+  geom_boxplot() +
+  theme_minimal(base_size = 22) #change theme and make labels bigger
+```
+```{r}
+ggplot(data = df_gestures, aes(x = language, y = gestures, fill = context)) +
+  geom_boxplot() +
+  theme_minimal(base_size = 22) + #change theme and make labels bigger
+  theme(axis.title.x = element_blank()) #remove reddundant information
+```
+
+# Further reading/watching
+
+Partially citing from [ggplot's documentation](https://ggplot2.tidyverse.org/):
+
+1. The [Data Visualisation](https://r4ds.had.co.nz/data-visualisation.html) and [Graphics for communication](https://r4ds.had.co.nz/graphics-for-communication.html) chapters in R for Data Science. R for Data Science is designed to give you a comprehensive introduction to the tidyverse, and these two chapters will get you up to speed with the essentials of ggplot2 as quickly as possible.
+
+2. If you’d like to follow a webinar, try [Plotting Anything with ggplot2 by Thomas Lin Pedersen](https://r-graphics.org/).
+
+3. If you want to dive into making common graphics as quickly as possible, [look at] [The R Graphics Cookbook by Winston Chang](https://r-graphics.org/). It provides a set of recipes to solve common graphics problems.
+
+Beyond `ggplot2`:
+
+* [Graphics principles](https://graphicsprinciples.github.io/)
+
+* [Franconeri et al (2021): The Science of Visual Data Communication: What Works](https://www2.econ.iastate.edu/tesfatsi/ScienceOfVisualDataCommunication.FranconeriEtAl2021.pdf)
+
+## Corrections {.appendix}
+If you spot a mistake or have suggestions, please get in touch with [Thomas Brochhagen](https://brochhagen.github.io) or [create an issue](https://github.com/metodesempirics/metodesempirics.github.io/issues/new)
