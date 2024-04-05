@@ -85,7 +85,7 @@ class: inverse, center
 * **Pla de disseny**
    * Descripció general de l'anàlisi.
   
-   * Entre altres, especifica què mesuraràs, i sota quines circumstàncies
+   * Entre altres, especifica què mesuraràs, i en quines circumstàncies
 
 * Pla de mostreig (sampling pla)
 
