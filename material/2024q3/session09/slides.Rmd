@@ -1,7 +1,7 @@
 ---
 title: "9 Visualització"
 author: "Mètodes empírics 2"
-date: "06/06/2022"
+date: "27/05/2024"
 output:
   xaringan::moon_reader:
     nature:
@@ -346,8 +346,6 @@ Res / informe final
 
 ***
 
-* **Més temes i més mètodes empírics en les ciències del llenguatge**
+* **Generalized linear models (II)**
 
-***
 
-* Informe final: 25/06

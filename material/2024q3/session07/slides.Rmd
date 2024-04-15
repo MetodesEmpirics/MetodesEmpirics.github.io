@@ -1,7 +1,7 @@
 ---
-title: "7 Regressió generalitzada II"
+title: "Regressió generalitzada II"
 author: "Mètodes empírics 2"
-date: "23/05/2022"
+date: "03/06/2024"
 output:
   xaringan::moon_reader:
     nature:
@@ -486,14 +486,4 @@ head(ranef(m5)$IP)
 
 class: inverse
 
-# Propera sessió
-
-* Lliurament part II de "Revisió per parells": 30/05
-
-***
-
-* **Corpus**
-
-*** 
-
-* Informe final: 25/06
+# Final remarks

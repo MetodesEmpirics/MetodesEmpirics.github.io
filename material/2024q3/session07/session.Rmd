@@ -1,11 +1,10 @@
 ---
-title: "7 Generalized linear models II"
+title: "Generalized linear models II"
 author:
 - first_name: Thomas
   last_name: Brochhagen
   url: https://tbrochhagen.github.io/
   affiliation: Universitat Pompeu Fabra
-date: "`r Sys.Date()`"
 output:
   distill::distill_article:
     toc: yes
