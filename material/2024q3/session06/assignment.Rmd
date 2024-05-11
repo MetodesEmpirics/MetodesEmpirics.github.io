@@ -13,9 +13,9 @@ You will find a dataset prepared for you if you modify the **bolfaced** portion 
 
 https://raw.githubusercontent.com/MetodesEmpirics/MetodesEmpirics.github.io/main/material/2024q3/session08/data/csvs/**insert_your_student_ID**.csv
 
-Each student has their own dataset, identified by their student ID. For instance, if your student ID is **u103672**, then your link is:
+Each student has their own dataset, identified by their student ID. For instance, if your student ID is **u167750**, then your link is:
 
-https://raw.githubusercontent.com/MetodesEmpirics/MetodesEmpirics.github.io/main/material/2024q3/session08/data/csvs/**u103672**.csv
+https://raw.githubusercontent.com/MetodesEmpirics/MetodesEmpirics.github.io/main/material/2024q3/session08/data/csvs/**u167750**.csv
 
 Note that your computer may insert a space in your URL because it spans two lines. Alternatively, if you are having trouble copy/pasting, you will find the link to your dataset here:
 
