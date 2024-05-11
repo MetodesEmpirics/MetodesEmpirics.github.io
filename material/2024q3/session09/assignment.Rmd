@@ -13,11 +13,11 @@ This is a *recuperación* for the practical exercise. You can do this exercise e
 
 As before, you will find a data set prepared for you if you modify the **boldfaced** portion of the following link:
 
-https://raw.githubusercontent.com/MetodesEmpirics/MetodesEmpirics.github.io/main/material/2022q3/session08/data/csvs/**insert_your_student_ID**.csv
+https://raw.githubusercontent.com/MetodesEmpirics/MetodesEmpirics.github.io/main/material/2024q3/session08/data/csvs/**insert_your_student_ID**.csv
 
 Each student has their own dataset, identified by their student ID. For instance, if your student ID is **u103672**, then your link is:
 
-https://raw.githubusercontent.com/MetodesEmpirics/MetodesEmpirics.github.io/main/material/2022q3/session08/data/csvs/**u103672**.csv
+https://raw.githubusercontent.com/MetodesEmpirics/MetodesEmpirics.github.io/main/material/2024q3/session08/data/csvs/**u103672**.csv
 
 You can then load your data as
 ```{r, eval=FALSE}

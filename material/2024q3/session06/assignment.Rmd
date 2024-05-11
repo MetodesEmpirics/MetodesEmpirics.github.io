@@ -11,15 +11,15 @@ bibliography: ../../biblio.bib
 
 You will find a dataset prepared for you if you modify the **bolfaced** portion of the following link:
 
-https://raw.githubusercontent.com/MetodesEmpirics/MetodesEmpirics.github.io/main/material/2023q3/session08/data/csvs/**insert_your_student_ID**.csv
+https://raw.githubusercontent.com/MetodesEmpirics/MetodesEmpirics.github.io/main/material/2024q3/session08/data/csvs/**insert_your_student_ID**.csv
 
 Each student has their own dataset, identified by their student ID. For instance, if your student ID is **u103672**, then your link is:
 
-https://raw.githubusercontent.com/MetodesEmpirics/MetodesEmpirics.github.io/main/material/2023q3/session08/data/csvs/**u103672**.csv
+https://raw.githubusercontent.com/MetodesEmpirics/MetodesEmpirics.github.io/main/material/2024q3/session08/data/csvs/**u103672**.csv
 
 Note that your computer may insert a space in your URL because it spans two lines. Alternatively, if you are having trouble copy/pasting, you will find the link to your dataset here:
 
-https://docs.google.com/spreadsheets/d/1Gi0PQxDbCBKbVHjXoCLPerkMl36taz0ivDXuaRaXJNU/edit?usp=sharing
+https://docs.google.com/spreadsheets/d/1XMks1AmLyH_9BQVz4duZvDPz1q0pwvKYJ7JTzBMqW2U/edit?usp=sharing
 
 You can then load your data as
 
@@ -52,7 +52,7 @@ Your colleague has collected data from subjects that were asked to read sentence
 Here's how the data may look like:
 
 ```{r, echo=FALSE}
-df <- read.csv('https://raw.githubusercontent.com/MetodesEmpirics/MetodesEmpirics.github.io/main/material/2023q3/session08/data/csvs/u167750.csv')
+df <- read.csv('https://raw.githubusercontent.com/MetodesEmpirics/MetodesEmpirics.github.io/main/material/2024q3/session08/data/csvs/u167750.csv')
 head(df)
 ```
 
