@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>3 Recol·lecció de dades i mostres</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Mètodes empírics 2" />
+    <link href="slides_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="slides_files/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# 3 Recol·lecció de dades i mostres
+]
+.author[
+### Mètodes empírics 2
+]
+.date[
+### 22/04/2024
+]
+
+---
+
+
+
+
+# Avui
+
+.large[
+* Mostres
+
+* Control
+
+* On són les dades?
+
+* Distribucions
+
+]
+
+---
+
+class: inverse, center
+
+# Mostres
+
+---
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt;Què és una mostra? Dóna un exemple&lt;/b&gt;
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+
+---
+
+## Tipus de mostres
+**Mostra completa**:
+tota la població d'interès
+&lt;br&gt;
+&lt;br&gt;
+--
+**Mostra representativa/sense biaix**: presa de la mostra completa amb un mètode que no depèn de la mostra que s'està prenent
+&lt;br&gt;
+&lt;br&gt;
+--
+**Mostra no representativa/amb biaix**: les dades són influenciades pel mètode de presa
+
+---
+
+## Tipus de mostres
+
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt;Per la pregunta &lt;br&gt;&lt;br&gt; "És la l-velaritzada (vs. no velaritzada) un fonéma del Català?" &lt;br&gt;&lt;br&gt;dóna un exemple d'una mostra representativa i una no representativa&lt;/b&gt;
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+
+
+---
+
+
+## Mida de mostra
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt;Per la pregunta &lt;br&gt;&lt;br&gt; "És la l-velaritzada (vs. no velaritzada) un fonéma del Català?" &lt;br&gt;&lt;br&gt;quina diferència fa si tinc una mostra de 5 persones o una de 1000?&lt;/b&gt;
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+---
+
+## Mida de mostra (p = 0.52)
+
+Assumeix que la probabilitat que una paraula curta sigui usada per a (i) un significat freqüent és `\(0.52\)` vs. (ii) un significat menys freqüent.
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt;Què tan gran ha de ser la mostra per detectar aquesta diferència?&lt;/b&gt;
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+---
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-1-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Mida de mostra (p = 0.65)
+
+Assumeix que la probabilitat que una paraula curta sigui usada per a (i) un significat freqüent és `\(0.65\)` vs. (ii) un significat menys freqüent.
+
+---
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-2-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+## Mida de muestra (p = 0.9)
+
+Assumeix que la probabilitat que una paraula curta sigui usada per a (i) un significat freqüent és `\(0.9\)` vs. (ii) un significat menys freqüent.
+
+---
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+* Tant biaix com mida importen
+
+* Però quant importen es respon en funció de la pregunta i l'efecte que esperes, a priori
+
+---
+
+class: inverse, center
+
+# Control
+
+---
+
+# Estudis pilot
+
+Versió a petita escala de la teva anàlisi
+
+* Comproveu si el pla d'anàlisi és realitzable
+
+* Comprova la qualitat del pla d'anàlisi, però no necessàriament la seva sensibilitat (en funció de la mida de l'efecte)
+
+* Estalvia temps i diners
+
+---
+
+# Simulacions
+
+Versió idealitzada de la teva anàlisi
+
+* Comprova si el pla d'anàlisi (sense recol·lecció) és realitzable
+
+* Comprova la qualitat del pla d'anàlisi i la seva sensibilitat
+
+* Cec a problemes de recol·lecció; només és tan bo com les teves suposicions
+
+* Estalvia (més) temps i diners
+
+---
+
+class: inverse, center
+
+# On són les dades?
+
+---
+
+# Experimentales
+
+* Laboratori (eye-tracking, fMRI)
+
+* Plataformes online (MTurk, Prolific, Google Forms)
+
+* Recol·lecció "al carrer"
+
+* Dades de previs estudis (SWOW, NoRaRe, SimLex-999, VisualGenome)
+
+
+---
+
+# Dades no/semi estructurades
+
+* Corpora (Wikipèdia, Twitter)
+
+* Scraping
+
+* Dades de previs estudis (CLICS)
+
+* Models (word embeddings; language models)
+
+---
+
+class: inverse, center
+
+# Manipulació de dades experimentals amb R
+
+---
+
+class: inverse, center
+
+# Distribucions
+
+---
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt;Què és una distribució?&lt;/b&gt;
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+
+---
+
+## Distribucio normal (Gaussiana)
+
+.pull-left[
+![](slides_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
+]
+.pull-right[
+**y ~ Normal(** `\(\mu\)`, `\(\sigma\)` **)**
+&lt;br&gt;
+&lt;br&gt;
+**y ~ Normal(** mitja, desv. est. **)**
+&lt;br&gt;
+&lt;br&gt;
+**y ~ Normal(170, 2)**
+
+]
+
+---
+
+## Distribucio normal (Gaussiana)
+
+* **Valors possibles:** numeros reals
+
+* **Paràmetres:** mitjana, desviació estàndard
+
+* Comú "a la natura" i epistèmicament lleugera
+
+---
+
+## Distribucio Bernoulli (Binomial)
+
+.pull-left[
+![](slides_files/figure-html/unnamed-chunk-5-1.png)&lt;!-- --&gt;
+]
+.pull-right[
+**y ~ Bernoulli(** `\(p\)` **)**
+&lt;br&gt;
+&lt;br&gt;
+**y ~ Bernoulli(** prob. d'èxit **)**
+&lt;br&gt;
+&lt;br&gt;
+**y ~ Bernoulli(0.5)**
+
+]
+
+---
+
+## Distribucio Bernoulli (Binomial)
+
+* **Valors possibles:** `\(0\)` o `\(1\)`
+
+* **Paràmetres:** probabilitat d'èxit ( `\(1\)` )
+
+* Comú en experiments i ciències socials
+
+---
+
+
+## Distribucio Poisson
+.pull-left[
+![](slides_files/figure-html/unnamed-chunk-6-1.png)&lt;!-- --&gt;
+]
+.pull-right[
+**y ~ Poisson(** `\(\lambda\)` **)**
+&lt;br&gt;
+&lt;br&gt;
+**y ~ Poisson(** ritme **)**
+&lt;br&gt;
+&lt;br&gt;
+**y ~ Poisson(170)**
+
+]
+
+---
+
+## Distribucio Poisson
+
+* **Valors possibles:** numeros naturals + 0
+
+* **Paràmetres:** ritme ( expectativa de mitja )
+
+* Comú en ciències socials, quan comptem esdeveniments
+
+* La seva variància és igual al seu ritme/mitjana `\(\Rightarrow\)` &lt;br&gt;la seva desviació estàndard és `\(\sqrt{\lambda}\)`
+
+---
+
+class: inverse
+
+# Propera sessió
+
+* Lliurament de "Assignment 2" (08:00 AM 29/04)
+
+***
+
+* **Introducció a la regressió**
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightLines": true,
+"highlightStyle": "github"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

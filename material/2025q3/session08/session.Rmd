@@ -1,0 +1,93 @@
+---
+title: "8 Corpora"
+author:
+- first_name: Thomas
+  last_name: Brochhagen
+  url: https://tbrochhagen.github.io/
+  affiliation: Universitat Pompeu Fabra
+date: "`r Sys.Date()`"
+bibliography: ../../biblio.bib
+output:
+  distill::distill_article:
+    toc: yes
+    toc_depth: 2
+  html_document:
+    toc: yes
+    toc_depth: '2'
+    df_print: paged
+  pdf_document:
+    toc: yes
+---
+
+# Corpora
+
+A linguistic corpus is a digital collection of language data. It is usually large, and it is often unstructured. An example of a corpus could be:
+
+* All of Shakespear's poems
+* All Wikipedia pages in Catalan
+* All the tweets of Mariano Rajoy
+* Every post in an online (sub-)community 
+* ...
+
+They allow us to uncover latent patterns in linguistic data. To uncover these patterns, the data often needs to be processed or transformed.
+
+## Some pre-processed resources
+
+* [British National Corpus](http://www.natcorp.ox.ac.uk/) (BCN)
+* [Wikicorpus](https://www.lsi.upc.edu/~nlp/wikicorpus/) (Catalan, Spanish, English)
+* [Corpus of Contemporary American English](https://www.english-corpora.org/coca/) (COCA)
+* ...
+
+## Some libraries
+
+* [NLTK](https://www.nltk.org/) (python)
+* [spacy](https://spacy.io/) (python)
+* [tidytext](https://juliasilge.github.io/tidytext/) (R)
+
+## Tokenization
+
+To make sense of large amounts of data, we need to define units over which we want do do our analysis. Tokenization is the process of chopping up the corpus into those units. The unit of analysis could be, e.g., words, morphemes, or characters. If, for example, you want to count how many times the word *cat* appears in a text, then tokenization should happen at the word level.
+
+
+## Stemming and lemmatization
+
+Both of these processes aim at stripping morphological information from words that you may not want to take into consideration. If you want to count how many times the verb *to be* appears in a text, then you probably want to count *am*, *are* and *be* as the same. That is, to lemmatize and count only different lemmas and not different word forms. Similarly, if you want to count how many times the word *cat* is used, maybe you also want to count *cat's*, *cats* and *cats'*. That is, you may want to only consider different stems. 
+
+
+
+## Tagging
+Tagging refers to a pre-processing step by which you add category labels to your linguistic units of analysis. A common type of tagging is so-called *part of speech tagging* (POS-tagging), i.e., going through the text and marking units as belonging to parts of speech such as *noun*; *adjective*; *verb* or *adverb*. Tagging is often the second step in a corpus analysis, following tokenization.
+
+
+## Word embeddings & beyond
+
+The last decade has seen an immense increase in both (i) computing capabilities and (ii) amounts of data available. Together with more optimized algorithms, this has lead to the construction of very successful natural language models. A lot of these models share a core commonality: They are exposed to large amounts of data and are trained to predict, for each chunk of data that they see, the word/character/POS/... that will follow.
+
+To illustrate: The model is asked to predict the word following "The ..."; then it is shown what the next word was (e.g., "house"); and it is asked to predict the word following it "The house ..."; and then it is shown what came after and asked, again, to predict the next word "The house was ..."; and so on and so on. This model is like a very distant cousine of the regression models we saw before. Their main difference is that this one has hundreds if not thousands of parameters. After going through a very large corpus like this --and sometimes doing so many times-- the model will become quite good at learning to predict the next word. This simple next-word-prediction ability lies at the center of most recent innovations in natural language processing.
+
+# Zipf's Law(s)
+
+
+## Zipf's Power Law
+Words' rank-frequency distribution is inverse [@zipf:1935; @zipf:1949; @sigurd+etal:2004; @piantadosi+etal:2011;  @ferrer-i-cancho+hernandez-fernandez:2013; @ferrer-i-cancho+etal:2013]. That is, the frequency of any word is inversely proportional to its rank in a frequency table. Consequently, the first most frequent word will appear approximately twice as often as the second ranked word.
+
+
+```{r, echo=FALSE, fig.cap="Figure from https://en.wikipedia.org/wiki/Zipf%27s_law. A plot of the rank versus frequency for the first 10 million words in 30 Wikipedias (dumps from October 2015) in a log-log scale."}
+library(knitr)
+include_graphics('Zipf_30wiki_en_labels.png')
+```
+
+## Zipf's Law of Abbreviation
+Frequent forms tend to be shorter [@zipf:1935; @zipf:1949; @sigurd+etal:2004; @piantadosi+etal:2011;  @ferrer-i-cancho+hernandez-fernandez:2013; @ferrer-i-cancho+etal:2013; @kanwal+etal:2017; @brochhagen:2021]
+
+```{r, echo=FALSE, fig.cap="Figure from [@kanwal+etal:2017]", out.width="60%"}
+library(knitr)
+include_graphics('../session02/en-zipf.jpg')
+```
+
+## Zipf's Meaning-Frequency Law
+Frequent forms have more meanings [@zipf:1949]
+
+
+## Corrections {.appendix}
+If you spot a mistake or have suggestions, please get in touch with [Thomas Brochhagen](https://brochhagen.github.io) or [create an issue](https://github.com/metodesempirics/metodesempirics.github.io/issues/new)

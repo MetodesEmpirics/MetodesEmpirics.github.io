@@ -1,0 +1,13 @@
+---
+title: 'Assignment'
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+urlcolor: blue
+bibliography: ../../biblio.bib
+---
+
+# Self study
+
+This week there is no practical exercise, and nothing to hand in. Use your time to work on your final report. Make sure you have all its details worked out by the end of the course.

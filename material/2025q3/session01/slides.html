@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>1 Introducció</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Mètodes empírics 2" />
+    <script src="slides_files/header-attrs-2.29/header-attrs.js"></script>
+    <link href="slides_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="slides_files/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# 1 Introducció
+]
+.author[
+### Mètodes empírics 2
+]
+.date[
+### 24/03/2025
+]
+
+---
+
+
+
+
+# Avui
+
+.large[
+* Organització del curs
+
+* Sinopsi del curs
+
+* Replicabilitat i reproduïbilitat
+
+* R
+
+* Estadística descriptiva
+
+]
+
+---
+
+class: inverse, center
+
+# Organització
+
+---
+
+# Informació bàsica
+
+.large[
+* 5 ECTS (~125-150 hores)
+
+* Material i comunicació: https://aulaglobal.upf.edu/
+
+* Equip
+   * Thomas Brochhagen (thomas.brochhagen@upf.edu)&lt;br&gt; https://brochhagen.github.io
+  
+   * Iria de Dios Flores (iria.dedios@upf.edu)&lt;br&gt; https://sites.google.com/view/iriadediosflores/
+
+* Estructura
+   * Dilluns: Conceptes i discussió
+  
+   * Divendres: Pràctica i més discussió
+
+]
+
+---
+
+# Horari grup gran
+
+&gt; Per facilitar que els estudiants tinguin temps de canviar d'aula, caldrà deixar sempre 10 minuts de cortesia a l'inici de la sessió [...]
+
+&lt;br&gt;&lt;br&gt;
+### `\(\Rightarrow\)` 11:40 - 13:25
+
+
+
+---
+
+# Avaluació
+.large[
+* Exercicis setmanals (20%, no recuperable)
+
+* Exercici pràctic (20%, no recuperable)
+
+* Revisió per parells (10%, no recuperable)
+
+* Informe: disseny i execució d'anàlisi (50%, recuperable)
+]
+---
+
+# Avaluació
+
+.large[
+Exercicis setmanals (20%, no recuperable)
+  
+  * A través d'Aula Global
+  
+  * Correcció automàtica
+  
+  * 5 en total
+]
+
+---
+
+# Avaluació
+
+.large[
+Exercici pràctic (20%, no recuperable)
+
+  * *take home exam/study* (1 setmana per fer-ho)
+
+  * A través d'Aula Global
+  
+  * A meitat de curs
+
+]
+
+---
+
+# Avaluació 
+.large[
+Revisió per parells (10%, no recuperable)
+
+  * Dues parts:
+    1. Esborrany del vostre pla per l'anàlisi final
+    
+    2. Feedback sobre el esborrany de dos companyes
+
+  * Només opció d'aprovar, o no
+
+  * No s'aprova si no es lliuren les dues parts; o si qualsevol no s'adequa a un estàndard mínim de qualitat
+]
+
+
+---
+
+# Avaluació
+
+.large[
+Disseny i execució d'anàlisi (50%)
+* Individual o en grup
+
+* Al final del curs
+
+* "Recuperable" com a examen
+
+* Criteris d'avaluació i exemples: Aula Global
+
+]
+
+
+
+---
+
+&lt;img src='ex1.png',  width="800px" height="600px", style="position:absolute; right:px; top:px;"&gt;
+
+
+---
+
+# Altres exemples
+
+* "Carrota vs. pastanaga en el territori alt empordanès"
+
+* "S'ha substituït més de pressa el dialecte balear pel central que el nord-occidental en venir a Barcelona?"
+
+* "Intercomprensión románica o plurilingüísmo: análisis de identificación de lenguas"
+
+* "Evaluating linguistic laws on the Harry Potter saga"
+
+* ...
+
+
+---
+
+# Avaluació
+.large[
+* Exercicis setmanals (20%, no recuperable)
+
+* Exercici pràctic (20%, no recuperable)
+
+* Revisió per parells (10%, no recuperable)
+
+* Informe: disseny i execució d'anàlisi (50%, recuperable)
+]
+
+---
+
+class: inverse, center
+
+# Sinopsi del curs
+
+---
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt;Què és un mètode empíric?&lt;/b&gt;
+&lt;br&gt;&lt;br&gt;
+Doneu un exemple
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+
+---
+
+# Cicle d'anàlisi
+
+&lt;img src="cycle.png", style="position:absolute; right:7px; top:99px;"&gt;
+
+---
+
+# A efectes pràctics
+.large[
+* Manipulació i interpretació de dades
+
+* Comparació de grups
+
+* Predicció
+
+* Visualització
+
+&lt;br&gt;&lt;br&gt;
+
+.center[... aplicat a ciències del llenguatge]
+]
+
+---
+
+class: center, inverse
+
+# Anàlisi inferencial
+
+
+---
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt;Què és un anàlisi descriptiu?&lt;/b&gt;
+&lt;br&gt;&lt;br&gt;
+Doneu un exemple
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+
+---
+
+
+
+# Anàlisi inferencial (vs. descriptiu)
+.large[
+* Inferència de propietats més enllà de la mostra
+
+* Predicció
+
+* Comparació
+
+* Causa-efecte
+
+]
+---
+
+&lt;img src='fig1-franconeri.png',  width="500px" height="500px", style="position:absolute; right:200px; top:px;"&gt;
+
+.footnote[
+*** 
+Fig. 1 de Franconeri et al. 2021 [The Science of Visual Data Communication: What Works](https://journals.sagepub.com/stoken/default+domain/10.1177%2F15291006211051956-FREE/full#_i28)]
+---
+
+# Exemples
+Estimació de l'efecte d'un o més *predictores* en un *resultat*
+
+--
+
+* Fluïdesa en L2 dependent de L1
+  
+* Probabilitat de l'ús d'un (pro)nom a la base del seu entorn lingüístic
+  
+* Comparació d'un mètode d'aprenentatge de la llengua contra un altre
+  
+* Comparació de polítiques lingüístiques i les seves conseqüències
+
+* ...
+
+
+---
+class: inverse, center
+
+# Replicabilitat i reproduïbilitat
+
+---
+
+### Replicabilitat
+
+Que es puguin obtenir resultats consistents amb les mateixes dades d'entrada; passos computacionals; mètodes; codi; i condicions d'anàlisi
+
+***
+--
+
+
+### Reproduïbilitat
+
+Que es puguin obtenir resultats consistents en diferents anàlisis que busquen respondre la mateixa pregunta, cadascú amb les seves pròpies dades
+
+---
+
+.left[Replication is one of the central issues in any empirical science. 
+
+To confirm results or hypotheses by a repetition procedure is at the basis of any scientific conception. A replication experiment to demonstrate that the same findings can be obtained in any other place by any other researcher is conceived as an operationalization of objectivity. 
+
+It is the proof that the experiment reflects knowledge that can be separated from the specific circumstances (such as time, place, or persons) under which it was gained.
+&lt;br&gt;&lt;br&gt;
+-Stefan Schmidt 
+]
+
+---
+
+# Crisi de replicabilitat i reproduïbilitat
+
+* Una quantitat important de resultats no s'han pogut ni replicar ni reproduir (50%-80%, depenent del camp)
+
+--
+
+* Va comportar un gran canvi en metodologia i documentació (estem en això)
+
+--
+
+* Independentment, és central documentar totes les teves decisions i manipulacions; de principi a fi
+
+--
+
+* Llengües de programació són una eina ideal per
+   * conduir anàlisi empírica, i
+  
+   * assegurar-se que sigui replicable
+
+---
+
+class: inverse, center
+
+# R 
+
+---
+
+
+
+``` r
+x &lt;- c(5, 3, 8, 4) # vector of values
+
+mean(x)            # mean of x   
+```
+
+```
+## [1] 5
+```
+
+---
+# En aquest curs
+
+* Ús rudimentari i interactiu
+
+* Principalment: intuïció sobre estructures de dades i la seva manipulació
+
+* Manera d'assegurar replicabilitat
+
+
+---
+
+class: inverse, center
+
+# Estadística descriptiva
+
+---
+
+# Estadística descriptiva
+
+
+.large[
+* Tendències centrals (mitja; mitjana; moda)
+
+* Mesures de dispersió (variança; desviació típica)
+
+* Mesures de variació conjunta (correlació, covariança)
+]
+
+.footnote[
+
+***
+
+Si cal fer una revisió: Franke (2021) [*An Introduction to Data Analysis*, capítol 5](https://michael-franke.github.io/intro-data-analysis/Chap-02-03-summary-statistics. html)
+]
+
+---
+.large[
+Propera sessió de seminari:
+
+  * Petit resum d'estadística descriptiva
+  
+  * R (i Collaborate)
+
+]
+
+.footnote[
+
+***
+
+Si cal fer una revisió: Franke (2021) [*An Introduction to Data Analysis*, capítol 5](https://michael-franke.github.io/intro-data-analysis/Chap-02-03-summary-statistics. html)
+]
+
+
+---
+
+
+class: inverse
+# Propera sessió
+
+* Si n'hi ha, preguntes generals sobre el curs
+
+* Si n'hi ha, preguntes generals sobre l'informe final&lt;br&gt;&lt;br&gt;(llegiu "Report guidelines" i els dos informes exemplars abans)
+
+***
+
+* **Disseny d'anàlisi**
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+  "highlightLines": true,
+  "highlightStyle": "github"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

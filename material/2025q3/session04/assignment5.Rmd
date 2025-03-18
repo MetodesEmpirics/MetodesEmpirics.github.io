@@ -1,0 +1,36 @@
+---
+title: '5 Regression with more than one predictor: Assignment'
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+bibliography: ../../biblio.bib
+---
+
+# Instructions
+
+Submit your answers to the **n** first exercises through Aula Global (quiz section). Upload the remaining exercise concerning peer review through Aula Global as well (upload task).
+
+# Regression
+
+Consider the model `pitch ~ 1 + gender * context`, fit on the data from Franke & Roettger [-@franke+roettger:2019].
+
+  1. What is the estimated effect on `pitch` in a polite context for a female speaker?
+  2. What is the estimated effect on `pitch` in a impolite context for a male speaker?
+  3. How many parameters does this model have?
+  4. Is a male speaker in a polite context predicted to have a higher pitch than a female speaker in an informal context?
+
+
+# Peer review (part II) 
+
+Submit a peer review for the analysis report that you received as a single page PDF-file through Aula Global. This submission makes up 10% of your peer-review grade. Remember that **your submission must be anonymous**. That is: do not put any information that can identify you in the PDF (like your name). 
+
+Cover the following points (in bullet points if you want)
+
+  1. Is the analysis well motivated?
+  2. Is the specific research question well connected to the general one?
+  3. Is the analysis feasible in the scope of this class? 
+  
+Elaborate with as much detail as you want but keep in mind that your feedback must be polite, constructive, and nuanced. Always give reasons why you think an aspect of the analysis report of your peer is good/strong or bad/weak. You can find an illustration of a peer review here: **add**
+
+# References

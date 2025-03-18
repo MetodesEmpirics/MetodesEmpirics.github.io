@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>8 Corpora</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Mètodes empírics 2" />
+    <link href="slides_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="slides_files/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# 8 Corpora
+]
+.author[
+### Mètodes empírics 2
+]
+.date[
+### 30/05/2022
+]
+
+---
+
+
+
+
+# Avui
+
+.large[
+* Les lleis de Zipf
+
+* Corpora i pre-processament
+
+* Aplicacions
+
+* Language models i més enllà
+
+]
+
+---
+
+class: inverse, center
+
+# Les lleis de Zipf
+
+
+.footnote[
+***
+
+G.K. Zipf (1935) *The psycho-biology of language*⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+
+G.K. Zipf (1949) *Human behavior and the principle of least effort*
+
+]
+
+---
+
+### 1. Zipf's (Rank-Frequency) Law
+
+### 2. Zipf's Law of Abbreviation
+
+### 3. Zipf's Meaning-Frequency Law
+
+---
+
+### Rank-Frequency Law: La distribució rang-freqüència de paraules és inversa
+
+&lt;img src="Zipf_30wiki_en_labels.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt;Per què segueix el llenguatge aquesta llei?
+&lt;/b&gt;
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+---
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt;Quines conseqüències té aquesta llei per a (i) l'anàlisi lingüística; (ii) l'aprenentatge de llengües; (iii) la traducció?
+&lt;/b&gt;
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+---
+
+### Law of Abbreviation: Formes freqüents tendeixen a ser més curtes
+
+
+&lt;img src="en-zipf.jpg" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt;Per què segueix el llenguatge aquesta llei?
+&lt;/b&gt;
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+---
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt;Quines conseqüències té aquesta llei per a (i) l'anàlisi lingüística; (ii) l'aprenentatge de llengües; (iii) la traducció?
+&lt;/b&gt;
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+
+
+---
+
+### Meaning-frequency Law: Formes freqüents tendeixen a tenir més significats
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt;Per què segueix el llenguatge aquesta llei?
+&lt;/b&gt;
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+---
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt;Quines conseqüències té aquesta llei per a (i) l'anàlisi lingüística; (ii) l'aprenentatge de llengües; (iii) la traducció?
+&lt;/b&gt;
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+
+---
+
+class: inverse, center
+
+# Corpora i pre-processament
+
+---
+
+# Corpora
+
+* Per definició: Qualsevol col·lecció de dades
+
+* Per ús convencional: Col·lecció de dades no estructurades, moltes vegades de [gran]() tamany
+
+
+.footnote[
+***
+
+El que significa [gran]() varia en funció de la naturalesa de les dades, i de quan són / és l'anàlisi.]
+
+---
+
+# Associated Press Corpus 
+
+Col·lecció de 2246 articles de notícies, la majoria del voltant de 1988
+
+--
+
+&lt;img src="ap-story.png" width="1931" /&gt;
+
+
+---
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt;Què hauríem de fer per poder analitzar aquestes dades? Per exemple, per comprovar si es compleix la llei de Zipf&lt;/b&gt;
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+
+
+---
+
+# Tokenització
+
+--
+
+Segmentar i transformar el teu corpus perquè representi les unitats de la teva anàlisi.
+
+Per exemple, paraules, morfémes, o caràcters.
+
+---
+
+# Tokenització a nivell de paraules
+
+
+```r
+library(stringr)
+
+first_par &lt;- 'MEXICO CITY (AP) — The Mexican government said Tuesday that COVID-19 has passed from a pandemic to an endemic stage in Mexico, meaning authorities will treat it as a seasonally recurring disease.'
+
+tokenized_first_par &lt;- str_split(first_par, pattern = " ")[[1]]
+tokenized_first_par
+```
+
+```
+##  [1] "MEXICO"      "CITY"        "(AP)"        "—"           "The"         "Mexican"     "government"  "said"        "Tuesday"     "that"        "COVID-19"    "has"         "passed"      "from"        "a"          
+## [16] "pandemic"    "to"          "an"          "endemic"     "stage"       "in"          "Mexico,"     "meaning"     "authorities" "will"        "treat"       "it"          "as"          "a"           "seasonally" 
+## [31] "recurring"   "disease."
+```
+
+---
+
+# Processos de normalització de tokens
+
+--
+
+## Casing
+
+Convertir tot el text a minúscula (o majúscula)
+
+--
+
+## Stemming
+
+Treure material morfològic, quedant-se només amb les arrels
+--
+
+
+## Lematización
+
+Canviar paraules pels respectius lemes.
+
+---
+
+# Casing
+
+
+```r
+tolower(tokenized_first_par)
+```
+
+```
+##  [1] "mexico"      "city"        "(ap)"        "—"           "the"         "mexican"     "government"  "said"        "tuesday"     "that"        "covid-19"    "has"         "passed"      "from"        "a"          
+## [16] "pandemic"    "to"          "an"          "endemic"     "stage"       "in"          "mexico,"     "meaning"     "authorities" "will"        "treat"       "it"          "as"          "a"           "seasonally" 
+## [31] "recurring"   "disease."
+```
+
+---
+
+# Stemming &amp; lemmatization
+
+* cat, cats, cat's, cats'; ...
+
+* to be; am; are; were; ...
+
+
+---
+
+# AP tokenitzada
+
+
+
+```r
+library(tidytext)
+
+data("AssociatedPress", package = "topicmodels")
+tidy(AssociatedPress)
+```
+
+
+
+
+```
+## # A tibble: 6 × 3
+##   document term      count
+##      &lt;int&gt; &lt;chr&gt;     &lt;dbl&gt;
+## 1        1 adding        1
+## 2        1 adult         2
+## 3        1 ago           1
+## 4        1 alcohol       1
+## 5        1 allegedly     1
+## 6        1 allen         1
+```
+
+---
+
+# AP i Zipf?
+
+
+```
+## # A tibble: 6 × 6
+##   term    count length  rank log.count log.rank
+##   &lt;chr&gt;   &lt;dbl&gt;  &lt;int&gt; &lt;int&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+## 1 i        2073      1     1      7.64    0    
+## 2 new      2014      3     2      7.61    0.693
+## 3 percent  1949      7     3      7.58    1.10 
+## 4 people   1662      6     4      7.42    1.39 
+## 5 year     1576      4     5      7.36    1.61 
+## 6 two      1570      3     6      7.36    1.79
+```
+
+---
+
+# AP i Zipf I
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-11-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# AP i Zipf II
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-12-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Jane Austen
+
+
+```
+## # A tibble: 73,422 × 4
+##    text                    book                 line chapter
+##    &lt;chr&gt;                   &lt;fct&gt;               &lt;int&gt;   &lt;int&gt;
+##  1 "SENSE AND SENSIBILITY" Sense &amp; Sensibility     1       0
+##  2 ""                      Sense &amp; Sensibility     2       0
+##  3 "by Jane Austen"        Sense &amp; Sensibility     3       0
+##  4 ""                      Sense &amp; Sensibility     4       0
+##  5 "(1811)"                Sense &amp; Sensibility     5       0
+##  6 ""                      Sense &amp; Sensibility     6       0
+##  7 ""                      Sense &amp; Sensibility     7       0
+##  8 ""                      Sense &amp; Sensibility     8       0
+##  9 ""                      Sense &amp; Sensibility     9       0
+## 10 "CHAPTER 1"             Sense &amp; Sensibility    10       1
+## # … with 73,412 more rows
+```
+
+---
+
+# Jane Austen tokenitzada i normalitzada
+
+
+```
+## # A tibble: 725,055 × 4
+##    book                 line chapter word       
+##    &lt;fct&gt;               &lt;int&gt;   &lt;int&gt; &lt;chr&gt;      
+##  1 Sense &amp; Sensibility     1       0 sense      
+##  2 Sense &amp; Sensibility     1       0 and        
+##  3 Sense &amp; Sensibility     1       0 sensibility
+##  4 Sense &amp; Sensibility     3       0 by         
+##  5 Sense &amp; Sensibility     3       0 jane       
+##  6 Sense &amp; Sensibility     3       0 austen     
+##  7 Sense &amp; Sensibility     5       0 1811       
+##  8 Sense &amp; Sensibility    10       1 chapter    
+##  9 Sense &amp; Sensibility    10       1 1          
+## 10 Sense &amp; Sensibility    13       1 the        
+## # … with 725,045 more rows
+```
+
+
+---
+
+# Jane Austen i Zipf?
+
+
+```
+## # A tibble: 6 × 6
+##   word  count length log.count  rank log.rank
+##   &lt;chr&gt; &lt;int&gt;  &lt;int&gt;     &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt;
+## 1 the   26351      3     10.2      1    0    
+## 2 to    24044      2     10.1      2    0.693
+## 3 and   22515      3     10.0      3    1.10 
+## 4 of    21178      2      9.96     4    1.39 
+## 5 a     13408      1      9.50     5    1.61 
+## 6 her   13055      3      9.48     6    1.79
+```
+
+---
+
+
+# Jane Austen i Zipf I
+
+![](slides_files/figure-html/unnamed-chunk-16-1.png)&lt;!-- --&gt;
+
+---
+
+# Jane Austen i Zipf II
+
+![](slides_files/figure-html/unnamed-chunk-17-1.png)&lt;!-- --&gt;
+
+---
+
+# I l'altra llei de Zipf?
+
+
+---
+
+# Discussió
+
+* Tot tipus de text segueix les Lleis de Zipf?
+
+* Tota llengua segueix les Lleis de Zipf?
+
+
+---
+
+class: inverse
+
+# Aplicacions
+
+---
+
+# Investigació
+
+* Indispensable per descobrir o (des)confirmar regularitats en una, o diverses llengües
+
+* Major volum de dades `\(\Rightarrow\)` més sensibilitat per trobar efectes menors (però també més perill de descobrir patrons falsos)
+
+   * [https://www.tylervigen.com/spurious-correlations](https://www.tylervigen.com/spurious-correlations)
+
+* Gran potencial --encara per explorar-- per a tipologia i llengües menys descrites
+
+---
+
+# Indústria
+
+* (Pre-)processament de grans volums de dades lingüístiques
+
+* Indispensable per descobrir o (des)confirmar regularitats a nivell d'individus, grups i comunitats
+
+* Enorme mercat que encara s'està obrint
+
+---
+
+class: inverse
+
+# Word embeddings i més enllà
+
+
+---
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt;Que es ChatGPT? Com funciona?&lt;/b&gt;
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+
+---
+
+# Xarxes neuronals
+
+
+.center[
+&lt;img src='nns.png' width='75%', height='75%'&gt;
+]
+
+---
+
+# Predicció com a base per a coneixement lingüístic
+
+### Les ⬛⬛⬛....⬛⬛⬛
+
+--
+
+### Les tasques ⬛⬛⬛....⬛⬛⬛
+
+--
+
+### Les tasques de ⬛⬛⬛....⬛⬛⬛
+
+--
+
+### Les tasques de remodelació ⬛⬛⬛....⬛⬛⬛
+
+--
+
+### Les tasques de remodelació i ⬛⬛⬛....⬛⬛⬛
+
+--
+
+### Les tasques de remodelació i ampliació ⬛⬛⬛....⬛⬛⬛
+
+
+---
+
+# Predicció com a base per a coneixement lingüístic
+
+### Les tasques de remodelació i ampliació de ⬛⬛⬛....⬛⬛⬛
+
+--
+
+### Les tasques de remodelació i ampliació de l' ⬛⬛⬛....⬛⬛⬛
+
+--
+
+### Les tasques de remodelació i ampliació de l'estadi ⬛⬛⬛....⬛⬛⬛
+
+--
+
+### Les tasques de remodelació i ampliació de l'estadi començaran ⬛⬛⬛....⬛⬛⬛
+
+---
+
+# Predicció com a base per a coneixement lingüístic
+
+### Les tasques de remodelació i ampliació de l'estadi començaran al ⬛⬛⬛....⬛⬛⬛
+
+--
+
+### Les tasques de remodelació i ampliació de l'estadi començaran al juny ⬛⬛⬛....⬛⬛⬛
+
+
+---
+
+# Predicció com a base per a coneixement lingüístic
+
+Entrenar models amb molts paràmetres a predir informació lingüística en grans volums de dades
+
+`\(\Large \Rightarrow\)` aprenentatge de coneixement lingüístic latent (fins a cert grau)
+
+--
+
+&lt;br&gt;
+
+* Syntàxi ✔
+
+* Morfologia ✔
+
+* Semàntica ✔✘
+
+* Pragmàtica ✘
+
+---
+
+
+# Language models
+
+[https://transformer.huggingface.co/doc/distil-gpt2](https://transformer.huggingface.co/doc/distil-gpt2)
+
+GPT2, Llama, BERT, ChatGPT, Bard, ...
+
+
+---
+
+# ChatGPT
+
+Després d'aprendre amb self-supervision (predint text per compte propi), aprèn humans amb reinforcement learning en una segona fase 
+
+
+* `\(\Rightarrow\)` millora notable en pragmàtica
+
+* `\(\Rightarrow\)` bona compressió de coneixement lingüístic i coneixement general
+
+* `\(\Rightarrow\)` compressió comporta halucinació i repetició
+
+---
+
+# Monty Hall i "parroting"
+
+
+&lt;img src="monty.jpeg" width="80%" style="display: block; margin: auto;" /&gt;
+
+
+
+---
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt;Preguntes o inquietuds sobre ChatGPT? Canviarà el mercat laboral? El mercat de la traducció? La lingüística? L'educació?&lt;/b&gt;
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+
+---
+
+# Paquets
+
+* python: spaCy, (py)torch, huggingface 
+
+* R: tidytext, stringr
+
+---
+
+# Següents avenços
+
+* Models multimodals
+
+* Qualitat de dades i mida de model
+
+* Límits d'aprenentatge a base de text
+
+* Black box NLP &amp; llenguatge emergent
+
+* Self-supervised reinforcement learning
+
+---
+
+
+class: inverse
+
+# Propera sessió
+
+* Practical exercise (06/06)
+
+***
+
+* **Visualització**
+
+***
+
+* Informe final: 25/06
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightLines": true,
+"highlightStyle": "github"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

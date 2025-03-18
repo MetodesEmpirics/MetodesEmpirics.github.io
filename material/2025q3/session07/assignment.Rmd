@@ -1,0 +1,28 @@
+---
+title: 'Assignment'
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+urlcolor: blue
+bibliography: ../../biblio.bib
+---
+
+
+# Peer review (part II) 
+
+Submit two peer reviews for the analysis reports that you were assigned. Each peer review should be submitted, separately, as a single page PDF-file through Aula Global (grup gran). You will find a link to the report assigned to you (and all other reports) in Aula Global ([Peer review: Everyone's analysis reports](https://drive.google.com/drive/folders/1QwQtJfiEsNXiEzp-p5DbP9_Yy0x-5NY5?usp=sharing); and another link to the document that shows you who you were assigned to ([Peer review: who reviews whom](https://docs.google.com/spreadsheets/d/1nmF6SLbOIT4z8CT_roV4f-L5aTZVqShx8GycmbHxYBM/edit?usp=sharing)). 
+
+In *Peer review: who reviews whom*, you will find your name (pseudonym) in the first column. The other five columns (*peer_1* to *peer_5*) are the reports you were assigned. **Pick the first two reports that are not from others from your group**. That is, if the reports in *peer_1* and *peer_2* are not from people from your group: give feedback to those. Instead, if, for example, *peer_2* is from a student from your group, give feedback to *peer_1* and *peer_3*; if *peer_3* were also in your group, move on to *peer_4*; and so on.
+
+If you did not submit a report for Peer Review I, then you were assigned no report to give feedback to. If you would still like to participate in this second part, feel free to give feedback to a randomly chosen report from the folder. If you did not submit a pseudonym, you got named *SensePseudonym*. If anything is amiss, please let me know (thomas.brochhagen@upf.edu).
+
+This submission makes up 50% of your peer-review grade (10% total). Remember that **your submission must be anonymous**. That is: do not put any information that can identify you in the PDF (like your actual name). However, do name the two PDFs according to the following convention: **YourPseudonym_TheReportsPseudonym**. That is, name it with your pseudonym, followed by an underscore, followed by the pseudonym of the student you're providing feedback for. 
+
+Cover the following points (in bullet points if you want)
+
+  1. Is the analysis well motivated?
+  2. Is the specific research question well connected to the general one?
+  3. Is the analysis feasible in the scope of this class? 
+  
+Elaborate with as much detail as you want but keep in mind that your feedback must be polite, constructive, and nuanced. Always give reasons why you think an aspect of the analysis report of your peer is good/strong or bad/weak. You can find further guidelines to write a peer-review in Aula Global.

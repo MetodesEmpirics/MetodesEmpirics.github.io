@@ -1,0 +1,33 @@
+---
+title: '5 Regression with more than one predictor: Assignment'
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+bibliography: ../../biblio.bib
+---
+
+# Instructions
+
+Submit your answers to the 5 first exercises through Aula Global (quiz section in your seminar's moodle). Round your answers to the second decimal after the comma.
+
+# Regression
+
+Fit a linear model predicting pitch based on context and gender on the data from Franke & Roettger [-@franke+roettger:2019].
+
+```{r, echo=TRUE, eval=FALSE, warning=FALSE, error=FALSE}
+df <- read.csv("https://tinyurl.com/polite-data") #download data
+```
+
+  1. What is the estimated effect on `pitch` in a polite context for a female speaker?
+  2. What is the estimated effect on `pitch` in an informal context for a male speaker?
+  3. How many parameters does this model have?
+  4. Is a male speaker in an informal context predicted to have a higher pitch than a female speaker in a polite context? If so, by how much?
+  5. How much of the variance in `pitch` does this model explain? Use the "adjusted" metric for this answer
+
+# Self study
+If you didn't do so last week, read  @winter:2013, pages 1-10: [https://arxiv.org/ftp/arxiv/papers/1308/1308.5499.pdf](https://arxiv.org/ftp/arxiv/papers/1308/1308.5499.pdf). If you find this interesting, read on until page 21. Pages 10-21 cover topics we will briefly touch on but will not be able to discuss in detail. If you're still interested, read the entire tutorial. The second part of the tutorial touches on a very powerful and useful extension of regression models that we won't cover in this class.
+
+Use your remaining time to work on your final report
+
+# References

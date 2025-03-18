@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>5 Regressió amb més d’un predictor</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Mètodes empírics 2" />
+    <meta name="date" content="2024-06-05" />
+    <link href="slides_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="slides_files/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# 5 Regressió amb més d’un predictor
+]
+.author[
+### Mètodes empírics 2
+]
+.date[
+### 06/05/2024
+]
+
+---
+
+
+
+
+# Avui
+
+.large[
+* Múltiples predictors
+
+* Cas d'estudis (continuat)
+
+***
+
+* (In)significància estadística
+
+]
+
+---
+
+class: inverse, center
+
+# Múltiples predictors
+
+---
+
+# Mateixa fórmula, més sumands
+
+`$$\Large y \sim \text{Normal}(\mu,\sigma)$$`
+`$$\Large \mu = \beta_0 + \beta_1 x_1 + ... \beta_n x_n$$`
+
+---
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt;Vols saber quins factors (no) afecten el to mitjà (Hertz) d'una persona. Un col·lega t'ha donat les dades següents:&lt;br&gt;&lt;br&gt;https://tinyurl.com/polite-data&lt;br&gt;&lt;br&gt;
+&lt;br&gt;
+1. Descriu les dades
+&lt;br&gt;&lt;br&gt;
+2. Descriu com penses que les variables es podrien relacionar&lt;/b&gt;
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+---
+
+# Cas d'estudis: to
+
+
+```r
+df &lt;- read.csv("https://tinyurl.com/polite-data")
+head(df)
+```
+
+```
+##   subject gender sentence context pitch
+## 1      F1      F       S1     pol 213.3
+## 2      F1      F       S1     inf 204.5
+## 3      F1      F       S2     pol 285.1
+## 4      F1      F       S2     inf 259.7
+## 5      F1      F       S3     pol 203.9
+## 6      F1      F       S3     inf 286.9
+```
+
+
+
+---
+
+# Cas d'estudis: to
+
+`$$\Large \text{pitch}_i = \beta_0 + \beta_1 \text{gender}_i + \beta_2\text{context}_i$$`
+---
+
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt;Vols saber quins factors (no) afecten el to mitjà (Hertz) d'una persona. Un col·lega t'ha donat les dades següents:&lt;br&gt;&lt;br&gt;https://tinyurl.com/polite-data&lt;br&gt;&lt;br&gt;
+&lt;br&gt;
+1. Descriu les variants rellevants per a la teva anàlisi
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+---
+
+# Descripció de variables (gènere)
+
+
+```r
+unique(df$gender)
+```
+
+```
+## [1] F M
+## Levels: F M
+```
+
+```r
+df_m &lt;- filter(df, gender == 'M')
+nrow(df_m)
+```
+
+```
+## [1] 41
+```
+
+```r
+df_f &lt;- filter(df, gender == 'F') 
+nrow(df_f)
+```
+
+```
+## [1] 42
+```
+
+---
+
+# Descripció de variables (context)
+
+
+```r
+unique(df$context)
+```
+
+```
+## [1] pol inf
+## Levels: inf pol
+```
+
+```r
+df_inf &lt;- filter(df, context == 'inf')
+nrow(df_inf)
+```
+
+```
+## [1] 42
+```
+
+```r
+df_pol &lt;- filter(df, context == 'pol')
+nrow(df_pol)
+```
+
+```
+## [1] 41
+```
+
+---
+
+
+# Descripció de variables (to)
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-4-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Descripció de variables (to)
+
+
+```r
+mean(df$pitch)
+```
+
+```
+## [1] 193.5819
+```
+
+```r
+median(df$pitch)
+```
+
+```
+## [1] 203.9
+```
+
+```r
+sd(df$pitch)
+```
+
+```
+## [1] 65.54068
+```
+
+```r
+quantile(df$pitch)
+```
+
+```
+##     0%    25%    50%    75%   100% 
+##  82.20 131.55 203.90 248.55 306.80
+```
+
+---
+
+# Possible relació entre predictor i variable (gènere)
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-6-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Possible relació entre predictor i variable (gènere)
+
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-7-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt;Vols saber quins factors (no) afecten el to mitjà (Hertz) d'una persona. Un col·lega t'ha donat les dades següents:&lt;br&gt;&lt;br&gt;https://tinyurl.com/polite-data&lt;br&gt;&lt;br&gt;
+&lt;br&gt;
+1. Fes ús de mètodes descriptius per descriure la relació entre predictor (gènere) i resultat
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+---
+
+# Possible relació entre predictor i variable (gènere)
+
+
+```r
+mean(df_m$pitch)
+```
+
+```
+## [1] 138.8756
+```
+
+```r
+mean(df_f$pitch)
+```
+
+```
+## [1] 246.9857
+```
+
+```r
+median(df_m$pitch)
+```
+
+```
+## [1] 126.9
+```
+
+```r
+median(df_f$pitch)
+```
+
+```
+## [1] 248.55
+```
+
+---
+
+# Possible relació entre predictor i variable (gènere)
+
+
+```r
+sd(df_m$pitch)
+```
+
+```
+## [1] 38.92821
+```
+
+```r
+sd(df_f$pitch)
+```
+
+```
+## [1] 34.61808
+```
+
+```r
+quantile(df_m$pitch)
+```
+
+```
+##    0%   25%   50%   75%  100% 
+##  82.2 108.2 126.9 160.7 229.0
+```
+
+```r
+quantile(df_f$pitch)
+```
+
+```
+##      0%     25%     50%     75%    100% 
+## 154.800 227.825 248.550 276.450 306.800
+```
+
+---
+
+
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt;Vols saber quins factors (no) afecten el to mitjà (Hertz) d'una persona. Un col·lega t'ha donat les dades següents:&lt;br&gt;&lt;br&gt;https://tinyurl.com/polite-data&lt;br&gt;&lt;br&gt;
+&lt;br&gt;
+1. Crea un model de regressió lineal que prediu to a base de gènere.&lt;br&gt;&lt;br&gt;
+2. Què suggereix el model sobre la relació entre predictor i resultat?
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+
+---
+
+# Model gènere
+
+
+```r
+pitch_model1 &lt;- lm(formula = pitch ~ 1 + gender,
+                   data    = df)
+summary(pitch_model1)
+```
+
+```
+## 
+## Call:
+## lm(formula = pitch ~ 1 + gender, data = df)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -92.186 -28.426  -2.676  23.124  90.124 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  246.986      5.680   43.48   &lt;2e-16 ***
+## genderM     -108.110      8.081  -13.38   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 36.81 on 81 degrees of freedom
+## Multiple R-squared:  0.6884,	Adjusted R-squared:  0.6846 
+## F-statistic:   179 on 1 and 81 DF,  p-value: &lt; 2.2e-16
+```
+
+---
+
+# Model gènere
+
+
+```r
+coef(pitch_model1)
+```
+
+```
+## (Intercept)     genderM 
+##    246.9857   -108.1101
+```
+
+--
+
+
+```r
+mean(df_f$pitch)
+```
+
+```
+## [1] 246.9857
+```
+
+```r
+mean(df_m$pitch)
+```
+
+```
+## [1] 138.8756
+```
+
+---
+
+# Possible relació entre predictor i variable (context)
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-13-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+# Possible relació entre predictor i variable (context)
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-14-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Possible relació entre predictor i variable (context)
+
+
+```r
+mean(df_pol$pitch)
+```
+
+```
+## [1] 184.3561
+```
+
+```r
+mean(df_inf$pitch)
+```
+
+```
+## [1] 202.5881
+```
+
+```r
+median(df_pol$pitch)
+```
+
+```
+## [1] 193.4
+```
+
+```r
+median(df_inf$pitch)
+```
+
+```
+## [1] 209.05
+```
+
+---
+
+# Possible relació entre predictor i variable (context)
+
+
+```r
+sd(df_pol$pitch)
+```
+
+```
+## [1] 63.55659
+```
+
+```r
+sd(df_inf$pitch)
+```
+
+```
+## [1] 66.94803
+```
+
+```r
+quantile(df_pol$pitch)
+```
+
+```
+##    0%   25%   50%   75%  100% 
+##  82.2 126.5 193.4 232.6 289.4
+```
+
+```r
+quantile(df_inf$pitch)
+```
+
+```
+##     0%    25%    50%    75%   100% 
+##  99.10 138.65 209.05 259.70 306.80
+```
+
+---
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt;Vols saber quins factors (no) afecten el to mitjà (Hertz) d'una persona. Un col·lega t'ha donat les dades següents:&lt;br&gt;&lt;br&gt;https://tinyurl.com/polite-data&lt;br&gt;&lt;br&gt;
+&lt;br&gt;
+1. Crea un model de regressió lineal que prediu to a base de context&lt;br&gt;&lt;br&gt;
+2. Què suggereix el model sobre la relació entre predictor i resultat?
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+---
+
+# Model context
+
+
+```r
+pitch_model2 &lt;- lm(formula = pitch ~ 1 + context,
+                   data    = df)
+summary(pitch_model2)
+```
+
+```
+## 
+## Call:
+## lm(formula = pitch ~ 1 + context, data = df)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -103.488  -62.122    9.044   51.178  105.044 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   202.59      10.08  20.107   &lt;2e-16 ***
+## contextpol    -18.23      14.34  -1.272    0.207    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 65.3 on 81 degrees of freedom
+## Multiple R-squared:  0.01958,	Adjusted R-squared:  0.007475 
+## F-statistic: 1.618 on 1 and 81 DF,  p-value: 0.2071
+```
+
+---
+
+# Model context
+
+
+```r
+coef(pitch_model2)
+```
+
+```
+## (Intercept)  contextpol 
+##    202.5881    -18.2320
+```
+
+--
+
+
+```r
+mean(df_pol$pitch)
+```
+
+```
+## [1] 184.3561
+```
+
+```r
+mean(df_inf$pitch)
+```
+
+```
+## [1] 202.5881
+```
+
+---
+
+## Per què estem creant un model per descobrir una cosa que ja ens indica l'estadística descriptiva?
+
+--
+
+1. Entre altres: error estàndard; `\(R^2\)`; i residuals (cf. `pitch_model1` vs. `pitch_model2`)
+
+2. Perquè es poden expandir a més predictors
+
+---
+
+
+# Model amb ambdós predictors
+
+--
+
+
+```r
+pitch_model3 &lt;- lm(formula = pitch ~ 1 + gender + context,
+                   data    = df)
+summary(pitch_model3)
+```
+
+```
+## 
+## Call:
+## lm(formula = pitch ~ 1 + gender + context, data = df)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -82.409 -26.561  -4.262  24.690 100.140 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  256.762      6.756  38.006   &lt;2e-16 ***
+## genderM     -108.349      7.833 -13.832   &lt;2e-16 ***
+## contextpol   -19.553      7.833  -2.496   0.0146 *  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 35.68 on 80 degrees of freedom
+## Multiple R-squared:  0.7109,	Adjusted R-squared:  0.7037 
+## F-statistic: 98.38 on 2 and 80 DF,  p-value: &lt; 2.2e-16
+```
+
+---
+
+# Tots els nostres models (paràmetres)
+
+
+```r
+summary(pitch_model3)$coefficients
+```
+
+```
+##               Estimate Std. Error    t value     Pr(&gt;|t|)
+## (Intercept)  256.76238   6.755918  38.005550 5.752326e-53
+## genderM     -108.34856   7.832968 -13.832376 6.398784e-23
+## contextpol   -19.55332   7.832968  -2.496285 1.460499e-02
+```
+
+
+```r
+summary(pitch_model2)$coefficients
+```
+
+```
+##             Estimate Std. Error   t value     Pr(&gt;|t|)
+## (Intercept) 202.5881   10.07528 20.107444 3.125044e-33
+## contextpol  -18.2320   14.33521 -1.271833 2.070720e-01
+```
+
+
+```r
+summary(pitch_model1)$coefficients
+```
+
+```
+##              Estimate Std. Error   t value     Pr(&gt;|t|)
+## (Intercept)  246.9857   5.679855  43.48451 6.397703e-58
+## genderM     -108.1101   8.081359 -13.37771 3.271928e-22
+```
+
+---
+
+# Tots els nostres models (goodness of fit)
+
+
+```r
+summary(pitch_model3)$r.squared
+```
+
+```
+## [1] 0.7109337
+```
+
+
+```r
+summary(pitch_model2)$r.squared
+```
+
+```
+## [1] 0.01957888
+```
+
+
+```r
+summary(pitch_model1)$r.squared
+```
+
+```
+## [1] 0.6884175
+```
+
+---
+
+# Resum: regressió lineal
+
+* Estimació de relació lineal entre un o més predictors i un resultat.
+
+* Predicció de resultat a base de predictors (+ error)
+
+* Permet relacions més complexes&lt;br&gt;&lt;br&gt;$$ i = \beta_0 + \beta_1 (\text{context} \times \text{gender})$$&lt;br&gt; $$ i = \beta_0 + \beta_1 \text {log(age)}$$
+
+* Estimació de (i) error de prediccions; (ii) incertesa sobre paràmetres; (iii) efecte condicional entre paràmetres
+
+---
+
+class: inverse
+
+# (In)significància estadística
+
+---
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt; Intuïtivament, que vol dir que un resultat és estadísticament significatiu?&lt;/b&gt;&lt;br&gt;&lt;br&gt;Per exemple, "es demostra un efecte estadisticamente significatiu de reducció de desocupació en implementar mesura X"
+&lt;br&gt;&lt;br&gt;
+&lt;b&gt;S'hauria d'implementar mesura X?&lt;/b&gt;
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+
+---
+
+# Significància estadística
+
+Intuïció: un resultat és estadísticament significant quan és [improbable]() obtenir [un resultat així o més extrem]() sota [la hipotesi nul·la]() en repetir l'experiment ad infinitum
+
+--
+
+* El que compta com a *improvable* (deuria) depèn(dre) del context de la investigació. Un nombre comú a les ciències socials és [sota el 5%](); però pot (i deu) ser molt més baix.
+
+--
+
+* La *hipòtesi nul·la* és, comunament, el contrari al que un vol demostrar: No hi ha  diferència entre grup A i grup B; l'efecte d'A a B és 0; etc.
+
+--
+
+* *Així o més extrem* es refereix a: una diferència entre grup A i B (d'una mida suficient o més gran per decidir que hi ha una diferència); l'efecte d'A a B sent més gran (o molt més gran) a 0; o menor (o molt menor) a 0; etc.
+
+---
+
+# (In)significància estadística: raons conceptuals per ser crítics
+
+* En general, no ens interessa si A i B són diferents sinó que tan diferents són
+
+* En general, no (només) ens interessa si l'efecte de B a A és positiu, si no com de positiu
+
+* ...
+
+---
+
+# (In)significància estadística: raons tècniques per ser crítics
+
+No trobar un efecte significant és **sempre** un problema de mida de mostra.
+
+Amb una mostra prou gran tots els efectes són significatius
+
+---
+
+# (In)significància estadística: raons tècniques per ser crítics
+
+
+```r
+set.seed(12)  #random seed
+obs &lt;- 5      #how many observations
+
+datos_A &lt;-   rnorm(n = obs, mean = 160, sd = 5)
+datos_B &lt;-   rnorm(n = obs, mean = 159, sd = 4)
+
+id_grupo &lt;-  c( rep('A',obs), 
+                rep('B', obs)
+              )
+
+#Joining data in a data frame with two columns
+df &lt;- data.frame(dades  = c(datos_A,datos_B),
+                 grup  = id_grupo)
+```
+
+---
+
+# (In)significància estadística: raons tècniques per ser crítics
+
+
+```r
+summary(lm(dades ~ grup, data = df))
+```
+
+```
+## 
+## Call:
+## lm(formula = dades ~ grup, data = df)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -6.2104 -1.5996 -0.6841  0.1238 11.6636 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  156.222      2.231  70.025 1.93e-12 ***
+## grupB          2.062      3.155   0.654    0.532    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 4.989 on 8 degrees of freedom
+## Multiple R-squared:  0.0507,	Adjusted R-squared:  -0.06796 
+## F-statistic: 0.4273 on 1 and 8 DF,  p-value: 0.5317
+```
+
+---
+
+# (In)significància estadística: raons tècniques per ser crítics
+
+
+```r
+set.seed(12)  #random seed
+obs &lt;- 1000000      #how many observations
+
+datos_A &lt;-   rnorm(n = obs, mean = 160, sd = 5)
+datos_B &lt;-   rnorm(n = obs, mean = 159, sd = 4)
+
+id_grupo &lt;-  c( rep('A',obs), 
+                rep('B', obs)
+              )
+
+#Joining data in a data frame with two columns
+df &lt;- data.frame(dades  = c(datos_A,datos_B),
+                 grup  = id_grupo)
+```
+
+
+
+---
+
+# (In)significància estadística: raons tècniques per ser crítics
+
+
+```r
+summary(lm(dades ~ grup, data = df))
+```
+
+```
+## 
+## Call:
+## lm(formula = dades ~ grup, data = df)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -25.2465  -3.0075   0.0018   3.0035  25.4012 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 159.998657   0.004531   35313   &lt;2e-16 ***
+## grupB        -0.999789   0.006408    -156   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 4.531 on 1999998 degrees of freedom
+## Multiple R-squared:  0.01203,	Adjusted R-squared:  0.01203 
+## F-statistic: 2.435e+04 on 1 and 1999998 DF,  p-value: &lt; 2.2e-16
+```
+
+---
+
+class: inverse
+
+# Propera sessió
+
+* Lliurament de "Assignment 4"
+
+***
+
+* **Models lineals generalitzats I**
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightLines": true,
+"highlightStyle": "github"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

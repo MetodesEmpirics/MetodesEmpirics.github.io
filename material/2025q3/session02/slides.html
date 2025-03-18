@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>2 Disseny d’informe i tipus de dades</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Mètodes empírics 2" />
+    <script src="slides_files/header-attrs-2.26/header-attrs.js"></script>
+    <link href="slides_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="slides_files/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# 2 Disseny d’informe i tipus de dades
+]
+.author[
+### Mètodes empírics 2
+]
+.date[
+### 15/04/2024
+]
+
+---
+
+
+
+
+# Avui
+
+.large[
+* Components d'una anàlisi
+
+* Vocabulari de disseny experimental
+
+* Repàs estadística descriptiva
+
+]
+
+---
+
+class: inverse, center
+
+# Components d'una anàlisi
+
+
+
+
+---
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt;Quins components té una anàlisi?&lt;/b&gt;
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+---
+
+# Components
+
+* Pregunta(/es) de l'anàlisi
+
+* Pla de disseny
+
+* Pla de mostreig (sampling plan)
+
+* Especificació de variables
+
+* Pla d'anàlisi
+
+---
+
+# Components
+
+* **Pregunta(/es) de l'anàlisi**
+   * Poden variar en grau de granularitat
+  
+   * Poden variar en naturalesa: Anàlisi confirmatòria vs. exploratoria
+
+* Pla de disseny
+
+* Pla de mostreig (sampling pla)
+
+* Especificació de variables
+
+* Pla d'anàlisi
+
+---
+
+# Components
+
+* Pregunta(es) de l'anàlisi
+
+* **Pla de disseny**
+   * Descripció general de l'anàlisi.
+  
+   * Entre altres, especifica què mesuraràs, i en quines circumstàncies
+
+* Pla de mostreig (sampling pla)
+
+* Especificació de variables
+
+* Pla d'anàlisi
+
+---
+
+# Components
+
+* Pregunta(es) de l'anàlisi
+
+* Pla de disseny
+
+* **Pla de mostreig (sampling pla)**
+   * Quantes observacions recol·lectaràs? Com? Per què?
+
+* Especificació de variables
+
+* Pla d'anàlisi
+---
+
+
+# Components
+
+* Pregunta(es) de l'anàlisi
+
+* Pla de disseny
+
+* Pla de mostreig (sampling pla)
+
+* **Especificació de variables**
+   * Descripció de totes les variables que juguen un rol a la teva anàlisi
+
+* Pla d'anàlisi
+---
+
+# Components
+
+* Pregunta(es) de l'anàlisi
+
+* Pla de disseny
+
+* Pla de mostreig (sampling pla)
+
+* Especificació de variables
+
+* **Pla d'anàlisi**
+   * Descripció de com analitzaràs les dades
+  
+---
+
+## Zipf's Law of Abbreviation
+---
+
+### Zipf's Law of Abbreviation: Formes més freqüents tendeixen a ser més curtes
+&lt;br&gt;&lt;br&gt;
+.center[### 
+]
+
+&lt;img src="en-zipf.jpg" width="500",
+ height="350", style="position:absolute; right:200px; top:150px;"/&gt;
+ 
+.footnote[
+***
+
+G.K. Zipf (1935) *The psycho-biology of language*&lt;br&gt;
+Kanwal et al. (2017) *Zipf’s Law of abbreviation as a language universal*
+
+]
+
+---
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt;Originalment, la llei es va descriure abans d'ordinadors o grans corpus; i només per a l'anglès. Penseu que es compleix en tots els idiomes?&lt;/b&gt;
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+---
+
+### Zipf's Law of Abbreviation: Formes més freqüents tendeixen a ser més curtes
+&lt;br&gt;&lt;br&gt;
+.center[### 
+]
+
+&lt;img src="zipfslaw.png" width="600",
+ height="450", style="position:absolute; right:120px; top:100px;"/&gt;
+ 
+.footnote[
+***
+
+G.K. Zipf (1935) *The psycho-biology of language*&lt;br&gt;
+Benz &amp; Ferrer-i-Cancho (2016) * Zipf’s Law of abbreviation as a language universal*
+
+
+]
+---
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt;Per què hi ha aquesta relació entre brevetat i freqüència?&lt;/b&gt;
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+
+---
+
+# Kanwal et al. 2017
+
+--
+
+&lt;img src="kanwal-sketch.png" width="600",
+ height="500", style="position:absolute; right:120px; top:100px;"/&gt;
+
+
+---
+
+# Kanwal et al. 2017: Condicions
+
+1. Comunicació amb un altre jugador, amb diferencial de temps entre missatges
+
+--
+
+2. Comunicació amb un altre jugador, sense diferencial de temps
+
+--
+
+3. Sense un altre jugador, amb diferencial de temps entre missatges
+
+--
+
+4. Sense un altre jugador, sense diferencial de temps
+
+---
+
+# Kanwal et al. 2017: Resultat
+
+Només amb diferencial de temps entre missatges:
+
+  missatge més curt `\(\Rightarrow\)` significat més freqüent
+
+---
+
+# Components (Kanwal et al. 2017)
+
+* Preguntes de l'anàlisi
+
+* Pla de disseny
+
+* Pla de mostreig (sampling plan)
+
+* Especificació de variables
+
+* Pla d'anàlisi
+
+---
+
+# Components (Kanwal et al. 2017)
+
+* **Preguntes de l'anàlisi**
+   1. Emergeix la llei d'abreujament d'una interacció entre dues pressions lingüístiques: brevetat i comunicació?
+  
+   2. Emergeix (1) en un diàleg artificial de laboratori en un parell de rondes?
+  
+* Pla de disseny
+
+* Pla de mostreig (sampling plan)
+
+* Especificació de variables
+
+* Pla d'anàlisi
+
+---
+
+# Components (Kanwal et al. 2017)
+
+* Preguntes de l'anàlisi
+
+* **Pla de disseny**
+
+   * Analitzarem si un ús d'expressions referencials que reflecteix la llei d'abreujament de Zipf (més freqüent `\(\rightarrow\)` més curta) emergeix en funció d'una interacció i presència de dues pressions lingüístiques: pressió per comunicació i per brevetat.
+  
+   * Controlarem la presència/absència de les pressions en un experiment de laboratori, usant una llengua artificial per també controlar l'inventari lèxic a disposició de cada parlant
+  
+   * Hi haurà 4 condicions: `\([\pm comunicació] \; \times \; [\pm brevetat]\)`
+  
+   * Esperem que ús d'expressions referencials en línia amb la llei d'abreujament de Zipf només emergeixi si les dues pressions són presents: `\([+ comunicació] \; \times \; [+ brevetat]\)`
+
+* Pla de mostreig (sampling plan)
+
+* Especificació de variables
+
+* Pla d'anàlisi
+
+---
+
+# Components (Kanwal et al. 2017)
+
+* Preguntes de l'anàlisi
+
+* Pla de disseny
+
+* **Pla de mostreig (sampling plan)**
+
+   * 124 participants: 31 per condició
+  
+   * Reclutats a través de MTurk
+  
+   * Criteris d'exclusió
+  
+   * ...
+
+* Especificació de variables
+
+* Pla d'anàlisi
+
+---
+
+
+# Components (Kanwal et al. 2017)
+
+* Preguntes de l'anàlisi
+
+* Pla de disseny
+
+* Pla de mostreig (sampling pla)
+
+* **Especificació de variables**
+
+   * Ús d'expressió curta
+  
+   * Referent a comunicar
+  
+   * ID de subjecte i parell
+  
+   * Torn
+
+* Pla d'anàlisi
+
+---
+
+
+# Components (Kanwal et al. 2017)
+
+* Pregunta(es) de l'anàlisi
+
+* Pla de disseny
+
+* Pla de mostreig (sampling pla)
+
+* Especificació de variables
+
+* **Pla d'anàlisi**
+
+   * Regressió logística amb expressió com a variable dependent, i freqüència del referent com a variable independent
+
+---
+
+class: inverse, center
+
+# Dades i terminologia
+
+---
+
+# Tipus d'estudis
+
+* Observacionals
+
+* Experimentals
+
+* Virtuals (simulació, predicció)
+
+
+---
+
+# Tipus de variables
+
+* **Nominals** 
+
+* **Ordinals** 
+
+* **Binàries**
+
+* **Booleanes** 
+
+* **Mètriques**
+
+---
+
+# Tipus de variables
+
+* **Nominals** (gènere; idioma matern; lloc d'origen)
+
+* **Ordinals** (anys cursats; edat)
+
+* **Binàries**
+
+* **Booleanes** (veritat/fals)
+
+* **Mètriques** (nombre d'usos de pronoms; to)
+
+---
+
+# Preregistration
+
+Quan registreu prèviament la vostra recerca, simplement especifiqueu el vostre pla de recerca abans del vostre estudi i l'envieu a un registre.
+
+* Més informació: https://www.cos.io/initiatives/prereg
+
+* Exemple 1:&lt;br&gt;Replication of “Psycholinguistic Evidence for presuppositions: On-line and Off-line Data. Experiment 3: Accommodation”&lt;br&gt;https://osf.io/xugwf/
+
+* Exemple 2:&lt;br&gt;Influence of Centrality on Communication Protocols in Communities of Deep Neural Agents&lt;br&gt;https://osf.io/xn6gc
+
+### 
+
+
+---
+
+# Més informació sobre disseny 
+
+* Experimentology. An Open Science Approach to Experimental Psychology Methods&lt;br&gt;https://experimentology.io/
+
+* An Introduction to Data Analysis&lt;br&gt;https://michael-franke.github.io/intro-data-analysis/index.html
+
+
+---
+
+class: inverse
+
+# Propera sessió
+
+* Lliurament de "Assignment 1" (08:00 AM 22/04)
+
+***
+
+* **Recol·lecció de dades i mostres**
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightLines": true,
+"highlightStyle": "github"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

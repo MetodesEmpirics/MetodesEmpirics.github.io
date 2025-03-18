@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>4 Introducció a la regressió</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Mètodes empírics 2" />
+    <script src="slides_files/header-attrs-2.26/header-attrs.js"></script>
+    <link href="slides_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="slides_files/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# 4 Introducció a la regressió
+]
+.author[
+### Mètodes empírics 2
+]
+.date[
+### 29/04/2024
+]
+
+---
+
+
+
+
+# Avui
+
+.large[
+
+* Aprofitant distribucions (R)
+
+* Intuïcions
+
+* Línies
+
+* Regressió lineal
+
+
+]
+
+---
+
+class: inverse, center
+
+# Aprofitant distribucions (R)
+
+---
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'&gt;
+&lt;span&gt;
+&lt;p style='margin-top:1em; text-align:center'&gt;
+&lt;b&gt;Anomena una de les tres distribucions que vam veure la setmana passada. Quants/Quins paràmetres la defineixen? I què controlen aquests paràmetres?&lt;/b&gt;
+&lt;/p&gt;
+&lt;/p&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+---
+
+class: inverse, center
+
+# Intuïcions
+
+---
+
+## Regressió
+
+Tècnica fonamental per predir un **resultat** a base d'un o més **predictors**
+
+* Predicció
+
+* Exploració d'associacions
+
+* Extrapolació
+
+* Inferència causal
+
+---
+
+## Regressió lineal
+
+Estimació de relació **lineal** entre resultat ( `\(y\)` ) i un o més predictors ( `\(x\)` ). Una altra formulació: Estimació de predicció de `\(y\)` a base de `\(x\)`.
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-1-1.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Regressió lineal (exemple)
+
+Estimació de relació **lineal** entre resultat ( *to* ) i un o més predictors ( *sexe*; *context*; *edat* ). Una altra formulació: Estimació de predicció de *to* a base de *sexe* i/o *context* i/o *edat*.
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-2-1.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+## Regressió lineal (exemple)
+
+Estimació de relació **lineal** entre resultat ( *to* ) i un o més predictors ( *sexe*; *context*; *edat* ). Una altra formulació: Estimació de predicció de *to* a base de *sexe* i/o *context* i/o *edat*.
+
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-3-1.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+## Regressió lineal (exemple)
+
+Estimació de relació **lineal** entre resultat ( *to* ) i un o més predictors ( *sexe*; *context*; *edat* ). Una altra formulació: Estimació de predicció de *to* a base de *sexe* i/o *context* i/o *edat*.
+
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-4-1.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+
+## Regressió lineal (exemple)
+
+Estimació de relació **lineal** entre resultat ( *to* ) i un o més predictors ( *sexe*; *context*; *edat* ). Una altra formulació: Estimació de predicció de *to* a base de *sexe* i/o *context* i/o *edat*.
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-5-1.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: inverse, center
+
+# Repassant línies
+
+---
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-6-1.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-7-1.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+&lt;img src="slides_files/figure-html/unnamed-chunk-8-1.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+&lt;img src="slides_files/figure-html/unnamed-chunk-9-1.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-10-1.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# to en funció a edat
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-11-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# to = `\(\beta_0\)` + ( `\(\beta_1 \times\)` edat)
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-12-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# to = 110 + (1.5 `\(\times\)` edat) ?
+&lt;img src="slides_files/figure-html/unnamed-chunk-13-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+---
+# Intuïció de l'algorisme de regressió
+
+Cerca la línia que minimitza l'error (quadrat)
+
+En altres paraules: Cerca la línia que és més a prop dels punts (i.e., de les dades)
+
+---
+
+# On posaríeu la línia?
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-14-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+---
+# to = 159 + (-2.9 `\(\times\)` edat)
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-15-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: inverse, center
+
+# Regressió lineal
+
+---
+
+## Regressió lineal
+
+Estimat de relació **lineal** entre resultat ( `\(y\)` ) i un o més predictors.
+
+Amb un sol predictor `\(x\)`:
+
+&lt;br&gt; 
+`$$\Large y_i \sim \text{Normal}(\mu_i,\sigma),$$`
+`$$\Large \mu_i  = \beta_0 + \beta_1 x_i$$`
+
+---
+
+## Regressió lineal
+
+Estimat de relació **lineal** entre *to* ( `\(y\)` ) i un o més predictors.
+
+Amb un sol predictor *edat*:
+
+&lt;br&gt;
+
+`$$\Large y_i \sim \text{Normal}(\mu_i,\sigma),$$`
+`$$\Large \mu_i  = \beta_0 + \beta_1 \text{edat}_i$$`
+---
+# Regresió lineal (R)
+
+
+```r
+head(df)
+```
+
+```
+##   ages     pitch
+## 1   18 139.99208
+## 2   20  77.92071
+## 3   20  82.48851
+## 4   19 126.96205
+## 5   16 108.97956
+## 6   23  98.30374
+```
+
+```r
+nrow(df)
+```
+
+```
+## [1] 100
+```
+
+
+---
+
+# Regresió lineal (R)
+
+
+```r
+pitch_model &lt;- lm(formula = pitch ~ 1 + ages,
+                  data    = df) 
+pitch_model
+```
+
+```
+## 
+## Call:
+## lm(formula = pitch ~ 1 + ages, data = df)
+## 
+## Coefficients:
+## (Intercept)         ages  
+##     158.682       -2.911
+```
+
+&lt;br&gt;
+***
+&lt;br&gt;
+`$$to_i = 159 + (-2.9 \times \text{edat}_i)$$`
+--
+
+Quina és la predicció del to esperat d'una persona de 12 anys? I d'una de 25?
+
+---
+
+# Més enllà de prediccions
+
+
+```r
+summary(pitch_model)
+```
+
+```
+## 
+## Call:
+## lm(formula = pitch ~ 1 + ages, data = df)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -75.888 -21.364  -0.273  21.562  57.647 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 158.6819    14.3871  11.029  &lt; 2e-16 ***
+## ages         -2.9107     0.6925  -4.203 5.81e-05 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 28.99 on 98 degrees of freedom
+## Multiple R-squared:  0.1527,	Adjusted R-squared:  0.1441 
+## F-statistic: 17.67 on 1 and 98 DF,  p-value: 5.814e-05
+```
+
+---
+
+# Residuals
+Differència entre predicció i resultat real.
+
+
+
+```r
+summary &lt;- summary(pitch_model)
+summary$residuals[1:5]
+```
+
+```
+##          1          2          3          4          5 
+##  33.702507 -22.547484 -17.979687  23.583169  -3.131381
+```
+
+---
+
+# Residuals
+
+
+```r
+plot(pitch_model$residuals)
+```
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-20-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Més enllà de prediccions
+
+
+```r
+summary(pitch_model)
+```
+
+```
+## 
+## Call:
+## lm(formula = pitch ~ 1 + ages, data = df)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -75.888 -21.364  -0.273  21.562  57.647 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 158.6819    14.3871  11.029  &lt; 2e-16 ***
+## ages         -2.9107     0.6925  -4.203 5.81e-05 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 28.99 on 98 degrees of freedom
+## Multiple R-squared:  0.1527,	Adjusted R-squared:  0.1441 
+## F-statistic: 17.67 on 1 and 98 DF,  p-value: 5.814e-05
+```
+
+---
+
+# Error estàndard (standard error)
+Incertesa del model respecte d'un paràmetre (en funció de les dades)
+
+
+```r
+summary$coefficients
+```
+
+```
+##               Estimate Std. Error   t value     Pr(&gt;|t|)
+## (Intercept) 158.681938 14.3871099 11.029452 7.169041e-19
+## ages         -2.910687  0.6924807 -4.203275 5.814231e-05
+```
+
+---
+
+# Més enllà de prediccions
+
+
+```r
+summary
+```
+
+```
+## 
+## Call:
+## lm(formula = pitch ~ 1 + ages, data = df)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -75.888 -21.364  -0.273  21.562  57.647 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 158.6819    14.3871  11.029  &lt; 2e-16 ***
+## ages         -2.9107     0.6925  -4.203 5.81e-05 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 28.99 on 98 degrees of freedom
+## Multiple R-squared:  0.1527,	Adjusted R-squared:  0.1441 
+## F-statistic: 17.67 on 1 and 98 DF,  p-value: 5.814e-05
+```
+
+---
+
+# Residual estàndard error
+
+El valor (estimat) de l'error del model. Correspon a `\(\sigma\)`
+&lt;br&gt;&lt;br&gt;
+`$$\Large y \sim \text{Normal}(\mu, \mathbf{\sigma})$$`
+`$$\Large\mu_i = \beta_0 + \beta_1 x_1 + ... \beta_n x_n$$`
+
+---
+
+# Goodness of fit
+
+`\(R^2\)` és la proporció de la variància del resultat que expliquen els predictors. 
+
+
+```r
+summary$r.squared
+```
+
+```
+## [1] 0.152744
+```
+
+
+---
+
+# Més enllà de prediccions
+
+
+```r
+summary
+```
+
+```
+## 
+## Call:
+## lm(formula = pitch ~ 1 + ages, data = df)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -75.888 -21.364  -0.273  21.562  57.647 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 158.6819    14.3871  11.029  &lt; 2e-16 ***
+## ages         -2.9107     0.6925  -4.203 5.81e-05 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 28.99 on 98 degrees of freedom
+## Multiple R-squared:  0.1527,	Adjusted R-squared:  0.1441 
+## F-statistic: 17.67 on 1 and 98 DF,  p-value: 5.814e-05
+```
+---
+
+class: inverse
+# Propera sessió
+
+* Lliurament de "Assignment 3" (08:00 AM 06/05)
+* Lliurament de part I de "Revisió per parells" (08:00 AM 06/05)
+
+***
+
+* **Regressió amb més d'un predictor**
+
+---
+
+# Transformacions: Centrar
+
+Centrar dades implica restar una constant a tots els valors d'una variable
+
+
+```r
+mean(df$ages)                           #promedio de edades
+```
+
+```
+## [1] 20.35
+```
+
+```r
+df$ages.cent &lt;- df$ages - mean(df$ages) #var. centrado
+lm(df$pitch ~ df$ages.cent)             #coefficiente centrado
+```
+
+```
+## 
+## Call:
+## lm(formula = df$pitch ~ df$ages.cent)
+## 
+## Coefficients:
+##  (Intercept)  df$ages.cent  
+##       99.449        -2.911
+```
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightLines": true,
+"highlightStyle": "github"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

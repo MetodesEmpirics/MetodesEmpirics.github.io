@@ -1,0 +1,553 @@
+---
+title: "4 Introducció a la regressió"
+author: "Mètodes empírics 2"
+date: "29/04/2024"
+output:
+  xaringan::moon_reader:
+    nature:
+      highlightLines: true
+      highlightStyle: github
+---
+
+```{r preamble, echo=FALSE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(ggplot2)
+```
+
+# Avui
+
+.large[
+
+* Aprofitant distribucions (R)
+
+* Intuïcions
+
+* Línies
+
+* Regressió lineal
+
+
+]
+
+---
+
+class: inverse, center
+
+# Aprofitant distribucions (R)
+
+---
+
+<br><br><br><br>
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>Anomena una de les tres distribucions que vam veure la setmana passada. Quants/Quins paràmetres la defineixen? I què controlen aquests paràmetres?</b>
+</p>
+</p></span>
+</div>
+
+---
+
+class: inverse, center
+
+# Intuïcions
+
+---
+
+## Regressió
+
+Tècnica fonamental per predir un **resultat** a base d'un o més **predictors**
+
+* Predicció
+
+* Exploració d'associacions
+
+* Extrapolació
+
+* Inferència causal
+
+---
+
+## Regressió lineal
+
+Estimació de relació **lineal** entre resultat ( $y$ ) i un o més predictors ( $x$ ). Una altra formulació: Estimació de predicció de $y$ a base de $x$.
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE,fig.align='center',out.width='55%'}
+library(ggplot2)
+
+set.seed(123)
+
+x <- rnorm(n = 34, mean = 20, sd = 2)
+err <- rnorm(n = 34, mean = 0,sd=1)
+y <- x/2 + err
+
+df <- data.frame(resultat = y, predictor = x)
+ggplot(df, aes(x = resultat, y = predictor)) +
+  geom_point() +
+  geom_smooth(method='lm') +
+  theme_minimal(base_size=25) +
+  xlab('predictor (x)') +
+  ylab('resultat (y)')
+```
+
+---
+
+## Regressió lineal (exemple)
+
+Estimació de relació **lineal** entre resultat ( *to* ) i un o més predictors ( *sexe*; *context*; *edat* ). Una altra formulació: Estimació de predicció de *to* a base de *sexe* i/o *context* i/o *edat*.
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE,fig.align='center',out.width='55%'}
+set.seed(121)
+#df <- read_csv("https://tinyurl.com/polite-data") #download data 
+#df_male <- df %>% filter(gender == 'M', context=='pol')
+
+ages <- rpois(n=100, lambda=20)
+pitch <- 160 - (3 * ages) + rnorm(n=100,mean=0,sd=30)
+df <- data.frame(ages = ages, pitch = pitch)
+
+ggplot(df, aes(x = ages, y = pitch)) +
+  geom_point() +
+  theme_minimal(base_size=25) +
+  xlab('edat (x)') +
+  ylab('to (y)')
+```
+
+---
+
+
+## Regressió lineal (exemple)
+
+Estimació de relació **lineal** entre resultat ( *to* ) i un o més predictors ( *sexe*; *context*; *edat* ). Una altra formulació: Estimació de predicció de *to* a base de *sexe* i/o *context* i/o *edat*.
+
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE,fig.align='center',out.width='55%'}
+set.seed(121)
+#df <- read_csv("https://tinyurl.com/polite-data") #download data 
+#df_male <- df %>% filter(gender == 'M', context=='pol')
+
+ages <- rpois(n=100, lambda=20)
+pitch <- 160 - (3 * ages) + rnorm(n=100,mean=0,sd=30)
+df <- data.frame(ages = ages, pitch = pitch)
+
+ggplot(df, aes(x = ages, y = pitch)) +
+  geom_point() +
+  geom_smooth(method='lm') +
+  theme_minimal(base_size=25) +
+  xlab('edat (x)') +
+  ylab('to (y)')
+```
+
+---
+
+
+## Regressió lineal (exemple)
+
+Estimació de relació **lineal** entre resultat ( *to* ) i un o més predictors ( *sexe*; *context*; *edat* ). Una altra formulació: Estimació de predicció de *to* a base de *sexe* i/o *context* i/o *edat*.
+
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE,fig.align='center',out.width='55%'}
+set.seed(120)
+library(readr)
+df <- read_csv("https://tinyurl.com/polite-data") %>% #download data 
+      mutate(context = as.factor(context),
+             gender =  as.factor(gender))
+df$ctx = ifelse(df$context == 'pol', 1, 0)
+
+ggplot(df, aes(x = ctx , y = pitch)) +
+  geom_point() +
+  theme_minimal(base_size=25) +
+  xlab('informal           formal') +
+  ylab('to (y)') +
+  scale_x_discrete(labels=c("0" = "Informal", "1" = "Polite",
+                              "0.5" = ''))
+```
+
+---
+
+
+
+## Regressió lineal (exemple)
+
+Estimació de relació **lineal** entre resultat ( *to* ) i un o més predictors ( *sexe*; *context*; *edat* ). Una altra formulació: Estimació de predicció de *to* a base de *sexe* i/o *context* i/o *edat*.
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE,fig.align='center',out.width='55%'}
+set.seed(120)
+library(readr)
+df <- read_csv("https://tinyurl.com/polite-data") %>% #download data 
+      mutate(context = as.factor(context),
+             gender =  as.factor(gender))
+df$ctx = ifelse(df$context == 'pol', 1, 0)
+
+ggplot(df, aes(x = ctx , y = pitch)) +
+  geom_point() +
+  geom_smooth(method='lm') +
+  theme_minimal(base_size=25) +
+  xlab('informal           formal') +
+  ylab('to (y)') +
+  scale_x_discrete(labels=c("0" = "Informal", "1" = "Polite",
+                              "0.5" = ''))
+```
+
+---
+
+class: inverse, center
+
+# Repassant línies
+
+---
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align='center',out.width='80%'}
+
+x = seq(1,10)
+y = seq(1,10)
+df <- data.frame(x = x, y = y)
+
+ggplot(df, aes(x,y)) +
+    theme_minimal(base_size=25) +
+    scale_y_continuous(breaks = seq(1,10)) +
+    scale_x_continuous(breaks = seq(1,10))
+```
+
+---
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align='center',out.width='80%'}
+
+x = seq(1,10)
+y = seq(1,10)
+df <- data.frame(x = x, y = y)
+
+ggplot(df, aes(x,y)) +
+    geom_point(aes(), alpha=0) +
+    geom_hline(yintercept = 5, col='indianred', size=2) +
+    geom_text(aes(x = 5, y = 5.5), label = 'y = 5', size=10, col='indianred') + 
+    theme_minimal(base_size=25) +
+    scale_y_continuous(breaks = seq(1,10)) +
+    scale_x_continuous(breaks = seq(1,10)) 
+```
+
+---
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align='center',out.width='80%'}
+
+x = seq(1,10)
+y = seq(1,10)
+df <- data.frame(x = x, y = y)
+
+ggplot(df, aes(x,y)) +
+    geom_point(aes(), alpha=0) +
+    geom_hline(yintercept = 5, col='indianred', size=2) +
+    geom_text(aes(x = 5, y = 5.5), label = 'y = 5', size=10, col='indianred') +     geom_hline(yintercept = 2, col='steelblue', size=2) +
+    geom_text(aes(x = 2, y = 2.5), label = 'y = 2', size=10, col='steelblue') +
+    theme_minimal(base_size=25) +
+    scale_y_continuous(breaks = seq(1,10)) +
+    scale_x_continuous(breaks = seq(1,10)) 
+```
+
+---
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align='center',out.width='80%'}
+
+x = seq(0,10)
+y = seq(0,10)
+df <- data.frame(x = x, y = y)
+
+ggplot(df, aes(x,y)) +
+    geom_point(aes(), alpha=0) +
+    geom_abline(slope = 1, intercept = 2,  col='indianred', size=2) +
+    geom_text(aes(x = 5, y = 5.5), label = 'y = 2 + x', size=10, col='indianred') +    
+  geom_hline(yintercept = 2, col='steelblue', size=2) +
+    geom_text(aes(x = 2, y = 2.5), label = 'y = 2', size=10, col='steelblue', size=2) +
+    theme_minimal(base_size=25) +
+    scale_y_continuous(breaks = seq(0,10)) +
+    scale_x_continuous(breaks = seq(0,10))
+```
+
+
+---
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align='center',out.width='80%'}
+
+x = seq(0,10)
+y = seq(0,10)
+df <- data.frame(x = x, y = y)
+
+ggplot(df, aes(x,y)) +
+    geom_point(aes(), alpha=0) +
+    geom_abline(slope = 1, intercept = 2,  col='indianred', size=2) +
+    geom_text(aes(x = 5, y = 5.5), label = 'y = 2 + x', size=10, col='indianred') +
+    geom_abline(slope = 1*0.5, intercept = 2,  col='lightskyblue',size=2) +
+    geom_text(aes(x = 8, y = 4.5), label = 'y = 2 + (0.5*x)', size=10, col='lightskyblue') +
+    geom_hline(yintercept = 2, col='steelblue', size=2) +
+    geom_text(aes(x = 2, y = 2.5), label = 'y = 2', size=10, col='steelblue') +
+    theme_minimal(base_size=25) +
+    scale_y_continuous(breaks = seq(0,10)) +
+    scale_x_continuous(breaks = seq(0,10))
+```
+
+---
+
+# to en funció a edat
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align='center',out.width='65%'}
+set.seed(121)
+
+ages <- rpois(n=100, lambda=20)
+pitch <- 160 - (3 * ages) + rnorm(n=100,mean=0,sd=30)
+df <- data.frame(ages = ages, pitch = pitch)
+
+ggplot(df, aes(x = ages, y = pitch)) +
+  geom_point() +
+  theme_minimal(base_size=25) +
+  xlab('edat (x)') +
+  ylab('to (y)')
+```
+
+---
+
+# to = $\beta_0$ + ( $\beta_1 \times$ edat)
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align='center',out.width='65%'}
+set.seed(121)
+#df <- read_csv("https://tinyurl.com/polite-data") #download data 
+#df_male <- df %>% filter(gender == 'M', context=='pol')
+
+ages <- rpois(n=100, lambda=20)
+pitch <- 160 - (3 * ages) + rnorm(n=100,mean=0,sd=30)
+df <- data.frame(ages = ages, pitch = pitch)
+
+ggplot(df, aes(x = ages, y = pitch)) +
+  geom_point() +
+  theme_minimal(base_size=25) +
+  xlab('edat (x)') +
+  ylab('to (y)')
+```
+
+---
+
+# to = 110 + (1.5 $\times$ edat) ?
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align='center',out.width='65%'}
+set.seed(121)
+#df <- read_csv("https://tinyurl.com/polite-data") #download data 
+#df_male <- df %>% filter(gender == 'M', context=='pol')
+
+ages <- rpois(n=100, lambda=20)
+pitch <- 160 - (3 * ages) + rnorm(n=100,mean=0,sd=30)
+df <- data.frame(ages = ages, pitch = pitch)
+
+ggplot(df, aes(x = ages, y = pitch)) +
+  geom_point() +
+  geom_abline(intercept = 110, slope = 1.5, col='indianred', size=2) + 
+  geom_text(aes(x = 25, y = 165), label = 'y = 110 + 1.5 * x', size=10, col='indianred') +
+  theme_minimal(base_size=25) +
+  xlab('edat (x)') +
+  ylab('to (y)')
+```
+
+---
+# Intuïció de l'algorisme de regressió
+
+Cerca la línia que minimitza l'error (quadrat)
+
+En altres paraules: Cerca la línia que és més a prop dels punts (i.e., de les dades)
+
+---
+
+# On posaríeu la línia?
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align='center',out.width='65%'}
+set.seed(121)
+
+ages <- rpois(n=100, lambda=20)
+pitch <- 160 - (3 * ages) + rnorm(n=100,mean=0,sd=30)
+df <- data.frame(ages = ages, pitch = pitch)
+
+ggplot(df, aes(x = ages, y = pitch)) +
+  geom_point() +
+  theme_minimal(base_size=25) +
+  xlab('edat (x)') +
+  ylab('to (y)')
+```
+
+---
+# to = 159 + (-2.9 $\times$ edat)
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align='center',out.width='65%'}
+set.seed(121)
+#df <- read_csv("https://tinyurl.com/polite-data") #download data 
+#df_male <- df %>% filter(gender == 'M', context=='pol')
+
+
+ages <- rpois(n=100, lambda=20)
+pitch <- 160 - (3 * ages) + rnorm(n=100,mean=0,sd=30)
+df <- data.frame(ages = ages, pitch = pitch)
+m <- lm(df$pitch ~ df$ages)
+
+
+ggplot(df, aes(x = ages, y = pitch)) +
+  geom_point() +
+  geom_abline(intercept = coef(m)[[1]], slope =coef(m)[[2]], col='indianred', size=2) + 
+  geom_text(aes(x = 25, y = 165), label = 'y = 159 + -2.9 * x', size=10, col='indianred') +
+  theme_minimal(base_size=25) +
+  xlab('edat (x)') +
+  ylab('to (y)')
+```
+
+---
+
+class: inverse, center
+
+# Regressió lineal
+
+---
+
+## Regressió lineal
+
+Estimat de relació **lineal** entre resultat ( $y$ ) i un o més predictors.
+
+Amb un sol predictor $x$:
+
+<br> 
+$$\Large y_i \sim \text{Normal}(\mu_i,\sigma),$$
+$$\Large \mu_i  = \beta_0 + \beta_1 x_i$$
+
+---
+
+## Regressió lineal
+
+Estimat de relació **lineal** entre *to* ( $y$ ) i un o més predictors.
+
+Amb un sol predictor *edat*:
+
+<br>
+
+$$\Large y_i \sim \text{Normal}(\mu_i,\sigma),$$
+$$\Large \mu_i  = \beta_0 + \beta_1 \text{edat}_i$$
+---
+# Regresió lineal (R)
+
+```{r,echo=TRUE,warning=FALSE, message=FALSE}
+head(df)
+nrow(df)
+```
+
+
+---
+
+# Regresió lineal (R)
+
+```{r, echo=TRUE, message=FALSE, warning=FALSE}
+pitch_model <- lm(formula = pitch ~ 1 + ages,
+                  data    = df) 
+pitch_model
+```
+
+<br>
+***
+<br>
+$$to_i = 159 + (-2.9 \times \text{edat}_i)$$
+--
+
+Quina és la predicció del to esperat d'una persona de 12 anys? I d'una de 25?
+
+---
+
+# Més enllà de prediccions
+
+```{r}
+summary(pitch_model)
+```
+
+---
+
+# Residuals
+Differència entre predicció i resultat real.
+
+
+```{r}
+summary <- summary(pitch_model)
+summary$residuals[1:5]
+```
+
+---
+
+# Residuals
+
+```{r, fig.align='center',out.width='65%'}
+plot(pitch_model$residuals)
+```
+
+---
+
+# Més enllà de prediccions
+
+```{r}
+summary(pitch_model)
+```
+
+---
+
+# Error estàndard (standard error)
+Incertesa del model respecte d'un paràmetre (en funció de les dades)
+
+```{r, warning=FALSE, message=FALSE}
+summary$coefficients
+```
+
+---
+
+# Més enllà de prediccions
+
+```{r}
+summary
+```
+
+---
+
+# Residual estàndard error
+
+El valor (estimat) de l'error del model. Correspon a $\sigma$
+<br><br>
+$$\Large y \sim \text{Normal}(\mu, \mathbf{\sigma})$$
+$$\Large\mu_i = \beta_0 + \beta_1 x_1 + ... \beta_n x_n$$
+
+---
+
+# Goodness of fit
+
+$R^2$ és la proporció de la variància del resultat que expliquen els predictors. 
+
+```{r}
+summary$r.squared
+```
+
+
+---
+
+# Més enllà de prediccions
+
+```{r}
+summary
+```
+---
+
+class: inverse
+# Propera sessió
+
+* Lliurament de "Assignment 3" (08:00 AM 06/05)
+* Lliurament de part I de "Revisió per parells" (08:00 AM 06/05)
+
+***
+
+* **Regressió amb més d'un predictor**
+
+---
+
+# Transformacions: Centrar
+
+Centrar dades implica restar una constant a tots els valors d'una variable
+
+```{r}
+mean(df$ages)                           #promedio de edades
+df$ages.cent <- df$ages - mean(df$ages) #var. centrado
+lm(df$pitch ~ df$ages.cent)             #coefficiente centrado
+```
+
+
