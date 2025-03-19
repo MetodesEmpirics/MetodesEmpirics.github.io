@@ -220,6 +220,41 @@ Doneu un exemple
 
 ---
 
+class: inverse, center
+
+# R i primeres dades
+
+---
+
+
+```{r, echo=TRUE, warning=FALSE, eval=TRUE, message=FALSE,fig.align='center',out.width='100%'}
+x <- c(5, 3, 8, 4) # vector of values
+
+mean(x)            # mean of x   
+```
+
+---
+# En aquest curs
+
+* Ús rudimentari i interactiu
+
+* Principalment: intuïció sobre estructures de dades i la seva manipulació
+
+* Manera d'assegurar replicabilitat
+
+---
+
+## https://forms.gle/EEyKydWa21w2EPx28
+
+
+
+
+```{r, out.width = "525px", fig.pos='center', echo=FALSE, fig.align='center'}
+knitr::include_graphics("qr-enq.png")
+```
+
+---
+
 class: center, inverse
 
 # Anàlisi inferencial
@@ -254,13 +289,7 @@ Doneu un exemple
 * Causa-efecte
 
 ]
----
 
-<img src='fig1-franconeri.png',  width="500px" height="500px", style="position:absolute; right:200px; top:px;">
-
-.footnote[
-*** 
-Fig. 1 de Franconeri et al. 2021 [The Science of Visual Data Communication: What Works](https://journals.sagepub.com/stoken/default+domain/10.1177%2F15291006211051956-FREE/full#_i28)]
 ---
 
 # Exemples
@@ -329,30 +358,6 @@ It is the proof that the experiment reflects knowledge that can be separated fro
    * conduir anàlisi empírica, i
   
    * assegurar-se que sigui replicable
-
----
-
-class: inverse, center
-
-# R 
-
----
-
-
-```{r, echo=TRUE, warning=FALSE, eval=TRUE, message=FALSE,fig.align='center',out.width='100%'}
-x <- c(5, 3, 8, 4) # vector of values
-
-mean(x)            # mean of x   
-```
-
----
-# En aquest curs
-
-* Ús rudimentari i interactiu
-
-* Principalment: intuïció sobre estructures de dades i la seva manipulació
-
-* Manera d'assegurar replicabilitat
 
 
 ---
