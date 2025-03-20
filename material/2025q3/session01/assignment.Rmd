@@ -16,13 +16,13 @@ Submit your answers to the four first exercises through Aula Global. **Remember 
 # Descriptive statistics
 Imagine you measured the (average) voice pitch of 15 Korean speakers (in Hz)^[This data was randomly sampled from the pre-processed and shortened version of the study of @winter+grawunder:2012, as provided in @aida. The data is accessible [here](https://rdrr.io/github/michael-franke/aida-package/man/data_polite.html).]. The data looks as follows: 
 
-`208, 158, 153.3, 239.7, 102.9, 83.1, 231.9, 285.1, 181.2, 266, 252.5, 185.5, 110.7, 236.8, 207.5` 
+`208, 158, 153.3, 239.7, 102.9, 83.1, 234.9, 285.1, 181.2, 266, 252.5, 185.5, 110.7, 236.8, 207.5` 
 
 
 Codified as a vector, called `pitch`, in R:
 ```{r, data}
 pitch <- c(208, 158, 153.3, 239.7, 102.9,
-           83.1, 231.9, 285.1, 181.2, 266,
+           83.1, 234.9, 285.1, 181.2, 266,
            252.5, 185.5, 110.7, 236.8, 207.5)
 ```
 

@@ -26,7 +26,7 @@ library(ggpubr)
 ```
 
 # What's in an analysis plan
-For a detailed breakdown see this [OSF pre-registration template](https://osf.io/preprints/metaarxiv/epgjd/) [@osf-prereg]
+For a detailed breakdown see this [OSF pre-registration template](https://osf.io/epgjd_v1) [@osf-prereg]
 
 For a concrete example see [Replication of Experiment 1 of “The Adams family”](https://magpie-ea.github.io/magpie-esslli-2019-course-material/site/script/materials/prereg_report_Adams.pdf) by Michael Franke
 
