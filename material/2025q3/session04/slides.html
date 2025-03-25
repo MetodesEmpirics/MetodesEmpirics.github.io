@@ -4,7 +4,7 @@
     <title>4 Introducció a la regressió</title>
     <meta charset="utf-8" />
     <meta name="author" content="Mètodes empírics 2" />
-    <script src="slides_files/header-attrs-2.26/header-attrs.js"></script>
+    <script src="slides_files/header-attrs-2.29/header-attrs.js"></script>
     <link href="slides_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="slides_files/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
   </head>
@@ -19,7 +19,7 @@ class: center, middle, inverse, title-slide
 ### Mètodes empírics 2
 ]
 .date[
-### 29/04/2024
+### 28/04/2025
 ]
 
 ---
@@ -219,7 +219,7 @@ Amb un sol predictor *edat*:
 # Regresió lineal (R)
 
 
-```r
+``` r
 head(df)
 ```
 
@@ -233,7 +233,7 @@ head(df)
 ## 6   23  98.30374
 ```
 
-```r
+``` r
 nrow(df)
 ```
 
@@ -247,7 +247,7 @@ nrow(df)
 # Regresió lineal (R)
 
 
-```r
+``` r
 pitch_model &lt;- lm(formula = pitch ~ 1 + ages,
                   data    = df) 
 pitch_model
@@ -276,7 +276,7 @@ Quina és la predicció del to esperat d'una persona de 12 anys? I d'una de 25?
 # Més enllà de prediccions
 
 
-```r
+``` r
 summary(pitch_model)
 ```
 
@@ -308,7 +308,7 @@ Differència entre predicció i resultat real.
 
 
 
-```r
+``` r
 summary &lt;- summary(pitch_model)
 summary$residuals[1:5]
 ```
@@ -323,7 +323,7 @@ summary$residuals[1:5]
 # Residuals
 
 
-```r
+``` r
 plot(pitch_model$residuals)
 ```
 
@@ -334,7 +334,7 @@ plot(pitch_model$residuals)
 # Més enllà de prediccions
 
 
-```r
+``` r
 summary(pitch_model)
 ```
 
@@ -365,7 +365,7 @@ summary(pitch_model)
 Incertesa del model respecte d'un paràmetre (en funció de les dades)
 
 
-```r
+``` r
 summary$coefficients
 ```
 
@@ -380,7 +380,7 @@ summary$coefficients
 # Més enllà de prediccions
 
 
-```r
+``` r
 summary
 ```
 
@@ -421,7 +421,7 @@ El valor (estimat) de l'error del model. Correspon a `\(\sigma\)`
 `\(R^2\)` és la proporció de la variància del resultat que expliquen els predictors. 
 
 
-```r
+``` r
 summary$r.squared
 ```
 
@@ -435,7 +435,7 @@ summary$r.squared
 # Més enllà de prediccions
 
 
-```r
+``` r
 summary
 ```
 
@@ -464,8 +464,7 @@ summary
 class: inverse
 # Propera sessió
 
-* Lliurament de "Assignment 3" (08:00 AM 06/05)
-* Lliurament de part I de "Revisió per parells" (08:00 AM 06/05)
+* Lliurament de "Assignment 4" (08:00 AM 05/05)
 
 ***
 
@@ -478,7 +477,7 @@ class: inverse
 Centrar dades implica restar una constant a tots els valors d'una variable
 
 
-```r
+``` r
 mean(df$ages)                           #promedio de edades
 ```
 
@@ -486,7 +485,7 @@ mean(df$ages)                           #promedio de edades
 ## [1] 20.35
 ```
 
-```r
+``` r
 df$ages.cent &lt;- df$ages - mean(df$ages) #var. centrado
 lm(df$pitch ~ df$ages.cent)             #coefficiente centrado
 ```
@@ -506,8 +505,8 @@ lm(df$pitch ~ df$ages.cent)             #coefficiente centrado
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"highlightLines": true,
-"highlightStyle": "github"
+  "highlightLines": true,
+  "highlightStyle": "github"
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));

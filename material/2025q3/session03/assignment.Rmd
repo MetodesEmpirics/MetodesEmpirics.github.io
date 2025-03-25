@@ -88,7 +88,7 @@ sample2_formal <-  rpois(n = 5, lambda = 45)    #5 draws from Poisson with lambd
 ## Sample 3 (15 subjects per condition)
 
 ```{r}
-set.seed(2) #this makes the random draws be the same each time we run the code
+set.seed(104) #this makes the random draws be the same each time we run the code
 
 sample3_informal <- rpois(n = 15, lambda = 55)   #15 draws from Poisson with lambda = 55
 sample3_formal <-  rpois(n = 15, lambda = 45)    #15 draws from Poisson with lambda = 45
