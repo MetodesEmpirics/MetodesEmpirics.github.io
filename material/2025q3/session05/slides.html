@@ -4,7 +4,8 @@
     <title>5 Regressió amb més d’un predictor</title>
     <meta charset="utf-8" />
     <meta name="author" content="Mètodes empírics 2" />
-    <meta name="date" content="2024-06-05" />
+    <meta name="date" content="2025-05-05" />
+    <script src="slides_files/header-attrs-2.29/header-attrs.js"></script>
     <link href="slides_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="slides_files/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
   </head>
@@ -19,7 +20,7 @@ class: center, middle, inverse, title-slide
 ### Mètodes empírics 2
 ]
 .date[
-### 06/05/2024
+### 05/05/2025
 ]
 
 ---
@@ -73,7 +74,7 @@ class: inverse, center
 # Cas d'estudis: to
 
 
-```r
+``` r
 df &lt;- read.csv("https://tinyurl.com/polite-data")
 head(df)
 ```
@@ -114,16 +115,15 @@ head(df)
 # Descripció de variables (gènere)
 
 
-```r
+``` r
 unique(df$gender)
 ```
 
 ```
-## [1] F M
-## Levels: F M
+## [1] "F" "M"
 ```
 
-```r
+``` r
 df_m &lt;- filter(df, gender == 'M')
 nrow(df_m)
 ```
@@ -132,7 +132,7 @@ nrow(df_m)
 ## [1] 41
 ```
 
-```r
+``` r
 df_f &lt;- filter(df, gender == 'F') 
 nrow(df_f)
 ```
@@ -146,16 +146,15 @@ nrow(df_f)
 # Descripció de variables (context)
 
 
-```r
+``` r
 unique(df$context)
 ```
 
 ```
-## [1] pol inf
-## Levels: inf pol
+## [1] "pol" "inf"
 ```
 
-```r
+``` r
 df_inf &lt;- filter(df, context == 'inf')
 nrow(df_inf)
 ```
@@ -164,7 +163,7 @@ nrow(df_inf)
 ## [1] 42
 ```
 
-```r
+``` r
 df_pol &lt;- filter(df, context == 'pol')
 nrow(df_pol)
 ```
@@ -185,7 +184,7 @@ nrow(df_pol)
 # Descripció de variables (to)
 
 
-```r
+``` r
 mean(df$pitch)
 ```
 
@@ -193,7 +192,7 @@ mean(df$pitch)
 ## [1] 193.5819
 ```
 
-```r
+``` r
 median(df$pitch)
 ```
 
@@ -201,7 +200,7 @@ median(df$pitch)
 ## [1] 203.9
 ```
 
-```r
+``` r
 sd(df$pitch)
 ```
 
@@ -209,7 +208,7 @@ sd(df$pitch)
 ## [1] 65.54068
 ```
 
-```r
+``` r
 quantile(df$pitch)
 ```
 
@@ -250,7 +249,7 @@ quantile(df$pitch)
 # Possible relació entre predictor i variable (gènere)
 
 
-```r
+``` r
 mean(df_m$pitch)
 ```
 
@@ -258,7 +257,7 @@ mean(df_m$pitch)
 ## [1] 138.8756
 ```
 
-```r
+``` r
 mean(df_f$pitch)
 ```
 
@@ -266,7 +265,7 @@ mean(df_f$pitch)
 ## [1] 246.9857
 ```
 
-```r
+``` r
 median(df_m$pitch)
 ```
 
@@ -274,7 +273,7 @@ median(df_m$pitch)
 ## [1] 126.9
 ```
 
-```r
+``` r
 median(df_f$pitch)
 ```
 
@@ -287,7 +286,7 @@ median(df_f$pitch)
 # Possible relació entre predictor i variable (gènere)
 
 
-```r
+``` r
 sd(df_m$pitch)
 ```
 
@@ -295,7 +294,7 @@ sd(df_m$pitch)
 ## [1] 38.92821
 ```
 
-```r
+``` r
 sd(df_f$pitch)
 ```
 
@@ -303,7 +302,7 @@ sd(df_f$pitch)
 ## [1] 34.61808
 ```
 
-```r
+``` r
 quantile(df_m$pitch)
 ```
 
@@ -312,7 +311,7 @@ quantile(df_m$pitch)
 ##  82.2 108.2 126.9 160.7 229.0
 ```
 
-```r
+``` r
 quantile(df_f$pitch)
 ```
 
@@ -343,7 +342,7 @@ quantile(df_f$pitch)
 # Model gènere
 
 
-```r
+``` r
 pitch_model1 &lt;- lm(formula = pitch ~ 1 + gender,
                    data    = df)
 summary(pitch_model1)
@@ -375,7 +374,7 @@ summary(pitch_model1)
 # Model gènere
 
 
-```r
+``` r
 coef(pitch_model1)
 ```
 
@@ -387,7 +386,7 @@ coef(pitch_model1)
 --
 
 
-```r
+``` r
 mean(df_f$pitch)
 ```
 
@@ -395,7 +394,7 @@ mean(df_f$pitch)
 ## [1] 246.9857
 ```
 
-```r
+``` r
 mean(df_m$pitch)
 ```
 
@@ -421,7 +420,7 @@ mean(df_m$pitch)
 # Possible relació entre predictor i variable (context)
 
 
-```r
+``` r
 mean(df_pol$pitch)
 ```
 
@@ -429,7 +428,7 @@ mean(df_pol$pitch)
 ## [1] 184.3561
 ```
 
-```r
+``` r
 mean(df_inf$pitch)
 ```
 
@@ -437,7 +436,7 @@ mean(df_inf$pitch)
 ## [1] 202.5881
 ```
 
-```r
+``` r
 median(df_pol$pitch)
 ```
 
@@ -445,7 +444,7 @@ median(df_pol$pitch)
 ## [1] 193.4
 ```
 
-```r
+``` r
 median(df_inf$pitch)
 ```
 
@@ -458,7 +457,7 @@ median(df_inf$pitch)
 # Possible relació entre predictor i variable (context)
 
 
-```r
+``` r
 sd(df_pol$pitch)
 ```
 
@@ -466,7 +465,7 @@ sd(df_pol$pitch)
 ## [1] 63.55659
 ```
 
-```r
+``` r
 sd(df_inf$pitch)
 ```
 
@@ -474,7 +473,7 @@ sd(df_inf$pitch)
 ## [1] 66.94803
 ```
 
-```r
+``` r
 quantile(df_pol$pitch)
 ```
 
@@ -483,7 +482,7 @@ quantile(df_pol$pitch)
 ##  82.2 126.5 193.4 232.6 289.4
 ```
 
-```r
+``` r
 quantile(df_inf$pitch)
 ```
 
@@ -511,7 +510,7 @@ quantile(df_inf$pitch)
 # Model context
 
 
-```r
+``` r
 pitch_model2 &lt;- lm(formula = pitch ~ 1 + context,
                    data    = df)
 summary(pitch_model2)
@@ -543,7 +542,7 @@ summary(pitch_model2)
 # Model context
 
 
-```r
+``` r
 coef(pitch_model2)
 ```
 
@@ -555,7 +554,7 @@ coef(pitch_model2)
 --
 
 
-```r
+``` r
 mean(df_pol$pitch)
 ```
 
@@ -563,7 +562,7 @@ mean(df_pol$pitch)
 ## [1] 184.3561
 ```
 
-```r
+``` r
 mean(df_inf$pitch)
 ```
 
@@ -589,7 +588,7 @@ mean(df_inf$pitch)
 --
 
 
-```r
+``` r
 pitch_model3 &lt;- lm(formula = pitch ~ 1 + gender + context,
                    data    = df)
 summary(pitch_model3)
@@ -622,7 +621,7 @@ summary(pitch_model3)
 # Tots els nostres models (paràmetres)
 
 
-```r
+``` r
 summary(pitch_model3)$coefficients
 ```
 
@@ -634,7 +633,7 @@ summary(pitch_model3)$coefficients
 ```
 
 
-```r
+``` r
 summary(pitch_model2)$coefficients
 ```
 
@@ -645,7 +644,7 @@ summary(pitch_model2)$coefficients
 ```
 
 
-```r
+``` r
 summary(pitch_model1)$coefficients
 ```
 
@@ -660,7 +659,7 @@ summary(pitch_model1)$coefficients
 # Tots els nostres models (goodness of fit)
 
 
-```r
+``` r
 summary(pitch_model3)$r.squared
 ```
 
@@ -669,7 +668,7 @@ summary(pitch_model3)$r.squared
 ```
 
 
-```r
+``` r
 summary(pitch_model2)$r.squared
 ```
 
@@ -678,7 +677,7 @@ summary(pitch_model2)$r.squared
 ```
 
 
-```r
+``` r
 summary(pitch_model1)$r.squared
 ```
 
@@ -759,7 +758,7 @@ Amb una mostra prou gran tots els efectes són significatius
 # (In)significància estadística: raons tècniques per ser crítics
 
 
-```r
+``` r
 set.seed(12)  #random seed
 obs &lt;- 5      #how many observations
 
@@ -780,7 +779,7 @@ df &lt;- data.frame(dades  = c(datos_A,datos_B),
 # (In)significància estadística: raons tècniques per ser crítics
 
 
-```r
+``` r
 summary(lm(dades ~ grup, data = df))
 ```
 
@@ -810,7 +809,7 @@ summary(lm(dades ~ grup, data = df))
 # (In)significància estadística: raons tècniques per ser crítics
 
 
-```r
+``` r
 set.seed(12)  #random seed
 obs &lt;- 1000000      #how many observations
 
@@ -833,7 +832,7 @@ df &lt;- data.frame(dades  = c(datos_A,datos_B),
 # (In)significància estadística: raons tècniques per ser crítics
 
 
-```r
+``` r
 summary(lm(dades ~ grup, data = df))
 ```
 
@@ -864,7 +863,8 @@ class: inverse
 
 # Propera sessió
 
-* Lliurament de "Assignment 4"
+* Lliurament de "Assignment 5" (12/05)
+* Peer review II (19/05)
 
 ***
 
@@ -873,8 +873,8 @@ class: inverse
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"highlightLines": true,
-"highlightStyle": "github"
+  "highlightLines": true,
+  "highlightStyle": "github"
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));

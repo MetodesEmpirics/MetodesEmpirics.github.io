@@ -4,6 +4,7 @@
     <title>6 Regressió generalitzada I</title>
     <meta charset="utf-8" />
     <meta name="author" content="Mètodes empírics 2" />
+    <script src="slides_files/header-attrs-2.29/header-attrs.js"></script>
     <link href="slides_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="slides_files/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
   </head>
@@ -108,9 +109,9 @@ by social context: A study of multimodal politeness across two cultures](). *Ges
 
 
 ```
-##  [1]  61  78  31  40  81  49  32  49  39  32  35  30  88  73  59  47  22  13  61  73  58  51 101  82  56  74
-## [27]  40  43  91  76  62  37  89  49  30  30  33  11  26  13  63  62  51  27  67  49  61  61  31  16  63  42
-## [53]  22  10
+##  [1]  61  78  31  40  81  49  32  49  39  32  35  30  88  73  59  47  22  13  61
+## [20]  73  58  51 101  82  56  74  40  43  91  76  62  37  89  49  30  30  33  11
+## [39]  26  13  63  62  51  27  67  49  61  61  31  16  63  42  22  10
 ```
 
 
@@ -220,7 +221,7 @@ class: inverse
 # Regressió de Poisson (R)
 
 
-```r
+``` r
 glm(formula = gestures ~ 1 + language,
     data    = df,
     family  = poisson(link = 'log')
@@ -245,7 +246,7 @@ by social context: A study of multimodal politeness across two cultures](). *Ges
 # Dades
 
 
-```r
+``` r
 head(df)
 ```
 
@@ -273,7 +274,7 @@ head(df)
 # Model 1: Context
 
 
-```r
+``` r
 m1_context &lt;- glm(formula = gestures ~ 1 + context,
                    data    = df,
                    family  = poisson(link = 'log')
@@ -302,7 +303,7 @@ coef(m1_context)
 &lt;br&gt;&lt;br&gt;
 
 
-```r
+``` r
 exp(3.99 - 0.18) #expected gestures in polite context
 ```
 
@@ -310,7 +311,7 @@ exp(3.99 - 0.18) #expected gestures in polite context
 ## [1] 45.15044
 ```
 
-```r
+``` r
 exp(3.99)        #expected gestures in informal context
 ```
 
@@ -333,7 +334,7 @@ exp(3.99)        #expected gestures in informal context
 # Model 2: Llenguatge
 
 
-```r
+``` r
 m2_lleng &lt;- glm(formula = gestures ~ 1 + language,
                    data    = df,
                    family  = poisson(link = 'log')
@@ -363,7 +364,7 @@ coef(m2_lleng)
 # Modelo 3: Gènere
 
 
-```r
+``` r
 m3_gen &lt;- glm(formula   = gestures ~ 1 + gender,
                    data    = df,
                    family  = poisson(link = 'log')
@@ -389,10 +390,6 @@ coef(m3_gen)
 ## Call:
 ## glm(formula = gestures ~ 1 + context, family = poisson(link = "log"), 
 ##     data = df)
-## 
-## Deviance Residuals: 
-##     Min       1Q   Median       3Q      Max  
-## -6.3272  -2.8687   0.4296   1.6026   5.7274  
 ## 
 ## Coefficients:
 ##             Estimate Std. Error z value Pr(&gt;|z|)    
@@ -432,10 +429,6 @@ coef(m3_gen)
 ## glm(formula = gestures ~ 1 + language, family = poisson(link = "log"), 
 ##     data = df)
 ## 
-## Deviance Residuals: 
-##     Min       1Q   Median       3Q      Max  
-## -6.6496  -2.6240  -0.4041   2.4834   6.0006  
-## 
 ## Coefficients:
 ##                Estimate Std. Error z value Pr(&gt;|z|)    
 ## (Intercept)     3.97968    0.02584 154.030  &lt; 2e-16 ***
@@ -463,10 +456,6 @@ coef(m3_gen)
 ## glm(formula = gestures ~ 1 + gender, family = poisson(link = "log"), 
 ##     data = df)
 ## 
-## Deviance Residuals: 
-##     Min       1Q   Median       3Q      Max  
-## -6.7432  -2.7667  -0.2118   1.9619   6.2463  
-## 
 ## Coefficients:
 ##             Estimate Std. Error z value Pr(&gt;|z|)    
 ## (Intercept)  3.88083    0.02715 142.961   &lt;2e-16 ***
@@ -489,7 +478,7 @@ coef(m3_gen)
 # Model 4: 3 predictors
 
 
-```r
+``` r
 m4_all &lt;-  glm(formula   = gestures ~ 1 + gender + context + language,
                    data    = df,
                    family  = poisson(link = 'log')
@@ -512,10 +501,6 @@ coef(m4_all)
 ## Call:
 ## glm(formula = gestures ~ 1 + gender + context + language, family = poisson(link = "log"), 
 ##     data = df)
-## 
-## Deviance Residuals: 
-##     Min       1Q   Median       3Q      Max  
-## -6.1975  -2.7275  -0.0876   2.2215   5.4705  
 ## 
 ## Coefficients:
 ##                Estimate Std. Error z value Pr(&gt;|z|)    
@@ -540,7 +525,7 @@ coef(m4_all)
 # Model 4: 2 predictors
 
 
-```r
+``` r
 m5_gairabe_tots &lt;-  glm(formula   = gestures ~ 1 + context + language,
                          data    = df,
                          family  = poisson(link = 'log')
@@ -564,10 +549,6 @@ coef(m5_gairabe_tots)
 ## glm(formula = gestures ~ 1 + context + language, family = poisson(link = "log"), 
 ##     data = df)
 ## 
-## Deviance Residuals: 
-##     Min       1Q   Median       3Q      Max  
-## -6.0963  -2.7462   0.0327   2.2950   5.3442  
-## 
 ## Coefficients:
 ##                Estimate Std. Error z value Pr(&gt;|z|)    
 ## (Intercept)     4.06438    0.03132 129.749  &lt; 2e-16 ***
@@ -590,7 +571,7 @@ coef(m5_gairabe_tots)
 # AICs
 
 
-```r
+``` r
 m1_context$aic
 ```
 
@@ -598,7 +579,7 @@ m1_context$aic
 ## [1] 870.2175
 ```
 
-```r
+``` r
 m2_lleng$aic
 ```
 
@@ -606,7 +587,7 @@ m2_lleng$aic
 ## [1] 871.6956
 ```
 
-```r
+``` r
 m3_gen$aic
 ```
 
@@ -614,7 +595,7 @@ m3_gen$aic
 ## [1] 889.9752
 ```
 
-```r
+``` r
 m4_all$aic
 ```
 
@@ -622,7 +603,7 @@ m4_all$aic
 ## [1] 854.0088
 ```
 
-```r
+``` r
 m5_gairabe_tots$aic
 ```
 
@@ -645,8 +626,8 @@ class: inverse
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"highlightLines": true,
-"highlightStyle": "github"
+  "highlightLines": true,
+  "highlightStyle": "github"
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));
