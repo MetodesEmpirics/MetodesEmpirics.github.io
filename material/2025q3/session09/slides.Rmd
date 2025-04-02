@@ -1,7 +1,7 @@
 ---
-title: "9 Visualització"
+title: "8 Visualització"
 author: "Mètodes empírics 2"
-date: "27/05/2024"
+date: "19/05/2025"
 output:
   xaringan::moon_reader:
     nature:
@@ -341,8 +341,7 @@ class: inverse
 
 # Propera sessió
 
-Res / informe final
-
+* Lliurament Practical exercise 
 
 ***
 

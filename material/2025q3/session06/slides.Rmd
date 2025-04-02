@@ -1,7 +1,7 @@
 ---
 title: "6 Regressió generalitzada I"
 author: "Mètodes empírics 2"
-date: "13/05/2024"
+date: "12/05/2025"
 output:
   xaringan::moon_reader:
     nature:
@@ -437,7 +437,7 @@ class: inverse
 
 # Propera sessió
 
-* Lliurament de Assignment 5 
+* Lliurament de Peer review II
 
 ***
 
