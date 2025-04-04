@@ -4,7 +4,7 @@
     <title>Regressió generalitzada II</title>
     <meta charset="utf-8" />
     <meta name="author" content="Mètodes empírics 2" />
-    <meta name="date" content="2024-03-06" />
+    <script src="slides_files/header-attrs-2.29/header-attrs.js"></script>
     <link href="slides_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="slides_files/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
   </head>
@@ -19,7 +19,7 @@ class: center, middle, inverse, title-slide
 ### Mètodes empírics 2
 ]
 .date[
-### 03/06/2024
+### 26/05/2025
 ]
 
 ---
@@ -104,7 +104,7 @@ efficient communication](). *Cognition*.
 &lt;br&gt;
 
 
-```r
+``` r
 df$freq  &lt;- ifelse(df$display %in% c(0,1),  'freq', 'infreq') 
 ```
 
@@ -113,16 +113,16 @@ df$freq  &lt;- ifelse(df$display %in% c(0,1),  'freq', 'infreq')
 
 # Variable dependent (resultat)
 
-```r
+``` r
 df$label[1:10]
 ```
 
 ```
-##  [1] zop     zopudon zop     zopekil zopudon zopekil zop     zop     zop     zop    
-## Levels: zop zopekil zopudon
+##  [1] "zop"     "zopudon" "zop"     "zopekil" "zopudon" "zopekil" "zop"    
+##  [8] "zop"     "zop"     "zop"
 ```
 
-```r
+``` r
 df$short &lt;- ifelse(df$label == 'zop', 1, 0) 
 df$short[1:10]
 ```
@@ -171,7 +171,7 @@ class: center, inverse
 `$$\text{inverse logit}(p) = \frac{\text{exp}(p)}{1 + \text{exp}(p)}$$`
 
 
-```r
+``` r
 inv.logit &lt;- function(x){
   return(exp(x) / (1 + exp(x)) )
 }
@@ -205,7 +205,7 @@ inv.logit &lt;- function(x){
 # Regressió Binomial/Bernoulli (R)
 
 
-```r
+``` r
 glm(formula = short ~ 1 + freq,
     data    = df,
     family  = binomial(link = 'logit')
@@ -231,7 +231,7 @@ efficient communication](). *Cognition*.
 # Dades
 
 
-```r
+``` r
 head(df)
 ```
 
@@ -258,7 +258,7 @@ head(df)
 # Model 1: Freqüència
 
 
-```r
+``` r
 zipf_freq &lt;- glm(formula = short ~ 1 + freq,
                        data    = df,
                        family  = binomial(link = 'logit')
@@ -286,7 +286,7 @@ $$\Large \text{logit}(p_i) \approx 0.13 - (\text{infrec} \times 1.612) \approx -
 &lt;br&gt;&lt;br&gt;
 
 
-```r
+``` r
 inv.logit(0.13 - 1.612)
 ```
 
@@ -294,7 +294,7 @@ inv.logit(0.13 - 1.612)
 ## [1] 0.1851255
 ```
 
-```r
+``` r
 inv.logit(0.13)        
 ```
 
@@ -313,10 +313,6 @@ inv.logit(0.13)
 ## Call:
 ## glm(formula = short ~ 1 + freq, family = binomial(link = "logit"), 
 ##     data = df)
-## 
-## Deviance Residuals: 
-##     Min       1Q   Median       3Q      Max  
-## -1.2310  -1.2310  -0.6384   1.1247   1.8389  
 ## 
 ## Coefficients:
 ##             Estimate Std. Error z value Pr(&gt;|z|)    
@@ -349,7 +345,7 @@ inv.logit(0.13)
 # Model 2: Torn
 
 
-```r
+``` r
 zipf_trial &lt;- glm(formula = short ~ 1 + trial,
                        data    = df,
                        family  = binomial(link = 'logit')
@@ -367,7 +363,7 @@ coef(zipf_trial)
 # Prediccions
 
 
-```r
+``` r
 inv.logit(-0.74 + (1  * 0.039))  
 ```
 
@@ -375,7 +371,7 @@ inv.logit(-0.74 + (1  * 0.039))
 ## [1] 0.3315906
 ```
 
-```r
+``` r
 inv.logit(-0.74 + (20 * 0.039))
 ```
 
@@ -383,7 +379,7 @@ inv.logit(-0.74 + (20 * 0.039))
 ## [1] 0.5099987
 ```
 
-```r
+``` r
 inv.logit(-0.74 + (32 * 0.039)) 
 ```
 
@@ -402,10 +398,6 @@ inv.logit(-0.74 + (32 * 0.039))
 ## Call:
 ## glm(formula = short ~ 1 + trial, family = binomial(link = "logit"), 
 ##     data = df)
-## 
-## Deviance Residuals: 
-##     Min       1Q   Median       3Q      Max  
-## -1.2857  -1.0889  -0.9189   1.2285   1.4879  
 ## 
 ## Coefficients:
 ##              Estimate Std. Error z value Pr(&gt;|z|)    
@@ -429,7 +421,7 @@ inv.logit(-0.74 + (32 * 0.039))
 # Model 3: Tots dos predictors
 
 
-```r
+``` r
 zipf_trial_freq &lt;- glm(formula = short ~ 1 + trial + freq,
                        data    = df,
                        family  = binomial(link = 'logit')
@@ -453,10 +445,6 @@ coef(zipf_trial_freq)
 ## glm(formula = short ~ 1 + trial + freq, family = binomial(link = "logit"), 
 ##     data = df)
 ## 
-## Deviance Residuals: 
-##    Min      1Q  Median      3Q     Max  
-## -1.462  -1.097  -0.562   1.089   2.077  
-## 
 ## Coefficients:
 ##              Estimate Std. Error z value Pr(&gt;|z|)    
 ## (Intercept) -0.427337   0.125352  -3.409 0.000652 ***
@@ -479,7 +467,7 @@ coef(zipf_trial_freq)
 # AICs
 
 
-```r
+``` r
 zipf_freq$aic
 ```
 
@@ -487,7 +475,7 @@ zipf_freq$aic
 ## [1] 1636.987
 ```
 
-```r
+``` r
 zipf_trial$aic
 ```
 
@@ -495,7 +483,7 @@ zipf_trial$aic
 ## [1] 1737.473
 ```
 
-```r
+``` r
 zipf_trial_freq$aic
 ```
 
@@ -515,7 +503,7 @@ class: inverse, center
 # Interaccions
 
 
-```r
+``` r
 m4 &lt;- glm(formula = short ~ 1 + trial + freq + trial:freq,
                        data    = df,
                        family  = binomial(link = 'logit')
@@ -534,7 +522,7 @@ coef(m4)
 # Models hierarquics
 
 
-```r
+``` r
 library(lme4)
 
 m5 &lt;- glmer(formula = short ~ 1 + trial + freq +
@@ -550,7 +538,7 @@ m5 &lt;- glmer(formula = short ~ 1 + trial + freq +
 # Models hierarquics
 
 
-```r
+``` r
 fixef(m5)
 ```
 
@@ -559,7 +547,7 @@ fixef(m5)
 ##      -1.19210355       0.07232261      -1.18527634      -0.07347172
 ```
 
-```r
+``` r
 head(ranef(m5)$IP)
 ```
 
@@ -668,8 +656,8 @@ class: inverse
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"highlightLines": true,
-"highlightStyle": "github"
+  "highlightLines": true,
+  "highlightStyle": "github"
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));

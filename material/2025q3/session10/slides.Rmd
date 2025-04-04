@@ -1,7 +1,7 @@
 ---
 title: "10 Més temes i més mètodes empírics en les ciències del llenguatge"
 author: "Mètodes empírics 2"
-date: "13/06/2023"
+date: "03/06/2025"
 output:
   xaringan::moon_reader:
     nature:
@@ -373,8 +373,7 @@ class: inverse
 
 * Avaldo 
 
-* Informe final: 25/06
-
+* Informe final: TBC
 
 ---
 
