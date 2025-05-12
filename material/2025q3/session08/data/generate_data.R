@@ -2,7 +2,7 @@ library(readr)
 library(dplyr)
 library(tidyr)
 
-participants <- read_csv('participants.csv')
+participants <- read_csv('MetodesEmpirics.github.io/material/2025q3/session08/data/participants.csv')
 colnames(participants) <- c('first', 'second', 'id', 'grp')
 urls <- c()
 
@@ -38,8 +38,8 @@ for (idx in participants$id){
 
 
 
-	write_csv(df, paste0('csvs/',idx, '.csv'))
-	urls <- c(urls, paste0('https://raw.githubusercontent.com/MetodesEmpirics/MetodesEmpirics.github.io/main/material/2024q3/session08/data/csvs/', idx, '.csv'))
+	write_csv(df, paste0('MetodesEmpirics.github.io/material/2025q3/session08/data/csvs/',idx, '.csv'))
+	urls <- c(urls, paste0('https://raw.githubusercontent.com/MetodesEmpirics/MetodesEmpirics.github.io/main/material/2025q3/session08/data/csvs/', idx, '.csv'))
 }
 
 participants$dades  <- urls
@@ -47,4 +47,4 @@ participants$first  <- NULL
 participants$second <- NULL
 participants$grp <- NULL
 
-write_csv(participants,'dades_prova_puntuable24.csv')
+write_csv(participants,'MetodesEmpirics.github.io/material/2025q3/session08/data/dades_prova_puntuable25.csv')
